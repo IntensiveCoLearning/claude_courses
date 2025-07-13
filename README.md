@@ -2,25 +2,25 @@
 
 ## 介绍
 
-介绍内容
+当前 AI 的发展速度如果不追紧学习真的感觉在慢慢被淘汰，AI 相关的工具也在不断的更新升级，作为目前很主流的 AI assistant 的 Claude 公司 Anthropic 在本月发布了免费的 “Build with Claude” 系列课程，涵盖 Claude API、跨云集成、Model Context Protocol（MCP）和 Claude Code 等主题，官方还提供结业证书。为了快速、系统地掌握这些新能力，我们发起本期残酷共学，在 3 周内以每日 60 分钟 + 打卡的方式一起学完全部课程并尝试完成实战项目。
 
 ## 关键词
 
-关键词内容
+AI, Claude
 
 ## 面向人群
 
-面向人群内容
+所有对 AI 和 Claude 感兴趣的人
 
 ## 报名时间
 
 - 报名开始时间：2025-07-15
-- 报名结束时间：2025-07-21
+- 报名结束时间：2025-07-22
 
 ## 共学时间
 
-- 共学开始时间：2025-07-22
-- 共学结束时间：2025-08-12
+- 共学开始时间：2025-07-23
+- 共学结束时间：2025-08-21
 
 ## 发起人
 
@@ -31,7 +31,9 @@
 
 ## 发起组织
 
-残酷共学发起组织方，可以是多个
+  [LXDAO](https://lxdao.io/) <img alt="organization-logo" height="60px" width="60px" src="https://cdn.lxdao.io/bafkreiay6vxsvv3ksxr75lzzt3iqy3zja3o2epuxh47ivs24p2xs3awexm.png" />
+
+
 
 ## 请假规则
 
@@ -43,15 +45,26 @@ Telegram：
 
 ## 学习资料/课程安排
 
-学习内容
+主要的学习资料是 Anthropic Academy 发布的课程：https://anthropic.skilljar.com/ 。
+
+课程视频的总时长为 **26.7h**，共学时间为 **30 天**，所以大概每天需要花费**一个小时**左右的时间来学习。
+
+大家可以根据自己的时间和学习情况自行进行课程学习，每天提交学习笔记，有问题可以在 Telegram 学习群里进行提问和交流。
+
+
+
 
 ## 共学激励
 
 打卡成功者福利：https://www.notion.so/lxdao/3eab258b4df44c9cb97319452b2be13b
 
+
+
 ## 更多信息
 
 更多信息内容
+
+
 
 ## 报名和打卡规则
 
