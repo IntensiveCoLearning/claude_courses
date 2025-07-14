@@ -1,4 +1,4 @@
-# Claude Academy 残酷共学
+# Claude Courses 残酷共学
 
 ## 介绍
 
@@ -15,12 +15,12 @@ AI, Claude
 ## 报名时间
 
 - 报名开始时间：2025-07-15
-- 报名结束时间：2025-07-22
+- 报名结束时间：2025-07-23
 
 ## 共学时间
 
 - 共学开始时间：2025-07-23
-- 共学结束时间：2025-08-21
+- 共学结束时间：2025-08-22
 
 ## 发起人
 
@@ -31,7 +31,7 @@ AI, Claude
 
 ## 发起组织
 
-  [LXDAO](https://lxdao.io/) <img alt="organization-logo" height="60px" width="60px" src="https://cdn.lxdao.io/bafkreiay6vxsvv3ksxr75lzzt3iqy3zja3o2epuxh47ivs24p2xs3awexm.png" />
+  [LXDAO](https://lxdao.io/) <img alt="organization-logo" height="60px" width="60px" src="https://avatars.githubusercontent.com/u/167147327?s=200&v=4" />
 
 
 
@@ -50,7 +50,6 @@ Telegram：
 课程视频的总时长为 **26.7h**，共学时间为 **30 天**，所以大概每天需要花费**一个小时**左右的时间来学习。
 
 大家可以根据自己的时间和学习情况自行进行课程学习，每天提交学习笔记，有问题可以在 Telegram 学习群里进行提问和交流。
-
 
 
 
