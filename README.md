@@ -95,10 +95,11 @@ Telegram：https://t.me/LXDAO/26860
 ✅ = Done ⭕️ = Missed ❌ = Failed
 
 <!-- START_COMMIT_TABLE -->
-| Name | 7.08 | 7.09 | 7.10 | 7.11 | 7.12 | 7.13 | 7.14 | 7.15 | 7.16 | 7.17 | 7.18 | 7.19 | 7.20 | 7.21 | 7.22 | 7.23 |
-| ------------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| [SIGNUP_AUTOMATION](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SIGNUP_AUTOMATION.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | |
+| Name | 7.17 | 7.18 | 7.19 | 7.20 | 7.21 | 7.22 | 7.23 |
+| ------------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| [SIGNUP_AUTOMATION](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SIGNUP_AUTOMATION.md) | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
