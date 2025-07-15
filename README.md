@@ -41,7 +41,7 @@ AI, Claude
 
 ## 社群
 
-Telegram：
+Telegram：https://t.me/LXDAO/26860
 
 ## 学习资料/课程安排
 
