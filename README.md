@@ -59,7 +59,7 @@ Telegram：https://t.me/LXDAO/26860
 
 ## 报名和打卡规则
 
-- 报名: https://www.notion.so/lxdao/232dceffe40b8030993ad26f2eb6bed2
+- 报名：https://www.notion.so/lxdao/232dceffe40b8030993ad26f2eb6bed2
 
 - 打卡：https://www.notion.so/lxdao/232dceffe40b80508330c5ee936d4dab
 
