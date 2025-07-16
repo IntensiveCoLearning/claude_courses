@@ -186,9 +186,11 @@ def check_weekly_status(user_status, date, user_tz):
 
 def get_all_user_files():
     exclude_prefixes = ('template', 'readme')
+    exclude_files = ('SIGNUP_AUTOMATION.md',)
     return [f[:-len(FILE_SUFFIX)] for f in os.listdir('.')
             if f.lower().endswith(FILE_SUFFIX.lower())
-            and not f.lower().startswith(exclude_prefixes)]
+            and not f.lower().startswith(exclude_prefixes)
+            and f not in exclude_files]
 
 def extract_name_from_row(row):
     match = re.match(r'\|\s*\[([^\]]+)\]\([^)]+\)\s*\|', row)
