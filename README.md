@@ -80,7 +80,9 @@ Telegram：https://t.me/LXDAO/26860
 | [XiaoYanKongLing](https://github.com/IntensiveCoLearning/claude_courses/blob/main/XiaoYanKongLing.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [CHENFANGC](https://github.com/IntensiveCoLearning/claude_courses/blob/main/CHENFANGC.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [neyric](https://github.com/IntensiveCoLearning/claude_courses/blob/main/neyric.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
+| [Yajunceng](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Yajunceng.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
