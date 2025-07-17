@@ -72,7 +72,9 @@ Telegram：https://t.me/LXDAO/26860
 | ------------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | [muxin-web3](https://github.com/IntensiveCoLearning/claude_courses/blob/main/muxin-web3.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [lcy101u](https://github.com/IntensiveCoLearning/claude_courses/blob/main/lcy101u.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
+| [brucexu-eth](https://github.com/IntensiveCoLearning/claude_courses/blob/main/brucexu-eth.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
