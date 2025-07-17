@@ -89,7 +89,9 @@ Telegram：https://t.me/LXDAO/26860
 | [Ethan0191](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Ethan0191.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [xuxizhen](https://github.com/IntensiveCoLearning/claude_courses/blob/main/xuxizhen.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [0xAlanCui](https://github.com/IntensiveCoLearning/claude_courses/blob/main/0xAlanCui.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
+| [lisaxiaoli](https://github.com/IntensiveCoLearning/claude_courses/blob/main/lisaxiaoli.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
