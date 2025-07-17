@@ -108,7 +108,9 @@ Telegram：https://t.me/LXDAO/26860
 | [123czy](https://github.com/IntensiveCoLearning/claude_courses/blob/main/123czy.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 | [shuyuanzhang118](https://github.com/IntensiveCoLearning/claude_courses/blob/main/shuyuanzhang118.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 | [YooYooY](https://github.com/IntensiveCoLearning/claude_courses/blob/main/YooYooY.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
+| [cryptonerdcn](https://github.com/IntensiveCoLearning/claude_courses/blob/main/cryptonerdcn.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
