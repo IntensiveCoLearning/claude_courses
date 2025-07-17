@@ -74,7 +74,9 @@ Telegram：https://t.me/LXDAO/26860
 | [lcy101u](https://github.com/IntensiveCoLearning/claude_courses/blob/main/lcy101u.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [brucexu-eth](https://github.com/IntensiveCoLearning/claude_courses/blob/main/brucexu-eth.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [justjavac](https://github.com/IntensiveCoLearning/claude_courses/blob/main/justjavac.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
+| [LINYIQ66](https://github.com/IntensiveCoLearning/claude_courses/blob/main/LINYIQ66.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
