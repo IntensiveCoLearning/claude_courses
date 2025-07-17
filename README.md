@@ -75,7 +75,10 @@ Telegram：https://t.me/LXDAO/26860
 | [brucexu-eth](https://github.com/IntensiveCoLearning/claude_courses/blob/main/brucexu-eth.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [justjavac](https://github.com/IntensiveCoLearning/claude_courses/blob/main/justjavac.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [LINYIQ66](https://github.com/IntensiveCoLearning/claude_courses/blob/main/LINYIQ66.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
+| [dev4mobile](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dev4mobile.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
+| [smile7up](https://github.com/IntensiveCoLearning/claude_courses/blob/main/smile7up.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
