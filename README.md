@@ -84,7 +84,9 @@ Telegram：https://t.me/LXDAO/26860
 | [SiliconPoet](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SiliconPoet.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [1291723356](https://github.com/IntensiveCoLearning/claude_courses/blob/main/1291723356.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [sapphire-girl](https://github.com/IntensiveCoLearning/claude_courses/blob/main/sapphire-girl.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
+| [gududefengzhong](https://github.com/IntensiveCoLearning/claude_courses/blob/main/gududefengzhong.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
