@@ -82,7 +82,9 @@ Telegram：https://t.me/LXDAO/26860
 | [neyric](https://github.com/IntensiveCoLearning/claude_courses/blob/main/neyric.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [Yajunceng](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Yajunceng.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 | [SiliconPoet](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SiliconPoet.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
+| [1291723356](https://github.com/IntensiveCoLearning/claude_courses/blob/main/1291723356.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
