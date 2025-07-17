@@ -4,6 +4,7 @@
 
 当前 AI 的发展速度如果不追紧学习真的感觉在慢慢被淘汰，AI 相关的工具也在不断的更新升级，作为目前很主流的 AI assistant 的 Claude 公司 Anthropic 在本月发布了免费的 “Build with Claude” 系列课程，涵盖 Claude API、跨云集成、Model Context Protocol（MCP）和 Claude Code 等主题，官方还提供结业证书。为了快速、系统地掌握这些新能力，我们发起本期残酷共学，在 30 天内以每日 60 分钟 + 打卡的方式一起学完全部课程并尝试完成实战项目。
 
+
 ## 关键词
 
 AI, Claude
@@ -31,7 +32,9 @@ AI, Claude
 
 ## 发起组织
 
-[LXDAO](https://lxdao.io/) <img alt="organization-logo" height="60px" width="60px" src="https://avatars.githubusercontent.com/u/167147327?s=200&v=4" />
+  [LXDAO](https://lxdao.io/) <img alt="organization-logo" height="60px" width="60px" src="https://avatars.githubusercontent.com/u/167147327?s=200&v=4" />
+
+
 
 ## 请假规则
 
@@ -49,13 +52,24 @@ Telegram：https://t.me/LXDAO/26860
 
 大家可以根据自己的时间和学习情况自行进行课程学习，每天提交学习笔记，有问题可以在 Telegram 学习群里进行提问和交流。
 
+
+
 ## 共学激励
 
-打卡成功者福利：https://www.notion.so/lxdao/3eab258b4df44c9cb97319452b2be13b
+打卡成功者福利：
+- 打卡成功者将获得 LXDAO 颁发的 Claude Courses 残酷共学 Badge🎖️
+- 南塘福利：https://www.notion.so/lxdao/3eab258b4df44c9cb97319452b2be13b
+
+
 
 ## 更多信息
 
-更多信息内容
+报名和打卡流程如下：
+
+- 报名：https://www.notion.so/lxdao/232dceffe40b8030993ad26f2eb6bed2
+- 打卡：https://www.notion.so/lxdao/232dceffe40b80508330c5ee936d4dab
+
+
 
 ## 报名和打卡规则
 
