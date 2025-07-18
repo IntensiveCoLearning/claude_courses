@@ -115,7 +115,9 @@ Telegram：https://t.me/LXDAO/26860
 | [JateLi](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JateLi.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 | [wodeche](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wodeche.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 | [Johnnill](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Johnnill.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
+| [feiyunssr](https://github.com/IntensiveCoLearning/claude_courses/blob/main/feiyunssr.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
