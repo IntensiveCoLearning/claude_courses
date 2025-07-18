@@ -113,7 +113,9 @@ Telegram：https://t.me/LXDAO/26860
 | [joyc](https://github.com/IntensiveCoLearning/claude_courses/blob/main/joyc.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 | [erfect2020](https://github.com/IntensiveCoLearning/claude_courses/blob/main/erfect2020.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 | [JateLi](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JateLi.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
+| [wodeche](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wodeche.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
