@@ -119,7 +119,9 @@ Telegram：https://t.me/LXDAO/26860
 | [onthebigtree](https://github.com/IntensiveCoLearning/claude_courses/blob/main/onthebigtree.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | |
 | [MRzzz-cyber](https://github.com/IntensiveCoLearning/claude_courses/blob/main/MRzzz-cyber.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | |
 | [echooooz](https://github.com/IntensiveCoLearning/claude_courses/blob/main/echooooz.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | |
+| [rayjun](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rayjun.md) | | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
