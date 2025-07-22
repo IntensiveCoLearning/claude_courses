@@ -128,7 +128,9 @@ Telegram：https://t.me/LXDAO/26860
 | [JacksonStack](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JacksonStack.md) |   | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [goooad](https://github.com/IntensiveCoLearning/claude_courses/blob/main/goooad.md) |   | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [you-hengh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/you-hengh.md) |   | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [daisygogogo](https://github.com/IntensiveCoLearning/claude_courses/blob/main/daisygogogo.md) |   | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
