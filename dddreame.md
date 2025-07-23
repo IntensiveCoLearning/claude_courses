@@ -10,13 +10,10 @@ timezone: UTC+8
 
 ## Self-introduction
 
-25届本科生，目前在Mainland某家上市公司做AI测试工程师。
+25 届本科生，目前在 Mainland 某家上市公司做 AI 测试工程师。
 
 ## Notes
 
 <!-- Content_START -->
-
-# 2025.07.20
-
 
 <!-- Content_END -->

@@ -16,7 +16,4 @@ developer rust layer2
 
 <!-- Content_START -->
 
-# 2025.07.22
-
-
 <!-- Content_END -->

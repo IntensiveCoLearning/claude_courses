@@ -10,13 +10,10 @@ timezone: UTC+8
 
 ## Self-introduction
 
-ai很好用
+ai 很好用
 
 ## Notes
 
 <!-- Content_START -->
-
-# 2025.07.17
-
 
 <!-- Content_END -->

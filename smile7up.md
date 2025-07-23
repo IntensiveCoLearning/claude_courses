@@ -10,13 +10,10 @@ timezone: UTC+8
 
 ## Self-introduction
 
-某大厂AI应用团队工程师
+某大厂 AI 应用团队工程师
 
 ## Notes
 
 <!-- Content_START -->
-
-# 2025.07.17
-
 
 <!-- Content_END -->

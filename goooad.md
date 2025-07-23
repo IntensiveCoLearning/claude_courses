@@ -16,7 +16,4 @@ web2 learner
 
 <!-- Content_START -->
 
-# 2025.07.22
-
-
 <!-- Content_END -->

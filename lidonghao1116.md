@@ -10,13 +10,10 @@ timezone: UTC+8
 
 ## Self-introduction
 
-nextdao小狐狸成员，中年程序员
+nextdao 小狐狸成员，中年程序员
 
 ## Notes
 
 <!-- Content_START -->
-
-# 2025.07.23
-
 
 <!-- Content_END -->

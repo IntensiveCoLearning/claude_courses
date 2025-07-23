@@ -10,13 +10,10 @@ timezone: UTC+8
 
 ## Self-introduction
 
-前端开发，对Ai和web3感兴趣
+前端开发，对 Ai 和 web3 感兴趣
 
 ## Notes
 
 <!-- Content_START -->
-
-# 2025.07.23
-
 
 <!-- Content_END -->

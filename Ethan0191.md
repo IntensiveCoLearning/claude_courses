@@ -16,7 +16,4 @@ beginner
 
 <!-- Content_START -->
 
-# 2025.07.17
-
-
 <!-- Content_END -->

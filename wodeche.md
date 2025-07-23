@@ -16,7 +16,4 @@ hello
 
 <!-- Content_START -->
 
-# 2025.07.18
-
-
 <!-- Content_END -->

@@ -2,15 +2,15 @@
 timezone: UTC+8
 ---
 
-# ethan
+# 哈哈
 
-**GitHub ID:** shuyuanzhang118
+**GitHub ID:** hudong1997
 
-**Telegram:** @ethan4fs
+**Telegram:** @goooandy
 
 ## Self-introduction
 
-web frontend developer
+web2 开发者
 
 ## Notes
 

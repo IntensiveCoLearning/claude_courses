@@ -16,7 +16,4 @@ Frontend Developer, currently working on an internal AI platform project. Intere
 
 <!-- Content_START -->
 
-# 2025.07.17
-
-
 <!-- Content_END -->
