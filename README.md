@@ -134,7 +134,9 @@ Telegram：https://t.me/LXDAO/26860
 | [peewee92](https://github.com/IntensiveCoLearning/claude_courses/blob/main/peewee92.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [lidonghao1116](https://github.com/IntensiveCoLearning/claude_courses/blob/main/lidonghao1116.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [hudong1997](https://github.com/IntensiveCoLearning/claude_courses/blob/main/hudong1997.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [godrong](https://github.com/IntensiveCoLearning/claude_courses/blob/main/godrong.md) | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
