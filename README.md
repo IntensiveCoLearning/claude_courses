@@ -131,7 +131,9 @@ Telegram：https://t.me/LXDAO/26860
 | [daisygogogo](https://github.com/IntensiveCoLearning/claude_courses/blob/main/daisygogogo.md) |   | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [dsajkjgfdl](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dsajkjgfdl.md) |   | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [YuanBoXie](https://github.com/IntensiveCoLearning/claude_courses/blob/main/YuanBoXie.md) |   | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [peewee92](https://github.com/IntensiveCoLearning/claude_courses/blob/main/peewee92.md) |   | | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
