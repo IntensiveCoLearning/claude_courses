@@ -15,5 +15,9 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-24
+
+#'Quantum computing is a revolutionary computing paradigm that uses quantum mechanical phenomena like superposition and entanglement to process information in ways that can potentially solve certain problems exponentially faster than classical computers.'
+
 
 <!-- Content_END -->
