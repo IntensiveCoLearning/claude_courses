@@ -129,7 +129,9 @@ Telegram：https://t.me/LXDAO/26860
 | [godrong](https://github.com/IntensiveCoLearning/claude_courses/blob/main/godrong.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [akuma0607](https://github.com/IntensiveCoLearning/claude_courses/blob/main/akuma0607.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [jingedawang](https://github.com/IntensiveCoLearning/claude_courses/blob/main/jingedawang.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [paoqi1](https://github.com/IntensiveCoLearning/claude_courses/blob/main/paoqi1.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 <!-- END_COMMIT_TABLE -->
+
 
 
 <!-- STATISTICALDATA_START -->
