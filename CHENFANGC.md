@@ -16,4 +16,10 @@ Frontend Developer, currently working on an internal AI platform project. Intere
 
 <!-- Content_START -->
 
+# 2025-07-24
+
+学习资料：https://anthropic.skilljar.com/
+
+选择基础入门课程：https://anthropic.skilljar.com/claude-code-in-action
+
 <!-- Content_END -->
