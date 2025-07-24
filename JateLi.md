@@ -15,5 +15,8 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-24
 
+# 第一天
+选择基础入门课程：https://anthropic.skilljar.com/claude-code-in-action
 <!-- Content_END -->
