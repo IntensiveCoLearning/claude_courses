@@ -17,6 +17,5 @@ https://x.com/mikexuusa
 <!-- Content_START -->
 # 2025-07-24
 
-- 今天时间紧张，先看了，Welcome和Overview of Claude models，了解了Claude Opus，Claude Sonnet，Claude Haiku三个模型的区别
-
+- 今天时间紧张，先看了Welcome和Overview of Claude models，了解了Claude Opus，Claude Sonnet，Claude Haiku三个模型的区别，后面看如何获取api
 <!-- Content_END -->
