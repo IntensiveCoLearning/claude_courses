@@ -15,6 +15,18 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-25
+
+## Coding
+
+今天开始实战，所以我创建的代码不放在笔记了，放在这个仓库里面 <https://github.com/brucexu-eth/claude-courses-code>
+
+重点笔记：
+
+- Anthropic 是 stateless 的，所以如果你要关联上下文，就必须把上下文都提供进去。这也是为什么 claude code 需要时不时 compact 一下，因为每次发送都是整个上下文都发。所以官方提供建议从大往小，然后专注某一个具体的事情，不要同时做
+- system prompts 用于设置 role 或者指示 AI 用什么用的姿态来思考和回复
+- Temperature 修改选择 token 的概率，从 0 - 1，如果 0 则始终选择最高概率的那个 next word，否则就是更加随机。所以需要在不同的使用场景来选择不一样的，比如 解析数据和处理用 0，脑暴创意用 1
+
 # 2025-07-24
 
 ## https://anthropic.skilljar.com/claude-with-the-anthropic-api
