@@ -22,6 +22,4 @@ timezone: UTC+12
 - 几年前想学 Python，被它很蹩脚的语法劝退了哈哈，没想到现在又要重新写了。
 - 其中还有一个点是 Claude API 不记录 message 记录，所以在 multi-turn conversations 的场景下，要把之前的 message 历史记录全部发过去。
 
-# test2
-- 3
 <!-- Content_END -->
