@@ -15,5 +15,9 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-24
+
+听完了前三节，目前对整体知识有所了解， Tokenization, Embedding, Contextualization, Generation.
+
 
 <!-- Content_END -->
