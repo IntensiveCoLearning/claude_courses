@@ -92,7 +92,7 @@ Telegram：https://t.me/LXDAO/26860
 | [sapphire-girl](https://github.com/IntensiveCoLearning/claude_courses/blob/main/sapphire-girl.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [gududefengzhong](https://github.com/IntensiveCoLearning/claude_courses/blob/main/gududefengzhong.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [hdan321](https://github.com/IntensiveCoLearning/claude_courses/blob/main/hdan321.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [Ethan0191](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Ethan0191.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [Ethan0191](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Ethan0191.md) | ✅ | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [xuxizhen](https://github.com/IntensiveCoLearning/claude_courses/blob/main/xuxizhen.md) | ✅ | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [0xAlanCui](https://github.com/IntensiveCoLearning/claude_courses/blob/main/0xAlanCui.md) | ✅ | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [lisaxiaoli](https://github.com/IntensiveCoLearning/claude_courses/blob/main/lisaxiaoli.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
@@ -100,9 +100,9 @@ Telegram：https://t.me/LXDAO/26860
 | [123czy](https://github.com/IntensiveCoLearning/claude_courses/blob/main/123czy.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [shuyuanzhang118](https://github.com/IntensiveCoLearning/claude_courses/blob/main/shuyuanzhang118.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [YooYooY](https://github.com/IntensiveCoLearning/claude_courses/blob/main/YooYooY.md) | ✅ | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [cryptonerdcn](https://github.com/IntensiveCoLearning/claude_courses/blob/main/cryptonerdcn.md) | ✅ | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [cryptonerdcn](https://github.com/IntensiveCoLearning/claude_courses/blob/main/cryptonerdcn.md) | ✅ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [crazyf131419](https://github.com/IntensiveCoLearning/claude_courses/blob/main/crazyf131419.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [joyc](https://github.com/IntensiveCoLearning/claude_courses/blob/main/joyc.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [joyc](https://github.com/IntensiveCoLearning/claude_courses/blob/main/joyc.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [erfect2020](https://github.com/IntensiveCoLearning/claude_courses/blob/main/erfect2020.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [JateLi](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JateLi.md) | ✅ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [wodeche](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wodeche.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
@@ -132,6 +132,7 @@ Telegram：https://t.me/LXDAO/26860
 | [paoqi1](https://github.com/IntensiveCoLearning/claude_courses/blob/main/paoqi1.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) |   | | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
