@@ -27,6 +27,10 @@ A coder who is passionate about web technologies.
 
 初步理解下来，Haiku 的应用场景大概适合复杂度不是那么高的任务上，Sonnet 适合日常使用，Opus 适合在处理一些 Sonnet 解决不好的场景上。
 
+## API 安全
+
+课程里提到一句 `You should never make requests to the Anthropic API directly from client-side code` 这个很重要，绝对不要把 API Key 暴露在用户端。
+
 ## Claude 的处理逻辑
 
 发送给 Claude 的一段内容，在内部会依照着 4 个阶段进行处理：Tokenization => Embedding => Contextualization => Generation
