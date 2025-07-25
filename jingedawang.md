@@ -15,6 +15,36 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-25
+
+Prompt Evaluation是Prompt Engineering有效的保证。调整prompt需要确保它在许多case上表现良好，所以需要一个evaluation pipeline。一般情况下，大项目都需要有这样的流程。当然，为了方便，也可以不做evaluation，随便测几个case就用，只适合小项目，且不计较效果的情况。
+
+用LLM生成Test Dataset，虽然方便，但我感觉这样会显得有点不靠谱。此外，用LLM生成dataset的话，需要同时生成grade criteria，以方面后面用AI评分。
+
+Evalution的一个难点是如何grade。可以用固定规则、AI或人工。能用规则的肯定尽量用规则，用不了的就用AI。要求更高的话就用人工。涉及到代码生成的，可以用规则来验证代码质量，就像IDE做的那样。所以代码的评估应该是最成熟的。用AI评分的时候，除了分数，最好让AI给出strength、weakness、reason，这样方便我们基于这些解释修改prompt。
+
+这道题的答案我不太认同。我觉得应该选A，应该用最好的模型而不是最差的模型。不然生成的dataset根本没什么价值。当然，如果这里说的test case只是用了简单测试一下能不能跑通的话，那就没问题。
+
+> You need test cases for your prompt evaluation. You have two options: write them by hand or use Claude to generate them. Which model should you use for generation?
+> 
+> 
+> ~~The most expensive model available~~
+> 
+> ~~Multiple models combined~~
+> 
+> **A faster model like Haiku**
+> 
+> ~~The same model you're testing~~
+> 
+
+下面是一系列prompt engineering方法：
+
+- Be clear and direct。问具体的问题和要求，不要含糊其辞。
+- 给出guideline，指出质量上的要求
+- 要求按照规定的步骤回答
+- 如果长度比较长，建议用XML标签区分不同部分，以免LLM搞不清楚。XML是LLM识别最准确的格式。
+- 使用examples，one-shot或few-shot
+
 # 2025-07-24
 
 ## **Introduction**
