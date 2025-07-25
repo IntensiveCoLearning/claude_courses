@@ -86,7 +86,7 @@ Telegram：https://t.me/LXDAO/26860
 | [XiaoYanKongLing](https://github.com/IntensiveCoLearning/claude_courses/blob/main/XiaoYanKongLing.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [CHENFANGC](https://github.com/IntensiveCoLearning/claude_courses/blob/main/CHENFANGC.md) | ✅ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [neyric](https://github.com/IntensiveCoLearning/claude_courses/blob/main/neyric.md) | ⭕️ | ✅ | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [Yajunceng](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Yajunceng.md) | ✅ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [Yajunceng](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Yajunceng.md) | ✅ | ✅ | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [SiliconPoet](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SiliconPoet.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [1291723356](https://github.com/IntensiveCoLearning/claude_courses/blob/main/1291723356.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [sapphire-girl](https://github.com/IntensiveCoLearning/claude_courses/blob/main/sapphire-girl.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
@@ -132,6 +132,7 @@ Telegram：https://t.me/LXDAO/26860
 | [paoqi1](https://github.com/IntensiveCoLearning/claude_courses/blob/main/paoqi1.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
