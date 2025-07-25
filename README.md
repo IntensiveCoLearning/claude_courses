@@ -119,7 +119,7 @@ Telegram：https://t.me/LXDAO/26860
 | [wangyidong3](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wangyidong3.md) | ✅ | ✅ | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [JacksonStack](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JacksonStack.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [goooad](https://github.com/IntensiveCoLearning/claude_courses/blob/main/goooad.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [you-hengh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/you-hengh.md) | ✅ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [you-hengh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/you-hengh.md) | ✅ | ✅ | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [daisygogogo](https://github.com/IntensiveCoLearning/claude_courses/blob/main/daisygogogo.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [dsajkjgfdl](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dsajkjgfdl.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [YuanBoXie](https://github.com/IntensiveCoLearning/claude_courses/blob/main/YuanBoXie.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
@@ -132,6 +132,7 @@ Telegram：https://t.me/LXDAO/26860
 | [paoqi1](https://github.com/IntensiveCoLearning/claude_courses/blob/main/paoqi1.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
