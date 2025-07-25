@@ -103,7 +103,7 @@ Telegram：https://t.me/LXDAO/26860
 | [cryptonerdcn](https://github.com/IntensiveCoLearning/claude_courses/blob/main/cryptonerdcn.md) | ✅ | ✅ | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [crazyf131419](https://github.com/IntensiveCoLearning/claude_courses/blob/main/crazyf131419.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [joyc](https://github.com/IntensiveCoLearning/claude_courses/blob/main/joyc.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [erfect2020](https://github.com/IntensiveCoLearning/claude_courses/blob/main/erfect2020.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [erfect2020](https://github.com/IntensiveCoLearning/claude_courses/blob/main/erfect2020.md) | ⭕️ | ✅ | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [JateLi](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JateLi.md) | ✅ | ✅ |   | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [wodeche](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wodeche.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [Johnnill](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Johnnill.md) | ✅ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
@@ -132,6 +132,7 @@ Telegram：https://t.me/LXDAO/26860
 | [paoqi1](https://github.com/IntensiveCoLearning/claude_courses/blob/main/paoqi1.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) | ⭕️ |   | | | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
