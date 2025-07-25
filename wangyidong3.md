@@ -15,6 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-25
+
+### Done:
+Parallelizing Claude Code 用git worktree,还可以定制command 来create worktree和merge，真实用。
+今天浏览了一下Google Cloud Vertex的功能，再对比了amazon bedrock， 发展真快，以前的mlOps 现在都统一了。
+简单试了下claude code 集成github action, commit/PR/merge 各种飞起。
+简单看完claude code hook，脑袋空白，觉得有用，但还没试
+Todo:
+明天试试claude code hook.
+
 # 2025-07-24
 
 Done：
