@@ -27,6 +27,13 @@ A coder who is passionate about web technologies.
 
 初步理解下来，Haiku 的应用场景大概适合复杂度不是那么高的任务上，Sonnet 适合日常使用，Opus 适合在处理一些 Sonnet 解决不好的场景上。
 
+## Claude 的处理逻辑
+
+发送给 Claude 的一段内容，在内部会依照着 4 个阶段进行处理：Tokenization => Embedding => Contextualization => Generation
+
+在 Embedding 阶段会推测该 Token 的含义，再结合上下文生成结果。
+
+是不是意味着，通过使用更明确的 Word（例如：Kiro 在做 SPEC 时会使用的 WHEN / WHEN / SHALL 等关键词）来编写 Prompt 可以得到更好的结果？
 
 # 2025-07-24
 
