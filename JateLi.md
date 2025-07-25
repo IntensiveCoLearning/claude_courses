@@ -15,6 +15,29 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-25
+
+# 第二天：Accessing the API
+
+## API Access Flow (5 Steps)
+0. **FE**
+1. **Client** → Developer's server (keep API key secret)
+2. **Server** → Anthropic API (using SDK or HTTP)
+3. **Text Generation Process**:
+  - **Tokenization**: breaking input into tokens
+  - **Embedding**: converting tokens to numerical representations
+  - **Contextualization**: adjusting embeddings based on neighboring tokens
+  - **Generation**: predicting next word, repeating process
+4. **Stop**: when max_tokens reached or end_of_sequence token generated
+5. **Return**: generated text + usage counts + stop_reason
+
+## Core Concepts
+- **Token**: text chunk (word/word part/symbol/space)
+- **Embedding**: numerical representation of word meanings
+- **Contextualization**: meaning refinement using neighboring words
+- **Max_tokens**: generation length limit
+- **Stop_reason**: why model stopped generating
+
 # 2025-07-24
 
 # 第一天：Claude 与 Anthropic API
