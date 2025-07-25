@@ -39,6 +39,15 @@ A coder who is passionate about web technologies.
 
 是不是意味着，通过使用更明确的 Word（例如：Kiro 在做 SPEC 时会使用的 WHEN / WHEN / SHALL 等关键词）来编写 Prompt 可以得到更好的结果？
 
+## 获取 API 密钥
+
+教学里介绍了从 Anthropic 官方获取 API 密钥使用，不过我选镜像，原因如下：
+
+1. 充值困难，要在 Anthropic 花钱，不支持国内发行的信用卡，得通过虚拟卡来充值
+2. 调用 API 困难，需要给应用设置 Agent 才能成功连接到官方 API
+
+还有一点，镜像的价格比官方便宜（也有同价，便宜一点的稍微有那么一点不稳定）
+
 # 2025-07-24
 
 <!-- Content_END -->
