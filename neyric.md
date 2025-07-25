@@ -52,6 +52,10 @@ A coder who is passionate about web technologies.
 
 课程里建议使用 Python 进行开发，目前初步看了一下 Making a request 的课程，决定选用自己习惯的 TypeScript 开始，而且 Anthropic 提供了 TypeScript 的 SDK 直接装包就好了，而且后续需要开发用户界面的时候，也可以直接用 SSR 完成，部署到线上也方便。
 
+Github Repo：https://github.com/neyric/claude-course
+
+项目使用 Bun + TypeScript 开发，要是有同学想使用，只需要把 `.env.example` 重命名为 `.env` 并填写 API_KEY 即可。
+
 # 2025-07-24
 
 <!-- Content_END -->
