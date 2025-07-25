@@ -15,6 +15,56 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-25
+
+**Anthropic API does not store any messages or conversation history.**
+
+> Developers must manually maintain conversation history in their code.
+Sending only the latest message leads to irrelevant or off-topic responses.
+
+
+helper functions simplify adding messages and sending requests:
+
+```python
+def add_user_message(messages, text):
+    user_message = {"role": "user", "content": text}
+    messages.append(user_message)
+
+def add_assistant_message(messages, text):
+    assistant_message = {"role": "assistant", "content": text}
+    messages.append(assistant_message)
+
+def chat(messages):
+    message = client.messages.create(
+        model=model,
+        max_tokens=1000,
+        messages=messages,
+    )
+    return message.content[0].text
+```
+
+
+maintained conversation history enables coherent multi-turn dialogues:
+```python
+# Start with an empty message list
+messages = []
+
+# Add the initial user question
+add_user_message(messages, "Define quantum computing in one sentence")
+
+# Get Claude's response
+answer = chat(messages)
+
+# Add Claude's response to the conversation history
+add_assistant_message(messages, answer)
+
+# Add a follow-up question
+add_user_message(messages, "Write another sentence")
+
+# Get the follow-up response with full context
+final_answer = chat(messages)
+```
+
 # 2025-07-24
 
 ### Claude AI模型
