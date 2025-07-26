@@ -22,8 +22,9 @@ Done:
 Computer use 部分没有完全理解最合适的应用场景。
 workflow 可能应用的会比 agent要少一点吧。更倾向于n8n 转换。
 Environment inspection部分，不够细，需要自己再查一下其他视频。 
-同时关于Parallelization workflows， 其实和Parallelization claude code 完全不同，只是拆解任务。但因为claude的上下文长度的限制，对于subtask，不能共享上下文，多少会引入一些冲突或问题。 期待更优解。
+同时关于Parallelization workflows， 其实和Parallelization claude code 用worktree完全不同，Parallelization workflows只是拆解任务。但因为claude的上下文长度的限制，对于subtask，共享上下文的冲突，多少会引入一些问题。 期待更优解。
 今天先到 这里。
+又回来了，刚才查了一下，貌似sub agent就是不错的对上面问题的解，因为subagent，独立管理上下文，也不干扰main agent，到最后总结才更有效。而且sub agent作为专家团队的作用可以有更多应用。
 
 # 2025-07-25
 
