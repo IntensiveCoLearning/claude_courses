@@ -15,6 +15,12 @@ A coder who is passionate about web technologies.
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+## 要提供给 AI 完整上下文
+
+和 ChatGPT 一样，对 Claude API 的每次请求都是一个完整的会话，不存在说提供一个 ID，Claude 就能自动关联到先前的聊天内容。如果要构建一个基于 Chat 的服务，需要自行维护一个 Messages 列表，使用时需要一次性提交给 Claude （不太清楚 Token 消费是怎么计算，有没有缓存命中之类的）
+
 # 2025-07-25
 
 ## 模型区别
