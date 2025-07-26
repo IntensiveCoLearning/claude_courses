@@ -15,6 +15,10 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+temperature、response streaming、controling model output、structured data
+
 # 2025-07-25
 
 System prompts， temperature and response streaming.
