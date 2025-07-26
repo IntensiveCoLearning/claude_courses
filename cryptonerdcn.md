@@ -15,6 +15,32 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+同步发于推特：https://x.com/cryptonerdcn/status/1949058784552440285
+
+尝试了下怎么在Claude code中使用 playwright， 以前都是在cursor里使用。
+playwright本身的使用方法不再强调，只说在Claude中需要添加的部分。
+
+最简单的添加：
+`claude mcp add playwright npx @playwright/mcp@latest`
+
+个人现在使用下面的rules(放入Claude.md):
+
+## Playwright MCP Usage Rules
+### Absolute Prohibitions
+- Execution of any code in any form is strictly prohibited
+- No code execution to investigate MCP tools
+- No approaches involving subprocess or command execution
+
+### Only direct invocation of MCP tools is allowed
+- playwright:browser_navigate
+- playwright:browser_screenshot
+- Other Playwright MCP tools
+
+
+之后修改UI时提出要求，然后让Claude自行截图和修正即可。
+
 # 2025-07-25
 
 同步发于推特：https://x.com/cryptonerdcn/status/1948669514562122049
