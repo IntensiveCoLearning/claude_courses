@@ -33,6 +33,10 @@ A coder who is passionate about web technologies.
 
 感觉高 Temperature 适合拿来做一些生成式的内容，比方说 Prompt 生成，低 Temperature 适合用来写代码。
 
+## 引导模型输出
+
+在发给 Claude 的 messages 中，可以预先设定 assistant 的 content 给定一个开头，这样他就会依照这个开头来继续续写结果（还没实际尝试，Mark 一下）
+
 # 2025-07-25
 
 ## 模型区别
