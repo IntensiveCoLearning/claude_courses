@@ -15,6 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+- Claude Code - Context Controlling
+    - /init - to scan the codebase and write a summary into Claude.md
+    - @ specific files and add them to Claude.md
+    - ctrl+v to paste images
+        - enhance intelligence: 1/ shift + tab twice to enable plan mode 2/ its a tough task so ultrathink about the best way
+    - hit escape once to interrupt Claude, and add memory with "#""
+    - hit escape twice to revert to a previous mes, removes context not relevant to the current task
+    - /compact
+    - /clear
+
 # 2025-07-25
 
 - CC连vertex ai坑多，不推荐
