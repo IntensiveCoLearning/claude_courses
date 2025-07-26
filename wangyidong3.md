@@ -22,7 +22,7 @@ Done:
 Computer use 部分没有完全理解最合适的应用场景。
 workflow 可能应用的会比 agent要少一点吧。更倾向于n8n 转换。
 Environment inspection部分，不够细，需要自己再查一下其他视频。 
-
+同时关于Parallelization workflows， 其实和Parallelization claude code 完全不同，只是拆解任务。但因为claude的上下文长度的限制，对于subtask，不能共享上下文，多少会引入一些冲突或问题。 期待更优解。
 今天先到 这里。
 
 # 2025-07-25
