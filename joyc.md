@@ -15,6 +15,124 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+# 🧠 第五课：构建 Claude 的上下文记忆机制
+
+## 📌 课程目标：
+
+- 理解 Claude API 的无状态性。
+- 学习如何手动维护消息上下文。
+- 编写可复用的助手函数，实现多轮对话能力。
+
+
+## ❗ Claude 是无状态的
+
+Claude（以及 Anthropic API）不存储对话历史，不保存用户发送的消息和 Claude 返回的回复。
+
+因此，若想实现多轮上下文对话，需：
+
+1. 在本地维护完整的消息列表（包括用户和助理）。
+2. 每次请求都提交完整的消息列表。
+
+
+## 🔁 示例说明：错误的对话续写方式
+
+### ❌ 错误方式（无上下文）：
+
+```python
+message = client.messages.create(
+    model=model,
+    max_tokens=1000,
+    messages=[{
+        “role”: “user”,
+        “content”: “Write another sentence.”
+    }]
+)
+```
+
+结果：Claude 无法关联前文，返回与“量子计算”无关的内容。
+
+
+## ✅ 正确方式：维护完整消息历史
+
+### 示例结构（伪代码）：
+
+```python
+messages = [
+    {“role”: “user”, “content”: “What is quantum computing?”},
+    {“role”: “assistant”, “content”: “Quantum computing is …”},
+    {“role”: “user”, “content”: “Write another sentence.”}
+]
+```
+
+每次调用 Claude API，都传入上述完整 `messages`。
+
+
+## 🛠️ 创建 3 个复用助手函数
+
+### 1. 添加 User 消息：
+
+```python
+def add_user_message(messages, text):
+1. 添加用户消息：
+
+```python
+def add_user_message(messages, text):
+    user_msg = {“role”: “user”, “content”: text}
+    messages.append(user_msg)
+```
+
+2. 添加Assistant消息：
+
+```python
+def add_assistant_message(messages, text):
+    assistant_msg = {“role”: “assistant”, “content”: text}
+    messages.append(assistant_msg)
+```
+
+3. 执行Claude对话请求：
+
+```python
+def chat(messages):
+    response = client.messages.create(
+        model=model,
+        max_tokens=1000,
+        messages=messages
+    )
+    return response.content[0].text
+```
+
+## 💬 多轮对话示例
+
+```python
+# 初始化上下文
+messages = []
+
+# 第一句提问
+add_user_message(messages, “Define quantum computing in one sentence.”)
+answer = chat(messages)
+print(answer)
+
+# 保存 Claude 的回复
+add_assistant_message(messages, answer)
+
+# 第二轮提问
+add_user_message(messages, “Write another sentence.”)
+answer = chat(messages)
+print(answer)
+```
+
+Claude会输出一条延续前一条回答的句子，确保上下文连贯。
+
+## 🧠 小结
+
+- Claude是无状态模型，每轮请求都需提交完整上下文；
+- 实现了3个可复用的辅助函数：add_user_message、add_assistant_message和chat；
+- 支持构建连续自然的多轮交互体验；
+- 后续课程将继续基于此框架深入构建高级Agent。
+- 后续代码将提交至[github](https://github.com/joyc/anthropic-claude-course)
+
 # 2025-07-25
 
 # 第一节：课程导论（Course Introduction）
