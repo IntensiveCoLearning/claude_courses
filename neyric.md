@@ -35,6 +35,8 @@ A coder who is passionate about web technologies.
 
 ## 引导模型输出
 
+具体教学片段：https://anthropic.skilljar.com/claude-with-the-anthropic-api/287730
+
 在发给 Claude 的 messages 中，可以预先设定 assistant 的 content 给定一个开头，这样他就会依照这个开头来继续续写结果（还没实际尝试，Mark 一下）
 
 # 2025-07-25
