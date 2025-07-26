@@ -15,6 +15,37 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+# 📘 Anthropic Courses Day 3 学习笔记
+
+## ✅ 今日进度
+- 顺利完成第二章节「Prompt Evaluation」的所有课程内容
+- 包括以下 7 个小节：
+  - Prompt evaluation
+  - A typical eval workflow
+  - Generating test datasets
+  - Running the eval
+  - Model based grading
+  - Code based grading
+  - Exercise on prompt evals
+- 成功通过章节测验，**6 题全对（100%）**！🎉
+
+## 💡 今日收获
+- Prompt 的好坏可以通过自动化手段进行评估，不再完全依赖人工肉眼观察
+- Anthropic 提供两种评估方式：
+  - **Model-based grading**：由 Claude 自己对生成内容评分，更高效也更客观
+  - **Code-based grading**：适用于有明确标准答案的任务
+- 测评工作流强调了 prompt 的迭代过程：
+  1. 构造 prompt → 2. 生成数据集 → 3. 执行评估 → 4. 优化 prompt → 循环往复
+
+## 🧠 理解加深
+- Claude 不只是 LLM，还支持更专业的 prompt 工程流程
+- Prompt 工程不仅是“写提示词”，而是可以通过量化指标和系统流程持续优化的「工程实践」
+
+## 🎯 明日目标
+- 开始学习下一个章节「Prompt engineering techniques」
+
 # 2025-07-25
 
 # 📘 Anthropic Courses Day 2 学习笔记
