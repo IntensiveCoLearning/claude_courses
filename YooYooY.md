@@ -15,6 +15,74 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+### Chat exercise
+
+```python
+messages = []
+
+while True:
+	# Get user input
+	user_input = input("> ")
+	print(">", user_input)
+
+	#Add user input to the list of message
+	add_user_message(messages, user_input)
+	# Call Claude with the 'chat' function
+	answer = chat(messages)
+	# Add generated text to the list of messages
+	add_assistant_message(messages, answer)
+	# Print
+	print("---")
+	print(answer)
+	print("---")
+```
+
+### System prompts exercise
+
+```python
+messages = []
+
+add_user_message(
+	messages,
+	"Write a Python function that checks a string for duplicate characters".
+	)
+
+# answer = chat(messages)
+answer = chat(messages, system = "You are a Python engineer who writes very concise code")
+
+answer
+```
+
+### Implementing Temperature in Code
+
+```python
+def chat(messages, system=None, temperature=1.0):
+    params = {
+        "model": model,
+        "max_tokens": 1000,
+        "messages": messages,
+        "temperature": temperature
+    }
+    
+    if system:
+        params["system"] = system
+    
+    message = client.messages.create(**params)
+    return message.content[0].text
+```
+
+Testing Temperature Effects
+
+```python
+# Low temperature - more predictable
+answer = chat(messages, temperature=0.0)
+
+# High temperature - more creative  
+answer = chat(messages, temperature=1.0)
+```
+
 # 2025-07-25
 
 **Anthropic API does not store any messages or conversation history.**
