@@ -39,6 +39,10 @@ A coder who is passionate about web technologies.
 
 在发给 Claude 的 messages 中，可以预先设定 assistant 的 content 给定一个开头，这样他就会依照这个开头来继续续写结果（还没实际尝试，Mark 一下）
 
+## 输出结构化数据
+
+结合引导模型输出以及 stop_sequences 来直接获取 JSON 结构数据。以前我的做法是在提示词里反复要求，直接输出 XXX 格式，不要包含解释、说明等额外文字，有时效果好有时效果差。按照这个方法来做，可以确保得到的结果仅仅是一个 JSON 对象
+
 # 2025-07-25
 
 ## 模型区别
