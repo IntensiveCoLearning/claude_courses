@@ -15,6 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+Claude如何调用工具？
+
+首先，有些任务需要调用工具才能完美解决。比如，设置一个10天后提醒的闹钟。
+
+我们需要实现一些工具函数，比如get_weather。实现的代码怎么写都行，关键是要写一个JSON Schema，把函数的功能和调用方式告诉Claude。
+
+![image.png](attachment:7c684d43-c883-48f9-977b-cf93999dd1a8:image.png)
+
+写JSON Schema的一个捷径是让Claude来写。把代码告诉Claude，然后把Anthropic官方的JSON Schema文档也告诉Claude，然后说："Write a valid JSON schema spec for the purposes of tool calling for this function. Follow the best practices listed in the attached documentation.”
+
 # 2025-07-25
 
 Prompt Evaluation是Prompt Engineering有效的保证。调整prompt需要确保它在许多case上表现良好，所以需要一个evaluation pipeline。一般情况下，大项目都需要有这样的流程。当然，为了方便，也可以不做evaluation，随便测几个case就用，只适合小项目，且不计较效果的情况。
