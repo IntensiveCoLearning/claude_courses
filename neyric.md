@@ -27,6 +27,12 @@ A coder who is passionate about web technologies.
 
 和 ChatGPT 不同的是，Claude 的系统提示词是一个单独的 system 参数（ChatGPT 中是维护在 messages 第一条，并有一个特殊的 role）
 
+## Temperature 参数
+
+这是一个介于 0.0-1.0 的参数，使用 Temperature 来控制结果的多样性，较高的 Temperature 得到的结果随机性更高，适合做一些创意性的工作。低的 Temperature 输出的会更加稳定，同一个问题多次询问，低 Temperature 得到的结果应该大致是相近的。
+
+感觉高 Temperature 适合拿来做一些生成式的内容，比方说 Prompt 生成，低 Temperature 适合用来写代码。
+
 # 2025-07-25
 
 ## 模型区别
