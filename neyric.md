@@ -21,6 +21,12 @@ A coder who is passionate about web technologies.
 
 和 ChatGPT 一样，对 Claude API 的每次请求都是一个完整的会话，不存在说提供一个 ID，Claude 就能自动关联到先前的聊天内容。如果要构建一个基于 Chat 的服务，需要自行维护一个 Messages 列表，使用时需要一次性提交给 Claude （不太清楚 Token 消费是怎么计算，有没有缓存命中之类的）
 
+## 系统提示词
+
+系统提示词用于约束 Claude 或者说，让 Claude 专注于某件事情。比方说指定它是一个资深的 Coder、一个 Prompt 优化师又或者是旅行规划师之类的角色，最对它进行对话来得到更符合预期的结果。
+
+和 ChatGPT 不同的是，Claude 的系统提示词是一个单独的 system 参数（ChatGPT 中是维护在 messages 第一条，并有一个特殊的 role）
+
 # 2025-07-25
 
 ## 模型区别
