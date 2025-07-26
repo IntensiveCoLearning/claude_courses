@@ -15,6 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-26
+
+Done:
+完成Claude with the Anthropic API 里的Claude Code and computer use部分，因为对claude code感兴趣，先看了这部分。 对于可以debug production 部署的环境问题，还是挺惊讶啊
+Computer use 部分没有完全理解最合适的应用场景。
+workflow 可能应用的会比 agent要少一点吧。更倾向于n8n 转换。
+Environment inspection部分，不够细，需要自己再查一下其他视频。 
+
+今天先到 这里。
+
 # 2025-07-25
 
 ### Done:
