@@ -15,6 +15,29 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+# 📘 Anthropic Courses Day 4 学习笔记
+
+## ✅ 今日进度
+- 完成第三章节「Prompt Engineering Techniques」的全部课程 ✅
+- 本章共包含 7 个小节，已全部学完：
+  - Prompt engineering
+  - Being clear and direct
+  - Being specific
+  - Structure with XML tags
+  - Providing examples
+  - Exercise on prompting
+  - Quiz on prompt engineering techniques
+- 顺利通过测验，**5 题全对（100%）**！
+
+## 💡 今日收获
+- 高质量的 prompt 有几个核心技巧：
+  - **明确清晰**：避免模糊描述，减少模型误解
+  - **具体**：越具体越能引导 Claude 输出你想要的结果
+  - **结构化**：使用 XML 或其他结构标签有助于系统性理解和处理
+  - **提供范例**：举例能显著提高
+
 # 2025-07-26
 
 # 📘 Anthropic Courses Day 3 学习笔记
