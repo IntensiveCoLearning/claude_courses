@@ -15,6 +15,73 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+给Claude发请求的时候带上支持的function list，就激活了tool use能力
+
+```python
+messages = []
+messages.append({
+    "role": "user",
+    "content": "What is the exact time, formatted as HH:MM:SS?"
+})
+
+response = client.messages.create(
+    model=model,
+    max_tokens=1000,
+    messages=messages,
+    tools=[get_current_datetime_schema],
+)
+```
+
+如果Claude决定调用某个tool，它会在回复中包含两个block，包括一个常规text block和一个额外的tooluse block。
+
+![image.png](attachment:83ede2fd-8169-4d88-a0d6-8ce2871c621e:image.png)
+
+然后调用方解析出tool use block的内容，调用该tool。注意，这表明调用tool是调用方的责任，Claude只是负责帮你决定是否调用tool以及调用哪个tool，它自己并不直接调用tool，由客户端负责调用。所以，如果是Claude web app，里面内置了调用tool的service。但如果是我们自己调用Claude API，那显然我们就要自己实现调用tool的逻辑。
+
+这里说的两个block其实是在一个content里面，结构类似
+
+```python
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "我将为您查询天气信息。"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01Abc123",
+      "name": "get_weather",
+      "input": {
+        "location": "Beijing"
+      }
+    }
+  ]
+}
+```
+
+我们自己执行tool function，得到结果后，再发送一个user request给Claude，里面带上tool function的结果，格式为
+
+```python
+messages.append({
+    "role": "user",
+    "content": [{
+        "type": "tool_result",
+        "tool_use_id": response.content[1].id,
+        "content": "15:04:22",
+        "is_error": False
+    }]
+})
+```
+
+整个流程如下。注意，在给Claude发送tool function的结果时，需要包含完整的history，需要带上tool schema。
+
+![image.png](attachment:0d7e17df-91da-4fa1-b858-a1c21a4c6b3c:image.png)
+
+有时候，Claude可能会决定一次性调用多次tool，我们就需要把每次调用的结果都返回回去。
+
 # 2025-07-26
 
 Claude如何调用工具？
