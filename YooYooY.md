@@ -15,6 +15,205 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+## Claude Response Streaming 学习笔记
+
+### 一 背景与问题
+
+* Claude 在生成响应时可能需要 **10-30 秒**，用户这段时间只能看到 loading 提示，体验不佳。
+* 传统 API 模式下，服务端需要等 Claude 全部生成完响应，才能返回给前端用户，导致明显延迟。
+
+---
+
+### 二 解决方案：响应流（Response Streaming）
+
+* Claude 支持 **分块返回响应文本**（streaming），使得用户能看到实时生成的内容，显著提升交互体验。
+* 响应以 **事件流（events）** 的形式返回，每个事件包含一部分内容。
+
+---
+
+### 三、⚙️ Streaming 的事件类型解析
+
+当启用流式响应时，Claude 会返回以下几类事件：
+
+| 事件名称                | 说明              |
+| ------------------- | --------------- |
+| `MessageStart`      | 开始发送新消息         |
+| `ContentBlockStart` | 开始新的内容块（文本、工具等） |
+| `ContentBlockDelta` | 正文内容块的一部分（核心内容） |
+| `ContentBlockStop`  | 当前内容块结束         |
+| `MessageDelta`      | 当前消息已完成         |
+| `MessageStop`       | 整个消息流结束         |
+
+*最重要的是：`ContentBlockDelta` —— 包含了生成的实际文本内容。*
+
+---
+
+### 四、 基本代码示例（启用 streaming）
+
+```python
+messages = []
+add_user_message(messages, "Write a 1 sentence description of a fake database")
+
+stream = client.messages.create(
+    model=model,
+    max_tokens=1000,
+    messages=messages,
+    stream=True  # 关键参数
+)
+
+for event in stream:
+    print(event)  # 实时输出事件内容
+```
+
+---
+
+### 五、 简化版本：只提取文本内容（推荐方式）
+
+```python
+with client.messages.stream(
+    model=model,
+    max_tokens=1000,
+    messages=messages
+) as stream:
+    for text in stream.text_stream:
+        print(text, end="")  # 实时展示纯文本
+```
+
+* SDK 提供了 `text_stream` 简化接口，只提取文字部分，避免手动解析事件。
+
+---
+
+### 六、 获取完整消息（适合存储或后处理）
+
+```python
+with client.messages.stream(
+    model=model,
+    max_tokens=1000,
+    messages=messages
+) as stream:
+    for text in stream.text_stream:
+        pass  # 实时发送给前端显示
+    
+    final_message = stream.get_final_message()  # 获取完整内容保存数据库
+```
+
+**总结**：
+
+* `text_stream`：用于前端展示。
+* `get_final_message()`：用于数据持久化或进一步处理。
+
+
+以下是对文章《**Controlling model output**》的笔记总结，清晰地整理了如何控制 Claude 输出的两种高级方法，适合用于 Claude API 实践或提示词设计优化：
+
+---
+
+## Claude 输出控制技巧学习笔记
+
+### 一、 核心目标
+
+除了写好 prompt，还可以通过 **两种方法精准控制 Claude 的输出**：
+
+1. **预填充助手消息（Prefilled Assistant Messages）**
+2. **停止序列（Stop Sequences）**
+
+这两种方式可以控制 Claude **从哪里开始输出**，以及**在哪里停止输出**。
+
+---
+
+### 二、 技巧一：预填充助手消息（Prefilled Assistant Messages）
+
+#### 作用
+
+通过先添加一段“助手消息”的开头内容，引导 Claude 从指定位置 **继续补全**。
+
+#### 原理
+
+Claude 会认为自己“已经开始了回复”，于是从这个助手消息的结尾继续生成内容。
+
+#### 示例
+
+```python
+messages = []
+add_user_message(messages, "Is tea or coffee better at breakfast?")
+add_assistant_message(messages, "Coffee is better because")
+answer = chat(messages)
+```
+
+Claude 的回复将是：
+
+```
+Coffee is better because it contains more caffeine and provides a quicker energy boost...
+```
+
+#### 应用方式
+
+| 想要 Claude 偏向哪一边 | 填写的 Assistant Message            |
+| --------------- | -------------------------------- |
+| 偏向咖啡            | `"Coffee is better because"`     |
+| 偏向茶             | `"Tea is better because"`        |
+| 持否定立场           | `"Neither is very good because"` |
+
+####  提醒
+
+Claude **不会重复**你预填的内容，它会从那之后继续写。
+
+---
+
+### 三、技巧二：停止序列（Stop Sequences）
+
+#### 作用
+
+当 Claude 生成了某些字符串时，**立即停止输出**，防止继续生成无关内容。
+
+#### 原理
+
+设置 stop\_sequences 参数为一个字符串列表，只要 Claude 输出到这些字符串之一，就会 **立刻中断**生成，且不会显示这些字符串。
+
+#### 示例
+
+```python
+messages = []
+add_user_message(messages, "Count from 1 to 10")
+answer = chat(messages, stop_sequences=["5"])
+```
+
+输出结果：
+
+```
+1, 2, 3, 4,
+```
+
+Claude 在生成 “5” 前停止，"5" 不会出现在结果中。
+
+#### 细节技巧
+
+为了避免停在错误位置，可以更具体地设置：
+
+* `stop_sequences=["5"]` 可能意外截断句子
+* `stop_sequences=[", 5"]` 更精准
+
+---
+
+### 四、 实用场景
+
+| 场景         | 建议使用技巧  |
+| ---------- | ------- |
+| 保持输出格式一致   | 预填充助手消息 |
+| 限制输出长度     | 停止序列    |
+| 引导偏向性立场    | 预填充助手消息 |
+| 按模板生成结构化内容 | 两者结合使用  |
+
+---
+
+### 五、 总结
+
+* **Prefilled Assistant Messages**：控制输出起点，引导方向和格式。
+* **Stop Sequences**：控制输出终点，防止生成过长或不需要的内容。
+
+它们是构建 **可控、稳定、高质量** AI 应用的关键工具。
+
 # 2025-07-26
 
 ### Chat exercise
