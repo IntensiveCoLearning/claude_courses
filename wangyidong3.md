@@ -20,6 +20,16 @@ timezone: UTC+8
 Done:
 Claude with the Anthropic API 中几种Agents and workflows中，chaining是专门处理复杂任务的, routing处理不同请求要不同定制化需求的, parrellelization  的prompt可能没那么大。
 
+而CC 仅仅用这些简单的命令就 完成agent所需要的工具集，真是Unix哲学大师啊
+    bash - Run any command
+    read - Read any file
+    write - Create any file
+    edit - Modify files
+    glob - Find files
+    grep - Search file contents
+
+Workflows vs agents 对比也非常清晰： agents灵活，但成功率低。
+
 字节刚开源coze studio，是一个相当不错的消息，不过进一步挖掘claude code的sub agent的潜力才是我主要应该关注的。
 
 # 2025-07-26
