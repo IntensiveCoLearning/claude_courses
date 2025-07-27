@@ -15,6 +15,10 @@ https://x.com/mikexuusa
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+今天没有学习，但是我来打卡一下，😂
+
 # 2025-07-25
 
 今天学习：
