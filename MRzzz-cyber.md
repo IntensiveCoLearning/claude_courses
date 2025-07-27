@@ -69,4 +69,25 @@ Claude Haiku	极致性价比的轻量级模型	相当于"高效助理"
 简单多语言互译（不需要文化语境理解时）
 
 
+# 2025-07-26
+
+
+# 2025-07-27
+Context 的提示词对应的是数组？这里面有点疑惑
+<img width="1588" height="795" alt="image" src="https://github.com/user-attachments/assets/f12d7726-4e2e-4277-8bd6-94a7906f71c8" />
+
+大概理解了，还是词组的方式来对用户给出的词语进行预测
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2be138c7-8638-48fd-a6ea-b24f096520db" />
+
+Every request must include these essential fields:
+
+API Key - Identifies your request to Anthropic
+Model - Name of the model to use (like "claude-3-sonnet")
+Messages - List containing the user's input text
+Max Tokens - Limit for how many tokens Claude can generate
+
+
+明天开始安装试用吧，看看和之前的 3.5 有什么区别
+
 <!-- Content_END -->
