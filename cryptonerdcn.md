@@ -15,6 +15,19 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+同步发布于 https://x.com/cryptonerdcn/status/1949481983672983598
+
+第四天打卡：
+
+我发现Claude Code新用户经常产生误解的一个问题：别人分享的Claude.md拿过来就能用。
+
+实际上无论是新开项目还是既有项目，官方都是推荐使用/init 来生成Claude.md，因为这里面还包含了该项目的各种信息而不仅仅是规则。
+我个人做法是将别人分享的，或者准备复用现有的Claude.md 改名成类似于 Claude_template.md后，再执行/init命令。
+
+新开项目空空如也，怎么用/init生成有意义的 Claude.md呢？也很简单，在readme.md 里尽可能详细的写上项目的信息，如需求和目的，所使用技术栈，不同开发阶段的不同功能等，Claude code会自己分析的。
+
 # 2025-07-26
 
 同步发于推特：https://x.com/cryptonerdcn/status/1949058784552440285
