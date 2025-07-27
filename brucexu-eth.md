@@ -15,6 +15,42 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+## Streaming
+
+As LLM generate words one by one, we could stream our output. Provide a better and quicker UX.
+
+Claude sends back several types of Stream events:
+
+- MessageStart - A new message is being sent
+- ContentBlockStart - Start of a new block containing text, tool use, or other content
+- ContentBlockDelta - Chunks of the actual generated text
+- ContentBlockStop - The current content block has been completed
+- MessageDelta - The current message is complete
+- MessageStop - End of information about the current message
+
+there are two powerful techniques for controlling Claude's output: prefilled assistant messages and stop sequences.
+
+instead of just sending a user message, you add an assistant message at the end of your message list. Claude sees this assistant message and thinks "I've already started responding to this question, so I should continue from where I left off."
+
+Prefilled assistant messages provide Claude a lead to continue. Claude will continue the response from there.
+
+For example, if you ask "Is tea or coffee better at breakfast?" without prefilling, Claude typically gives a balanced response mentioning both options. But if you add an assistant message saying "Coffee is better because", Claude will continue from there and build a case for coffee.
+
+The key thing to understand is that Claude continues from exactly where your prefilled text ends. If you write "Coffee is better because", Claude won't repeat that text - it will pick up right after "because" and complete the thought.
+
+Stop sequences force Claude to end its response immediately when it generates a specific string of characters. 
+
+For example, if you ask Claude to "Count from 1 to 10" with a stop sequence of "5", you'll get: 1, 2, 3, 4, 
+
+These techniques are particularly useful for:
+
+- Consistent formatting: Use prefilling to ensure responses always start with a specific structure
+- Controlled length: Use stop sequences to cap responses at natural breakpoints
+- Biased responses: When you need Claude to take a particular stance rather than being neutral
+- Structured output: Combine both techniques to generate responses that fit specific templates
+
 # 2025-07-25
 
 ## Coding
