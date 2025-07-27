@@ -15,6 +15,10 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+prompts
+
 # 2025-07-26
 
 temperature、response streaming、controling model output、structured data
