@@ -25,7 +25,9 @@ A coder who is passionate about web technologies.
 
 ## Being Clear and Direct
 
-使用清晰（Clear）以及简单直接（Direct）的语言来表达希望 Claude 做什么，意味着需要对 Prompt 进行精简（最近尝试用 GPT / Claude 来生成 Prompt 创建的初版内容大多都比较冗杂，投入生产产生的结果变数太多）
+使用清晰（Clear）以及简单直接（Direct）的语言来表达希望 Claude 做什么，把 Claude 当成需要收到明确指令才能干活的工具人，而不是一个需要猜测自己实际需求的人。
+
+意味着需要对 Prompt 进行精简（最近尝试用 GPT / Claude 来生成 Prompt 创建的初版内容大多都比较冗杂，投入生产产生的结果变数太多）
 
 使用，简单清晰的语言表达自己想要什么（写三段关于太阳能电池板如何工作的文字），而不是一个模糊的方向（我需要了解人们放在屋顶上利用太阳能的东西， 我认为它们叫做太阳能电池板）
 
