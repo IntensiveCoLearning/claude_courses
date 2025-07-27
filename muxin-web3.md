@@ -25,7 +25,7 @@ timezone: UTC+12
   - Medium Temperature(0.4 - 0.7): Summarization, Educational content, Problem-solving, Creative writing with constraints
   - High Temperature(0.08 - 1.0): Brainstorming, Creative writing, Marketing content, Joke generation
 
-今天的学习先到这了，滚去修 bug 了
+今天的学习先到这了，滚去修 bug 了...
 
 # 2025-07-25
 
