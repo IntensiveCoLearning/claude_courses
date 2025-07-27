@@ -23,6 +23,12 @@ A coder who is passionate about web technologies.
 
 初步看了一下，感觉成本对于个人开发者来说有点高，略过这一章节。
 
+## Being Clear and Direct
+
+使用清晰，简单直接的语言表达希望 Claude 做什么，意味着需要对 Prompt 进行精简。
+
+最近尝试用 GPT / Claude 来生成 Prompt 创建的初版内容大多都比较冗杂，投入生产产生的结果变数太多。
+
 # 2025-07-26
 
 ## 要提供给 AI 完整上下文
