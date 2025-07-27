@@ -15,6 +15,14 @@ A coder who is passionate about web technologies.
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+## Prompt Evaluation
+
+之前从来没有见过、了解过这个概念，一直是写完 Prompt 后手动测试几条不同的输入来测试结果，原来还有这种 Prompt 的测试工具，大开眼界。
+
+初步看了一下，感觉成本对于个人开发者来说有点高，略过这一章节。
+
 # 2025-07-26
 
 ## 要提供给 AI 完整上下文
