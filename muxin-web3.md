@@ -15,6 +15,18 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+- prefilled assistant message，它是可以给 Clause 的回答一个 direction 的，所以在一些 App 里，即使引用的是通用的 LLM，App 本身也是可以做很多事情来控制输出结果的。
+- stop sequences, 目前没想到什么特别适合的使用场景，虽然后面提到了 structured data 里会用到，但还是想看看后续有没有什么更加有用和适合的场景吧。
+- structured data，课程里用 prefilled assistant message 和 stop sequences 组合使用的方式来解决 json + markdown 的返回格式的问题，但是我的第一想法不应该是直接在 prompt 里或者 system prompt 说明来的更直接简单一点吗？
+- Quiz 打错了一个题，temperature 记反了，再复习一下：
+  - Low Temperature(0.0 - 0.3): Factual responses, Coding assistance, Data extraction, Content moderation
+  - Medium Temperature(0.4 - 0.7): Summarization, Educational content, Problem-solving, Creative writing with constraints
+  - High Temperature(0.08 - 1.0): Brainstorming, Creative writing, Marketing content, Joke generation
+
+今天的学习先到这了，滚去修 bug 了
+
 # 2025-07-25
 
 今天学习了 system prompts, temperature, 和 response streaming，也明白了很多 AI Chat App 的一些背后实现逻辑，只是在调用 API 时传入不同的参数或者调用不同的方法来实现。特别是 response streaming，为了提高用户体验，不让用户等太久，可以使用 stream 的方法来按顺序一段一段地输出结果。
