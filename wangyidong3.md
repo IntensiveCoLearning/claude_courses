@@ -15,6 +15,13 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-27
+
+Done:
+Claude with the Anthropic API 中几种Agents and workflows中，chaining是专门处理复杂任务的, routing处理不同请求要不同定制化需求的, parrellelization  的prompt可能没那么大。
+
+字节刚开源coze studio，是一个相当不错的消息，不过进一步挖掘claude code的sub agent的潜力才是我主要应该关注的。
+
 # 2025-07-26
 
 Done:
