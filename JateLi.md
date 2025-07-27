@@ -17,8 +17,7 @@ timezone: UTC+12
 <!-- Content_START -->
 # 2025-07-27
 
-第三天：Get API and Make a Request
-
+# 第二天：Get API and Make a Request
 1. **Generate APK**
 2. **Set Up Python Environment**
 3. **Make a First Request**
