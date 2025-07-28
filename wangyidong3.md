@@ -15,6 +15,17 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-28
+
+重点看了一下agent部分，记录一下扩展部分:
+1. https://github.com/humanlayer/12-factor-agents，  演讲视频： https://www.youtube.com/watch?v=8kMaTybvDUw   不要太依赖framework，尤其langchain的相当多功能不稳定。直接function call就很高效。
+
+2. https://huggingface.co/learn/agents-course/en/这个讲的真是好，推荐。感觉有填不完的坑。
+ https://huggingface.co/agents-course/notebooks/blob/main/unit1/dummy_agent_library.ipynb 
+
+3. 对于agent框架，可以从crewAI或者Smolagent 开始, 然后对multi-agent可以学习 AutoGen， 最后再学习langchain/langgraph. 不然淹死，哈哈。
+4. RAG 数据库的种类也好多，切片的策略回头继续研究，又是坑要填。
+
 # 2025-07-27
 
 Done:
