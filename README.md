@@ -84,42 +84,42 @@ Telegram：https://t.me/LXDAO/26860
 | [dev4mobile](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dev4mobile.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [smile7up](https://github.com/IntensiveCoLearning/claude_courses/blob/main/smile7up.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [XiaoYanKongLing](https://github.com/IntensiveCoLearning/claude_courses/blob/main/XiaoYanKongLing.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [CHENFANGC](https://github.com/IntensiveCoLearning/claude_courses/blob/main/CHENFANGC.md) | ✅ | ⭕️ | ✅ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [neyric](https://github.com/IntensiveCoLearning/claude_courses/blob/main/neyric.md) | ⭕️ | ✅ | ✅ | ✅ | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [Yajunceng](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Yajunceng.md) | ✅ | ✅ | ⭕️ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [CHENFANGC](https://github.com/IntensiveCoLearning/claude_courses/blob/main/CHENFANGC.md) | ✅ | ⭕️ | ✅ | ⭕️ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [neyric](https://github.com/IntensiveCoLearning/claude_courses/blob/main/neyric.md) | ⭕️ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [Yajunceng](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Yajunceng.md) | ✅ | ✅ | ⭕️ | ⭕️ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [SiliconPoet](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SiliconPoet.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [1291723356](https://github.com/IntensiveCoLearning/claude_courses/blob/main/1291723356.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [sapphire-girl](https://github.com/IntensiveCoLearning/claude_courses/blob/main/sapphire-girl.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [gududefengzhong](https://github.com/IntensiveCoLearning/claude_courses/blob/main/gududefengzhong.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [hdan321](https://github.com/IntensiveCoLearning/claude_courses/blob/main/hdan321.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [Ethan0191](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Ethan0191.md) | ✅ | ✅ | ✅ | ✅ | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [xuxizhen](https://github.com/IntensiveCoLearning/claude_courses/blob/main/xuxizhen.md) | ✅ | ✅ | ⭕️ | ✅ | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [0xAlanCui](https://github.com/IntensiveCoLearning/claude_courses/blob/main/0xAlanCui.md) | ✅ | ✅ | ✅ | ✅ | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [Ethan0191](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Ethan0191.md) | ✅ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [xuxizhen](https://github.com/IntensiveCoLearning/claude_courses/blob/main/xuxizhen.md) | ✅ | ✅ | ⭕️ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [0xAlanCui](https://github.com/IntensiveCoLearning/claude_courses/blob/main/0xAlanCui.md) | ✅ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [lisaxiaoli](https://github.com/IntensiveCoLearning/claude_courses/blob/main/lisaxiaoli.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [wkarry450-max](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wkarry450-max.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [123czy](https://github.com/IntensiveCoLearning/claude_courses/blob/main/123czy.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [shuyuanzhang118](https://github.com/IntensiveCoLearning/claude_courses/blob/main/shuyuanzhang118.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [YooYooY](https://github.com/IntensiveCoLearning/claude_courses/blob/main/YooYooY.md) | ✅ | ✅ | ✅ | ✅ | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [YooYooY](https://github.com/IntensiveCoLearning/claude_courses/blob/main/YooYooY.md) | ✅ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [cryptonerdcn](https://github.com/IntensiveCoLearning/claude_courses/blob/main/cryptonerdcn.md) | ✅ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [crazyf131419](https://github.com/IntensiveCoLearning/claude_courses/blob/main/crazyf131419.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [joyc](https://github.com/IntensiveCoLearning/claude_courses/blob/main/joyc.md) | ⭕️ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [erfect2020](https://github.com/IntensiveCoLearning/claude_courses/blob/main/erfect2020.md) | ⭕️ | ✅ | ⭕️ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [erfect2020](https://github.com/IntensiveCoLearning/claude_courses/blob/main/erfect2020.md) | ⭕️ | ✅ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [JateLi](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JateLi.md) | ✅ | ✅ | ⭕️ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [wodeche](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wodeche.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Johnnill](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Johnnill.md) | ✅ | ⭕️ | ✅ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [feiyunssr](https://github.com/IntensiveCoLearning/claude_courses/blob/main/feiyunssr.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [onthebigtree](https://github.com/IntensiveCoLearning/claude_courses/blob/main/onthebigtree.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [MRzzz-cyber](https://github.com/IntensiveCoLearning/claude_courses/blob/main/MRzzz-cyber.md) | ✅ | ✅ | ✅ | ✅ | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [echooooz](https://github.com/IntensiveCoLearning/claude_courses/blob/main/echooooz.md) | ✅ | ✅ | ✅ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [rayjun](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rayjun.md) | ✅ | ✅ | ⭕️ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [MRzzz-cyber](https://github.com/IntensiveCoLearning/claude_courses/blob/main/MRzzz-cyber.md) | ✅ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [echooooz](https://github.com/IntensiveCoLearning/claude_courses/blob/main/echooooz.md) | ✅ | ✅ | ✅ | ⭕️ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [rayjun](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rayjun.md) | ✅ | ✅ | ⭕️ | ⭕️ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [dddreame](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dddreame.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [skyonedot](https://github.com/IntensiveCoLearning/claude_courses/blob/main/skyonedot.md) | ✅ | ⭕️ | ✅ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [skyonedot](https://github.com/IntensiveCoLearning/claude_courses/blob/main/skyonedot.md) | ✅ | ⭕️ | ✅ | ⭕️ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [LambertAlpha](https://github.com/IntensiveCoLearning/claude_courses/blob/main/LambertAlpha.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [BiscuitCoder](https://github.com/IntensiveCoLearning/claude_courses/blob/main/BiscuitCoder.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [wangyidong3](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wangyidong3.md) | ✅ | ✅ | ✅ | ✅ | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [JacksonStack](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JacksonStack.md) | ⭕️ | ⭕️ | ✅ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [wangyidong3](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wangyidong3.md) | ✅ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [JacksonStack](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JacksonStack.md) | ⭕️ | ⭕️ | ✅ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [goooad](https://github.com/IntensiveCoLearning/claude_courses/blob/main/goooad.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [you-hengh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/you-hengh.md) | ✅ | ✅ | ⭕️ |   | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [you-hengh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/you-hengh.md) | ✅ | ✅ | ⭕️ | ⭕️ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [daisygogogo](https://github.com/IntensiveCoLearning/claude_courses/blob/main/daisygogogo.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [dsajkjgfdl](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dsajkjgfdl.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [YuanBoXie](https://github.com/IntensiveCoLearning/claude_courses/blob/main/YuanBoXie.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -128,10 +128,11 @@ Telegram：https://t.me/LXDAO/26860
 | [hudong1997](https://github.com/IntensiveCoLearning/claude_courses/blob/main/hudong1997.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [godrong](https://github.com/IntensiveCoLearning/claude_courses/blob/main/godrong.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [akuma0607](https://github.com/IntensiveCoLearning/claude_courses/blob/main/akuma0607.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [jingedawang](https://github.com/IntensiveCoLearning/claude_courses/blob/main/jingedawang.md) | ✅ | ✅ | ✅ | ✅ | | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [jingedawang](https://github.com/IntensiveCoLearning/claude_courses/blob/main/jingedawang.md) | ✅ | ✅ | ✅ | ✅ |   | | | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [paoqi1](https://github.com/IntensiveCoLearning/claude_courses/blob/main/paoqi1.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
