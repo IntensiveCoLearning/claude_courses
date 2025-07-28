@@ -15,6 +15,19 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-28
+
+- Claude Code other tips
+    - Custom commands: create file-name.md to add a custome commands; can take arguments 
+    - claude mcp add playwright npx @playwright/mcp@latest, ask CC to review using the browser mcp and improve it
+    - github integration: use CC as a team member that can use tools with mcp servers - https://anthropic.skilljar.com/claude-code-in-action/303240
+
+- Hooks & the SDK
+    - Hooks give the ability to execute code before/after the tool execution. eg: to prevent Claude from reading .env
+    - Useful Hooks
+        - run the ts type checker anytime we edit a ts file
+        - launch a separate copy of Claude Code to research the queries dir and see if similar query already exists. to avoit duplicating codebase
+
 # 2025-07-26
 
 - Claude Code - Context Controlling
