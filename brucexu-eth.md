@@ -15,6 +15,92 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+## Prompt evaluation
+
+Prompt engineering gives you techniques for writing better prompts, while prompt evaluation helps you measure how well those prompts actually work.
+
+Prompt Engineering: crafting effective prompts
+Prompt Evaluation: Automated testing to measure how well your prompts work
+
+Combine both -> Best prompts for your application
+
+We need to build a evaluation pipeline for scoring and improving prompts, handle corner cases from users, because users often provide unexpected inputs.
+
+There will be a new role in the future: Prompt tester.
+
+## Prompt Eval Workflow:
+
+### Draft a Prompt: A basic prompt will serve as baseline for testing and improvement.
+
+```
+Please answer the user's question:
+
+{question}
+```
+
+### Create an Eval Dataset.
+
+```
+"What's 2+2?"
+"How do I make oatmeal?"
+"How far away is the Moon?"
+```
+
+### Feed Through Claude
+
+For example, the first question becomes:
+
+```
+Please answer the user's question:
+What's 2+2?
+```
+
+### Feed Through a Grader
+
+This step provides objective scoring, typically on a scale from 1 to 10, where 10 represents a perfect answer and lower scores indicate room for improvement.
+
+In our example, the grader might assign:
+```
+Math question: 10 (perfect answer)
+Oatmeal question: 4 (needs improvement)
+Moon question: 9 (very good answer)
+```
+The average score across all questions gives you an objective measurement: (10 + 4 + 9) ÷ 3 = 7.66
+
+### Change Prompt and Repeat
+
+```
+prompt = f"""
+Please answer the user's question:
+
+{question}
+
+Answer the question with ample detail
+"""
+```
+
+you might get a higher average score of 8.7, indicating that the additional instruction helped Claude provide better responses.
+
+You can also build a version control system for prompt performance.
+
+## Generating test datasets
+
+Use Haiku for cheap and faster datasets generating.
+
+## Running the eval
+
+Load dataset, pass the item to eval function, and get results.
+
+## Model based grading
+
+There are three main approaches to grading model outputs:
+
+- Code graders - Programmatically evaluate outputs using custom logic
+- Model graders - Use another AI model to assess the quality
+- Human graders - Have people manually review and score outputs
+
 # 2025-07-27
 
 ## Streaming
