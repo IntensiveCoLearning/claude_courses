@@ -15,6 +15,26 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-28
+
+Claude有可能会在接到tooluse result之后，发现还需要再调用另一个工具，于是再次发起tooluse request。所以我们需要再次处理这个tool use请求。这就是多回合的工具使用，需要支持这种情况。
+
+![image.png](attachment:51faebc4-f79b-4ccf-9dd1-6dbd54dfebc1:image.png)
+
+虽然Claude可以一次性request多个tool use，但这不是必须的，有时候Claude会先request一个，等结果返回后再request另一个，即便这两个互不相关。为了鼓励Claude一次性把能调用的tool都调用到，我们可以提供一个batch_tool工具。这个工具是个meta tool，它的参数是想要调用的tool列表和调用参数。于是，当Claude想要调用多个工具时，它可以直接调用这个batch_tool，把那些工具和参数传进去，这样更快捷方便。但我不知道Anthropic是否针对这种情况做了训练，否则Claude为何会优先调用这个batch_tool而不是同时直接调用多个tool呢？
+
+调用Claude API的时候其实有一个参数可以控制Claude强制调用某个tool。这可以用来获得结构化的输出。前面讲过，可以用prompt prefilling和stop sequence来格式化输出，但那个还不够严格。我们可以写一个tool，把参数设计成我们想要格式化的格式，然后让Claude按照这个格式调用这个tool。我们只需要把request中的参数取出来直接用就行了，不需要返回tool response。不过，Claude会不会在等response呢？
+
+![image.png](attachment:cba76520-3a26-4010-9143-68220b85a466:image.png)
+
+在stream模式下，tool use的request并不像text一样以chunk返回，或者说，虽然以chunk返回，但API会先做一次buffer和validation，每次top level key-value pair完整后才返回。如果想要立即返回每个chunk，可以开启fine-grain模式。
+
+Claude内置了一个text editor tool，这个tool的schema是官方写好的，所以我们不需要定义，只需要根据名字引入即可。但注意，它仍然只是一个tool，也就是说，Claude决定调用这个tool的话，会发送tool use request，我们接收到这个request后需要实现处理逻辑。比如，Claude决定打开某个文件、写入某一行文本，这些操作其实是需要我们来做的，Claude只是决定做哪些事而已。它可以做的事情如下。
+
+![image.png](attachment:b8d57636-1dfb-4a51-bcb9-907c6a0f0a6a:image.png)
+
+Web search工具也是内置的，而且既不需要用户写schema，也不需要用户写implementation。Claude会调用web search tool，并根据结果来决定采用那些内容辅助后续回答。当然，这个tool的schema可以让我们更详细地看到它提供的信息格式。
+
 # 2025-07-27
 
 给Claude发请求的时候带上支持的function list，就激活了tool use能力
