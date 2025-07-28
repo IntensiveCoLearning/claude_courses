@@ -15,6 +15,27 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-28
+
+同步发布于推特：https://x.com/cryptonerdcn/status/1949846486969352526
+第五天打卡：
+个人备忘，之前没把这块仔细看。
+Plan mode:
+pressing Shift + Tab twice (or once if you're already auto-accepting edits)
+
+Thinking Modes
+Claude offers different levels of reasoning through "thinking" modes. These allow Claude to spend more time reasoning about complex problems before providing solutions.
+
+The available thinking modes include:
+
+"Think" - Basic reasoning
+"Think more" - Extended reasoning
+"Think a lot" - Comprehensive reasoning
+"Think longer" - Extended time reasoning
+"Ultrathink" - Maximum reasoning capability
+
+还真的没怎么用过Thinking mode, 这周准备试一试。
+
 # 2025-07-27
 
 同步发布于 https://x.com/cryptonerdcn/status/1949481983672983598
