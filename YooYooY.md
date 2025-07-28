@@ -15,6 +15,63 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-28
+
+### Structured Data
+
+Structured Data Generation = technique using assistant message prefilling + stop sequences to get raw output without Claude's natural explanatory headers/footers.
+
+Problem = Claude automatically adds markdown formatting, headers, commentary when generating JSON/code/structured content. Users often want just the raw data for copy/paste functionality.
+
+Solution Pattern:
+1. User message = request for structured data
+2. Assistant message prefill = opening delimiter (e.g., "\`\`\`json")  
+3. Stop sequence = closing delimiter (e.g., "\`\`\`")
+
+How it works = Claude sees prefilled message, assumes it already started response, generates only the requested content, stops when hitting delimiter.
+
+Result = Raw structured data output with no extra formatting or commentary.
+
+Application = Works for any structured data type (JSON, Python code, lists, etc.), not just JSON. Use whenever you need clean, parseable output without explanatory text.
+
+Key benefit = Output can be directly used/copied without manual selection or parsing of unwanted text.
+
+
+#### Assistant Message Prefilling + Stop Sequences
+
+```python
+messages = []
+
+add_user_message(messages, "Generate a very short event bridge rule as json")
+add_assistant_message(messages, "```json")
+
+text = chat(messages, stop_sequences=["```"])
+# text.strip()
+```
+
+#### Processing the Response
+
+```python
+import json
+
+# Clean up and parse the JSON
+clean_json = json.loads(text.strip())
+```
+
+### Structured Data Exercise
+
+```python
+messages = []
+prompt = """
+Generate three different sample AWS CLI commands. Each should be very short.
+"""
+add_user_message(messages, prompt)
+add_assistant_message(messages, "Here are all three commands in a single block without any comments: \n```bash")
+
+text = chat(messages, stop_sequences=["```"])
+text.strip()
+```
+
 # 2025-07-27
 
 ## Claude Response Streaming 学习笔记
