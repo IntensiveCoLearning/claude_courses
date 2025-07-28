@@ -17,6 +17,7 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2025-07-28
 
+https://www.anthropic.com/engineering/built-multi-agent-research-system
 重点看了一下agent部分，记录一下扩展部分:
 1. https://github.com/humanlayer/12-factor-agents，  演讲视频： https://www.youtube.com/watch?v=8kMaTybvDUw   不要太依赖framework，尤其langchain的相当多功能不稳定。直接function call就很高效。
 
