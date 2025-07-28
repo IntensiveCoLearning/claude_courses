@@ -15,6 +15,29 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-28
+
+# 第二天：Multi-Turn Conversations and System Prompts
+
+Claude API的关键限制是它不会自动存储任何消息
+
+"role"：要么是"user"要么是"assistant"
+"content"：实际的消息文本
+
+Helper functions:
+add_user_message(messages, text) - 将用户消息添加到历史中
+add_assistant_message(messages, text) - 将Claude的回复添加到历史中
+chat(messages) - 将完整的消息历史发送给API
+
+Basic Chat:
+1. 向Claude发送初始用户消息
+2. 接收Claude的回复
+3. 将Claude的回复添加到消息历史中
+4. 将新的用户消息添加到历史中
+5. 为下一个请求发送完整的历史记录
+
+System Prompts: 设定一个身份或角色风格
+
 # 2025-07-27
 
 # 第二天：Get API and Make a Request
