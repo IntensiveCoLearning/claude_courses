@@ -15,6 +15,212 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+# 🧠 第九课：理解 Claude 的 Temperature 参数
+
+## 🔄 Claude 的文本生成流程回顾
+
+Claude 生成文本的典型流程：
+
+1. **接收输入文本**
+   - 例子："What do you think"
+
+2. **Tokenize**（分词）
+   - 将句子拆成更小的 token（语义单位）
+
+3. **预测下一个 token 的概率分布**
+   - 可能是："about", "would", "of" 等
+   - 每个 token 有一个概率值
+
+4. **采样（Sampling）**
+   - 根据概率分布选择一个 token，作为下一个词
+
+5. **重复步骤 2~4** 直到生成完整回答
+
+---
+
+## 🎛 Temperature 控制：影响采样的“随机性”
+
+**参数范围：** `0.0 ~ 1.0`  
+**默认值：** `1.0`
+
+### 作用：
+
+- 控制模型在生成文本时的“创造力”
+- **低温度（如 0.0）**：
+  - 更确定性（总是选择概率最高的 token）
+  - 输出稳定、一致性强
+- **高温度（如 1.0）**：
+  - 更多样化、创造力强
+  - 输出更不可预测
+
+---
+
+## 📊 图示理解
+
+| Temperature | 效果 |
+|-------------|------|
+| 0.0         | 完全确定性，始终输出最高概率词 |
+| 0.3         | 轻微多样性 |
+| 0.7         | 平衡稳定性与创造性 |
+| 1.0         | 高创造性、更发散 |
+
+---
+
+## 🧪 示例：一行电影点子生成
+
+**Prompt：** "Give me a one-sentence movie idea"
+
+### Temperature = 0.0
+
+- "A time-traveling archaeologist discovers..."
+- "A time-traveling historian battles..."
+
+重复出现 “time-traveling” 的内容。
+
+### Temperature = 1.0
+
+- "An AI comedian trapped in a joke simulation"
+- "A city made entirely of forgotten dreams"
+
+更富想象力、多样化。
+
+---
+
+## 🔧 代码修改支持 temperature 参数
+
+### 修改 chat 函数：
+
+```python
+def chat(messages, system=None, temperature=1.0):
+    params = {
+        "model": model,
+        "max_tokens": 1000,
+        "messages": messages,
+        "temperature": temperature
+    }
+    if system is not None:
+        params["system"] = system
+    response = client.messages.create(**params)
+    return response.content[0].text
+```
+
+---
+
+## ✅ 总结
+
+| 任务类型         | 推荐 Temperature |
+|------------------|------------------|
+| 数据抽取、问答   | 0.0 ~ 0.3        |
+| 内容生成（写作） | 0.7 ~ 1.0        |
+| 营销、创意内容   | 0.9 ~ 1.0        |
+| 代码生成         | 0.2 ~ 0.6        |
+
+合理设置 temperature 能更好地控制 Claude 的响应风格和稳定性。
+
+---
+
+# 🔄 第十课：使用 Claude Streaming 实现实时响应
+
+## 🎯 问题背景
+
+Claude 传统接口存在响应延迟：
+
+```text
+用户提交 ➜ Claude 生成完整内容 ➜ 返回 ➜ 页面才展示
+```
+
+这在用户输入和输出都较长时，会造成**10~30 秒等待**，体验差。
+
+---
+
+## ⚡ 解决方案：使用 Claude 的 Streaming API
+
+### 流式交互流程
+
+```text
+用户输入 ➜ Claude 接收请求 ➜ 实时返回 token 块 ➜ 页面逐步显示
+```
+
+---
+
+## 🧩 Streaming 响应结构
+
+Claude 的响应是一系列事件流：
+
+1. `message_start`
+2. `content_block_start`
+3. `content_block_delta` ✅（含真实内容）
+4. `content_block_stop`
+5. `message_delta`
+6. `message_stop`
+
+我们主要提取 `content_block_delta` 中的文本片段。
+
+---
+
+## 🧪 示例 1：打印原始事件
+
+```python
+stream = client.messages.create(
+    model=model,
+    max_tokens=1000,
+    messages=messages,
+    stream=True
+)
+
+for event in stream:
+    print(event)
+```
+
+---
+
+## 🧪 示例 2：提取纯文本
+
+Anthropic SDK 提供 `.text_stream` 简化操作：
+
+```python
+with client.messages.stream(
+    model=model,
+    max_tokens=1000,
+    messages=messages
+) as stream:
+    for text in stream.text_stream:
+        print(text, end="")
+```
+
+---
+
+## 🧪 示例 3：收集完整响应
+
+可用于写数据库：
+
+```python
+with client.messages.stream(
+    model=model,
+    max_tokens=1000,
+    messages=messages
+) as stream:
+    for _ in stream.text_stream:
+        pass  # 实时显示
+
+    full_message = stream.get_final_message()
+    # 存入数据库或进一步处理
+```
+
+---
+
+## 📌 总结
+
+| 功能               | 方法                             |
+|--------------------|----------------------------------|
+| 启用流式响应       | `stream=True`                    |
+| 提取文本块         | `for text in stream.text_stream` |
+| 收集完整消息       | `stream.get_final_message()`     |
+
+使用 Streaming 可大幅提升响应体验，是构建实时聊天体验的关键。
+
 # 2025-07-27
 
 # 🧑‍🏫 第七课：使用 System Prompt 自定义 Claude 回答风格
