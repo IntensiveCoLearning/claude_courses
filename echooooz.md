@@ -15,6 +15,15 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+- Prompt evaluation
+    - Prompt draft recommendation - run the prompt thru an evaluation pipeline to score it, en iterate on the prompt
+    - process: 1/draft a prompt 2/create an eval dataset 3/feed thru claude 4/feed thru a grader
+        - model based grading - task following. write a prompt to ask a model for strengths, weaknesses, reasoning besideds score, to get a more concrete score
+        - code based grading - format/syntax
+        - human based grading
+
 # 2025-07-28
 
 - Claude Code other tips
