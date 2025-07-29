@@ -15,6 +15,32 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+# 📘 Anthropic Courses Day 6 学习笔记
+
+## ✅ 今日进度
+- 继续推进「Tool Use with Claude」模块，今天学习了中后段的 6 个小节 ✅
+  - Multi-turn conversations with tools
+  - Implementing multiple turns
+  - Using multiple tools
+  - The batch tool
+  - Tools for structured data
+  - Fine grained tool calling
+
+## 💡 今日收获
+- Claude 的工具调用不仅支持单轮对话，还能完成复杂的多轮对话任务
+  - 可以跨多轮使用同一个工具，也可以在不同回合中调用不同工具
+- Claude 支持并发调用多个工具（multi-tool），适合执行多个子任务
+- **Batch tool** 和 **structured data tools** 帮助在处理大量或结构化信息时提高效率
+- **Fine-grained tool calling** 支持开发者对工具调用过程进行更细致的控制，例如限制调用频率、触发条件等
+
+## 💤 小遗憾
+- 今天未能完成本章节的所有内容
+
+## 🎯 明日目标
+- 学完 Tool Use 最后 3 个小节并完成测验
+
 # 2025-07-28
 
 # 📘 Anthropic Courses Day 5 学习笔记
