@@ -15,6 +15,20 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+Temperature = 0
+完全确定性输出
+始终选择概率最高的词汇
+每次运行相同输入会得到相同输出
+最保守、最可预测
+
+Temperature 接近 1
+增加选择低概率词汇的机会
+输出更有创意和意外性
+相同输入可能产生不同输出
+更随机、更有变化
+
 # 2025-07-28
 
 # 第二天：Multi-Turn Conversations and System Prompts
