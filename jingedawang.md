@@ -15,6 +15,30 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+介绍RAG技术。
+
+文本切块text chunking可以有以下几种：
+
+- Size based chunking
+- Structure based chunking
+- Sentence based chunking
+
+![image.png](attachment:62f5e9b3-5ff0-4cf0-9f4e-21f564c0195f:image.png)
+
+![image.png](attachment:46ec449b-4651-4576-893b-a0b88eb6f6f4:image.png)
+
+只用semantic search（embedding）并不一定每次都好用，有些冷门术语、唯一标识符等文本并不能被很好地理解，所以需要结合lexical search，比如BM25。可以同时使用embedding search和BM25 search，把两个结果合并。
+
+如果用多个index，可以用以下方法把每个index的ranking merge到一起
+
+![image.png](attachment:32ba1fee-b820-4572-b46f-26d8de0b2fce:image.png)
+
+如果这个结果还是不让人满意，还可以在后面增加一个reranking阶段，使用Claude来做rerank，结果就会更好。相当于前面的index用作retrieval，后面的reranking用作排序。
+
+chunking还有一个问题是缺乏上下文，有些时候单独的一小段话可能会有歧义。此时使用contextual retrieval技术，把整个document和chunk拿给Claude，让Claude总结以下这个chunk在整个文档中所处的地位，相当于总结以下chunk的上下文。这样等后面retrieve到这个chunk的时候，就知道这个chunk的上下文大概是什么了。这个技术倒是第一次听说，不知道有没有人用，好像成本有点高。
+
 # 2025-07-28
 
 Claude有可能会在接到tooluse result之后，发现还需要再调用另一个工具，于是再次发起tooluse request。所以我们需要再次处理这个tool use请求。这就是多回合的工具使用，需要支持这种情况。
