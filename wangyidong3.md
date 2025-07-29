@@ -15,6 +15,26 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+今天学习量稍微少一点，累了。
+
+Done:
+学习RAG，简单的练习，chunk还是structured， semantic 太慢了。
+
+RAG pipeline 总结的真好:
+
+    Chunk source documents
+    Generate embeddings for each chunk
+    Store embeddings in a vector database
+    When a user asks a question, embed their query
+    Find the most similar stored embeddings using cosine similarity
+    Add the relevant chunks to a prompt with the user's question
+    Send the enhanced prompt to Claude for a response
+实践方面，比较了一下向量数据库，练手还是从chroma开始，也是Cosine + filtering的检索方式。后续学习再看Milvus。
+哇，后面练习量好大，今天先休息吧。
+明天继续RAG
+
 # 2025-07-28
 
 https://www.anthropic.com/engineering/built-multi-agent-research-system
