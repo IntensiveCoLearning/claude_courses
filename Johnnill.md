@@ -15,6 +15,12 @@ timezone: UTC-5
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-28
+
+今天真学了 学了how to build a simple chatbot in this notebook thing and some basics about system prompts. 
+
+so system prompts is like some sort of basic rule of this ai thing we are building. 他也是自然语言这么说的 for example in this video he's trying to build something to help kids with math problem but without giving them answers straightly. and he is imo "tuning" this thing with normal natural language. also I asked chatgpt is this some basic fine tuning he said no. lolll he said this is the baby step of just building this thing it is way too far for us to talk about tuning atm. 现在感觉学的这个东西我越来越看不懂了 但是我感觉是个好事 感觉这种知其人不知其所以然的感觉很适合我这种半吊子。 未来的世界是我们三分钟热度的人的！！！！！！！ 只有三分钟热度的人才能在未来智能体pk中胜利！所有东西都知道一点但是只知道一点！ yes！ 残酷共学牛逼！
+
 # 2025-07-26
 
 老师们好 昨天没看到我的打卡是不是有点难受 我来了。
