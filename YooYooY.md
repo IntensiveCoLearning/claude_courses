@@ -23,7 +23,6 @@ code lover
 
 When working with Claude, writing a good prompt is just the beginning. To build reliable AI applications, you need to understand two critical concepts: prompt engineering and prompt evaluation. Prompt engineering gives you techniques for writing better prompts, while prompt evaluation helps you measure how well those prompts actually work.
 
-
 ### Prompt Engineering vs Prompt Evaluation
 
 Prompt engineering is your toolkit for crafting effective prompts. It includes techniques like:
@@ -56,7 +55,7 @@ Options 1 and 2 are common traps that all engineers fall into, myself included. 
 
 The reality is that when you deploy a prompt to production, users will interact with it in ways you never anticipated. What seemed like a solid prompt during your limited testing can quickly break down when faced with the full variety of real-world inputs.
 
-###The Evaluation-First Approach
+### The Evaluation-First Approach
 
 Option 3 represents a more systematic approach to prompt development. By running your prompt through an evaluation pipeline, you get objective metrics about its performance across a broader range of test cases. This data-driven approach lets you:
 
