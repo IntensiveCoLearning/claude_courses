@@ -15,6 +15,46 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-30
+
+## Prompt evaluation
+
+- Model based grading: use AI model to grade
+- Code based grading: Syntax validation
+- Human based grading: judged by human
+
+Main aim: 1. build a benchmark first. 2. Keep improving prompts. 3. Find the best Prompt.
+
+Before implementing any grader, you need clear evaluation criteria. For a code generation prompt, you might focus on:
+
+- Format - Should return only Python, JSON, or Regex without explanation
+- Valid Syntax - Produced code should have valid syntax
+- Task Following - Response should directly address the user's task with accurate code
+
+```
+def grade_by_model(test_case, output):
+    # Create evaluation prompt
+    eval_prompt = """
+    You are an expert code reviewer. Evaluate this AI-generated solution.
+    
+    Task: {task}
+    Solution: {solution}
+    
+    Provide your evaluation as a structured JSON object with:
+    - "strengths": An array of 1-3 key strengths
+    - "weaknesses": An array of 1-3 key areas for improvement  
+    - "reasoning": A concise explanation of your assessment
+    - "score": A number between 1-10
+    """
+    
+    messages = []
+    add_user_message(messages, eval_prompt)
+    add_assistant_message(messages, "```json")
+    
+    eval_text = chat(messages, stop_sequences=["```"])
+    return json.loads(eval_text)
+```
+
 # 2025-07-29
 
 ## Prompt evaluation
