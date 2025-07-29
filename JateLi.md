@@ -29,6 +29,9 @@ Temperature 接近 1
 相同输入可能产生不同输出
 更随机、更有变化
 
+
+Quiz passed 8/8
+
 # 2025-07-28
 
 # 第二天：Multi-Turn Conversations and System Prompts
