@@ -15,6 +15,18 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+同步发布于推特：
+https://x.com/cryptonerdcn/status/1950186027110248452
+
+第六天打卡：
+Custom commands，这其实正好契合了凌晨我们讨论的workflow和agent的内容。
+Claude code的Custom commands就是典型定义好的workflow，但在执行过程中，有些步骤（或者所有步骤）是由agent执行的。
+Claude Code本体又可以算一个agent，它来调用这个workflow,表现出了一种你中有我我中有你的模糊境界。
+
+https://x.com/cryptonerdcn/status/1949879799054516415
+
 # 2025-07-28
 
 同步发布于推特：https://x.com/cryptonerdcn/status/1949846486969352526
