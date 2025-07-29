@@ -55,6 +55,8 @@ def grade_by_model(test_case, output):
     return json.loads(eval_text)
 ```
 
+TODO create a prompt finder app, to test my prompts
+
 # 2025-07-29
 
 ## Prompt evaluation
