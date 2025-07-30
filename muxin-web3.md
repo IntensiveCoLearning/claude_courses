@@ -15,6 +15,24 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-30
+
+今天学习了 Prompt engineering techniques, 有几点需要注意：
+- 提高 prompt 的 process：
+  - Set a goal -> Write an initial prompt -> Eval the prompt -> Apply a prompt engineering technique -> Re-eval to verify better performance，然后 repeat 最后两步直到得到一个满意的结果。
+- 如何写好一个 prompt，需要遵循以下三个原则，其实还是要把 AI 当“机器”，你要给它下指令，指令描述必须非常清晰，或者有清晰的步骤，其实也是教 AI 如何思考，需要把我们觉得特别注意的点明确的告知 AI
+  - Be clear
+    - Use simple language
+    - State what you want explicitly
+    - Lead your prompt with a simple statement of the model's task
+  - Be direct
+    - Use instructions, not questions
+    - Use direct action verbs("Write", "Create", "Generate")
+  - Be specific
+    -  guideline types:
+       - list qualities that the output should have
+       - provide steps the model should follow
+
 # 2025-07-29
 
 - 今天学习了 Prompt evaluation，主要是通过一个 eval workflow 来检测你当的 prompt 的质量，通常会通过一个 score 来体现。这个 workflow 的流程大概就是：Draft a Prompt → Create an Eval Dataset → Feed Through Claude → Feed Through a Grader → Change prompt and Repeat。在 Grader step，它还提到了三种不同的评分体系：Code(Programmatically evaluate the result), Model(Ask a model to assign a score to the output, or compare two versions), Human(Ask a human to assign a score to the output, or compare two versions)，可以结合起来获得一个平均分。
