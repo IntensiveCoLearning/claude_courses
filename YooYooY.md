@@ -15,6 +15,129 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-30
+
+# Generating test datasets
+
+**关键要求：**
+
+* 返回的结果必须是**干净的纯格式输出**，不包含说明、标题或页脚。
+
+**初始 Prompt 模板（版本1）：**
+
+```python
+prompt = f"""
+Please provide a solution to the following task:
+{task}
+"""
+```
+
+---
+
+#### 构建评估数据集（Creating an Evaluation Dataset）
+
+* 每个输入组合将与 Prompt 一起运行，用于分析效果。
+* 数据集格式为 JSON 数组，每个元素为一个任务对象：
+
+```json
+[
+  {
+    "task": "..."
+  },
+  ...
+]
+```
+
+* 数据可以手工创建，也可以通过模型自动生成。
+
+---
+
+#### 使用 Claude 模型自动生成测试数据（Generating Test Data with Code）
+
+推荐使用轻量模型（如 Haiku）生成测试数据。
+
+##### Claude 交互辅助函数：
+
+```python
+def add_user_message(messages, text):
+    user_message = {"role": "user", "content": text}
+    messages.append(user_message)
+
+def add_assistant_message(messages, text):
+    assistant_message = {"role": "assistant", "content": text}
+    messages.append(assistant_message)
+
+def chat(messages, system=None, temperature=1.0, stop_sequences=[]):
+    params = {
+        "model": model,
+        "max_tokens": 1000,
+        "messages": messages,
+        "temperature": temperature
+    }
+    if system:
+        params["system"] = system
+    if stop_sequences:
+        params["stop_sequences"] = stop_sequences
+    
+    response = client.messages.create(**params)
+    return response.content[0].text
+```
+
+---
+
+#### 生成数据集函数 `generate_dataset()`
+
+```python
+def generate_dataset():
+    prompt = """
+Generate an evaluation dataset for a prompt evaluation. The dataset will be used to evaluate prompts that generate Python, JSON, or Regex specifically for AWS-related tasks. Generate an array of JSON objects, each representing task that requires Python, JSON, or a Regex to complete.
+
+Example output:
+json:
+[
+  {
+    "task": "Description of task",
+  },
+  ...additional
+]
+
+
+* Focus on tasks that can be solved by writing a single Python function, a single JSON object, or a single regex
+* Focus on tasks that do not require writing much code
+
+Please generate 3 objects.
+"""
+
+messages = []
+add_user_message(messages, prompt)
+add_assistant_message(messages, "```json")
+text = chat(messages, stop_sequences=["```"])
+return json.loads(text)
+```
+
+
+---
+
+#### 测试数据生成（Testing the Dataset Generation）
+
+```python
+dataset = generate_dataset()
+print(dataset)
+````
+
+应返回 3 个任务，分别用于测试 Python、JSON 和 Regex 类型的输出。
+
+---
+
+#### 保存数据集（Saving the Dataset）
+
+```python
+with open('dataset.json', 'w') as f:
+    json.dump(dataset, f, indent=2)
+```
+
+文件保存为 `dataset.json`，可在后续 prompt 评估中直接加载。
+
 # 2025-07-29
 
 ## Prompt evaluation
