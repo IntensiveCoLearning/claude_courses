@@ -90,4 +90,13 @@ Max Tokens - Limit for how many tokens Claude can generate
 
 明天开始安装试用吧，看看和之前的 3.5 有什么区别
 
+# 2025-07-30
+今天把 Key 的密钥弄好了,感谢万能的淘宝
+<img width="2442" height="762" alt="image" src="https://github.com/user-attachments/assets/51266a27-0391-4670-9956-85b613325ab9" />
+
+测试了一下，发现不能处理连续对话，看了一下介绍
+<img width="1129" height="916" alt="image" src="https://github.com/user-attachments/assets/cc34c069-113c-420e-af8e-4ec6c2aa9765" />
+
+明天再测试一下
+
 <!-- Content_END -->
