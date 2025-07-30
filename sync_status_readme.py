@@ -8,9 +8,9 @@ import logging
 
 # Constants
 START_DATE = datetime.fromisoformat(os.environ.get(
-    'START_DATE', '2025-03-31T00:00:00+00:00')).replace(tzinfo=pytz.UTC)
+    'START_DATE', '2025-07-24T00:00:00+00:00')).replace(tzinfo=pytz.UTC)
 END_DATE = datetime.fromisoformat(os.environ.get(
-    'END_DATE', '2025-04-12T23:59:59+00:00')).replace(tzinfo=pytz.UTC)
+    'END_DATE', '2025-08-22T23:59:59+00:00')).replace(tzinfo=pytz.UTC)
 DEFAULT_TIMEZONE = 'Asia/Shanghai'
 FILE_SUFFIX = '.md'
 README_FILE = 'README.md'
@@ -251,6 +251,8 @@ def generate_user_row(user):
     user_link = f"[{user}]({repo_url})"
     new_row = f"| {user_link} |"
     is_eliminated = False
+    absent_count = 0
+    current_week = None
 
     file_name_to_open = f"{user}{FILE_SUFFIX}"
     try:
@@ -262,17 +264,26 @@ def generate_user_row(user):
 
     user_tz = get_user_timezone(file_content)
     user_current_day = datetime.now(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
-    
     for date in get_date_range():
         user_datetime = date.astimezone(pytz.UTC).replace(hour=0, minute=0, second=0, microsecond=0)
         if is_eliminated or (user_datetime > user_current_day and user_datetime.day > user_current_day.day):
             new_row += " |"
         else:
-            # 使用check_weekly_status函数来正确判断状态
-            status = check_weekly_status(user_status, user_datetime, user_tz)
-            if status == "❌":
-                is_eliminated = True
-            new_row += f" {status} |"
+            user_date = user_datetime
+            week = user_date.isocalendar()[1]
+            if week != current_week:
+                current_week = week
+                absent_count = 0
+            status = user_status.get(user_date, "")
+            if status == "⭕️":
+                absent_count += 1
+                if absent_count > 2:
+                    is_eliminated = True
+                    new_row += " ❌ |"
+                else:
+                    new_row += " ⭕️ |"
+            else:
+                new_row += f" {status} |"
     return new_row + '\n'
 
 def get_repo_info():
