@@ -15,6 +15,10 @@ timezone: UTC-5
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-29
+
+今天学的有点晚了 差点给忘了 不过还是学了 就学了一节课 什么temperature 感觉没学啥玩意 估计学的太少了 明天继续努力！听说claude code今天又更新了 不慌 待我学明白我现在在学啥了之后 咱们就学claude code 争取做个什么出来帮我自己弄一下我现在每天要用的这些活儿 其实都很简单很机械的工作 marketing相关的 全是伪命题 哈哈哈哈哈 希望能弄出个什么 帮我把每天工作量变成一个小时 马上搬家了 房租又涨了 赶紧学习
+
 # 2025-07-28
 
 今天真学了 学了how to build a simple chatbot in this notebook thing and some basics about system prompts. 
