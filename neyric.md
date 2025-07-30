@@ -27,7 +27,9 @@ A coder who is passionate about web technologies.
 
 对于复杂 Prompt 需要标识变量，分割边界时，使用 XML 标签来让 Claude 模型理解解析意图，例如调试代码，分析用户输入等情景，通过 `<code>内容</code>` 来包裹内容，让 Claude 理解区分意图。
 
-对于简单提示词，作用不太明显，但适用于大型复杂 Prompt
+对于简单提示词，作用不太明显，但适用于大型复杂 Prompt。
+
+此外，XML 的命名也是可以语义化的，例如：<same_input></same_input> 后面使用 <idea_output></idea_output>
 
 # 2025-07-27
 
