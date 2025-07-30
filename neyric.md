@@ -15,6 +15,12 @@ A coder who is passionate about web technologies.
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-30
+
+## Being Specific
+
+每一次使用的 Prompt 应该包含一个具体化的指导（Quality Guidelines）来获得更符合预期的结果，通过 guideline 来对 Claude 的输出进行约束。
+
 # 2025-07-27
 
 ## Prompt Evaluation
