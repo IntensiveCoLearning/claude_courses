@@ -15,6 +15,46 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-30
+
+Claude的reasoning不需要切换模型，而是在同一个模型里面打开thinking模式即可。只需要设置额外参数think=True和think_budget。这种模式叫做extended thinking。
+
+thinking模式下会返回thinking block和text block。其中，thinking block可能是明文，也可能是密文。当Claude的内部审查机制认为这段reasoning不适宜公开时，它会返回密文。之所以一定会返回，是为了方便用户把thinking也加入history，组成多轮对话。
+
+为了避免用户在多轮对话的情况下篡改thinking内容，thinking block里面添加了一个signature，我猜是用thinking text+某些密钥生成的签名，只有当history中的内容能和signature对的上的情况下，Claude才会处理请求。
+
+Claude支持图片，但对大小、尺寸都有限制。图片的像素会转换成token，每个token代表750像素。
+
+用户发送的请求可以同时包含一个image block和一个text block。
+
+处理图像的prompt也可以写得复杂一些，可以使用之前提到过的prompt技巧，比如规定处理步骤、few-shot等等。
+
+Claude支持PDF，且可以读取PDF中的文本、结构、图片、图表、表格等等数据。
+
+Claude支持Citation，对于所有文档类型的附件，都可以开启citation，从而在返回文本中标注引用来源。当然，这个配合上前端显示效果更好。
+
+Prompt Caching支持缓存prompt，这样在之后使用相同的prompt前缀的时候就可以复用之前计算过的结果，以节约成本。但注意，缓存只保留一小时。
+
+Cache需要手动开启，而且需要指定缓存到哪个block。因为Claude并不会选择每次都缓存完整的context，那样的话cache也太大了。所以，由用户指定缓存到哪里，用户比较清楚那些部分是不变的，因而需要缓存。
+
+在user message里面加缓存需要稍微改动一下格式。从context的开头到指定的block，整个过程被记录为一个cache。只要新的request从开头开始与这个cache完全重合，就可以利用到这个cache。
+
+![image.png](attachment:5b7f23c9-7d0d-495b-98d2-3c47f164b132:image.png)
+
+除了message可以加cache，tool、image、system message都可以加cache。甚至可以加多个cache。Claude会按照如下顺序处理tool、system prompt、user message、assistant message。这里的加的两个cache各自独立存在。如果新的request在第一个user message处变了，它会使用tool#3的cache。如果新的request在第二个user message处变了，它会使用assistant message的cache。
+
+![image.png](attachment:b1b962b1-a561-4702-ad02-0c51f055fe9d:image.png)
+
+被cache的context长度必须大于1024。
+
+通常，system prompt和tool list都是固定的，所以在这两个地方添加cache是常规做法。
+
+实际实施的时候，需要注意，给tool list的最后一个tool添加cache control需要小心副作用。如果我们给一个tool加了cache control，然后我们又偶然修改了tool list的顺序，那样的话我们就有可能给多个tool添加cache control，从而生成多个cache。这是没必要的。
+
+前面提到的Image、document等message都是在单次request中随user message一并发出的。但还有一种做法是单独调用一个file upload API，把文件传上去，Claude会返回一个file id。这个id可以在后面任意的request中复用。
+
+Claude有一个内置的code execution tool，我们只需要在tool list中加入它的id即可开启。如果同时把file id放在一个file block里面随user message发起请求，Claude就能选择编写代码处理那个文件，并选择生成新的文件，并返回生成文件的id。用户可以根据id下载那个文件。这个功能非常适合用来处理文档数据并绘制图表。其实官方的Claude App都实现了这些功能。说明只要有了API，我们也可以自己实现官方提供的功能。
+
 # 2025-07-29
 
 介绍RAG技术。
