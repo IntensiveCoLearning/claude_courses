@@ -21,6 +21,14 @@ A coder who is passionate about web technologies.
 
 每一次使用的 Prompt 应该包含一个具体化的指导（Quality Guidelines）来获得更符合预期的结果，通过 guideline 来对 Claude 的输出进行约束。
 
+使用步骤（Follow these steps: 1 / 2 / 3）来约束 Claude 的思考行为，解决复杂的需求场景，而不是简单的一句指导性质的 Prompt 就结束了。
+
+## 使用 XML 的结构化标签
+
+对于复杂 Prompt 需要标识变量，分割边界时，使用 XML 标签来让 Claude 模型理解解析意图，例如调试代码，分析用户输入等情景，通过 `<code>内容</code>` 来包裹内容，让 Claude 理解区分意图。
+
+对于简单提示词，作用不太明显，但适用于大型复杂 Prompt
+
 # 2025-07-27
 
 ## Prompt Evaluation
