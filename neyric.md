@@ -31,6 +31,8 @@ A coder who is passionate about web technologies.
 
 此外，XML 的命名也是可以语义化的，例如：<same_input></same_input> 后面使用 <idea_output></idea_output>
 
+对示例的输出提供上下文（例如解释为什么这个输出是理想化的）
+
 # 2025-07-27
 
 ## Prompt Evaluation
