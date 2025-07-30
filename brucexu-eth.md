@@ -57,6 +57,8 @@ def grade_by_model(test_case, output):
 
 TODO create a prompt finder app, to test my prompts
 
+test
+
 # 2025-07-29
 
 ## Prompt evaluation
