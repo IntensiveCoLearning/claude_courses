@@ -15,6 +15,268 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-30
+
+# 🧠 第十一课：预填消息 & 停止序列（Controlling Claude's Output）
+
+---
+
+## 🎯 本课目标
+
+- 学会使用 **Assistant Message 预填（Pre-filling）** 引导 Claude 输出倾向
+- 学会使用 **Stop Sequences** 控制 Claude 生成中止位置
+
+---
+
+## 1️⃣ Assistant Message 预填（Pre-filling）
+
+### 🤔 背景场景
+
+提问：
+```
+"Is tea or coffee better at breakfast?"
+```
+
+Claude 默认返回中立回答（例如：两者皆有优点）。
+
+### 🎯 目标：引导 Claude 立场
+
+通过“预填助手消息”模拟 Claude 的“自我暗示”行为：
+
+```python
+add_user_message(messages, "Is tea or coffee better at breakfast?")
+add_assistant_message(messages, "Coffee is better because")
+response = chat(messages)
+```
+
+Claude 会自动将 `"Coffee is better because"` 当作它自己“刚刚说出”的部分，然后续写下去，如：
+
+```
+Coffee is better because it contains more caffeine and helps kickstart your day.
+```
+
+### 💡 可替换不同引导方向
+
+```python
+add_assistant_message(messages, "Tea is better because")
+add_assistant_message(messages, "Neither is very good because")
+```
+
+---
+
+## 2️⃣ Stop Sequences（停止生成的控制符）
+
+### 🛑 场景说明
+
+你希望 Claude 的输出在遇到特定字符串时立即中止。
+
+例如：
+
+```python
+add_user_message(messages, "Count from 1 to 10")
+chat(messages, stop_sequences=["5"])
+```
+
+Claude 一旦生成 `"5"`，将立即终止输出。**注意：包含 stop 序列的 token 本身不会出现在返回结果中。**
+
+### 🧪 示例优化
+
+如果希望停止在 `" , 5"`，避免保留前缀标点，可设置：
+
+```python
+stop_sequences=[", 5"]
+```
+
+---
+
+## 🔧 技术实现小结
+
+| 技术 | 使用方式 | 应用场景 |
+|------|----------|----------|
+| Assistant 预填 | `add_assistant_message` | 引导生成方向、保持风格一致 |
+| Stop Sequences | `chat(..., stop_sequences=["标记"])` | 限定生成范围、用于控制输出截断（如脱敏、格式化） |
+
+---
+
+## 🧰 chat() 函数增强建议
+
+在 `chat()` 函数签名中加入：
+
+```python
+def chat(messages, system=None, temperature=1.0, stop_sequences=[]):
+    ...
+    if stop_sequences:
+        params["stop_sequences"] = stop_sequences
+```
+
+即可支持完整的停用词功能。
+
+---
+
+📌 **这一课展示了仅靠 prompt 无法实现的高级控制技术，适用于更复杂或更高要求的生成场景。**
+# 第十二课：结合使用 Assistant Message 预填充 与 Stop Sequence
+
+在使用 Claude 生成结构化数据（如 JSON、Python 代码或列表）时，Claude 往往会在返回内容中添加额外的说明、头部或注释信息。这在某些场景下会破坏用户体验，特别是当我们只想获取**纯粹的结构化输出**时。
+
+## 解决方案：预填充 + Stop Sequence
+
+为了解决这个问题，我们可以结合使用：
+
+- **Assistant Message 预填充**：人为指定 Claude 回应的起始片段。
+- **Stop Sequences**：指定 Claude 遇到特定字符串时立刻停止输出。
+
+## 示例：生成 AWS EventBridge JSON 规则
+
+设想我们构建了一个 Web 应用，用户输入需求后点击“生成”，希望得到一段 EventBridge 规则（JSON 格式）。我们希望输出 **只包含 JSON**，不包含注释或 Markdown 格式。
+
+### 不加控制的输出问题
+
+Claude 默认可能返回如下格式：
+
+```
+```json
+{
+  "source": ["aws.ec2"],
+  ...
+}
+``` 
+```
+
+这种包含 Markdown 代码块标记（```）的输出不利于程序提取纯粹内容。
+
+### 解决方案代码实现
+
+```python
+messages = []
+add_user_message(messages, "Generate a very short EventBridge rule as JSON.")
+add_assistant_message(messages, "```json")  # 预填充开头
+response = chat(messages, stop_sequences=["```"])  # 设置停止标记
+```
+
+Claude 会认为自己已经开始写 JSON，因此不会添加解释性语言。遇到结尾的 ``` 时立刻停止输出。
+
+我们可以进一步使用 `json.loads()` 和 `strip()` 对输出做清理：
+
+```python
+import json
+cleaned = json.loads(response.strip())
+```
+
+## 原理解析图解（简要）
+
+- Claude 接收到用户消息，准备写规则。
+- 遇到 assistant 预填充 `"```json"`，认为自己已经开始写 JSON。
+- 按照 JSON 写入内容。
+- 一旦生成结尾的 `"```"`，触发 stop sequence，立即终止输出。
+
+## 应用场景
+
+此技术非常适用于生成以下结构化数据时：
+
+- JSON / XML / YAML
+- Python、Shell 等代码段
+- Markdown 列表、表格
+- SQL 语句、配置片段等
+
+目标是**获取纯净内容，无头尾注释、无解释性描述**。
+
+---
+
+> ✅ 建议在所有结构化输出需求中采用 Assistant 预填充 + Stop Sequences 组合。
+# 第十三课：练习 Stop Sequence 与 Assistant Message 预填
+
+本课是对上一课内容的练习，目标是熟练掌握如何使用 Stop Sequence 和 Assistant 预填（Prefill）控制 Claude 的输出格式，特别是输出结构化内容（如命令列表）时避免冗余说明或多余格式。
+
+---
+
+## 🎯 目标
+
+- 通过 Claude 生成三个 AWS CLI 示例命令
+- 输出中不能包含说明文字、注释或格式化标签（如 Markdown 标题）
+
+---
+
+## 🧪 初始尝试（错误示范）
+
+使用如下 prompt：
+
+```
+generate three different sample AWS CLI commands
+```
+
+Claude 会返回：
+
+- 顶部有说明性文字
+- 每个命令前有编号或注释
+- 被 Markdown 的 ``` 包裹
+
+这些都是我们不想要的。
+
+---
+
+## ✅ 正确做法
+
+### 1. 使用 Assistant Message 预填控制格式
+
+预填内容：
+
+```
+```bash
+```
+
+含义是告诉 Claude：
+> “你已经开始写 Markdown 代码块，并使用 bash 语法高亮”
+
+Claude 会紧接着开始生成命令内容。
+
+### 2. 使用 Stop Sequence 控制结尾
+
+设置 stop sequence 为：
+
+```
+```（三个反引号）
+```
+
+这样 Claude 会在输出到 ``` 时立刻中断，避免输出结束语或说明。
+
+---
+
+## 💡 最佳写法
+
+预填内容如下：
+
+```
+Here are all three commands in a single block without any comments:
+```bash
+```
+
+注意：
+
+- 明确告诉 Claude 我们要“单一代码块、无注释”
+- 换行后再接代码格式，有助于避免开头插入说明
+
+配合 stop sequence ``` ，Claude 将仅生成命令本体。
+
+---
+
+## 🧾 示例输出（符合预期）
+
+```bash
+aws s3 ls
+aws ec2 describe-instances
+aws lambda list-functions
+```
+
+无标题、无编号、无注释、无多余内容。符合结构化输出场景需求。
+
+---
+
+## ✅ 小结
+
+- 使用 assistant message 预填明确 Claude 的起始输出格式
+- 使用 stop sequence 控制终止时机，避免结尾废话
+- 针对结构化输出（代码块、JSON、列表等）这是通用做法
+
 # 2025-07-29
 
 # 🧠 第九课：理解 Claude 的 Temperature 参数
