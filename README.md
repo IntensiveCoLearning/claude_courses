@@ -113,7 +113,7 @@ Telegram：https://t.me/LXDAO/26860
 | [echooooz](https://github.com/IntensiveCoLearning/claude_courses/blob/main/echooooz.md) | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ |   | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [rayjun](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rayjun.md) | ✅ | ✅ | ⭕️ | ⭕️ | ✅ | ✅ |   | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [dddreame](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dddreame.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [skyonedot](https://github.com/IntensiveCoLearning/claude_courses/blob/main/skyonedot.md) | ✅ | ⭕️ | ✅ | ⭕️ | ⭕️ | ⭕️ |   | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [skyonedot](https://github.com/IntensiveCoLearning/claude_courses/blob/main/skyonedot.md) | ✅ | ⭕️ | ✅ | ⭕️ | ❌ | |   | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [LambertAlpha](https://github.com/IntensiveCoLearning/claude_courses/blob/main/LambertAlpha.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [BiscuitCoder](https://github.com/IntensiveCoLearning/claude_courses/blob/main/BiscuitCoder.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [wangyidong3](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wangyidong3.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |   | |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
