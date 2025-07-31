@@ -15,6 +15,75 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-31
+
+# Running the eval
+
+The run_prompt Function:
+
+```python
+def run_prompt(test_case):
+    """Merges the prompt and test case input, then returns the result"""
+    prompt = f"""
+Please solve the following task:
+
+{test_case["task"]}
+"""
+    
+    messages = []
+    add_user_message(messages, prompt)
+    output = chat(messages)
+    return output
+```
+
+The run_test_case Function
+
+```python
+def run_test_case(test_case):
+    """Calls run_prompt, then grades the result"""
+    output = run_prompt(test_case)
+    
+    # TODO - Grading
+    score = 10
+    
+    return {
+        "output": output,
+        "test_case": test_case,
+        "score": score
+    }
+```
+
+The run_eval Function
+
+```python
+def run_eval(dataset):
+    """Loads the dataset and calls run_test_case with each case"""
+    results = []
+    
+    for test_case in dataset:
+        result = run_test_case(test_case)
+        results.append(result)
+    
+    return results
+```
+
+Running the Evaluation
+
+```python
+with open("dataset.json", "r") as f:
+    dataset = json.load(f)
+
+results = run_eval(dataset)
+
+print(json.dumps(results, indent=2))
+```
+
+Each result contains three key pieces of information:
+
+output: The complete response from Claude
+test_case: The original test case that was processed
+score: The evaluation score (currently hardcoded)
+
 # 2025-07-30
 
 # Generating test datasets
