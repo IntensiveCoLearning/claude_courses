@@ -19,7 +19,7 @@ A coder who is passionate about web technologies.
 
 ## 结合工具来使用 Claude
 
-Claude 在处理一些事情上是有限的（例如和日期相关、和一些系统上的设置相关）需要通过工具来扩展功能，光靠 Prompt 解决不了具体问题。
+Claude 在处理一些事情上是有限的（例如和日期相关、和一些系统上的设置相关）需要通过工具来扩展功能，光靠 Prompt 解决不了这种局限性。
 
 # 2025-07-30
 
