@@ -50,7 +50,19 @@ The first line of your prompt is the most important part of your entire request.
   - Lead your prompt with a simple statement
   - Instead of: I need to know .... Use: Write three paragraphs about ....
   - Instead of: I was reading about renewable ... Use: Identify three countries that use geothermal energy ...
-- 
+
+Direct Instructions
+
+- Use instructions, not questions
+- Start with direct action verbs like "Write," "Create," or "Generate"
+
+For example: Generate a one-day meal plan for an athlete that meets their dietary restrictions.
+
+This revision immediately tells Claude:
+
+- What action to take (generate)
+- What to create (a meal plan)
+- Key constraints (one day, for an athlete, meeting dietary restrictions)
 
 TODO I think it might a good idea to train how to communcate with AI, how to write clear language to AI. Or we could create a new language for AI (like next generation programming language)
 
