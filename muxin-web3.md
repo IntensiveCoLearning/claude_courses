@@ -15,6 +15,15 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-31
+
+今天学习了 structure with XML tags 和 providing examples。
+- structure with XML tags：用语义化的 XML tag 将大段的文字包裹起来，让 AI 能够更好的理解其中的意思。
+- providing examples：给出明确的 input 和 output 的例子，让 AI 能更好的 get 到你想要的结果，特别是对复杂的问题，examples 还分为 “One-shot” 和 “Multi-shot”。
+- 感觉还是不能把 AI 当作“成熟复杂的人”，原则还是尽可能的表达直接、简单、清晰、结构化、给出足够的 context 甚至例子。
+
+想起了之前奥特曼说大家不要使用一些礼貌用语，会增加 AI 的计算量且没啥用处，确实，它不会因为你的“请”“谢谢”而给你更加优质的 response。
+
 # 2025-07-30
 
 今天学习了 Prompt engineering techniques, 有几点需要注意：
