@@ -15,6 +15,17 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-31
+
+同步发于推特：
+https://x.com/cryptonerdcn/status/1950914587987157376
+
+第八天打卡：
+Hooks tips:
+先让Claude code把tools列出来，好知道我们要在哪个tools执行前后加hooks。
+而Hooks除了是自动触发之外，如果不涉及权限的内容，仅仅只是执行逻辑的话，和Custom Command区别不大。
+由于我的编程style，这的确造成了我更多的喜欢自己去检查和触发一些逻辑而不是完全交给自动化流程。
+
 # 2025-07-30
 
 同步发布于推特：
