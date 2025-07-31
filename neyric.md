@@ -21,6 +21,12 @@ A coder who is passionate about web technologies.
 
 Claude 在处理一些事情上是有限的（例如和日期相关、和一些系统上的设置相关）需要通过工具来扩展功能，光靠 Prompt 解决不了这种局限性。
 
+### 如何使用工具调用
+
+设置工具调用需要使用 JSON Schem 最简单的方法是提供对应的代码给 Claude 让 Claude 编写用于该工具调用的 JSON Schema 内容。
+
+使用 tools 是，需要在请求中包含 tools 参数（一个存放 JSON 的 Array 数组）用于描述 Claude 可以调用的参数，在请求的结果中，会另外返回一个包含工具调用相关的内容（如果需要的话）的 Multi Block 信息。
+
 # 2025-07-30
 
 ## Being Specific
