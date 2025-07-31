@@ -15,6 +15,10 @@ A Builder
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-31
+
+今天在看到 Sampling 帮我理解了之前一个没想通的问题，就是 MCP Server 怎么和大模型解耦，通过 Sampling，每个使用 MCP Server 的 Client 都只需要获取 MCP Server 本身的能力，每个客户端自身再去接入自己的大模型。这样发布 MCP Server 的人就不需要去承担每个调用者的 AI 成本
+
 # 2025-07-29
 
 对于 MCP Server ，有三个重要的组件：
