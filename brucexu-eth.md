@@ -15,6 +15,47 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-31
+
+## Prompt Engineering
+
+Prompt engineering is about taking a prompt you've written and improving it to get more reliable, higher-quality outputs. This process involves iterative refinement - starting with a basic prompt, evaluating its performance, then systematically applying engineering techniques to improve it.
+
+- Set a goal
+- Write an initial prompt
+- Eval the prompt
+- Apply a prompt engineering technique
+- Re-eval to verify better performance
+- and repeat the last two steps
+
+It is good to build a report for test cases, scores, and results for prompts.
+
+Normally, we should include the following in the report:
+
+- Scenario: background and our goal
+- Prompt Inputs: test cases
+- Solution Criteria
+- Output
+- Score: graded by graders
+- Reasoning
+
+TODO Are there any tools for prompt engineering? I need to improve my prompt for weekly review. Maybe start with https://langfuse.com/
+
+Found many in <https://mirascope.com/blog/prompt-engineering-tools>, lol. It is way too competitive even for Prompt Engineering...
+
+The first line of your prompt is the most important part of your entire request. This is where you set the stage for everything that follows, and getting it right can dramatically improve your results.
+
+- Clarity and directness: using simple language and avoid ambiguity
+  - State what you want explicitly
+  - Lead your prompt with a simple statement
+  - Instead of: I need to know .... Use: Write three paragraphs about ....
+  - Instead of: I was reading about renewable ... Use: Identify three countries that use geothermal energy ...
+- 
+
+TODO I think it might a good idea to train how to communcate with AI, how to write clear language to AI. Or we could create a new language for AI (like next generation programming language)
+
+TODO create a prompt to improve your prompt and make it clear.
+
 # 2025-07-30
 
 ## Prompt evaluation
