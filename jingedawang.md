@@ -15,6 +15,64 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-31
+
+MCP其实是Claude原本的tool use功能的增强。在前面的介绍中，我们已经知道，要想让Claude调用tool，需要写好tool schema，并实现tool的功能。如果我们想要实现一些和第三方服务相关的功能，比如，与GitHub访问有关的功能，我们就得在我们的tool的实现中调用GitHub API。这很麻烦，而且这种事情是可以复用的，完全可以由一拨人专门写这种tool，然后让其他人直接调用。于是这个需求就诞生了MCP。它就是鼓励服务的提供商自己实现MCP接口，提供tool给其他用户。调用Claude的用户只需要引入这些别人制作好的tool就行了。这和直接引入Claude内置的tool效果应该差不多。
+
+接下来，我们看看整个调用MCP的流程是怎么进行的。首先，用户给我们的服务发prompt。我们借助内置的MCP Client向MCP Server发出ListToolsRequest请求，获取到支持的tool列表。这一步其实替代了之前我们自己维护的tool list。接下来，我们把用户query和tools发送给Claude，Claude经过分析，认为应该调用某个tool，于是返回tooluse request。我们收到这个tooluse request后，直接转发给MCP Server。MCP Server在内部会调用Github API获得所需的内容，然后以CallToolResult接口返回。我们再把返回的结果交给Claude，由Claude最终整合所有信息，给出回答。整个过程中，MCP起到的作用就是替代我们维护的tool list，以及替代我们实现所有的tool。
+
+![image.png](attachment:53fff6e9-b6b1-44ff-8ed0-1415e3a321b9:image.png)
+
+通常，我们只需要实现MCP Server（如果我们是提供服务的一方）或者实现MCP Client（如果我们是与用户交互的一方）。但接下来我们会同时实现Server和Client，以搞清楚MCP的原理。
+
+先看MCP Server这边。使用MCP SDK可以非常方便地利用decorator @mcp.tool来实现tool，而不需要写JSON schema。
+
+```python
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP("DocumentMCP", log_level="ERROR")
+
+docs = {
+    "deposition.md": "This deposition covers the testimony of Angela Smith, P.E.",
+    "report.pdf": "The report details the state of a 20m condenser tower.",
+    "financials.docx": "These financials outline the project's budget and expenditure",
+    "outlook.pdf": "This document presents the projected future performance of the",
+    "plan.md": "The plan outlines the steps for the project's implementation.",
+    "spec.txt": "These specifications define the technical requirements for the equipment"
+}
+
+@mcp.tool(
+    name="read_doc_contents",
+    description="Read the contents of a document and return it as a string."
+)
+def read_document(
+    doc_id: str = Field(description="Id of the document to read")
+):
+    if doc_id not in docs:
+        raise ValueError(f"Doc with id {doc_id} not found")
+    
+    return docs[doc_id]
+```
+
+可以`mcp dev mcp_server.py`启动一个MCP inspector，用来调试实现的tool能否正常工作。这可以在Client Server联调之前解决Server端的问题。
+
+![image.png](attachment:17f715be-0ad7-4ac7-8fd9-95acdb991fb2:image.png)
+
+Client端的实现更简单，只需要调用Session类的list_tools方法和call_tool方法即可。
+
+```python
+async def list_tools(self) -> list[types.Tool]:
+    result = await self.session().list_tools()
+    return result.tools
+
+async def call_tool(
+    self, tool_name: str, tool_input: dict
+) -> types.CallToolResult | None:
+    return await self.session().call_tool(tool_name, tool_input)
+```
+
+Server端除了tool，还提供了resource功能。你可以把文档、图片、JSON等等资源作为resource提供给客户端。实现的方法也很简单，还是用decorator就行。没有参数的resource提供静态资源，一般是resource list。有参数的成为resource template，可以根据id返回对应的resource。resource也可以用inspector调试。
+
 # 2025-07-30
 
 Claude的reasoning不需要切换模型，而是在同一个模型里面打开thinking模式即可。只需要设置额外参数think=True和think_budget。这种模式叫做extended thinking。
