@@ -85,7 +85,7 @@ Telegram：https://t.me/LXDAO/26860
 | [smile7up](https://github.com/IntensiveCoLearning/claude_courses/blob/main/smile7up.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [XiaoYanKongLing](https://github.com/IntensiveCoLearning/claude_courses/blob/main/XiaoYanKongLing.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [CHENFANGC](https://github.com/IntensiveCoLearning/claude_courses/blob/main/CHENFANGC.md) | ✅ | ⭕️ | ✅ | ⭕️ | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | |
-| [neyric](https://github.com/IntensiveCoLearning/claude_courses/blob/main/neyric.md) | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ⭕️ | ✅ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [neyric](https://github.com/IntensiveCoLearning/claude_courses/blob/main/neyric.md) | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ⭕️ | ✅ | ✅ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | [Yajunceng](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Yajunceng.md) | ✅ | ✅ | ⭕️ | ⭕️ | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | |
 | [SiliconPoet](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SiliconPoet.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [1291723356](https://github.com/IntensiveCoLearning/claude_courses/blob/main/1291723356.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -100,9 +100,9 @@ Telegram：https://t.me/LXDAO/26860
 | [123czy](https://github.com/IntensiveCoLearning/claude_courses/blob/main/123czy.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [shuyuanzhang118](https://github.com/IntensiveCoLearning/claude_courses/blob/main/shuyuanzhang118.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [YooYooY](https://github.com/IntensiveCoLearning/claude_courses/blob/main/YooYooY.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-| [cryptonerdcn](https://github.com/IntensiveCoLearning/claude_courses/blob/main/cryptonerdcn.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [cryptonerdcn](https://github.com/IntensiveCoLearning/claude_courses/blob/main/cryptonerdcn.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | |
 | [crazyf131419](https://github.com/IntensiveCoLearning/claude_courses/blob/main/crazyf131419.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [joyc](https://github.com/IntensiveCoLearning/claude_courses/blob/main/joyc.md) | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| [joyc](https://github.com/IntensiveCoLearning/claude_courses/blob/main/joyc.md) | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | |
 | [erfect2020](https://github.com/IntensiveCoLearning/claude_courses/blob/main/erfect2020.md) | ⭕️ | ✅ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [JateLi](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JateLi.md) | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ |   | | | | | | | | | | | | | | | | | | | | | |
 | [wodeche](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wodeche.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -132,6 +132,7 @@ Telegram：https://t.me/LXDAO/26860
 | [paoqi1](https://github.com/IntensiveCoLearning/claude_courses/blob/main/paoqi1.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
