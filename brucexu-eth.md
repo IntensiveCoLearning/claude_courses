@@ -15,6 +15,116 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-01
+
+## Prompt Engineering
+
+### Be ing specific 
+
+you can provide clear guidelines or steps that direct Claude toward the kind of output you're looking for.
+
+Two Types of Guidelines:
+
+- List qualities that the output should have
+- Provide steps the model should follow
+
+Output Quality Guidelines:
+
+- Length of the response
+- Structure and format
+- Specific attributes or elements to include
+- Tone or style requirements
+
+Process Steps:
+
+- Brainstorm three talents that would create dramatic tension
+- Pick the most interesting talent
+- Outline a pivotal scene that reveals the talent
+- Brainstorm supporting character types that could increase the impact
+
+Example (for a meal planning prompt):
+
+```
+Guidelines:
+1. Include accurate daily calorie amount
+2. Show protein, fat, and carb amounts  
+3. Specify when to eat each meal
+4. Use only foods that fit restrictions
+5. List all portion sizes in grams
+6. Keep budget-friendly if mentioned
+```
+
+Good prompt needs experts' experience and domain knowledge, this is the key for building AI apps.
+
+Always Use Output Guidelines and Use Process Steps For Complex Problems.
+
+For instance, if you're asking Claude to analyze why a sales team's performance dropped, you'd want to guide it through examining market metrics, industry changes, individual performance, organizational changes, and customer feedback - rather than letting it focus on just one potential cause.
+
+### Structure with XML tags
+
+XML tags provide a simple way to add structure and clarity to your prompts, especially when you're interpolating large amounts of data.
+
+```
+Debug my code below ... using provided docs:
+
+from datavortex import xxx
+
+# docs...
+```
+
+Better one:
+
+```
+Debug my code below ... using provided docs:
+
+<code>
+from datavortex import xxx
+
+</code>
+
+<docs>
+# docs...
+</docs>
+```
+
+When to Use XML Tags
+
+- Including large amounts of context or data
+- Mixing different types of content (code, documentation, data)
+- You want to be extra clear about content boundaries
+- Working with complex prompts that interpolate multiple variables
+
+Example:
+
+```
+<athlete_information>
+- Height: 6'2"
+- Weight: 180 lbs
+- Goal: Build muscle
+- Dietary restrictions: Vegetarian
+</athlete_information>
+
+Generate a meal plan based on the athlete information above.
+```
+
+### Providing examples
+
+Providing examples in your prompts is one of the most effective prompt engineering techniques you'll use. This approach, known as "one-shot" or "multi-shot" prompting, involves giving Claude sample input/output pairs to guide its responses.
+
+![](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1748623646%2F05_-_005_-_Providing_Examples_04.1748623646206.png)
+
+The improved prompt includes:
+
+- A clear positive example: "Great game tonight!" → "Positive"
+- A sarcastic example: "Oh yeah, I really needed a flight delay tonight! Excellent!" → "Negative"
+- Context explaining why sarcasm should be treated carefully
+
+Notice how the examples are wrapped in XML tags like <sample_input> and <ideal_output>. This structure makes it crystal clear to Claude what each part represents.
+
+Finding Good Examples from Evaluations and use as examples.
+
+Don't just provide the input/output pair - explain why the output is good will provide additional context to help Claude understand the reasoning.
+
 # 2025-07-31
 
 ## Prompt Engineering
