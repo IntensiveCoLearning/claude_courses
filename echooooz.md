@@ -15,6 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-31
+
+- Prompt engineering
+    - simple language & instructions instead of question((s(use action verbs - identify/generate/write)
+    - specific - provide a list of qualities(highly recommend), or steps(with troubleshooting hard problems )
+    - structure with XML tags, useful when incl. a lot of context. eg. <my_code> ... </my_code>
+    - give Claude sample input/output pairs
+
 # 2025-07-29
 
 - Prompt evaluation
