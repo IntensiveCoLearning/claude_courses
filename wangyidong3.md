@@ -39,8 +39,9 @@ superclaude这个项目https://github.com/NomenAK/SuperClaude.git，之前感觉
 记忆和状态管理
 学习和适应能力
 
+所以重新看prompt evaluation, 也是workflow的定义。
 
-交叉一些其他的教程，更好的理解
+此外，交叉学习一些其他的教程，更好的理解prompt
 https://datawhalechina.github.io/llm-universe/#/
 这里更直接的罗列一些prompt engineering的技巧。
 
