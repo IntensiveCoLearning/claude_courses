@@ -15,6 +15,54 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-01
+
+但是这个resource和前面提到过的直接上传到Claude的resource有什么区别呢？
+
+除了Tool和Resource，MCP server还提供了Prompt功能。MCP server可以内置一系列prompt，当用户需要某些复杂的功能时，可以直接调用预置的prompt。下面是MCP server定义的一个prompt，它可以接收用户的参数。
+
+```python
+@mcp.prompt(
+    name="format",
+    description="Rewrites the contents of the document in Markdown format."
+)
+def format_document(
+    doc_id: str = Field(description="Id of the document to format")
+) -> list[base.Message]:
+    prompt = f"""
+Your goal is to reformat a document to be written with markdown syntax.
+
+The id of the document you need to reformat is:
+
+{doc_id}
+
+Add in headers, bullet points, tables, etc as necessary. Feel free to add in extra formatting.
+Use the 'edit_document' tool to edit the document. After the document has been reformatted...
+"""
+    
+    return [
+        base.UserMessage(prompt)
+    ]
+```
+
+和resource以及tool一样，在MCP Client端需要下面两个方法，通过session调用MCP Server的prompt。
+
+```python
+async def list_prompts(self) -> list[types.Prompt]:
+    result = await self.session().list_prompts()
+    return result.prompts
+
+async def get_prompt(self, prompt_name, args: dict[str, str]):
+    result = await self.session().get_prompt(prompt_name, args)
+    return result.messages
+```
+
+然后我们的server可以把prompt发给Claude获取结果。
+
+三种功能的设计思想。工具用于模型控制，资源用于应用控制，提示词用于用户控制。非常完美。当然，其实三者都需要用户实现决定可供选择的范围，只不过，最终是否使用，则是分别由模型、应用和用户决定。只有提示词用户可以决定必须用上，其它的都是由程序或者模型来决定是否调用的，这非常合理。
+
+![image.png](attachment:bc620362-3453-4410-8c6c-580837600ae6:image.png)
+
 # 2025-07-31
 
 MCP其实是Claude原本的tool use功能的增强。在前面的介绍中，我们已经知道，要想让Claude调用tool，需要写好tool schema，并实现tool的功能。如果我们想要实现一些和第三方服务相关的功能，比如，与GitHub访问有关的功能，我们就得在我们的tool的实现中调用GitHub API。这很麻烦，而且这种事情是可以复用的，完全可以由一拨人专门写这种tool，然后让其他人直接调用。于是这个需求就诞生了MCP。它就是鼓励服务的提供商自己实现MCP接口，提供tool给其他用户。调用Claude的用户只需要引入这些别人制作好的tool就行了。这和直接引入Claude内置的tool效果应该差不多。
