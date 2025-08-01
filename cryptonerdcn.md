@@ -15,6 +15,23 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-01
+
+同步发布于推特：
+https://x.com/cryptonerdcn/status/1951287786436436441
+
+第九天打卡：
+
+Claude Code SDK还真是没用过，不过的确跟官方说的一样，完全可以嵌入开发的各个流程中，就是token消耗是真的打不住了。
+
+The Claude Code SDK shines when integrated into larger development workflows. Consider using it for:
+
+- Git hooks that automatically review code changes
+- Build scripts that analyze and optimize code
+- Helper commands for code maintenance tasks
+- Automated documentation generation
+- Code quality checks in CI/CD pipelines
+
 # 2025-07-31
 
 同步发于推特：
