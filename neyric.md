@@ -21,7 +21,15 @@ A coder who is passionate about web technologies.
 
 使用 RAG 技术来对大文档进行处理，常规的对话，会话长度有限，收到提示词长度的限制，对于小文本、段落比较合适，但是涉及到大量的文档（例如 Excel / PDF 等文件）这个方法就不行了。
 
-RAG 技术会将一个大型文档分为多个不同的小块，然后再依据输入的 Prompt 进行信息的检索
+RAG 技术会将一个大型文档分为多个不同的小块，然后再依据输入的 Prompt 进行信息的检索。
+
+### 怎么对文档分块
+
+查看 Text chunking strategies 章节，文档分块似乎是需要在用户端（服务后端）对文档进行分块？具体实现有待继续研究。
+
+### Text Embedding
+
+使用 voyageai 这个库对分段的文本进行 embedding 转为数字。
 
 # 2025-07-31
 
