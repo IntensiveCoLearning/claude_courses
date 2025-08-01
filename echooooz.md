@@ -15,6 +15,13 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-01
+
+- 今天学习较少，主要研究模型计费
+    - CC新会话的input token就有19.6k。openai和gemini都解释说是因为agent system prompt巨大，但是看不到？
+    - 每轮对话，input token都会累计，input token数量巨大，占主要收费占比
+    - CC context window上限20w input token，到上限了会auto compact。Gemini支持100w token上下文
+
 # 2025-07-31
 
 - Prompt engineering
