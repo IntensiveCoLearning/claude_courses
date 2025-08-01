@@ -15,6 +15,10 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-02
+
+已经内淘汰了gg
+
 # 2025-07-31
 
 average_score=2.0 and the second time is 6.67
