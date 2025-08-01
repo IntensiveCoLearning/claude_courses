@@ -21,6 +21,11 @@ timezone: UTC+12
 
 打卡
 
+
+## 以太坊中文周会记录
+
+最新进展 xxx
+
 # 2025-08-01
 
 ## Prompt Engineering
