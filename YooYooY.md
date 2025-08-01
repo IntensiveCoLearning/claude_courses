@@ -15,6 +15,48 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-01
+
+今天账号被封了，很扎心，折腾了用代理，找中间商，都不是很满意，最后把接口换成了[openrouter](https://openrouter.ai)，发现还不错，里面统一做了接口的整合，还省去了很多适配工作。
+
+https://openrouter.ai/anthropic/claude-sonnet-4/api 统一封装成OpenAI格式:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+  base_url="https://openrouter.ai/api/v1",
+  api_key="<OPENROUTER_API_KEY>",
+)
+
+completion = client.chat.completions.create(
+  extra_headers={
+    "HTTP-Referer": "<YOUR_SITE_URL>", # Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
+  },
+  extra_body={},
+  model="anthropic/claude-sonnet-4",
+  messages=[
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is in this image?"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+          }
+        }
+      ]
+    }
+  ]
+)
+print(completion.choices[0].message.content)
+```
+
 # 2025-07-31
 
 # Running the eval
