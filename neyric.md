@@ -15,6 +15,14 @@ A coder who is passionate about web technologies.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-01
+
+## RAG
+
+使用 RAG 技术来对大文档进行处理，常规的对话，会话长度有限，收到提示词长度的限制，对于小文本、段落比较合适，但是涉及到大量的文档（例如 Excel / PDF 等文件）这个方法就不行了。
+
+RAG 技术会将一个大型文档分为多个不同的小块，然后再依据输入的 Prompt 进行信息的检索
+
 # 2025-07-31
 
 ## 结合工具来使用 Claude
