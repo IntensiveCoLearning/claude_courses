@@ -99,6 +99,9 @@ def find_date_in_content(content, local_date):
         r'#\s*' + local_date.strftime("%m/%d").lstrip('0').replace('/0', '/'),
         r'##\s*' + local_date.strftime("%m/%d").lstrip('0').replace('/0', '/'),
         r'###\s*' + local_date.strftime("%m/%d").lstrip('0').replace('/0', '/'),
+        r'#\s*' + local_date.strftime("%Y-%m-%d"),
+        r'##\s*' + local_date.strftime("%Y-%m-%d"),
+        r'###\s*' + local_date.strftime("%Y-%m-%d"),
         r'#\s*' + local_date.strftime("%m.%d").zfill(5),
         r'##\s*' + local_date.strftime("%m.%d").zfill(5),
         r'###\s*' + local_date.strftime("%m.%d").zfill(5)
@@ -143,12 +146,12 @@ def get_user_study_status(nickname):
 
         for date in get_date_range():
             local_date = date.astimezone(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
-            if date.day == current_date.day:
-                user_status[date] = "✅" if check_md_content(file_content, date, pytz.UTC) else " "
-            elif date > current_date:
+            if local_date.date() == current_date.date():
+                user_status[date] = "✅" if check_md_content(file_content, date, user_tz) else " "
+            elif local_date > current_date:
                 user_status[date] = " "
             else:
-                user_status[date] = "✅" if check_md_content(file_content, date, pytz.UTC) else "⭕️"
+                user_status[date] = "✅" if check_md_content(file_content, date, user_tz) else "⭕️"
         logging.info(f"Successfully processed file for user: {nickname}")
     except FileNotFoundError:
         logging.error(f"Error: Could not find file {file_name}")
@@ -269,7 +272,8 @@ def generate_user_row(user):
             continue
             
         # 如果是未来的日期，显示空
-        if user_datetime > user_current_day:
+        local_datetime = user_datetime.astimezone(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
+        if local_datetime > user_current_day:
             new_row += " |"
             continue
             
@@ -286,7 +290,8 @@ def generate_user_row(user):
         for day_idx in range(cycle_start_day, min(cycle_end_day + 1, i + 1)):
             if day_idx < len(date_range):
                 check_date = date_range[day_idx].astimezone(pytz.UTC).replace(hour=0, minute=0, second=0, microsecond=0)
-                if check_date <= user_current_day:
+                check_date_local = check_date.astimezone(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
+                if check_date_local <= user_current_day:
                     status = user_status.get(check_date, "⭕️")
                     if status == "⭕️":
                         absent_count += 1
