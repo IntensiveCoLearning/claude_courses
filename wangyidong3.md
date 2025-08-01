@@ -15,6 +15,43 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-01
+
+回到prompt evaluation 章节，因为看到
+superclaude这个项目https://github.com/NomenAK/SuperClaude.git，之前感觉很好用，今天想起看看源码，居然全是md文件。SuperClaude给我感受到AI Agent开发的一个重要趋势： 文档驱动的智能体定义。
+这种YAML前置元数据 + Markdown内容的模式，实际上是在声明式地定义智能体的能力和行为。
+想想一个项目里面里面全是定义，但这个"定义"包含多个层面：
+
+1. 行为定义（最重要）
+智能体的目标和原则
+决策优先级
+交互模式
+2. 能力定义
+可用的工具和资源
+权限和约束
+集成的外部服务
+3. 协作定义
+与其他智能体的关系
+协作模式和通信协议
+冲突解决机制
+4. 上下文定义
+领域知识和专业背景
+记忆和状态管理
+学习和适应能力
+
+
+交叉一些其他的教程，更好的理解
+https://datawhalechina.github.io/llm-universe/#/
+这里更直接的罗列一些prompt engineering的技巧。
+
+https://www.53ai.com/news/tishicikuangjia/2025062727685.html
+解释prompt engineering 和 context engineering 的区别，当然我很喜欢那个交叉饼图。对于RAG和promt
+
+
+再挖一个坑吧，反正要躺的：
+https://github.com/dair-ai/Prompt-Engineering-Guide
+这是一个60k star的 专门prompt engineering 的repo。
+
 # 2025-07-29
 
 今天学习量稍微少一点，累了。
