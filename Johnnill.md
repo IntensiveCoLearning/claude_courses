@@ -15,6 +15,10 @@ timezone: UTC-5
 ## Notes
 
 <!-- Content_START -->
+# 2025-07-31
+
+太好了 又是摸鱼的一天 确实学了 确实没学啥 什么prefill message and stop sequences 感觉还没学到精华 感觉不知道啥时候用这个 不过不重要 因为 今天星期四 明天星期五 再坚持一天 就是星期天！
+
 # 2025-07-30
 
 很好 今天也是摸鱼的一天今天只学会了Response streaming 就是把response分chunk出来 挤出来 不用等一起了 挺好的 我吃饭的时候也喜欢做好了的菜就赶紧先上来趁热吃 越学这个越感觉不妙啊 整个科技行业太拥挤了 欢迎大家来加入我们做food tech 一起来整restaurant行业 做点小工具 躺赚 需求量大 人傻钱多 欢迎各位老师兼职
