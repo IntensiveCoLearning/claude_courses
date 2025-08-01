@@ -15,6 +15,30 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-01
+
+Model Based Grading
+1. Code Graders: 程序化检查快速、客观(仅技术指标)
+2. Model Graders:  API调用评估高度灵活(可能不一致)
+3. Human Graders:人工评估最准确(耗时、昂贵)
+
+Code Based Grading
+1. 准备测试数据集（包含format字段）
+   ↓
+2. 运行run_eval函数
+   ↓ 
+3. 每个测试用例同时进行：
+   - Model Grading（语义质量1-10分）
+   - Code Grading（语法有效性0/10分）
+   ↓
+4. 计算综合分数：(模型分数 + 语法分数) / 2
+   ↓
+5. 生成评估报告：平均分、通过率、详细结果
+   ↓
+6. 基于结果优化提示词，重复评估
+
+Quiz on prompt evaluation: 6/6
+
 # 2025-07-31
 
 Prompt Evaluation
