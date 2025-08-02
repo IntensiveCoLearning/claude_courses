@@ -15,6 +15,203 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-02
+
+# Model based grading
+
+### Types of Graders
+
+- Code graders: Programmatically evaluate outputs using custom logic
+- Model graders: Use another AI model to assess the quality
+- Human graders: Have people manually review and score outputs
+
+### Implementing a Model Grader
+
+```python
+def grade_by_model(test_case, output):
+    # Create evaluation prompt
+    eval_prompt = """
+    You are an expert code reviewer. Evaluate this AI-generated solution.
+    
+    Task: {task}
+    Solution: {solution}
+    
+    Provide your evaluation as a structured JSON object with:
+    - "strengths": An array of 1-3 key strengths
+    - "weaknesses": An array of 1-3 key areas for improvement  
+    - "reasoning": A concise explanation of your assessment
+    - "score": A number between 1-10
+    """
+    
+    messages = []
+    add_user_message(messages, eval_prompt)
+    add_assistant_message(messages, "```json")
+    
+    eval_text = chat(messages, stop_sequences=["```"])
+    return json.loads(eval_text)
+```
+
+# Code based grading
+
+- Format: The response should return only the requested code type (Python, JSON, or Regex) without explanations
+- Valid Syntax: The generated code should actually parse correctly as the intended language
+- Task Following: The response should directly address what was asked and be accurate
+
+### Syntax Validation Functions
+
+```python
+def validate_json(text):
+    try:
+        json.loads(text.strip())
+        return 10
+    except json.JSONDecodeError:
+        return 0
+
+def validate_python(text):
+    try:
+        ast.parse(text.strip())
+        return 10
+    except SyntaxError:
+        return 0
+
+def validate_regex(text):
+    try:
+        re.compile(text.strip())
+        return 10
+    except re.error:
+        return 0
+```
+
+> For the code grader to know which validator to use, your test cases need to specify the expected output format:
+
+```python
+{
+    "task": "Create a Python function to validate an AWS IAM username",
+    "format": "python"
+}
+```
+
+### Combining Scores
+
+```python
+model_grade = grade_by_model(test_case, output)
+model_score = model_grade["score"]
+syntax_score = grade_syntax(output, test_case)
+
+score = (model_score + syntax_score) / 2
+```
+
+## Exercise Task
+
+Give the Model Grader more context on what a good solution looks like
+
+```python
+# Function to grade a test case + output using a model
+def grade_by_model(test_case, output):
+    eval_prompt = f"""
+You are an expert AWS code reviewer. Your task is to evaluate the following AI-generated solution.
+
+Original Task:
+<task>
+{test_case["task"]}
+</task>
+
+Solution to Evaluate:
+<solution>
+{output}
+</solution>
+
+Criteria you should use to evaluate the solution:
+<criteria>
+{test_case["solution_criteria"]}
+</criteria>
+
+Output Format
+Provide your evaluation as a structured JSON object with the following fields, in this specific order:
+- "strengths": An array of 1-3 key strengths
+- "weaknesses": An array of 1-3 key areas for improvement
+- "reasoning": A concise explanation of your overall assessment
+- "score": A number between 1-10
+
+Respond with JSON. Keep your response concise and direct.
+Example response shape:
+{{
+    "strengths": string[],
+    "weaknesses": string[],
+    "reasoning": string,
+    "score": number
+}}
+    """
+
+    messages = []
+    add_user_message(messages, eval_prompt)
+    add_assistant_message(messages, "```json")
+    eval_text = chat(messages, stop_sequences=["```"])
+    return json.loads(eval_text)
+```
+
+```python
+# Functions to validate the output structure
+import re
+import ast
+
+
+def validate_json(text):
+    try:
+        json.loads(text.strip())
+        return 10
+    except json.JSONDecodeError:
+        return 0
+
+
+def validate_python(text):
+    try:
+        ast.parse(text.strip())
+        return 10
+    except SyntaxError:
+        return 0
+
+
+def validate_regex(text):
+    try:
+        re.compile(text.strip())
+        return 10
+    except re.error:
+        return 0
+
+
+def grade_syntax(response, test_case):
+    format = test_case["format"]
+    if format == "json":
+        return validate_json(response)
+    elif format == "python":
+        return validate_python(response)
+    else:
+        return validate_regex(response)
+```
+
+```python
+# Function to execute a single test case and grade the output
+def run_test_case(test_case):
+    """Calls run_prompt, then grades the result"""
+    output = run_prompt(test_case)
+
+    model_grade = grade_by_model(test_case, output)
+    model_score = model_grade["score"]
+    reasoning = model_grade["reasoning"]
+
+    syntax_score = grade_syntax(output, test_case)
+
+    score = (model_score + syntax_score) / 2
+
+    return {
+        "output": output,
+        "test_case": test_case,
+        "score": score,
+        "reasoning": reasoning,
+    }
+```
+
 # 2025-08-01
 
 今天账号被封了，很扎心，折腾了用代理，找中间商，都不是很满意，最后把接口换成了[openrouter](https://openrouter.ai)，发现还不错，里面统一做了接口的整合，还省去了很多适配工作。
