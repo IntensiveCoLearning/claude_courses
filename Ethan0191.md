@@ -23,7 +23,8 @@ test for the markdown
 add funtions to validate JSON/Python/regex  
 make sure the format key  
 make sure the draft prompt  
-merge the model grader and the code grader  
+merge the model grader and the code grader   
+Average score: 4.83
 
 # 2025-07-30
 
