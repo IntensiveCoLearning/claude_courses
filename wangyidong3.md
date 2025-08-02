@@ -35,30 +35,36 @@ https://www.promptingguide.ai/
 
 ### 任务类型匹配指南
 
-#### 文本分类任务
-- **简单分类**：Zero-shot → Few-shot
-- **复杂分类**：Few-shot + CoT
-- **多标签分类**：Few-shot + 结构化输出
-
-#### 问答系统
-- **事实性问答**：RAG + Few-shot
-- **推理性问答**：CoT + Self-Consistency
-- **开放性问答**：Few-shot + 创意提示
-
-#### 数学和逻辑推理
-- **基础计算**：PAL
-- **复杂推理**：CoT + Self-Consistency
-- **多步骤问题**：ToT
-
-#### 创意生成
-- **内容创作**：Few-shot + 创意提示
-- **头脑风暴**：ToT
-- **风格迁移**：Few-shot + 风格示例
-
-#### 代码相关任务
-- **代码生成**：Few-shot + 注释示例
-- **代码解释**：CoT
-- **调试辅助**：ReAct + 工具集成
+| 任务大类 | 具体任务 | 推荐技术组合 | 优先级 | 备选方案 | 适用场景说明 |
+|----------|----------|--------------|--------|----------|--------------|
+| **文本分类** | 简单分类 | Zero-shot → Few-shot | 高 | CoT（复杂类别） | 明确类别，充足训练数据 |
+| | 复杂分类 | Few-shot + CoT | 高 | Self-Consistency | 需要推理的分类任务 |
+| | 多标签分类 | Few-shot + 结构化输出 | 中 | Zero-shot + 格式约束 | 多个标签同时预测 |
+| | 情感分析 | Few-shot | 高 | Zero-shot | 有代表性样本时 |
+| **问答系统** | 事实性问答 | RAG + Few-shot | 高 | RAG + Zero-shot | 需要准确事实信息 |
+| | 推理性问答 | CoT + Self-Consistency | 高 | ToT（复杂推理） | 多步逻辑推理 |
+| | 开放性问答 | Few-shot + 创意提示 | 中 | Zero-shot + 角色设定 | 主观性强的问题 |
+| | 常识问答 | Generate Knowledge + CoT | 中 | Few-shot + CoT | 需要背景知识 |
+| **数学逻辑** | 基础计算 | PAL | 高 | CoT + 验证 | 数值计算为主 |
+| | 复杂推理 | CoT + Self-Consistency | 高 | ToT | 多步数学推理 |
+| | 多步骤问题 | ToT | 高 | CoT + 分解 | 需要探索多种路径 |
+| | 几何问题 | Multimodal CoT | 中 | CoT + 图形描述 | 涉及图形理解 |
+| **创意生成** | 内容创作 | Few-shot + 创意提示 | 高 | Zero-shot + 风格指导 | 需要特定风格 |
+| | 头脑风暴 | ToT | 高 | Few-shot + 多样性 | 需要多种创意方案 |
+| | 风格迁移 | Few-shot + 风格示例 | 高 | Zero-shot + 详细描述 | 有明确目标风格 |
+| | 故事创作 | Few-shot + 结构化 | 中 | CoT + 情节规划 | 长篇内容创作 |
+| **代码任务** | 代码生成 | Few-shot + 注释示例 | 高 | Zero-shot + 详细需求 | 有类似代码参考 |
+| | 代码解释 | CoT | 高 | Few-shot + 示例 | 需要逐步解析 |
+| | 调试辅助 | ReAct + 工具集成 | 高 | CoT + 错误分析 | 需要执行和测试 |
+| | 代码重构 | Few-shot + 最佳实践 | 中 | CoT + 优化建议 | 有重构标准 |
+| **信息提取** | 命名实体识别 | Few-shot | 高 | Zero-shot + 格式化 | 有标注示例 |
+| | 关系抽取 | Few-shot + 结构化 | 高 | CoT + 推理 | 复杂关系识别 |
+| | 文档解析 | RAG + Few-shot | 中 | Multimodal CoT | 结构化文档 |
+| | 数据清洗 | Few-shot + 规则 | 中 | PAL + 验证 | 有清洗规则 |
+| **对话系统** | 任务导向对话 | ReAct + 工具集成 | 高 | Few-shot + 状态管理 | 需要执行操作 |
+| | 闲聊对话 | Few-shot + 个性化 | 中 | Zero-shot + 角色设定 | 社交性对话 |
+| | 客服对话 | RAG + Few-shot | 高 | Few-shot + 知识库 | 需要准确信息 |
+| | 教学对话 | CoT + 个性化 | 高 | Few-shot + 教学法 | 需要解释过程 |
 
 ### 选择决策树
 
