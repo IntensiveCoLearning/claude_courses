@@ -17,8 +17,6 @@ beginner
 <!-- Content_START -->
 # 2025-08-02
 
-```def hello_world():
-    print("Hello, world!")```
 
 # 2025-07-31
 
