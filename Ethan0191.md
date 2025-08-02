@@ -17,16 +17,10 @@ beginner
 <!-- Content_START -->
 # 2025-08-02
 
-
-# 2025-07-31
-
-分级机制：average_score=2.0 and the second time is 6.67
-set a role
-print out the task
-List the solution
-ask additional strengths\weakness\resoning finally get the score
-score=model_grade{"score"}
-
+``````
+def hello_world():
+    print("Hello, world!")
+``````
 
 # 2025-07-30
 
