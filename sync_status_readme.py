@@ -117,18 +117,23 @@ def get_content_for_date(content, start_pos):
     return content[start_pos:]
 
 def check_md_content(file_content, date, user_tz):
+    """
+    修复后的内容检查函数 - 直接使用 UTC 日期匹配
+    """
     try:
         content = extract_content_between_markers(file_content)
-        local_date = date.astimezone(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
-        current_date_match = find_date_in_content(content, local_date)
-
+        
+        # 直接使用 UTC 日期进行匹配，因为用户写日期标题时使用的是标准日期格式
+        utc_date = date.replace(hour=0, minute=0, second=0, microsecond=0)
+        current_date_match = find_date_in_content(content, utc_date)
+        
         if not current_date_match:
-            logging.info(f"No match found for date {local_date.strftime('%Y-%m-%d')}")
+            logging.info(f"No match found for date {utc_date.strftime('%Y-%m-%d')}")
             return False
 
         date_content = get_content_for_date(content, current_date_match.end())
         date_content = re.sub(r'\s', '', date_content)
-        logging.info(f"Content length for {local_date.strftime('%Y-%m-%d')}: {len(date_content)}")
+        logging.info(f"Content length for {utc_date.strftime('%Y-%m-%d')}: {len(date_content)}")
         return len(date_content) > 10
     except Exception as e:
         logging.error(f"Error in check_md_content: {str(e)}")
@@ -145,10 +150,13 @@ def get_user_study_status(nickname):
         current_date = datetime.now(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
 
         for date in get_date_range():
-            local_date = date.astimezone(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
-            if local_date.date() == current_date.date():
+            # 直接比较 UTC 日期，避免时区转换问题
+            utc_date = date.replace(hour=0, minute=0, second=0, microsecond=0)
+            user_current_date = current_date
+            
+            if utc_date.date() == user_current_date.date():
                 user_status[date] = "✅" if check_md_content(file_content, date, user_tz) else " "
-            elif local_date > current_date:
+            elif utc_date.date() > user_current_date.date():
                 user_status[date] = " "
             else:
                 user_status[date] = "✅" if check_md_content(file_content, date, user_tz) else "⭕️"
@@ -272,8 +280,7 @@ def generate_user_row(user):
             continue
             
         # 如果是未来的日期，显示空
-        local_datetime = user_datetime.astimezone(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
-        if local_datetime > user_current_day:
+        if user_datetime.date() > user_current_day.date():
             new_row += " |"
             continue
             
@@ -289,9 +296,8 @@ def generate_user_row(user):
         absent_count = 0
         for day_idx in range(cycle_start_day, min(cycle_end_day + 1, i + 1)):
             if day_idx < len(date_range):
-                check_date = date_range[day_idx].astimezone(pytz.UTC).replace(hour=0, minute=0, second=0, microsecond=0)
-                check_date_local = check_date.astimezone(user_tz).replace(hour=0, minute=0, second=0, microsecond=0)
-                if check_date_local <= user_current_day:
+                check_date = date_range[day_idx].replace(hour=0, minute=0, second=0, microsecond=0)
+                if check_date.date() <= user_current_day.date():
                     status = user_status.get(check_date, "⭕️")
                     if status == "⭕️":
                         absent_count += 1
