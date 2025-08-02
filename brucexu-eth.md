@@ -17,14 +17,13 @@ timezone: UTC+12
 <!-- Content_START -->
 # 2025-08-02
 
-## test
+## Tool use
 
-打卡
+Tools allow Claude to access information from the outside world, extending its capabilities beyond what it learned during training
 
+Tool use solves this limitation by creating a structured way for Claude to request and receive fresh information.
 
-## 以太坊中文周会记录
-
-最新进展 xxx
+When a user asks about current weather, you include instructions in your prompt about how to retrieve weather data. Claude recognizes it needs current information and requests weather data for the specific location. Your server then calls a weather API to get real-time conditions and sends that data back to Claude. Finally, Claude combines the fresh weather data with the user's question to provide an accurate, current response.
 
 # 2025-08-01
 
