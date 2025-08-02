@@ -21,15 +21,28 @@ beginner
 
 # 2025-07-31
 
-average_score=2.0 and the second time is 6.67
+分级机制：average_score=2.0 and the second time is 6.67
+set a role
+print out the task
+List the solution
+ask additional strengths\weakness\resoning finally get the score
+score=model_grade{"score"}
+
 
 # 2025-07-30
 
-moyudeyitian
+数据集的生成：为AWS编写三种特定类型的输出：Python代码、JASO配置文件和表达式。
+写jason的常见用法
+import json
+
+data = {"name": "Alice", "age": 30}
+with open('dataset.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)  # 写入并美化缩进
+
 
 # 2025-07-29
 
-11
+typical eval workflow：提出问题，创建数据集，通过claude进行反馈，通过打分机制，实现提问迭代。
 
 # 2025-07-27
 
