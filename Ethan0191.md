@@ -20,10 +20,10 @@ beginner
 ``````
 test for the markdown
 ``````
-add funtions to validate JSON/Python/regex
-make sure the format key
-make sure the draft prompt
-merge the model grader and the code grader
+add funtions to validate JSON/Python/regex  
+make sure the format key  
+make sure the draft prompt  
+merge the model grader and the code grader  
 
 # 2025-07-30
 
