@@ -15,6 +15,25 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-02
+
+- Tool use
+    - to set a reminder
+        - get the current date time
+        - add duration to date time 
+        - set a reminder
+    - steps of a tool use
+        - 1/ write a tool function
+        - 2/ write a JSON schema
+        - 3/ call Claude with JSON schema. helps Claude understand how to call the tool。 Gets multi-block msg from Claude - content block & tool use block
+        - 4/ run the tool
+        - 5/ add tool use(a new block) and call Claude again(too use ids: to tie tool requests to tool results)
+    - overview of the entire process  一个用户端发起的简单问题，可能包含有多轮对话，其中包含用户端的执行和结果发送
+        - server sends tool schema & user msg
+        - claude sends assistant msg incl. text block & tooluse block(request to call a tool)
+        - server runs the tool function and sends a user msg with the result of function
+        - claude sends back the final text block with the result
+
 # 2025-08-01
 
 - 今天学习较少，主要研究模型计费
