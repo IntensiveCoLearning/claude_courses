@@ -15,6 +15,55 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-02
+
+Claude Code似乎是基于NodeJS开发的，需要用npm安装。
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+Claude是一个全流程开发工具，可以把它当作一个软件工程师，它可以做下面所有的事情
+
+![image.png](attachment:3c5487aa-2a61-4a1a-bb34-e5c0ceef75cb:image.png)
+
+使用/init命令可以生成一个CLAUDE.md文件，Claude会在其中总结整个project的概况，为后续所有对话提供上下文。这个文件可以是project scope、local scope或user scope。默认是project scope。用#开头的命令可以往CLAUDE.md里面添加内容。比如 **`# Always use descriptive variable names` 。**
+
+![image.png](attachment:510d7c50-f17d-4ad7-ae4a-430b106a8f00:image.png)
+
+使用Claude Code开发新feature有两种方式可以采用。
+
+第一种就是传统的先分析需求、设计方案、实现、测试。
+
+![image.png](attachment:072e916f-7d56-457a-ae38-045db4891388:image.png)
+
+第二种是测试驱动，先分析需求，然后设计测试，实现测试，最后实现代码并通过测试。
+
+具体做法就是在terminal里面和Claude Code对话，按照三个步骤或四个步骤逐步要求它做。
+
+```bash
+// First, ask Claude to read relevant files
+> Read the math.py and document.py files
+
+// Then ask for planning (not implementation)
+> Plan to implement document_path_to_markdown tool:
+1. Create a function that:
+   - Takes a file path parameter
+   - Validates the file exists  
+   - Determines file type from extension
+   - Reads binary data from file
+   - Leverages existing binary_document_to_markdown function
+   - Returns markdown string
+2. Add appropriate documentation
+3. Register the tool with MCP server
+4. Add tests
+
+// Finally, ask for implementation
+> Implement the plan
+```
+
+Claude Code可以完成git操作，可以自动修复bug。反正把它当作一个工程师就行了，人类工程师能做的它都能做。
+
 # 2025-08-01
 
 但是这个resource和前面提到过的直接上传到Claude的resource有什么区别呢？
