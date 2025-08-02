@@ -25,6 +25,67 @@ Tool use solves this limitation by creating a structured way for Claude to reque
 
 When a user asks about current weather, you include instructions in your prompt about how to retrieve weather data. Claude recognizes it needs current information and requests weather data for the specific location. Your server then calls a weather API to get real-time conditions and sends that data back to Claude. Finally, Claude combines the fresh weather data with the user's question to provide an accurate, current response.
 
+## Best Practices for Tool Functions
+
+- Use descriptive names: Both your function name and parameter names should clearly indicate their purpose
+- Validate inputs: Check that required parameters aren't empty or invalid, and raise errors when they are
+- Provide meaningful error messages: Claude can see error messages and might retry the function call with corrected parameters
+
+## Process
+
+- Tool functions: Basically functions like API calls
+- Tool schemas: Register your Tools to Claude (TODO different from MCP?)
+- Making Tool-Enabled API Calls: To enable Claude to use tools, you need to include a tools parameter in your API call.
+
+## Tool schemas
+
+The complete tool specification has three main parts:
+
+- name - A clear, descriptive name for your tool (like "get_weather")
+- description - What the tool does, when to use it, and what it returns
+- input_schema - The actual JSON schema describing the function's arguments
+
+You can use Claude to generate tool JSON schemas:
+
+1. give your code
+2. ask for generating JSON schema for tool calling
+3. add Anthropic doc on tool use
+4. generate by following best practices
+
+## Making Tool-Enabled API Calls
+
+```
+messages = []
+messages.append({
+    "role": "user",
+    "content": "What is the exact time, formatted as HH:MM:SS?"
+})
+
+response = client.messages.create(
+    model=model,
+    max_tokens=1000,
+    messages=messages,
+    tools=[get_current_datetime_schema],
+)
+```
+
+Put schema in the tools, and Claude with check wether it needs tool calls or not. Wehn Claude decides to use a tool, it returns an assistant message with multiple blocks in the content list. Multi-block messages include: Text Block and ToolUse Block.
+
+The ToolUse block includes:
+
+- An ID for tracking the tool call
+- The name of the function to call (like "get_current_datetime")
+- Input parameters formatted as a dictionary
+- The type designation "tool_use"
+
+The tool usage process:
+
+- Send user message with tool schema to Claude
+- Receive assistant message with text block and tool use block
+- Extract tool information and execute the actual function
+- Send tool result back to Claude along with complete conversation history
+- Receive final response from Claude
+
 # 2025-08-01
 
 ## Prompt Engineering
