@@ -15,6 +15,76 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-02
+
+# 第十五课：构建 Prompt Evaluation 数据集（生成式）
+
+本课我们继续构建一个自定义的 Prompt Evaluation 流程，目标是生成一个有效的数据集用于后续测试和评估 prompt 的性能。
+
+---
+
+## 🧠 目标
+
+编写一个 prompt，让 Claude 输出以下三种格式之一的代码，无附加说明：
+
+- Python 函数
+- JSON 配置
+- 正则表达式（raw regex）
+
+---
+
+## ✏️ 第一步：编写初始 prompt
+
+```text
+"请提供以下任务的解决方案：{task}"
+```
+
+该 prompt 的任务是根据用户输入的 task，生成一段符合要求的代码，不要包含解释说明或其他文本。
+
+---
+
+## 📦 第二步：生成数据集
+
+我们需要一个输入数据集，其中每条数据是一个 JSON 对象，包含字段 `task`。这些任务将会被插入到 prompt 中测试 Claude 的输出。
+
+数据集可以：
+
+- 手动书写
+- 使用 Claude 自动生成（推荐使用 Haiku 模型）
+
+---
+
+## 🔧 使用 Haiku 自动生成数据集
+
+编写函数 `generate_dataset()`，使用 Claude + prefill + stop sequence 的方式获取标准 JSON 数组，包含多个任务对象：
+
+```python
+messages = []
+add_user_message(messages, PROMPT)
+add_assistant_message(messages, "```json")
+text = chat(messages, stop_sequences=["```"])
+return json.loads(text)
+```
+
+---
+
+## 💾 保存数据集到文件
+
+```python
+with open("dataset.json", "w") as f:
+    json.dump(dataset, f, indent=2)
+```
+
+保存后我们就有一个标准化的输入数据集，可供后续评估流程复用。
+
+---
+
+## ✅ 小结
+
+- 本节课完成了 prompt 初稿编写
+- 使用 Claude 生成了结构化任务数据集
+- 并写入 dataset.json 文件，为后续 prompt 自动化评估打好基础
+
 # 2025-08-01
 
 下面是Prompt evaluation章节的第一课
