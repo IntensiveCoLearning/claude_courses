@@ -15,6 +15,15 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-02
+
+今天学习了 Tool use with Claude, 当 AI 有些内容回答不了（特别是一些实时的信息）的时候需要借助人类提供的 Tool 来解决，并通过 message 来回组合成 final result。
+- Tool function 创建的时候也要遵循一些 best practices，各种表述要清晰，input、error 等要 meaningful，并且要有比较好的 input validation。
+- 还有一点是要定义一个 JSON Schema，用来描述你的这个 tool function 的实现，包含了 name, description, input_schema, input type, input properities, input required 等信息，让 AI 能更好的理解你的这个 tool，这块特别像后端给前端提供的 API 定义，让调用者理解如何使用这个 API。
+- 流程就还是，发送 message 到 Claude 时带上 tool attribute，value 事 tool function 的 schema，得到 Claude message 返回时，再将 tool function 的结果返回给 Claude，最终 Claude 返回最终的 message。但要记住每次 send message 都需要将 tool schema 带上。
+
+我还是觉得有点傻，人类用代码实现的 function 得到的结果发给 Claude 然后再发回来。。。
+
 # 2025-07-31
 
 今天学习了 structure with XML tags 和 providing examples。
