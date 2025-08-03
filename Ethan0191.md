@@ -19,7 +19,7 @@ beginner
 为了提升提示词的丰富度
 1.在数据集生成阶段提出 solution_criteria  
 2.直接再grade_by_model内使用  
-`def generate_dataset():
+``\def generate_dataset():
     prompt = """
 Generate an evaluation dataset for a prompt evaluation. The dataset will be used to evaluate prompts that generate Python, JSON, 
 or Regex specifically for AWS-related tasks. Generate an array of JSON objects, each representing task that requires Python, JSON, or a Regex to complete.
@@ -45,7 +45,7 @@ Please generate 3 objects.
     add_assistant_message(messages, "```json")
     text = chat(messages, stop_sequences=["```"])
     return json.loads(text)
-`
+``\
 You have passed! the quiz on prompt evaluation
 ```
 You want to measure how well your prompts actually work in practice. Which approach should you focus on?  
