@@ -15,6 +15,17 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+Prompt Engineering = 系统性地编写和优化提示词，让AI给出更好的回答
+
+1. Clear and direct
+2. Being specific 
+3. XML标签结构
+4. 提供示例: Multi-shot: 多个示例，处理复杂情况
+
+Quiz on prompt: 5/5
+
 # 2025-08-01
 
 Model Based Grading
