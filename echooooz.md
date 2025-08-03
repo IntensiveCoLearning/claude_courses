@@ -15,6 +15,12 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+- if multi tools    
+        - extra functions to take in a list of msg, continue calling Claude until we get back a sign that Claude doesn't want to call a tool anymore
+        - stop reason as a sign
+
 # 2025-08-02
 
 - Tool use
