@@ -15,6 +15,158 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+# 第十五课：构建 Prompt Evaluation 数据集（生成式）
+
+本课我们继续构建一个自定义的 Prompt Evaluation 流程，目标是生成一个有效的数据集用于后续测试和评估 prompt 的性能。
+
+---
+
+## 🧠 目标
+
+编写一个 prompt，让 Claude 输出以下三种格式之一的代码，无附加说明：
+
+- Python 函数
+- JSON 配置
+- 正则表达式（raw regex）
+
+---
+
+## ✏️ 第一步：编写初始 prompt
+
+```text
+"请提供以下任务的解决方案：{task}"
+```
+
+该 prompt 的任务是根据用户输入的 task，生成一段符合要求的代码，不要包含解释说明或其他文本。
+
+---
+
+## 📦 第二步：生成数据集
+
+我们需要一个输入数据集，其中每条数据是一个 JSON 对象，包含字段 `task`。这些任务将会被插入到 prompt 中测试 Claude 的输出。
+
+数据集可以：
+
+- 手动书写
+- 使用 Claude 自动生成（推荐使用 Haiku 模型）
+
+---
+
+## 🔧 使用 Haiku 自动生成数据集
+
+编写函数 `generate_dataset()`，使用 Claude + prefill + stop sequence 的方式获取标准 JSON 数组，包含多个任务对象：
+
+```python
+messages = []
+add_user_message(messages, PROMPT)
+add_assistant_message(messages, "```json")
+text = chat(messages, stop_sequences=["```"])
+return json.loads(text)
+```
+
+---
+
+## 💾 保存数据集到文件
+
+```python
+with open("dataset.json", "w") as f:
+    json.dump(dataset, f, indent=2)
+```
+
+保存后我们就有一个标准化的输入数据集，可供后续评估流程复用。
+
+---
+
+## ✅ 小结
+
+- 本节课完成了 prompt 初稿编写
+- 使用 Claude 生成了结构化任务数据集
+- 并写入 dataset.json 文件，为后续 prompt 自动化评估打好基础
+
+---
+
+# 第十六课：执行 Prompt 测试并组织评估结果
+
+本课继续构建自定义的 Prompt Evaluation 流程，重点是将生成好的数据集与 prompt 合并，批量发送请求到 Claude，并组织结果以供后续评分（grading）。
+
+## 核心流程概览
+
+我们实现了三个主要函数：
+
+---
+
+### 1. `run_prompt(test_case)`
+
+- 输入：一个测试用例（即包含 `task` 字段的 JSON 对象）
+- 功能：将 `task` 内容插入 prompt 模板中，构造 user message，调用 Claude 接口获得输出。
+- 当前 prompt 示例：
+
+```python
+f"Please solve the following task:\n{test_case['task']}"
+```
+
+- 输出：Claude 返回的 raw 文本内容（尚未格式清洗）
+
+---
+
+### 2. `run_test_case(test_case)`
+
+- 功能：负责执行一个完整的测试流程：
+  - 调用 `run_prompt` 获取输出
+  - （TODO）调用 grader 获取评分（当前 hardcode 为 10）
+  - 返回包括输入、输出、评分的字典对象：
+
+```python
+{
+  "test_case": ...,
+  "output": ...,
+  "score": ...
+}
+```
+
+---
+
+### 3. `run_eval(dataset)`
+
+- 功能：对整个数据集执行测试流程
+  - 读取 `dataset.json`
+  - 遍历所有 test cases，调用 `run_test_case`
+  - 返回所有结果组成的列表
+
+---
+
+## 执行测试
+
+```python
+with open("dataset.json") as f:
+    dataset = json.load(f)
+
+results = run_eval(dataset)
+```
+
+- 输出为多个测试结果组成的列表，每个元素为：
+
+```json
+{
+  "test_case": {"task": "..."},
+  "output": "...",
+  "score": 10
+}
+```
+
+---
+
+## 当前进展总结
+
+- ✅ 已完成 prompt 构造
+- ✅ 数据集与 prompt 合并并调用 Claude
+- ✅ 初步收集评估结果
+- ❌ 评分逻辑未实现（下一课处理）
+
+此阶段我们已实现完整的测试执行管道，为 grader 评分打下了基础。
+
 # 2025-08-02
 
 # 第十五课：构建 Prompt Evaluation 数据集（生成式）
