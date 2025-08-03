@@ -15,6 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+Claude Code内置了MCP Client，所以可以直接添加MCP Server，它就会在适当的时候调用工具。
+
+如果开发的feature比较耗费时间，我们也可以并行开多个claude code同时开发多个features。这可以使用Git Worktree功能，把多个分支的代码同时checkout到一个子目录里面。Git支持这个功能，我之前不知道，遇到这种情况总是clone多份分别开发，原来可以直接在一个目录下解决这个问题。在每个worktree目录内部，启动一个新的vscode，启动Claude Code，开发新feature。这个做法其实是一个best practice，并不是Claude Code原生支持的功能。因为创建worktree并启动新的vscode是需要我们手动写prompt来实现的。虽然这个prompt可以放在commands目录下的md文件中，作为/xxcommand快捷调用，但还是要自己写prompt模板。所以，本质上，这只是告诉我们当我们想用Claude组件一个开发团队的话，可以这样干。
+
+![image.png](attachment:d7035616-6ec8-469a-a833-ed4c2d47c061:image.png)
+
+[]()
+
 # 2025-08-02
 
 Claude Code似乎是基于NodeJS开发的，需要用npm安装。
