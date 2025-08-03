@@ -15,6 +15,33 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+# 📘 Anthropic Courses Day 9 学习笔记
+
+## ✅ 今日进度
+- 正式完成「Retrieval Augmented Generation（RAG）」模块全部课程内容 ✅
+- 今日学习了剩余的 5 个小节内容：
+  - Implementing the RAG flow
+  - BM25 lexical search
+  - A Multi-Index RAG pipeline
+  - Reranking results
+  - Contextual retrieval
+- 顺利通过章节测验，**8 题全对（100%）**！
+
+## 💡 今日收获
+- **BM25** 是一种基于关键词的经典检索方式，适合低成本初步匹配，搭配 embedding 可组成 hybrid 检索系统
+- **多索引管线（Multi-Index RAG pipeline）**：结合多个向量索引（如按语言、结构、内容来源等），提升召回广度
+- **Reranking（重排序）**：基于查询与文档的语义关系，用 Claude 对检索结果排序，提升最终输出质量
+- **Contextual retrieval**：将上下文对检索过程的影响纳入考虑，提升针对复杂对话任务的表现
+
+## 🧠 模块理解总结
+- RAG 不只是“检索+拼接+生成”，而是一个可以不断优化、组合策略的智能知识注入系统
+- Claude 在整个 RAG 流程中可以参与多个环节（embedding、检索、排序、生成），适合构建高质量的企业级问答系统
+
+## 🎯 明日目标
+- 准备进入下一个章节「Features of Claude」，探索如 Extended Thinking、图像支持、PDF 理解等能力
+
 # 2025-08-02
 
 # 📘 Anthropic Courses Day 8 学习笔记
