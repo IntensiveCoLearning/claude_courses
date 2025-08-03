@@ -15,6 +15,135 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+# Prompt Engineering
+Prompt Engineering = improving prompts to get more reliable, higher-quality outputs from language models.
+
+Module Structure: Start with initial poor prompt → Apply prompt engineering techniques step-by-step → Evaluate improvements after each technique → Observe performance gains over time.
+
+Example Goal: Generate one-day meal plan for athletes based on height, weight, physical goal, dietary restrictions.
+
+Technical Setup:
+
+- Updated eval pipeline with flexible prompt evaluator class
+
+- Supports concurrency (adjust max_concurrent_tasks based on rate limits)
+```python
+evaluator = PromptEvaluator(max_concurrent_tasks=5)
+```
+
+- `generate_dataset()` method creates test cases with specified inputs
+
+- `run_prompt()` function processes each test case individually
+```python
+def run_prompt(prompt_inputs):
+    prompt = f"""
+What should this person eat?
+
+- Height: {prompt_inputs["height"]}
+- Weight: {prompt_inputs["weight"]}
+- Goal: {prompt_inputs["goal"]}
+- Dietary restrictions: {prompt_inputs["restrictions"]}
+"""
+    
+    messages = []
+    add_user_message(messages, prompt)
+    return chat(messages)
+```
+
+Key Components:
+- `prompt_input_spec` = dictionary defining required prompt inputs
+- `extra_criteria` = additional validation requirements for model grading
+- `output.html` = formatted evaluation report showing test case results and scores
+
+Process: Write initial prompt → Interpolate test case inputs → Run evaluation → Apply engineering techniques → Re-evaluate → Repeat until satisfactory performance.
+
+Initial Results: Expect poor scores (example: 2.32) with basic prompts, especially when using less capable models. Scores improve as techniques are applied.
+
+# Being Clear and Direct
+Being Clear and Direct = Use simple, direct language with action verbs in the first line of prompts to specify the exact task.
+
+First line importance = Most critical part of prompt that sets the foundation for AI response.
+
+Structure = Action verb + clear task description + output specifications.
+
+Examples:
+- "Write three paragraphs about how solar panels work"
+- "Identify three countries that use geothermal energy and for each include generation stats"
+- "Generate a one day meal plan for an athlete that meets their dietary restrictions"
+
+Key components = Action verb at start + direct task statement + expected output details.
+
+Result = Improved prompt performance (example showed score increase from 2.32 to 3.92).
+
+# Being Specific
+
+Being Specific = adding guidelines or steps to direct model output in particular direction
+
+Two types of guidelines:
+Type A (Attributes) = list qualities/attributes desired in output (length, structure, format)
+Type B (Steps) = provide specific steps for model to follow in reasoning process
+
+Type A controls output characteristics. Type B controls how model arrives at answer.
+
+Both techniques often combined in professional prompts.
+
+When to use:
+- Type A (attributes): recommended for almost all prompts
+- Type B (steps): use for complex problems where you want model to consider broader perspective or additional viewpoints it might not naturally consider
+
+Example improvement: meal planning prompt score jumped from 3.92 to 7.86 when guidelines added, demonstrating significant quality improvement through specificity.
+
+# Structure with XML Tags
+
+XML Tags for Prompt Structure = Using XML tags to organize and delineate different content sections within prompts to improve AI comprehension.
+
+Purpose = When interpolating large amounts of content into prompts, XML tags help AI models distinguish between different types of information and understand text grouping.
+
+Implementation = Wrap content sections in descriptive XML tags like `<sales_records></sales_records> or <my_code></my_code>` rather than dumping unstructured text.
+
+Tag naming = Use descriptive, specific tag names (e.g., "sales_records" better than "data") to provide context about content nature.
+
+Example use case = Debugging prompt with mixed code and documentation becomes clearer when separated into `<my_code>` and `<docs>` tags.
+
+Benefits = Makes prompt structure obvious to AI, reduces confusion about content boundaries, improves output quality even for smaller content blocks.
+
+Application = Can wrap any interpolated content like `<athlete_information>` even when content is short, to clarify it's external input requiring consideration.
+
+Real-World Application:
+
+```python
+<athlete_information>
+- Height: 6'2"
+- Weight: 180 lbs
+- Goal: Build muscle
+- Dietary restrictions: Vegetarian
+</athlete_information>
+
+Generate a meal plan based on the athlete information above.
+```
+
+# Providing examples
+
+One-shot/Multi-shot prompting = providing examples in prompts to guide model behavior. 
+One-shot = single example, multi-shot = multiple examples.
+
+Implementation: Structure examples with XML tags containing sample input and ideal output. Always wrap examples clearly to distinguish from actual prompt content.
+
+Key applications:
+- Corner case handling (sarcasm detection, edge scenarios)
+- Complex output formatting (JSON structures, specific formats)
+- Clarifying expected response quality/style
+
+Best practices:
+- Add context for corner cases ("be especially careful with sarcasm")
+- Include reasoning explaining why output is ideal
+- Use highest-scoring examples from prompt evaluations as templates
+- Place examples after main instructions/guidelines
+
+Effectiveness boost: Combine examples with explanations of what makes them ideal to reinforce desired output characteristics.
+
 # 2025-08-02
 
 # Model based grading
