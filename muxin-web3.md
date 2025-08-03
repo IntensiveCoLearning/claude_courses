@@ -15,6 +15,12 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+今天学了一下 Multi-turn conversations with tools，没有跟着敲代码，只是看视频了解了一下流程，学到几个知识点:
+- 当 Claude 停止返回 response 的时候，会有一个 stop_reason，我们可以根据 stop_reason 的 value 来去判断接下来的操作，看了一下文档：https://docs.anthropic.com/en/api/handling-stop-reasons#stop-reason-values，有 6 个 value：end_turn, max_tokens, stop_sequence, tool_use, pause_turn, refusal。本节课程里用到的是 tool_use，就是需要我们的 server 来 execute tool function 了。
+- 示例里的 run_conversation function 其实就是写了一个 while loop，当判断 Claude response stop_reason 不是 tool_use 的时候就退出结束对话。期间还涉及到了 ToolUseBlock(id, input, name, type("tool_use")) 和 ToolResultBlock(too_use_id, content, is_error, type("too_result"))。
+
 # 2025-08-02
 
 今天学习了 Tool use with Claude, 当 AI 有些内容回答不了（特别是一些实时的信息）的时候需要借助人类提供的 Tool 来解决，并通过 message 来回组合成 final result。
