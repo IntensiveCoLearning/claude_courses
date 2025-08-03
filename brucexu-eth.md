@@ -15,6 +15,50 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+## Tool Use
+
+After Claude requests a tool call, you need to execute the function and send the results back. 
+
+After running the tool function, you need to send the results back to Claude using a tool result block.
+
+The tool result block has several important properties:
+
+- tool_use_id - Must match the id of the ToolUse block that this ToolResult corresponds to
+- content - Output from running your tool, serialized as a string
+- is_error - True if an error occurred
+
+Each tool call gets a unique ID, and you must match these IDs when sending back results. This ensures Claude knows which result corresponds to which request, even if the results arrive in a different order.
+
+TODO How do we handle tool-call dependencies, e.g., when call #2 consumes call #1's output?
+
+```
+messages.append({
+    "role": "user",
+    "content": [{
+        "type": "tool_result",
+        "tool_use_id": response.content[1].id,
+        "content": "15:04:22",
+        "is_error": False
+    }]
+})
+```
+
+The complete message history now contains:
+
+- Original user message
+- Assistant message with tool use block
+- User message with tool result block
+
+OMG, if the user messages is complex with multi tool calls, there will be a huge amount of tokens...
+
+When sending the follow-up request, you must still include the tool schema even though you're not expecting Claude to make another tool call. Claude needs the schema to understand the tool references in your conversation history.
+
+> Claude behaves like a stateless service, keep in mind when designing apps.
+
+Claude will then respond with a final message that incorporates the tool results into a natural response for the user. The tool use workflow is now complete - you've successfully enabled Claude to access real-time information through your custom function.
+
 # 2025-08-02
 
 ## Tool use
