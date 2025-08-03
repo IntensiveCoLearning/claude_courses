@@ -15,6 +15,17 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+同步发于推特：https://x.com/cryptonerdcn/status/1951995712285069805
+
+第十天打卡：
+
+昨天休息一天，今天开始回头复习一下MCP的课程。
+小tips:
+如果你用的python开发MCP server，除了官方SDK外，还可以使用FastMCP。昨天还写了篇实际经验贴，见（https://x.com/cryptonerdcn/status/1951641736725532982）。
+另有一个12万浏览的MCP经验贴见此（https://x.com/cryptonerdcn/status/1945045817338826862）
+
 # 2025-08-01
 
 同步发布于推特：
