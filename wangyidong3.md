@@ -15,6 +15,52 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-03
+
+今天学习How Computer Use works。
+Computer Use 和 Tool Use 在流程上几乎完全一样，但区别是：
+这个“工具”不是传统功能模块，而是“一个虚拟电脑”接口。
+Claude 不是调用 API，而是在“虚拟电脑”里：
+
+    移动鼠标
+    输入键盘内容
+    点击按钮
+    滚动页面
+    截图反馈
+ 交互流程（几乎一样）：
+
+    你告诉 Claude，它现在可以用“电脑”这个工具；
+    Claude 判断问题需要手动操作网页或软件；
+    Claude 发出一个如 click(x=500, y=300) 的请求；
+    你运行的 Docker 环境模拟实际鼠标点击；
+    Claude 等待截图、界面反馈，继续操作。
+应用场景
+
+    UI 自动化测试
+    模拟用户操作网页或桌面应用
+    演示或录制使用流程
+    教学自动化：让 Claude 操作 Excel、Web App
+核心差异一句话总结：
+    Tool Use 是 Claude 使用你定义的“能力模块”，而 Computer Use 是 Claude 操作你提供的“虚拟手”。
+
+维度	Tool Use	Computer Use
+功能类型	调用 API / 函数	模拟用户使用计算机
+接口形式	工具 schema + 参数	虚拟计算机操作 schema
+响应方式	工具执行并返回结果	计算机动作 + 页面反馈
+场景	数据处理、内容生成	Web 操作、流程演示
+🏗️ 技术实现的关键点
+Claude 自己不能直接动电脑
+
+Claude 并不能真的动你的电脑，而是发送“意图请求”（比如点击、输入），由你本地环境（Docker 容器 + Firefox）来执行实际操作。
+🧰 启动 Claude 的 Computer Use 的流程？
+
+    安装 Docker；
+    配置 AWS CLI（只是为了授权用，实际不涉及云部署）；
+    克隆 Anthropic 提供的 quickstarts 仓库；
+    启动容器，打开聊天界面和虚拟浏览器。
+实际操作参见quick-start repo。
+具体实操教程没有，只能自己摸一下了。
+
 # 2025-08-02
 
 https://www.promptingguide.ai/
