@@ -22,7 +22,7 @@ Prompt Engineering = 系统性地编写和优化提示词，让AI给出更好的
 1. Clear and direct
 2. Being specific 
 3. XML标签结构
-4. 提供示例: Multi-shot: 多个示例，处理复杂情况
+4. 提供示例: One-shot & Multi-shot: 多个示例，处理复杂情况
 
 Quiz on prompt: 5/5
 
