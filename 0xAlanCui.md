@@ -15,6 +15,33 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-04
+
+# 📘 Anthropic Courses Day 10 学习笔记
+
+## ✅ 今日进度
+- 开始学习「Features of Claude」模块，已完成前 4 个小节 ✅
+  - Extended thinking
+  - Image support
+  - PDF support
+  - Citations
+
+## 💡 今日收获
+- **Extended thinking**：Claude 可以根据任务复杂度进行更深入的推理，例如处理更长上下文或多步骤思考任务，支持设置 `max_tokens`
+- **Image support**：Claude 可接收图像输入（base64 编码或 URL），用于图像识别、图文理解等多模态场景
+- **PDF support**：Claude 可以直接处理 PDF 文件
+- **Citations（引用）**：Claude 支持在输出中自动生成引用信息，适合问答、研究、知识型产品等需要“可追溯来源”的场景
+
+## 🔍 关键理解
+- 这些功能是 Claude 向“通用 AI 助手”迈进的重要能力，尤其是 PDF + 图像处理结合 RAG 后非常有想象力
+- 自动引用机制意味着 Claude 能在生成内容时增加“可信度”标签，有利于减少幻觉输出（hallucination）
+
+## 🎯 明日目标
+- 学完 Features 模块剩余内容：
+  - Prompt caching 机制与实战
+  - Code execution 与 Files API 支持
+  - 完成章节测验
+
 # 2025-08-03
 
 # 📘 Anthropic Courses Day 9 学习笔记
