@@ -22,6 +22,9 @@ timezone: UTC+12
 Claude调用外部工具获取实时信息和执行操作
 1. 用户请求 → 2. Claude判断需要工具 → 3. 调用工具 → 4. 获取结果 → 5. Claude整合回答
 
+1. Tool Functions
+使用描述性的函数名和参数名
+
 # 2025-08-03
 
 Prompt Engineering = 系统性地编写和优化提示词，让AI给出更好的回答
