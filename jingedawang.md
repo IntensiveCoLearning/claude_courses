@@ -15,6 +15,31 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-04
+
+另一个best practice是，用Claude Code自动debug线上error。可以在GitHub上创建一个action，每天自动拉取线上服务的log，从log中检查看有没有error，有error的话就修复，并自动提交PR。整个过程由Claude Code自动完成，我们只需要review最后的PR并通过即可。
+
+Claude Code还可以用来做前端的自动化测试。让Claude自动测试一个网页的各项功能是否正常，它可以采取屏幕操作，并观察现象，得出结论。下面是一个具体的prompt
+
+```
+Your goal is to conduct QA testing on a React component hosted at https://test-mentioner.vercel.app/
+
+Testing process:
+1. Open a new browser tab
+2. Navigate to https://test-mentioner.vercel.app/
+3. Execute the test cases below one by one
+4. After completing all tests, write a concise report
+
+Test cases:
+1. Typing 'Did you read @' should display autocomplete options
+2. Typing 'Did you read @' then pressing enter should add '@document.pdf'
+3. After adding '@document.pdf', pressing backspace should show autocomplete options directly below the text, not elsewhere on the page
+```
+
+Computer Use功能会在Docker环境中运行，以避免对真实环境造成任何影响。
+
+Computer Use本质上就是tool use，这个tool是computer action，应该是Claude内置的tool，可以直接引入。这个tool提供了许多GUI操作，比如移动鼠标、点击、屏幕截图等等。Claude运用这些操作来完成computer use的任务。不过，显然Claude需要连续调用多次action才能完成一次任务，不过视频里没有详细讲整个过程。为了启动这个tool，还需要我们自己装docker。
+
 # 2025-08-03
 
 Claude Code内置了MCP Client，所以可以直接添加MCP Server，它就会在适当的时候调用工具。
