@@ -15,6 +15,101 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-04
+
+## Tool  Use
+
+The Multi-Turn Tool Pattern
+
+Here's what happens behind the scenes when Claude needs multiple tools:
+
+- User asks: "What day is 103 days from today?"
+- Claude responds with a tool use block requesting get_current_datetime
+- Your server calls the function and returns the result
+- Claude realizes it needs more information and requests add_duration_to_datetime
+- Your server calls that function and returns the result
+- Claude now has enough information to provide the final answer
+
+Building a Conversation Loop
+
+```
+def run_conversation(messages):
+    while True:
+        response = chat(messages)
+        
+        add_user_message(messages, response)
+        
+        if response.stop_reason != "tool_use":
+            break
+            
+        tool_result_blocks = run_tools(response)
+        add_user_message(tool_result_blocks)
+        
+    return messages
+
+```
+
+Bascially, just a deadloop to query Claude multiple times (with full context) until they think no more tool needed and combine all information and give it back to you. I think there might be some cache logic in Claude for saving some resources?
+
+TODO Since there are so many tools, we may need to train a lightweight routing model to find and compose the relevant ones, then pass the consolidated results to Claude.
+
+### The batch tool
+
+The above way creates unnecessary back-and-forth communication when the operations could be performed simultaneously.
+
+A batch tool is an additional tool that accepts a list of calls to other tools. Instead of Claude calling multiple tools directly, it calls the batch tool and provides arguments describing which tools it wants to run.
+
+Rather than batch run tools on the server, you will define a batch_tool schema and send it to Claude to give you a "batch tool" tool call, and then you run the tool logic. In this way, you don't need to concern about the dependencies between tool calls.
+
+```
+batch_tool_schema = {
+    "name": "batch_tool",
+    "description": "Invoke multiple other tool calls simultaneously",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "invocations": {
+                "type": "array",
+                "description": "The tool calls to invoke",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the tool to invoke"
+                        },
+                        "arguments": {
+                            "type": "object",
+                            "description": "The arguments to pass to the tool"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+```
+def run_batch(invocations=[]):
+    batch_output = []
+    
+    for invocation in invocations:
+        name = invocation["name"]
+        args = json.loads(invocation["arguments"])
+        
+        tool_output = run_tool(name, args)
+        
+        batch_output.append({
+            "tool_name": name,
+            "output": tool_output
+        })
+    
+    return batch_output
+```
+
+Once implemented, Claude will be much more likely to use the batch tool when it recognizes that multiple operations can be performed in parallel.
+
 # 2025-08-03
 
 ## Tool Use
