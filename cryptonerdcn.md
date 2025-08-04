@@ -15,6 +15,13 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-04
+
+同步发布于推特：https://x.com/cryptonerdcn/status/1952316438217379858
+第十一天打卡：
+不少人应该已经知道的这条--虽然MCP Server有Prompts, Resources, Tools三个feature，但以Geimini为首的一些大模型只支持Tools。而实际上，Resources和Prompts也的确完全也可以用Tools的方式来编写。
+个人推测这原因是因为LLM调用Function Calling的能力提升以及周边配套SDK把一些基础工作都做了之后，这套SDK可以通过很少的变化就能调用MCP的Tools。
+
 # 2025-08-03
 
 同步发于推特：https://x.com/cryptonerdcn/status/1951995712285069805
