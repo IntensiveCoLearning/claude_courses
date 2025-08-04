@@ -15,6 +15,84 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-04
+
+# Tool use with Claude
+
+Tool use follows a specific back-and-forth pattern between your application and Claude
+
+### Weather Example in Practice
+
+Build a practical project that teaches Claude how to set reminders for future dates.
+
+The goal is straightforward: we want to be able to tell Claude "Set a reminder for my doctor's appointment.
+
+Tools We Need:
+
+- Get the current date time: Claude needs to know the current date and time precisely
+- Add duration to date time: Claude isn't perfect with date time addition, so we'll give it a reliable tool for this
+- Set a reminder: We need a way to actually set a reminder in the system
+
+### Tool Functions
+
+Best Practices for Tool Functions
+
+- Use descriptive names: Both your function name and parameter names should clearly indicate their purpose
+- Validate inputs: Check that required parameters aren't empty or invalid, and raise errors when they are
+- Provide meaningful error messages: Claude can see error messages and might retry the function call with corrected parameters
+
+example:
+
+```python
+def get_current_datetime(date_format="%Y-%m-%d %H:%M:%S"):
+    if not date_format:
+        raise ValueError("date_format cannot be empty")
+    return datetime.now().strftime(date_format)
+```
+
+### Tool schemas
+
+use Claude itself to generate JSON schemas.
+
+`Write a valid JSON schema spec for the purposes of tool calling for this function. Follow the best practices listed in the attached documentation`
+
+```python
+def get_current_datetime(date_format="%Y-%m-%d %H:%M:%S"):
+    if not date_format:
+        raise ValueError("date_format cannot be empty")
+    return datetime.now().strftime(date_format)
+
+get_current_datetime_schema = {
+    "name": "get_current_datetime",
+    "description": "Returns the current date and time formatted according to the specified format",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "date_format": {
+                "type": "string",
+                "description": "A string specifying the format of the returned datetime. Uses Python's strftime format codes.",
+                "default": "%Y-%m-%d %H:%M:%S"
+            }
+        },
+        "required": []
+    }
+}
+```
+
+Adding Type Safety
+
+this prevents type errors when use the schema with Claude's API and makes code more robust:
+
+```python
+from anthropic.types import ToolParam
+
+get_current_datetime_schema = ToolParam({
+    "name": "get_current_datetime",
+    "description": "Returns the current date and time formatted according to the specified format",
+    # ... rest of schema
+})
+```
+
 # 2025-08-03
 
 # Prompt Engineering
