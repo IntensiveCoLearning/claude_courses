@@ -15,6 +15,114 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-04
+
+继续Tool Use Computer Use， 今天主要是实操：
+
+```
+anthropic-quickstarts/
+├── computer-use-demo/
+│   ├── computer_use_demo/
+│   │   ├── streamlit.py          # Web界面
+│   │   ├── loop.py               # 核心API循环
+│   │   └── tools/                # 工具系统
+│   │       ├── computer.py       # 桌面交互工具
+│   │       ├── bash.py           # 命令行工具
+│   │       ├── edit.py           # 文件编辑工具
+│   │       └── base.py           # 工具基类
+│   ├── Dockerfile                # 容器配置
+│   └── requirements.txt          # Python依赖
+```
+稍微记录下配置和运行Anthropic Computer Use Demo的完整过程，包括AWS Bedrock集成。
+### 第一阶段：环境准备
+
+#### 1.1  AWS配置
+- 账户ID & access key
+-  区域: us-east-1 
+- 可用模型: anthropic.claude-3-5-sonnet-20240620-v1:0
+AWS Bedrock: 通过AWS服务调用
+
+
+#### 1.2 AWS CLI安装
+```bash
+# 安装AWS CLI和boto3
+pip3 install awscli boto3
+```
+
+#### 1.3 AWS凭证配置
+```bash
+# 配置AWS访问密钥
+aws configure set aws_access_key_id AKIA2ZD4IJUQXCHG6BUQ
+aws configure set aws_secret_access_key [SECRET_KEY]
+aws configure set default.region us-east-1
+```
+
+### 第二阶段：Python环境升级
+
+#### 2.1 问题识别
+初始Python版本3.9.6不支持项目所需的现代Python特性：
+- `StrEnum` (Python 3.11+)
+- `dataclass(kw_only=True)` (Python 3.10+)
+
+#### 2.2 pyenv安装和配置
+```bash
+# 使用Homebrew安装pyenv
+export PATH="/usr/local/bin:$PATH"
+brew install pyenv
+
+# 安装Python 3.11.13
+pyenv install 3.11.13
+pyenv global 3.11.13
+
+# 配置shell环境
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+```
+
+#### 2.3 验证升级
+```bash
+source ~/.zshrc
+python --version  # 输出: Python 3.11.13
+```
+
+### 第三阶段：依赖安装
+
+#### 3.1 安装项目依赖
+```bash
+cd computer-use-demo
+pip install -r computer_use_demo/requirements.txt
+```
+
+#### 3.2 关键依赖包
+- `streamlit==1.41.0`: Web界面框架
+- `anthropic[bedrock,vertex]>=0.39.0`: Anthropic API客户端
+- `boto3>=1.28.57`: AWS SDK
+- `jsonschema==4.22.0`: JSON验证
+- `google-auth<3,>=2`: Google认证
+
+### 第四阶段：AWS Bedrock配置
+
+#### 4.1 权限配置
+在AWS控制台中为IAM用户添加权限：
+- 策略：`AmazonBedrockFullAccess`
+- 自定义权限：`bedrock:InvokeModel`, `bedrock:ListFoundationModels`
+
+#### 4.2 模型访问申请
+在AWS Bedrock控制台申请Claude模型访问权限：
+- Claude 3.5 Sonnet
+- Claude 3 Sonnet
+- Claude 3 Haiku
+
+#### 4.3 区域测试
+测试不同AWS区域的模型可用性：
+```bash
+# us-west-2: 权限问题
+# us-east-1: 成功找到可用模型
+export AWS_REGION=us-east-1
+```
+
 # 2025-08-03
 
 今天学习How Computer Use works。
