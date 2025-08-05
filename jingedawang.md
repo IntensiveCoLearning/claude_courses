@@ -15,6 +15,28 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+Workflow和Agent的区别是，前者由开发者预定义一系列操作，整个流程是预先确定的。而后者则完全由AI自行决定。
+
+Workflow在实践中用的很多，因为大部分业务都有明确的最佳流程。比如下面这个例子，输入一张图片，生成CAD模型。我们可以设计一个evaluator-optimizer的工作流，让claude观察图片后生成CAD代码，渲染后再让Claude检查和原图的差别，然后反复修改，直到Claude认为生成的模型很好地还原了图片。这是一个常用的workflow pattern。
+
+![image.png](attachment:9a501438-fa11-46a8-87e2-2ea9ebe4dc68:image.png)
+
+Workflow pattern还有很多。下面是并行workflow pattern。我们可以把多分类问题转化成多个二分类问题，从而让每个prompt变得更专一，或许可以提高Claude的正确率，而且并行化还能提高效率。不过cost应该会增加。还有一个好处是并行化后可扩展性更强，增加一种选项只需要增加一个subtask，而不需要改一个巨大的prompt。并行化pattern的适用场景是，当我们需要在一个prompt里面写多个标准时，就意味着我们可能需要把它们拆开到多个prompt里面。
+
+![image.png](attachment:07fca7fa-a6f7-49fe-861f-f6aae970cf69:image.png)
+
+![image.png](attachment:5021bd0e-32b2-4dd9-bf48-87e41a86fc1a:image.png)
+
+![image.png](attachment:39ecd3af-af31-420d-b382-336a82721425:image.png)
+
+下一个workflow pattern是chaining。当一个任务可以拆分成多个前后顺序执行的任务时，把多个步骤串起来，并可以在两个任务之间执行non-LLM的操作。
+
+![image.png](attachment:ec93f9d5-7c8e-4132-bb6a-d5754e2d3706:image.png)
+
+一个典型的例子是，如果你让Claude写一篇文章，同时提了很多限制，它可能会写出来，但不满足某些限制。无论你在prompt里面写得多清晰，它还是有可能不遵守你的命令。这是因为prompt太长了，要求太多，导致Claude注意力难以集中到每个要求上。这也是LLM的通病，虽然大家在慢慢改善，但显然现在还没法完全解决这个问题。所以，一个现实的方法是，把写出来的文章再让Claude根据那些要求改一遍。在改的时候，Claude可以专注于这些要求，而不需要同时思考如何创作。本质上，让LLM一次只做一件事它会做得更好。
+
 # 2025-08-04
 
 另一个best practice是，用Claude Code自动debug线上error。可以在GitHub上创建一个action，每天自动拉取线上服务的log，从log中检查看有没有error，有error的话就修复，并自动提交PR。整个过程由Claude Code自动完成，我们只需要review最后的PR并通过即可。
