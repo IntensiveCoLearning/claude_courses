@@ -15,6 +15,22 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+Tool Schema = Claude的"工具说明书"
+
+Message Blocks = 把简单的"一问一答"变成了"解释+行动+结果"的复杂对话流程。
+
+Tool Results = 让Claude能够"看到"工具执行的结果，从而基于真实数据做出准确回应。
+
+流程：Claude提问 → 工具执行 → 结果返回 → Claude整合答案
+
+Multi-Turn Tool Conversations = Claude在一次用户请求中，连续使用多个工具来完成复杂任务
+
+Diff：
+单轮对话: "告诉我天气" → 一次工具调用
+多轮对话: "帮我规划明天的行程" → 查天气 + 查日程 + 推荐活动 + 设置提醒
+
 # 2025-08-04
 
 ### Tool Use with Claude ###
