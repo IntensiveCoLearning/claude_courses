@@ -15,6 +15,14 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+# Tool Use
+
+When you need structured data from Claude, you have two main approaches: prompt-based techniques using message prefills and stop sequences, or a more robust method using tools. 
+
+While the prompt-based approach is simpler to set up, tools provide more reliable output at the cost of additional complexity.
+
 # 2025-08-04
 
 ## Tool  Use
