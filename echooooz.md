@@ -15,6 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+- batch tool: to increase the chances of Claude making multiple tool calls in a single msg
+    - tool calling with streaming 
+        - claude will make sure it has generated a valid json by validating a key value pair in isolation before sending back the chunks
+        - still irritating with the buffering & validation steps
+        - fine-grained tool calling: disables the validation step
+
 # 2025-08-03
 
 - if multi tools    
