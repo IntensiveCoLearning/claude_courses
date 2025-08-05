@@ -110,7 +110,7 @@ Telegram：https://t.me/LXDAO/26860
 | [feiyunssr](https://github.com/IntensiveCoLearning/claude_courses/blob/main/feiyunssr.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [onthebigtree](https://github.com/IntensiveCoLearning/claude_courses/blob/main/onthebigtree.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [MRzzz-cyber](https://github.com/IntensiveCoLearning/claude_courses/blob/main/MRzzz-cyber.md) | ✅ | ✅ | ⭕️ | ✅ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | |
-| [echooooz](https://github.com/IntensiveCoLearning/claude_courses/blob/main/echooooz.md) | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ⭕️ |   | | | | | | | | | | | | | | | | | |
+| [echooooz](https://github.com/IntensiveCoLearning/claude_courses/blob/main/echooooz.md) | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | | | | | | | | | | | | | | | | | |
 | [rayjun](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rayjun.md) | ✅ | ✅ | ⭕️ | ⭕️ | ✅ | ✅ | ❌ | | | | | | | | | | | | | | | | | | | | | | | |
 | [dddreame](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dddreame.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [skyonedot](https://github.com/IntensiveCoLearning/claude_courses/blob/main/skyonedot.md) | ✅ | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -133,6 +133,7 @@ Telegram：https://t.me/LXDAO/26860
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [SIGNUP_AUTOMATION](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SIGNUP_AUTOMATION.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
