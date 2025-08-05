@@ -15,6 +15,33 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+# 📘 Anthropic Courses Day 11 学习笔记
+
+## ✅ 今日进度
+- 完成「Features of Claude」模块的全部课程 ✅
+- 今日学习了剩余 4 个小节内容：
+  - Prompt caching
+  - Rules of prompt caching
+  - Prompt caching in action
+  - Code execution and the Files API
+- 成功通过章节测验，**7 题全对（100%）**！
+
+## 💡 今日收获
+- **Prompt caching**：可以显著减少重复请求的计算开销，对于重复性任务（如同一 prompt 不断调用）非常高效
+- 缓存规则：
+  - 仅支持 deterministic 模型调用（不可使用 temperature、top_p 等采样参数）
+  - 不缓存 Tool Use、Streaming、非 JSON 格式等复杂请求
+- **Code execution & Files API**：Claude 支持基本代码执行功能和文件上传处理，未来可用于多轮交互中处理文件（如读取 PDF、CSV、运行脚本等）
+
+## 🧠 模块总结
+- 这一章功能非常实用，为 Claude 接入到生产环境中的“稳定性 + 性能 + 文件处理”能力打下基础
+- Prompt 缓存是构建低延迟高性能 Agent 的关键
+
+## 🎯 明日目标
+- 进入「Model Context Protocol（MCP）」模块，开始学习 Claude 的上下文注入与共享机制
+
 # 2025-08-04
 
 # 📘 Anthropic Courses Day 10 学习笔记
