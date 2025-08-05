@@ -15,6 +15,12 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+今天学了 batch tool, tools for structured data 和 fine grained tool calling. 
+- 用 batch tool 可以通过一个 single message 让 Claude make multiple tool calls，然后我们的 server 同时处理完后将所有结果一次返回给 Claude，提升了一些效率吧。
+- Claude 本身是会有 JSON validation 的，生成的 chunk 不会立马返回给 server，必须要等到 JSON 通过了 validation 后才会将拼接好的 chunks 返回，我们收到返回需要等待一些时间。但如果我们 enable fine_grained，chunk 会立马返回，当然这个时候就没有 JSON validation 了，所以你得到的可能只是一个 string，你的 server 要做好数据结构的处理。
+
 # 2025-08-03
 
 今天学了一下 Multi-turn conversations with tools，没有跟着敲代码，只是看视频了解了一下流程，学到几个知识点:
