@@ -15,6 +15,15 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+同步发于推特：https://x.com/cryptonerdcn/status/1952732409998483880
+第十二天打卡：
+之前在读MCP文档时就发现Claude Code的一些功能很明显是根据MCP的不同feature来定义的，现在看见课程里针对Resource这个feature使用了@ 文件读取内容来说明就更觉得实在是太像了（虽然内部逻辑可能是单纯的function calling而不是mcp）。
+Resource对应的Claude Code的@ 操作
+Prompt对应了Claude Code的Custom Command
+Sampling对应的则是Claude Code的Hooks
+
 # 2025-08-04
 
 同步发布于推特：https://x.com/cryptonerdcn/status/1952316438217379858
