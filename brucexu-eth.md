@@ -23,6 +23,21 @@ When you need structured data from Claude, you have two main approaches: prompt-
 
 While the prompt-based approach is simpler to set up, tools provide more reliable output at the cost of additional complexity.
 
+Instead of hoping Claude formats its response correctly, you're essentially giving Claude a function to call with specific parameters that match your desired output structure.
+
+Here's how the process works:
+
+- Write a schema that describes the structure of data you're looking for
+- Force Claude to use a tool with the tool_choice parameter
+- Extract the structured data from the tool use response
+- No need to provide a follow-up response - you're done once you get the data
+
+tool_choice
+
+- {"type": "auto"} - Model decides if it needs to use a tool (default)
+- {"type": "any"} - Model must use a tool, but can choose which one
+- {"type": "tool", "name": "TOOL_NAME"} - Model must use the specified tool
+
 # 2025-08-04
 
 ## Tool  Use
