@@ -15,6 +15,69 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+# Tool use with Claude
+
+### Handling message blocks
+
+include a tools parameter in your API call:
+```python
+messages = []
+messages.append({
+    "role": "user",
+    "content": "What is the exact time, formatted as HH:MM:SS?"
+})
+
+response = client.messages.create(
+    model=model,
+    max_tokens=1000,
+    messages=messages,
+    tools=[get_current_datetime_schema],
+)
+```
+
+mutil-block message:
+```python
+ToolUseBlock(
+	id,input,name,type
+)
+```
+
+ID: An ID for tracking the tool call
+Input: Input parameters formatted as a dictionary
+Name: The name of the function to call (like "get_current_datetime")
+Type: The type designation "tool_use"
+
+
+The tool usage process follows this pattern:
+
+- Send user message with tool schema to Claude
+- Receive assistant message with text block and tool use block
+- Extract tool information and execute the actual function
+- Send tool result back to Claude along with complete conversation history
+- Receive final response from Claude
+
+### Sending tool results
+
+Tool Results = Results from executed tool functions sent back to Claude in follow-up requests.
+
+Process: Execute tool function requested by Claude → Create tool result block → Send follow-up request with full conversation history.
+
+Tool Result Block Structure:
+- tool_use_id = Matches ID from original tool use block to pair requests with results
+- content = Tool function output converted to string (usually JSON)
+- is_error = Boolean flag for function execution errors (default false)
+
+Tool Use ID Purpose = Links multiple tool requests to correct results when Claude makes simultaneous tool calls. Each tool use gets unique ID, tool results must reference matching IDs.
+
+Follow-up Request Requirements:
+- Include complete message history (original user message + assistant tool use message + new user message with tool result)
+- Must include original tool schemas even if not using tools again
+- Tool result block goes in user message, not assistant message
+
+Conversation Flow: User request → Claude assistant response (text + tool use blocks) → Server executes tool → User message with tool result block → Claude final response with integrated results.
+
 # 2025-08-04
 
 # Tool use with Claude
