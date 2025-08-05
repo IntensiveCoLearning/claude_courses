@@ -15,6 +15,115 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+继续昨天没做完的Anthropic Computer Use Demo的完整过程，包括AWS Bedrock集成
+
+
+### 启动和测试
+
+#### 6.1 启动Streamlit应用
+```bash
+source ~/.zshrc
+export AWS_REGION=us-east-1
+export API_PROVIDER=bedrock
+streamlit run computer_use_demo/streamlit.py --server.port 8501
+```
+
+#### 6.2 访问界面
+- URL: http://localhost:8501
+- 配置: API Provider = bedrock, Model = anthropic.claude-3-5-sonnet-20240620-v1:0
+
+## bugfix
+
+### bug1: Python版本兼容性
+
+**问题**: 项目使用了Python 3.11+的新特性，但系统Python为3.9.6
+
+**解决方案**: 
+- 使用pyenv管理Python版本
+- 升级到Python 3.11.13
+- 为旧版本添加兼容性代码
+
+### bug2: AWS Bedrock权限配置
+
+**问题**: IAM用户缺少Bedrock访问权限
+
+**解决方案**:
+- 添加AmazonBedrockFullAccess策略
+- 在Bedrock控制台申请模型访问权限
+- 测试不同区域的模型可用性
+
+### bug3: 模型ID格式问题
+
+**问题**: 不同区域和模型版本的ID格式不一致
+
+**解决方案**:
+- 创建测试脚本验证所有可能的模型ID
+- 选择us-east-1区域的稳定模型
+- 使用anthropic.claude-3-5-sonnet-20240620-v1:0
+
+### bug4: 依赖包冲突
+
+**问题**: 不同Python版本的包兼容性问题
+
+**解决方案**:
+- 使用pyenv创建干净的Python环境
+- 重新安装所有依赖包
+- 验证关键包的版本兼容性
+
+## 工具系统详解
+
+### Computer工具
+负责桌面交互操作：
+- 截屏 (`screenshot`)
+- 鼠标操作 (`left_click`, `right_click`, `mouse_move`)
+- 键盘输入 (`key`, `type`)
+- 拖拽操作 (`left_click_drag`)
+
+### Bash工具
+执行命令行操作：
+- 异步进程管理
+- 命令超时控制
+- 输出缓冲和格式化
+
+### Edit工具
+文件编辑功能：
+- 文件查看 (`view`)
+- 文件创建 (`create`)
+- 字符串替换 (`str_replace`)
+- 内容插入 (`insert`)
+- 撤销操作 (`undo_edit`)
+
+## 配置文件
+
+### AWS配置 (~/.aws/config)
+```ini
+[default]
+region = us-east-1
+```
+
+### Shell配置 (~/.zshrc)
+```bash
+export PATH="/usr/local/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
+
+## 测试验证
+
+### 模型连接测试
+```python
+# 测试脚本验证Claude模型可用性
+client = AnthropicBedrock()
+response = client.messages.create(
+    model="anthropic.claude-3-5-sonnet-20240620-v1:0",
+    max_tokens=50,
+    messages=[{"role": "user", "content": "Hello"}]
+)
+```
+
 # 2025-08-04
 
 继续Tool Use Computer Use， 今天主要是实操：
