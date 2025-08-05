@@ -15,6 +15,97 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-05
+
+# 第 19 课：实现代码 Grader
+
+本课讲解如何实现 Prompt 评估工作流中的代码评分器（code grader），用于验证 Claude 输出是否符合格式要求且具备语法正确性。
+
+---
+
+## 🎯 目标
+
+- 只接受以下三种格式输出：Python、JSON、正则表达式（Regex）。
+- 严格禁止任何解释、注释、多余内容。
+- 验证输出是否具备语法正确性（使用解析器尝试 parse/compile）。
+
+---
+
+## ✅ 实现步骤
+
+### Step 1：编写三个验证函数
+
+创建三个函数：
+
+- `validate_json(output)`：尝试使用 `json.loads` 解析。
+- `validate_python(output)`：尝试用 Python 的 AST 解析代码。
+- `validate_regex(output)`：尝试用 `re.compile()` 编译正则。
+
+每个函数都返回分数：
+- 成功解析则返回 `10`
+- 否则返回 `0`
+
+然后写一个 `grade_syntax(output, test_case)` 来根据 `test_case["format"]` 调用相应的验证函数。
+
+### Step 2：更新数据集，加入 format 字段
+
+数据集中的每条测试用例加入字段：
+```json
+{
+  "task": "生成一个 JSON 配置文件",
+  "format": "json"
+}
+```
+
+支持三种格式值：`python`、`json`、`regex`
+
+通过更新 `generate_dataset()` 函数中的 prompt，自动生成带 format 的数据。
+
+### Step 3：更新 Draft Prompt 模板
+
+原始 prompt 只要求“解决任务”，可能导致生成多余内容。
+
+修改 Prompt：
+- 明确要求只输出代码（Python/JSON/Regex）
+- 不允许附加解释、注释、标头或其他无关信息
+- 使用预填的 Assistant Message + stop sequence 强制 Claude 返回纯代码块
+
+使用语言提示：```code 开头和 ``` 结尾，避免指定具体语言类型。
+
+### Step 4：合并模型评分和语法评分
+
+更新 `run_test_case()` 函数：
+
+```python
+model_grade = grade_by_model(test_case, output)
+model_score = model_grade["score"]
+syntax_score = grade_syntax(output, test_case)
+final_score = (model_score + syntax_score) / 2
+```
+
+最后将 `score` 和 `reasoning` 放入返回结果。
+
+---
+
+## ✅ 测试结果
+
+执行 `run_eval()`，输出结果如下：
+
+```json
+{
+  "score": 8.166,
+  "reasoning": "符合格式要求，代码结构清晰，逻辑正确"
+}
+```
+
+---
+
+## 📌 小结
+
+- 代码 grader 是 prompt 评估中不可缺少的一环。
+- 与模型 grader 搭配使用可以提供更客观全面的评分。
+- 下一课将尝试优化 prompt，提升评估得分。
+
 # 2025-08-04
 
 # 第 18 课：实现 Model Grader
