@@ -15,6 +15,11 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-06
+
+- text editor tool - built in
+- web search tool - can restrain Claude to only search a specific domain to avoid random stuff
+
 # 2025-08-05
 
 - batch tool: to increase the chances of Claude making multiple tool calls in a single msg
