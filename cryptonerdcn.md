@@ -15,6 +15,15 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-06
+
+同步发布于推特： https://x.com/cryptonerdcn/status/1953044806277693453
+
+第十三天打卡：
+有人问我Custom Commands和Hooks有啥不同？
+实际上仅论脚本功能而言，执行起来了那并没什么不同，同一份脚本你可以用作Custom Commands也可以用作Hooks。区别在于他们一个是被动执行，另一个则是自动执行，所以适用的范围不同。
+这是个完全看个人风格和项目目标的事情，有些人可能会把一个Custom Commands里什么都写好了，完全不需要Hooks插手。
+
 # 2025-08-05
 
 同步发于推特：https://x.com/cryptonerdcn/status/1952732409998483880
