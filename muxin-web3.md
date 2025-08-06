@@ -15,6 +15,16 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-06
+
+今天学习了 text edit tool 和 web search tool，这两个都是 Claude built-in tool，我们只需 pass 非常简单的 schema 就可以。
+- text edit tool
+  - 它包含了这些功能：View file or directory contents, View specific ranges of lines in a file, Replace text in a file, Create new files, Insert text at specific lines in a file, Undo recent edits to files.
+  - 什么时候适合用这个 tool：在你的代码里需要编辑文件时，没法使用功能齐全的代码编辑器时，希望将文件编辑功能集成到 Claude 驱动的应用中时。
+- web search tool
+  - 它可以直接上网搜索你 request 的内容，schema 也非常简单，可以设置 max_uses，它限制了 Claude 可以执行搜索的次数，还有一个 allowed_domains 是可以限制 Claude 只在哪些 domain 里进行搜索。
+  - 在搜索返回数据里，有一个 citations block，它提供了 Claude 搜索这些内容的来源，这些信息可以用来在前端展示，告诉用户 Claude 搜索内容的来源以及用户可以扩展了解。
+
 # 2025-08-05
 
 今天学了 batch tool, tools for structured data 和 fine grained tool calling. 
