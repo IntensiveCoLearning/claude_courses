@@ -15,6 +15,13 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-06
+
+使用XML 或其他结构化标签（如JSON 或YAML）有助于系统性地理解和处理数据。结构化标签为数据提供了明确的框架和层次，使得机器可以更容易地解析、验证和操作数据。﻿  
+除了XML，还有其他一些常用的结构化标签，例如:﻿  
+JSON (JavaScript Object Notation):一种轻量级的数据交换格式，常用于Web应用程序中。  
+YAML (YAML Ain't Markup Language):一种可读性很强的数据序列化格式，常用于配置文件。
+
 # 2025-08-05
 
 如何提问？  
