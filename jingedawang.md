@@ -15,6 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-06
+
+Route pattern适合于先分类，然后适用特定类别的prompt来处理的任务。
+
+![image.png](attachment:7ae88d90-aca5-4b71-b2d3-dc464a342783:image.png)
+
+Agent和Workflow的差别就在于Agent把解决任务的过程交给模型来决定，模型可以非常灵活地设计不同的解决方案。Agent本质上就是LLM+Tools，之所以有效，是因为LLM可以有创造性地把tool use以最合理的方式串起来。下面是一个具体的例子，三个tool的不同组合可以用来解决非常多不同种类的问题。提供给LLM的tool应该尽量抽象，不要太局限。
+
+![image.png](attachment:86a0d92a-f92c-4703-9d06-b3e0f0dc97eb:image.png)
+
+一定要让Claude能够随时获取到它所处的环境状态，无论是执行操作前还是执行操作后。提供环境反馈才能让Claude更好地完成任务，并动态调节自己的下步动作。
+
 # 2025-08-05
 
 Workflow和Agent的区别是，前者由开发者预定义一系列操作，整个流程是预先确定的。而后者则完全由AI自行决定。
