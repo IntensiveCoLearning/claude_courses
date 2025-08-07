@@ -15,6 +15,24 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-07
+
+今天学习了 Retrieval Augmented Generation(RAG)。
+- 最开始从 大型文档+用户问题 的例子出发，讲了两种不同的实现方式
+  - 把文档所有内容喂给 AI，让 AI 根据内容来找到答案，但这种方式会很慢并且很贵
+  - 第二种就是把文档内容根据一定的规则拆分成 chunk，然后看哪个 chunk 跟用户问的问题最接近。这就是 RAG，它的特点是：Many upsides, many downsides; Many technical decisions to be made; Requires preprocessing; Requires a 'search' mechanism
+- Chunking strategies, 如何将文档内容拆分成 chunk
+  - Size Based: 根据长度来拆分 chunk，但有可能会把单词或语句拆分在不同的 chunk，就比较难理解，当然也可以设置 overlap 的长度，可以稍微降低一些强行拆分的情况。但我还是觉得这种方式太粗暴了。
+  - Structure Based：根据一定的 format 把文档拆分开，通常是根据不同的 heading/section 来拆分，这个比较 make sense，但是这是需要这个文档是有一定清晰结构的。
+  - Semantic Based：根据句子/section 内容相关性进行拆分，这部分讲的比较少。
+- Text embeddings，将 chunk 通过 Embedding Model 转成 Embedding(list of numbers)，课程里用的是 VoyageAI Embedding Model，当把用户的问题也 Embedding 后，会 compare 用户问题的 Embedding 数字和 chunk Embedding 数字，根据 Cosine Similarity 算法算出哪个 chunk 更接近用户问题。
+- RAG 的 workflow：
+  - Chunk source text
+  - Generate embeddings for each chunk
+  - Create a vector store and add each embedding to it
+  - Generate an embedding for users question
+  - Search the store with the embedding, find the most relevant chunks
+
 # 2025-08-06
 
 今天学习了 text edit tool 和 web search tool，这两个都是 Claude built-in tool，我们只需 pass 非常简单的 schema 就可以。
