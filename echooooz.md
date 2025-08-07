@@ -15,6 +15,13 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-07
+
+- RAG
+    - break the doc up into many chunks & put chunks relevant to the user's question in the prompt. downsides - search/preprocessing/many technical decisions
+    - trunking strategies: size based（include overlap thru neighbouring chunks), structure based, semantic based(expensive but more relevant)
+    - text embeddings - a numerical representation of the meaning contained in some text
+
 # 2025-08-06
 
 - text editor tool - built in
