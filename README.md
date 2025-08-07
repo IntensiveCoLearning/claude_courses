@@ -54,7 +54,7 @@ Telegram：https://t.me/LXDAO/26860
 打卡成功者福利：
 
 - 打卡成功者将获得 LXDAO 颁发的 Claude Courses 残酷共学 Badge
-- 南塘福利：https://www.notion.so/lxdao/3eab258b4df44c9cb97319452b2be13b
+- 学到知识就是最大的福利！
 
 ## 更多信息
 
