@@ -15,6 +15,98 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-07
+
+# Tool Use
+
+With streaming enabled, for tool use, you'll also need to handle a new event type called InputJsonEvent.
+
+Each InputJsonEvent contains two key properties:
+
+- partial_json - A chunk of JSON representing part of the tool arguments
+- snapshot - The cumulative JSON built up from all chunks received so far
+
+Here's how you handle these events in your streaming pipeline:
+
+```
+for chunk in stream:
+    if chunk.type == "input_json":
+        # Process the partial JSON chunk
+        print(chunk.partial_json)
+        # Or use the complete snapshot so far
+        current_args = chunk.snapshot
+```
+
+How JSON Validation Works
+
+The Anthropic API doesn't immediately send you every chunk as Claude generates it. Instead, it buffers chunks and validates them first. This is enabled by default. The API will:
+
+- Wait until the entire abstract value is complete
+- Validate that key-value pair against your schema
+- Send all the buffered chunks for abstract at once
+- Repeat the process for the meta object
+
+Fine-Grained Tool Calling
+
+If you need faster, more granular streaming - perhaps to show users immediate updates or start processing partial results quickly - you can enable fine-grained tool calling.
+
+Fine-grained tool calling does one main thing: it disables JSON validation on the API side. This means:
+
+You get chunks as soon as Claude generates them
+No buffering delays between top-level keys
+More traditional streaming behavior
+Critical: JSON validation is disabled - your code must handle invalid JSON
+Enable it by adding fine_grained=True to your API call:
+
+```
+run_conversation(
+    messages, 
+    tools=[save_article_schema], 
+    fine_grained=True
+)
+```
+
+With fine-grained tool calling, you might receive a word_count value much earlier in the stream, without waiting for the entire meta object to be completed.
+
+TODO interesting, how does word_count work? How AI predict how mange words while generating?
+
+Without fine-grained tool calling, the API's validation would catch this error and potentially wrap problematic values in strings, which might not match your expected schema.
+
+Consider enabling fine-grained tool calling when:
+
+- You need to show users real-time progress on tool argument generation
+- You want to start processing partial tool results as quickly as possible
+- The buffering delays negatively impact your user experience
+- You're comfortable implementing robust JSON error handling
+
+For most applications, the default behavior with validation is perfectly adequate. But when you need that extra responsiveness, fine-grained tool calling gives you the control to get chunks as fast as Claude can generate them.
+
+## The text edit tool
+
+Important Note: Tool version strings can for all model versions can be found here: https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/text-editor-tool
+
+Claude comes with one built-in tool that you don't need to create from scratch: the text editor tool. This tool gives Claude the ability to work with files and directories just like you would in a standard text editor.
+
+Here's where things get a bit confusing: while the tool schema is built into Claude, you still need to provide the actual implementation. This is the right design, as we can custom the access control and beheavier of the file handling implementation.
+
+## Web search tool
+
+Important note: Your organization must enable the Web Search tool in the settings console before using it. You can find this setting here: https://console.anthropic.com/settings/privacy
+
+Claude includes a built-in web search tool that lets it search the internet for current or specialized information to answer user questions. Unlike other tools where you need to provide the implementation, Claude handles the entire search process automatically - you just need to provide a simple schema to enable it.
+
+To use the web search tool, you create a schema object with these required fields:
+
+web_search_schema = {
+    "type": "web_search_20250305",
+    "name": "web_search", 
+    "max_uses": 5
+}
+
+The max_uses field limits how many searches Claude can perform. Claude might do follow-up searches based on initial results, so this prevents excessive API calls. A single search returns multiple results, but Claude may decide additional searches are needed.
+
+You can get the WebSearchToolResultBlock, etc. from the response. You can also restrict search domains etc.
+
 # 2025-08-05
 
 # Tool Use
