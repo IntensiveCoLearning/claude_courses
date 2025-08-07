@@ -15,6 +15,62 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-07
+
+Structure with XML tags
+
+Using XML Tags for Clarity
+
+XML tags act as delimiters that help Claude understand the structure of your prompt. You can create custom tag names that describe the content they contain:
+```XML
+<sales_records>
+{sales_records}
+</sales_records>
+```
+The tag names don't need to follow any official XML specification - you're free to create descriptive names like sales_records, data, or records. More specific names generally work better than generic ones.
+A Practical Example
+
+Here's a clear example of why XML tags make a difference. In the "Not Great" version, it's unclear what content represents the buggy code versus the documentation:
+
+The improved version uses XML tags to clearly separate the different types of content:
+
+```Python
+from datavortex import Pipeline, DataSource
+
+def process_data(input_file, output_file):
+    pipeline = Pipeline()
+    source = DataSource.from_csv(input_file)
+```
+
+<docs>
+# Creating a data source from data vortex
+csv_source = DataSource.from_csv("data.csv")
+</docs>
+
+Now Claude can easily distinguish between the code that needs debugging and the documentation that should guide the debugging process.
+Applying Structure to Your Prompts
+
+Even when your interpolated content isn't massive, XML tags can still improve clarity. For example, when generating meal plans, you can group athlete information together:
+
+<athlete_information>
+- Height: {prompt_inputs["height"]}
+- Weight: {prompt_inputs["weight"]}
+- Goal: {prompt_inputs["goal"]}
+- Dietary restrictions: {prompt_inputs["restrictions"]}
+</athlete_information>
+
+This makes it crystal clear to Claude that this block contains external input about the athlete that should inform the meal plan generation.
+When to Use XML Tags
+
+XML tags are most useful when:
+
+    You're including large amounts of context or data
+    Your prompt contains multiple distinct types of content
+    You want to make the boundaries between different sections obvious
+    You're interpolating content that might be confused with your instructions
+
+While you might not see dramatic improvements with simple prompts, XML tags serve as delimiters that help Claude better understand your intent, leading to more consistent and accurate responses.
+
 # 2025-08-05
 
 继续昨天没做完的Anthropic Computer Use Demo的完整过程，包括AWS Bedrock集成
