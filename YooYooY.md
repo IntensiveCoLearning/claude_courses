@@ -15,6 +15,77 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-07
+
+# Multi-turn conversations with tools
+
+The Conversation Loop:
+
+```python
+def run_conversation(messages):
+    while True:
+        response = chat(messages, tools=[get_current_datetime_schema])
+        add_assistant_message(messages, response)
+        print(text_from_message(response))
+        
+        if response.stop_reason != "tool_use":
+            break
+            
+        tool_results = run_tools(response)
+        add_user_message(messages, tool_results)
+    
+    return messages
+```
+
+Handling Multiple Tool Calls
+
+- For each `ToolUseBlock`
+- Run the specified tool with the given inputs
+- Take the output from the tool and put it into a `ToolResultBlock`
+- Return all the ToolResultBlocks
+
+run_tools:
+
+```python
+def run_tools(message):
+    tool_requests = [
+        block for block in message.content if block.type == "tool_use"
+    ]
+    tool_result_blocks = []
+    
+    for tool_request in tool_requests:
+        # Process each tool request...
+```
+
+tool result block structure:
+```python
+tool_result_block = {
+    "type": "tool_result",
+    "tool_use_id": tool_request.id,
+    "content": json.dumps(tool_output),
+    "is_error": False
+}
+```
+
+Error Handling:
+```python
+try:
+    tool_output = run_tool(tool_request.name, tool_request.input)
+    tool_result_block = {
+        "type": "tool_result",
+        "tool_use_id": tool_request.id,
+        "content": json.dumps(tool_output),
+        "is_error": False
+    }
+except Exception as e:
+    tool_result_block = {
+        "type": "tool_result", 
+        "tool_use_id": tool_request.id,
+        "content": f"Error: {e}",
+        "is_error": True
+    }
+```
+
 # 2025-08-05
 
 # Tool use with Claude
