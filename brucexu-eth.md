@@ -15,6 +15,51 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+I asked a question regarding "word_count": How does word_count work? Claude: The key insight is that LLMs don't truly "predict" future token generation in a deterministic way - they generate probabilistically token by token. Any early word_count is either based on already-generated content or is an estimate that could be wrong.
+
+# RAG
+
+Retrieval Augmented Generation (RAG) is a technique that helps you work with large documents that are too big to fit into a single prompt. Instead of cramming everything into one massive prompt, RAG breaks documents into chunks and only includes the most relevant pieces when answering questions.
+
+RAG takes a smarter approach. First, you break the document into smaller chunks during a preprocessing step. Then, when a user asks a question, you find the chunks most relevant to their question and only include those in your prompt.
+
+Challenges with RAG
+
+- Requires a preprocessing step to chunk documents
+- Need a search mechanism to find "relevant" chunks
+- Included chunks might not contain all the context Claude needs
+- Many ways to chunk text - which approach is best?
+
+For example, you could split documents into equal-sized portions, or you could create chunks based on document structure like headers and sections. Each approach has trade-offs you'll need to evaluate for your specific use case.
+
+Text chunking is one of the most critical steps in building a RAG (Retrieval Augmented Generation) pipeline. How you break up your documents directly impacts the quality of your entire system. A poor chunking strategy can lead to irrelevant context being inserted into your prompts, causing your AI to give completely wrong answers.
+
+### Size-Based Chunking
+
+downsides:
+
+- Words get cut off mid-sentence
+- Chunks lose important context from surrounding text
+- Section headers might be separated from their content
+
+To address these issues, you can add overlap between chunks.
+
+### Structure-Based Chunking
+
+Structure-based chunking divides text based on the document's natural structure - headers, paragraphs, and sections. This works great when you have well-formatted documents like Markdown files.
+
+### Semantic-Based Chunking
+
+Semantic-based chunking is the most sophisticated approach. You divide text into sentences, then use natural language processing to determine how related consecutive sentences are. You build chunks from groups of related sentences.
+
+### Sentence-Based Chunking
+
+A practical middle ground is chunking by sentences. You split the text into individual sentences using regular expressions, then group them into chunks with optional overlap:
+
+Remember: there's no single "best" chunking strategy. The right approach depends on your specific documents, use cases, and the trade-offs you're willing to make between implementation complexity and chunk quality.
+
 # 2025-08-07
 
 # Tool Use
