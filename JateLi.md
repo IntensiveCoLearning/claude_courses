@@ -21,6 +21,8 @@ Using Multiple Tools = 在现有工具框架基础上添加更多工具，让Cla
 
 Fine-Grained Tool Calling 本质上是在响应速度和数据可靠性之间的权衡选择，适合对实时性要求较高的交互式应用。
 
+TestDone
+
 # 2025-08-05
 
 Tool Schema = Claude的"工具说明书"
