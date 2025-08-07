@@ -15,6 +15,37 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-07
+
+# 📘 Anthropic Courses Day 12 学习笔记
+
+## ✅ 今日进度
+- 正式进入「Model Context Protocol（MCP）」模块的学习 ✅
+- 今日已完成前 4 个小节内容：
+  - Introducing MCP
+  - MCP clients
+  - Project setup
+  - Defining tools with MCP
+
+## 💡 今日收获
+- **MCP（Model Context Protocol）** 是 Anthropic 提出的“模型上下文协议”，目的是为 Claude 提供结构化、模块化的上下文与资源注入方式
+- **MCP clients**：允许多个客户端共享统一的上下文、工具、资源和 prompt，有利于构建跨团队协作的 Agent 系统
+- **项目初始化流程**：
+  - MCP 项目通过一套标准结构组织工具、资源、prompt 等组件
+  - 支持本地开发 + 云部署，方便在不同环境中快速复用
+- **工具定义（Defining tools with MCP）**：
+  - 工具（Tool）在 MCP 中可独立定义、统一注册、结构清晰
+  - MCP 提供 schema 驱动的方式管理工具逻辑，便于后续维护与扩展
+
+## 🧠 理解要点
+- 相较于之前的裸 API 调用，MCP 更像是为 Claude 构建了一个“多模态插件系统”框架
+- MCP 项目结构是 Claude 作为 Agent Runtime 的基础设施，尤其适用于需要持续演进、多人协作的 AI 产品
+
+## 🎯 明日目标
+- 继续学习 MCP 模块剩余内容：
+  - Server inspector、资源访问、Prompt 配置等
+  - 完成 MCP 总结与测验
+
 # 2025-08-05
 
 # 📘 Anthropic Courses Day 11 学习笔记
