@@ -15,6 +15,93 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+# Batch Tool
+
+Batch Tool enables Claude to run multiple tools in parallel within a single Assistant message instead of making separate sequential requests.
+
+batch tool schema:
+
+```python
+batch_tool_schema = {
+    "name": "batch_tool",
+    "description": "Invoke multiple other tool calls simultaneously",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "invocations": {
+                "type": "array",
+                "description": "The tool calls to invoke",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the tool to invoke"
+                        },
+                        "arguments": {
+                            "type": "object",
+                            "description": "The arguments to pass to the tool"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+Implementation:
+
+- Add batch tool to schema with invocations parameter
+
+- Create `run_batch` function that iterates through invocations list
+
+- Extract tool name and JSON-parsed arguments from each invocation
+
+- Call run_tool function for each requested tool
+
+- Return batch_output list containing results from all tool executions
+
+```python
+
+def run_batch(invocations=[]):
+
+    batch_output = []
+
+    # Iterates through each invocation in the list
+    for invocation in invocations:
+    	# Extracts the tool name and arguments
+        name = invocation["name"]
+        args = json.loads(invocation["arguments"])
+        
+        # Calls the appropriate tool using your existing run_tool function
+        tool_output = run_tool(name, args)
+        
+        # Collects all the results into a batch output list
+        batch_output.append({
+            "tool_name": name,
+            "output": tool_output
+        })
+    
+    return batch_output
+
+```
+
+update main tool routing function to handle the batch tool:
+```python
+def run_tool(tool_name, tool_input):
+    if tool_name == "get_current_datetime":
+        return get_current_datetime(**tool_input)
+    elif tool_name == "add_duration_to_datetime":
+        return add_duration_to_datetime(**tool_input)
+    elif tool_name == "set_reminder":
+        return set_reminder(**tool_input)
+    elif tool_name == "batch_tool":
+        return run_batch(**tool_input)
+```
+
 # 2025-08-07
 
 # Multi-turn conversations with tools
