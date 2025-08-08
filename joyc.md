@@ -15,6 +15,144 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+# 第二十一课 - Prompt Engineering 入门与项目初始化
+
+## 🎯 课程目标  
+- 从 **Prompt Evaluation** 转向 **Prompt Engineering**  
+- 学习通过优化 prompt 来获得更高质量、更稳定的输出  
+- 用同一项目贯穿整个模块：从初版 prompt → 多轮改进 → 提升评分  
+
+---
+
+## 📌 本课内容  
+1. **模块结构**  
+   - 第1-2节：编写初版 prompt（可能很差）  
+   - 后续多节：逐步应用不同 Prompt Engineering 技术优化，并反复跑 eval  
+   - 使用上一模块改进版的 **通用化 eval pipeline**（支持任意 prompt）  
+
+2. **项目目标**  
+   - 编写一个 prompt：根据运动员的 **身高、体重、目标、饮食限制** 生成 **一天的饮食计划**  
+   - 输出应包含：
+     - 每日总热量  
+     - 宏量营养素分配  
+     - 餐食及具体食物、份量、时间  
+
+3. **新工具：PromptEvaluator 类**  
+   - 集成数据集生成、模型评分等功能  
+   - 支持并发（`max_concurrent_tasks`），可加快 eval 速度  
+   - 并发过高会触发 API 限速，建议开始用 3 或以下（作者演示用 50）  
+
+4. **数据集生成（generate_dataset 方法）**  
+   - 输入：prompt 的用途描述 + 输入字段定义（height, weight, goal, restrictions）  
+   - `num_test_cases` 建议 3（快速调试）  
+   - 输出写入 `dataset.json`  
+
+5. **初版 Prompt（run_prompt 方法）**  
+   - 极简写法：  
+     ```
+     What should this person eat?
+     Height: {height}
+     Weight: {weight}
+     Goal: {goal}
+     Restrictions: {restrictions}
+     ```
+   - 将数据集中的每条 case 的输入插入模板  
+
+6. **额外评分标准（extra_criteria 参数）**  
+   - 在 model grader 中增加附加要求：  
+     - 含每日热量总计  
+     - 含宏量营养素比例  
+     - 含具体食物、份量、时间  
+   - 提高对输出的验证要求  
+
+7. **首次评估结果**  
+   - 分数极低（示例 2.32，因故意用弱模型）  
+   - 生成 `output.html`，可浏览详细的测试报告（任务、评分、推理、解决方案等）  
+
+---
+
+## ✅ 本课结论  
+- 已完成项目的 **目标设定 + 数据集生成 + 初版 prompt 编写 + 初次 eval**  
+- 当前分数很差 → 后续视频将用不同的 Prompt Engineering 技术迭代优化 
+---
+# 第二十二课  Being clear and direct
+
+## 核心目标
+- 通过第一个 Prompt Engineering 技巧 **“清晰且直接”** 改进初版提示词，提高评估得分。
+- 当前起始得分为 **2.32**，目标是逐步优化。
+
+---
+
+## 技巧说明：清晰且直接（Be Clear and Direct）
+1. **重点位置**
+   - **提示词第一行**是最重要的部分，决定了 Claude 对任务的理解。
+
+2. **写法要点**
+   - 使用简单直接的语言。
+   - 用**动词**开头，明确告诉 Claude 要做什么。
+   - 提供输出类型与内容范围的提示。
+
+3. **示例**
+   - `Write three paragraphs about how solar panels work.`  
+     - 动词 `Write` 明确了任务是写作。
+     - 指定了篇幅与主题。
+   - `Identify three countries that use geothermal energy and for each include generation stats.`  
+     - 动词 `Identify` 指明任务是找出信息，并补充了输出细节。
+
+---
+
+## 应用到当前项目
+- 原 prompt 开头过于随意，没有直接传达任务。
+- 改进后的开头示例：
+  ```
+  Generate a one-day meal plan for an athlete that meets their dietary restrictions.
+  ```
+  - 使用 `Generate` 作为动词开头，直接下达任务指令。
+  - 简洁描述了输出目标与限制条件。
+
+---
+
+## 效果
+- 运行新的 prompt 并重新评估。
+- 得分从 **2.32** 提升到 **3.92**，有明显进步但仍需进一步优化。
+
+---
+# 第二十三课 Prompt Engineering - 保持具体性（Being Specific）
+
+### 核心概念
+在 Prompt 工程中，“具体性”意味着在提示中列出明确的指导方针（guidelines）或步骤（steps），以引导模型朝特定方向生成内容。  
+具体性有助于减少输出的随机性，提高结果质量。
+
+### 两种常见方式
+1. **Guidelines（指导方针）**  
+   - 列出输出应具备的属性、结构或限制条件。
+   - 示例：
+     - 控制字数（如：1000 字以内）。
+     - 包含特定情节或角色。
+     - 确保有明确的开头、中间和结尾。
+
+2. **Steps（步骤指令）**  
+   - 给模型一个分步思考和执行的路径。  
+   - 示例：
+     1. 先头脑风暴 3 个可能的创意。  
+     2. 选择最有趣的一个。  
+     3. 设计一个揭示该创意的场景。  
+     4. 添加至少一个辅助角色。
+
+### 实验结果
+- 在“生成运动员一日饮食计划”的任务中：  
+  - **添加 Guidelines** → 分数从 **3.92** 提升到 **7.86**。  
+  - **添加 Steps** → 分数约为 **7.3**，稍低于纯 Guidelines，但依然显著提升。
+- 结论：
+  - 常规建议：优先使用 **Guidelines** 控制输出属性。
+  - 对于复杂任务：结合 **Steps** 强制模型考虑更广的视角和细节。
+
+### 使用建议
+- **Guidelines** → 适用于几乎所有 Prompt，帮助确保输出格式、风格和关键要素。
+- **Steps** → 在需要推理、分析、生成多阶段内容时尤为有效，例如：调查原因、策略制定、复杂创意任务。
+
 # 2025-08-07
 
 # 第 20 课：优化模型评分的提示词设计
