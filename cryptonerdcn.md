@@ -15,6 +15,11 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+MCP前半部分完成。
+证书：http://verify.skilljar.com/c/qc6f3w7xndi9
+
 # 2025-08-06
 
 同步发布于推特： https://x.com/cryptonerdcn/status/1953044806277693453
