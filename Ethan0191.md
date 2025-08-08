@@ -15,6 +15,15 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+今天学的是Tool use with Claude前五节，输出   
+[{'role': 'user', 'content': 'What is the exact time, formatted as HH:MM:SS?'},
+ {'role': 'assistant',
+  'content': [TextBlock(citations=None, text='I can get the current time in the HH:MM:SS format for you. Let me do that:', type='text'),
+   ToolUseBlock(id='toolu_01Qimc7DSYsLXP9izLAAbRg4', input={'date_format': '%H:%M:%S'}, name='get_current_datetime', type='tool_use')]}]  
+这样能做claude之外更多的事情。
+
 # 2025-08-07
 
 今天完成了Prompt engineering techniques剩余章节并通过考试，说白了就是问claude要答案的时候能比较明确给出好的模板最好，如果不能就告诉他怎么思考。
