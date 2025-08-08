@@ -15,6 +15,14 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+Text Edit Tool 本质上让 Claude 具备了专业代码编辑器的文件操作能力，通过 API 调用而非 GUI 交互来完成复杂的文件编辑任务。
+
+Web Search Tool 让 Claude 从依赖训练数据转变为能够获取实时、专业信息的研究助手，特别适合需要最新信息或专业领域知识的应用场景。
+
+Quiz on tool use with Claude 7/7
+
 # 2025-08-07
 
 Using Multiple Tools = 在现有工具框架基础上添加更多工具，让Claude拥有更丰富的能力
