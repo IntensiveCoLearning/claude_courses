@@ -15,6 +15,10 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+学完了Claude with the Anthropic API这个课程，还是挺全面的，把prompt engineering、RAG、tool use、MCP、Claude Code都讲到了。深入程度恰到好处，适合开发者学习。
+
 # 2025-08-06
 
 Route pattern适合于先分类，然后适用特定类别的prompt来处理的任务。
