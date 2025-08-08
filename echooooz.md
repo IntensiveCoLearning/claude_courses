@@ -15,6 +15,11 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+续上次笔记
+    - store embeddings in a vector database, embed user query, find closest embeddings(cosine similarity), add related chunks into a prompt
+
 # 2025-08-07
 
 - RAG
