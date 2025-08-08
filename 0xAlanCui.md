@@ -15,6 +15,40 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-08
+
+# 📘 Anthropic Courses Day 13 学习笔记
+
+## ✅ 今日进度
+- 完成「Model Context Protocol（MCP）」模块剩余所有小节 ✅
+- 今日学习了以下内容：
+  - The server inspector
+  - Implementing a client
+  - Defining resources
+  - Accessing resources
+  - Defining prompts
+  - Prompts in the client
+  - MCP review
+- 成功通过章节测验，**6 题全对（100%）**！
+
+## 💡 今日收获
+- **Server inspector**：可以用来调试和查看 MCP 服务端的工具、资源、prompt 定义，方便快速验证配置
+- **Implementing a client**：掌握了在 MCP 框架下实现客户端的流程，让 Claude 与外部系统高效交互
+- **Defining & Accessing resources**：
+  - 资源（Resource）是 MCP 中可被多处调用的上下文数据，如文档、数据库、API 结果等
+  - 可以通过访问方法动态注入给 Claude
+- **Defining prompts & Prompts in the client**：
+  - Prompt 在 MCP 中可以模块化定义、集中管理，并由客户端动态调用
+  - 这样可以让不同项目、不同 Agent 共用一套 prompt 模板
+- **MCP review**：整体回顾了 MCP 的核心价值——统一管理工具、资源和 prompt，为 Claude 提供可扩展、可复用的运行环境
+
+## 🧠 模块总结
+- MCP 让 Claude 从“一个模型 API”升级成“可扩展的 Agent Runtime”，特别适合企业级和多团队协作
+- 工具 + 资源 + prompt 三位一体的模式，让 AI 应用的可维护性和可扩展性大幅提升
+
+## 🎯 明日目标
+- 开始「Anthropic apps - Claude Code and computer use」模块，探索 Claude 的代码执行与计算机操作能力
+
 # 2025-08-07
 
 # 📘 Anthropic Courses Day 12 学习笔记
