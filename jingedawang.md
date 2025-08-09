@@ -15,6 +15,12 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-09
+
+Deep dive into MCP's advanced features including sampling, notifications, and transport implementations
+
+这门课深入介绍MCP，感觉可以学一下。
+
 # 2025-08-08
 
 学完了Claude with the Anthropic API这个课程，还是挺全面的，把prompt engineering、RAG、tool use、MCP、Claude Code都讲到了。深入程度恰到好处，适合开发者学习。
