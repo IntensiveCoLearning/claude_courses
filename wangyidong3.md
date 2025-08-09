@@ -15,6 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-09
+
+累了，今天简单点：
+Prompt Engineering, Providing examples
+
+
+Best Practices
+
+    Use XML tags to clearly structure your examples
+    Be explicit about what you're showing Claude
+    Choose representative examples that cover your most important use cases
+    Include corner cases that might trip up the model
+    Explain why examples are good when it's not obvious
+
+One-shot and multi-shot prompting will quickly become essential tools in your prompt engineering toolkit, especially when you need consistent, well-formatted outputs or want to handle tricky edge cases reliably.
+
 # 2025-08-07
 
 Structure with XML tags
