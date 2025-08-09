@@ -15,6 +15,18 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-09
+
+同步发布于推特：https://x.com/cryptonerdcn/status/1954128988303188062
+第十四天打卡：
+Sampling将MCP server的复杂性解绑，遇上它单独没法完成的任务（比如在llm提出需求后需要精加工而不是简单的访问某个api就能完成的任务），可以让client呼叫llm帮他完成一部分内容。
+这样避免了MCP Server自己去与LLM通信。
+MCP server需要用 create_message 函数发出让client去帮忙与LLM通信的请求。
+Client同样需要一个sampling_callback来处理这个请求。
+
+更大的好处是，LLM的token使用现在放到了Client中，这样公开的MCP Server就不需要内包直接调用LLM的能力（以及为此付费的代价），任何接入该MCP Server的Clinet都可以直接提供自己的LLM即可。
+当然，Client需要小心被攻击。
+
 # 2025-08-08
 
 MCP前半部分完成。
