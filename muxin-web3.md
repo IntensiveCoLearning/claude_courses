@@ -15,6 +15,13 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-09
+
+今天学习了 BM25 lexical search, multi-index RAG pipeline, reranking results, 和 contextual retrieval。
+- 除了 semantic search 外，今天又介绍了一个 lexical search，并且两种 search 方法可以同时使用，最终将两个部分的 results 进行 merge 合并。lexical search 主要是将关键词出现的次数记录一下，出现的越频繁的 importance 会越低，最终找到包含更多高权重关键词的 section。
+- 两种 search merge 的过程：每种 search 对自己的 result text chunk 会有排位 1，2，3，然后最终 merge 后分数的计算是：1.0/(1+ A Rank) +1.0/(1+ B Rank) = 0.xxx，分数越高的即为越接近的 text chunk。
+- Re-ranking 就是把 merge 后的结果以及用户问的原始问题组合成一个 promopt 发给 Claude，让它按相关性递减的顺序返回最相关的文档，最好是每个 document tag 里都加个 id，返回的时候就不用将原文返回了，提升一下 Claude 的效率。
+
 # 2025-08-07
 
 今天学习了 Retrieval Augmented Generation(RAG)。
