@@ -15,6 +15,10 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-09
+
+今天学的可太难了，辅助函数还有多工具调用，但是我对assitent_message里面多内容还是有点陌生，不知道他这一步是用来做什么，为什么user_message里面就没有那么多block。通过检查remainder以及辅助函数就可以实现多工具调用，还是挺有意思的。
+
 # 2025-08-08
 
 今天学的是Tool use with Claude前五节，输出   
