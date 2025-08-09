@@ -15,6 +15,67 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-09
+
+### Tools for Structured Data
+
+define tool schema:
+
+```python
+article_summary_schema = {
+    "name": "article_summary",
+    "description": "Extracts structured data from articles",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "title": {"type": "string"},
+            "author": {"type": "string"}, 
+            "key_insights": {
+                "type": "array",
+                "items": {"type": "string"}
+            }
+        }
+    }
+}
+
+response = chat(
+    messages,
+    tools=[article_summary_schema],
+    tool_choice={"type": "tool", "name": "article_summary"}
+)
+
+structured_data = response.content[0].input
+```
+
+### Fine grained tool calling
+
+`InputJsonEvent` contains two key properties:
+
+- `partial_json` - A chunk of JSON representing part of the tool arguments
+- `snapshot` - The cumulative JSON built up from all chunks received so far
+
+```python
+for chunk in stream:
+    if chunk.type == "input_json":
+        # Process the partial JSON chunk
+        print(chunk.partial_json)
+        # Or use the complete snapshot so far
+        current_args = chunk.snapshot
+```
+
+### Fine-Grained Tool Calling
+
+If you need faster, more granular streaming - perhaps to show users immediate updates or start processing partial results quickly - you can enable fine-grained tool calling.
+
+```python
+run_conversation(
+    messages, 
+    tools=[save_article_schema], 
+    # Enable by adding this
+    fine_grained=True
+)
+```
+
 # 2025-08-08
 
 # Batch Tool
