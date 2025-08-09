@@ -17,7 +17,10 @@ beginner
 <!-- Content_START -->
 # 2025-08-09
 
-今天学的可太难了，辅助函数还有多工具调用，但是我对assitent_message里面多内容还是有点陌生，不知道他这一步是用来做什么，为什么user_message里面就没有那么多block。通过检查remainder以及辅助函数就可以实现多工具调用，还是挺有意思的。
+今天学的可太难了，辅助函数还有多工具调用，但是我对assitent_message里面多内容还是有点陌生，不知道他这一步是用来做什么，为什么user_message里面就没有那么多block。通过检查remainder以及辅助函数就可以实现多工具调用，还是挺有意思的。  
+PS今天开始正式独库公路骑行，今天的课程实在克孜利亚大峡谷景区学的[doge]
+![180bdf22277112b09a61adf0e43cb73](https://github.com/user-attachments/assets/efbfc18c-71a1-4fd9-9b4a-9795db1d53ee)
+
 
 # 2025-08-08
 
