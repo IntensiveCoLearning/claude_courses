@@ -15,6 +15,109 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-09
+
+# 第二十四课：使用 XML 标签为 Prompt 提供结构
+
+## 核心概念
+- **目的**：通过在 Prompt 中使用 XML 标签，为插入的大量或多类型内容提供清晰的结构，帮助模型准确理解各部分的含义和归属。
+- **适用场景**：
+  - Prompt 中需要插入大量数据（如长篇销售记录、文档等）时。
+  - 不同类型的内容（代码、文档、参数等）混合在一起，容易引起模型混淆。
+
+## 方法与示例
+1. **基本做法**
+   - 自定义标签名，用尖括号包裹内容，例如：
+     ```xml
+     <sales_records>
+       ...销售记录内容...
+     </sales_records>
+     ```
+   - 标签名应尽量具体，如 `sales_records` 比 `data` 更有意义。
+   
+2. **为什么有用**
+   - 让模型清楚不同内容块的含义，减少错误理解。
+   - 特别适合调试类任务中区分“代码部分”和“文档部分”。
+
+3. **调试场景示例**
+   - 未加标签时：模型难以区分哪个是需要调试的代码，哪个是参考文档。
+   - 加标签后：
+     ```xml
+     <my_code>
+       ...需要调试的代码...
+     </my_code>
+     <docs>
+       ...相关文档...
+     </docs>
+     ```
+
+4. **在本课程任务中的应用**
+   - 当前任务中，`height`、`weight`、`goal`、`restrictions` 等内容较短，理论上不易混淆。
+   - 但仍可用标签增强语义清晰度，例如：
+     ```xml
+     <athlete_information>
+       Height: xxx
+       Weight: xxx
+       Goal: xxx
+       Restrictions: xxx
+     </athlete_information>
+     ```
+
+## 实验效果
+- 在示例中，添加 `<athlete_information>` 标签后，Prompt 评估分数从 **7.3** 提升到更高水平（提升幅度因模型和数据而异）。
+- 大模型可能提升不明显，但在中低端模型上，结构化标签能显著减少理解偏差。
+
+## 总结
+- XML 标签是一种低成本、高通用性的 Prompt 优化方式。
+- 标签应具备明确的语义，覆盖内容应成对包裹。
+- 对长文本、混合内容尤为有效。
+---
+# 第二十五课：在 Prompt 中提供示例（One-shot & Multi-shot Prompting）
+
+## 核心概念
+- 在提示词中加入示例（Example），可以显著提升模型输出质量。
+- **One-shot prompting**：提供一个示例。
+- **Multi-shot prompting**：提供多个示例。
+- 常用于：
+  - 处理**边缘情况（corner cases）**。
+  - 指定**复杂输出格式**。
+  - 强化模型对特定任务的理解。
+
+## 原理与好处
+1. **通过实例引导模型**：明确告诉 Claude 给定输入时的理想输出。
+2. **配合 XML 标签**：
+   - 示例输入用 `<sample_input>` 包裹。
+   - 示例输出用 `<ideal_output>` 包裹。
+   - 结构清晰，模型易于识别内容类型。
+3. **处理讽刺/隐喻等难判断情况**：
+   - 例：推文 *"Yeah, sure, that was the best movie I've ever seen since Plan 9 from Outer Space"* 实际为负面情绪。
+   - 在示例中明确告诉 Claude 这是 **negative**。
+
+## 实践方法
+1. 从已有 **高分或满分** 测试用例中选取示例。
+2. 在 Prompt 中加入说明：
+   ```
+   Here is an example with a sample input and an ideal output:
+   <sample_input>...</sample_input>
+   <ideal_output>...</ideal_output>
+   ```
+3. 可选增强：添加**为什么这是理想输出**的解释（从评估报告中复制 reasoning 部分）。
+4. 对复杂 JSON 等结构，直接给出一个格式正确的示例，让 Claude 学习结构。
+
+## 示例场景
+- 情感分析（含讽刺判断）
+- 复杂 JSON 响应生成
+- 技术文档生成（格式化要求）
+
+## 本课实验结果
+- 在原有 Prompt 基础上加入示例后，评估分数从 **7.3** 提升至 **7.96**。
+- 提升幅度虽小，但对长期稳定高质量输出非常有效。
+
+## 结论
+- 在 Prompt 中提供示例是最有效的优化方法之一。
+- **One-shot** 适用于任务简单或数据稀缺场景。
+- **Multi-shot** 适用于任务复杂、需覆盖多种情况的场景。
+
 # 2025-08-08
 
 # 第二十一课 - Prompt Engineering 入门与项目初始化
