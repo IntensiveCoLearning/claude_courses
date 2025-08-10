@@ -15,6 +15,13 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-10
+
+今天学习了 Extended thinking, Image support 和 PDF support。
+- 之前用 Chat-gpt 或者 Claude 都会看到有 Thought process，会把它的思考过程都列出来。当启用 extended thinking 后也会相应的增加 cost 和 latency。启用它的 parameter 是 thinking: {"type": "enabled", "budget": thinking_budget}，thinking_budget 有个最小值是 1024 个 token。
+- 当发送 image 给 Claude 时，会在 user message 中多一个 image block，里面包含了 image 的一些信息，比如 type, media_type, data，发送 image 也是有一些要求的，比如单个 request 中不能超过 100 张图，最大 size 不能超过 5MB，对于单个和多个 image 的宽高都有要求，计算发送 image 时所使用的 token 数为：(width px x height px)/750。还有很重要的一点是，发送 image 要配合非常 detailed prompt guides。
+- 对于 PDF 来说，比 image 简单一些，因为 PDF 中主要是文字，发送的格式也不太一样。它还提到了一个叫 citations 的 feature，就是在 result 中增加了得出的答案在 PDF 中具体的引用是什么，会让用户感觉更加有可信度吧，可以在前端 build 一个比较好的交互，鼠标移到每个 point 上去显示它具体引用的内容在哪里。当然 citations 也可以用在 plain text 中。
+
 # 2025-08-09
 
 今天学习了 BM25 lexical search, multi-index RAG pipeline, reranking results, 和 contextual retrieval。
