@@ -15,6 +15,16 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-10
+
+同步发布于推特：https://x.com/cryptonerdcn/status/1954529177060696358
+第十五天打卡：
+一个简单的Sampling结构：
+1， create_message在Server的代码中
+2，sampling_callback在Client的代码中
+3，在Client中创建sampling_callback，并传入ClientSession(read, write, sampling_callback=sampling_callback)中
+4， 最后在Server中处理ClientSession带回的result
+
 # 2025-08-09
 
 同步发布于推特：https://x.com/cryptonerdcn/status/1954128988303188062
