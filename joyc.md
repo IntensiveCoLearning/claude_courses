@@ -15,6 +15,57 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-10
+
+# 第二十六课 Exercise on prompting
+
+## 课程目标
+- 提升一个已有的低质量 Prompt，利用之前学过的所有 Prompt Engineering 技巧。
+- 数据集包含学术文章的段落（`content` 字段）。
+- 任务：从段落中提取所有提到的**主题**，返回 JSON 字符串数组。
+
+## 初始状态
+- 现有 Prompt 表现差，平均分约 **2.8**。
+- 输出不符合要求（非 JSON 数组或格式错误）。
+- 目标：将平均分提升至 **7+**。
+
+## 优化步骤
+
+### 1. 清晰直接（Be Clear and Direct）
+- 直接在第一行说明任务：
+  ```
+  Extract key topics mentioned from a passage of text from a scholarly article into a JSON array of strings.
+  ```
+- 明确要求返回 **JSON 字符串数组**。
+- 立即评分提升至 **9.5**。
+
+### 2. 添加结构（XML 标签）
+- 为输入内容增加标签，使模型更易识别：
+  ```xml
+  <text>
+  [文章段落内容]
+  </text>
+  ```
+- 标签名与描述保持一致（如 `text` 对应第一行 prompt 中的“passage of text”）。
+
+### 3. 具体化（Be Specific）
+- 添加分步指令：
+  ```
+  Follow these steps:
+  1. Closely examine the provided text.
+  2. Identify each topic mentioned.
+  3. Add each topic to a JSON array.
+  4. Respond only with the JSON array. Do not provide any other text or commentary.
+  ```
+
+## 评分结果
+- 改进后多次运行，分数稳定在 **9.5**。
+- Prompt 在提取主题任务中表现稳定可靠。
+
+## 总结
+- **核心优化**：清晰直接说明任务 + XML 标签结构化输入 + 明确分步要求。
+- 如果需要处理特殊格式或复杂任务，可增加 **One-shot / Multi-shot** 示例，但此例已足够达成目标。
+
 # 2025-08-09
 
 # 第二十四课：使用 XML 标签为 Prompt 提供结构
