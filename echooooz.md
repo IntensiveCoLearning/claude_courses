@@ -15,6 +15,12 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-10
+
+- combine semantic search &lexical search(bm 25 algo) to improve retrieval accuracy
+    - reranking - ask Claude to take a look at user questions, relevant docs, and return the x most relevant ones
+    - contextual retrieval - ask Claude to situate/place/add some context to each individual text chunk. If source doc too large, then provide a reduced set of context, say chunk1-3 & chunk 7-8 as context for chunk9
+
 # 2025-08-08
 
 续上次笔记
