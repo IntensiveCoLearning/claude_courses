@@ -15,6 +15,15 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-10
+
+Retrieval Augmented Generation (RAG)
+1. 切块 - 把大文档切成小片段
+2. 找相关 - 用户提问时，找到最相关的片段
+3. 回答 - 只用相关片段让AI回答问题
+
+核心思想："只给AI看需要的信息，而不是所有信息"
+
 # 2025-08-08
 
 Text Edit Tool 本质上让 Claude 具备了专业代码编辑器的文件操作能力，通过 API 调用而非 GUI 交互来完成复杂的文件编辑任务。
