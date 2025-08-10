@@ -15,6 +15,46 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-10
+
+# 📘 Anthropic Courses Day 14 学习笔记
+
+## ✅ 今日进度
+- 进入「Anthropic apps - Claude Code and computer use」模块 ✅
+- 今日学习了：
+  - Anthropic apps
+  - Claude Code setup
+  - Claude Code in action
+- 在 VS Code IDE 中完成了 Claude Code 的 demo 运行
+
+## 💡 今日收获
+- **Anthropic apps**：提供了 Claude 在特定 IDE（如 VS Code）和环境中使用的扩展能力
+- **Claude Code**：
+  - 能够在 IDE 内直接调用 Claude 进行代码生成、修改、解释和调试
+  - 支持多文件上下文，适合中大型项目的代码辅助
+- **Claude Code in action**：
+  - 在本地环境中运行 demo，验证了 Claude 与本地开发环境交互的能力
+  - Claude 能直接基于代码上下文生成修改方案并应用到文件中
+- **Token 消耗**：
+  - 本次 demo 运行共消耗约 **2,138,724 Tokens**（Sonnet 占 210 万，Haiku 占 3.1 万），约 **$1.5 美元**
+  - Token 消耗量主要来自多文件上下文分析与代码生成
+
+## 🧠 理解要点
+- Claude Code 不只是“聊天写代码”，而是与 IDE 深度集成的开发伙伴
+- 大规模 Token 消耗主要发生在长上下文代码分析和多轮修改过程中
+
+## 🎯 明日目标
+- 学习 Claude Code 的进阶内容：
+  - Enhancements with MCP servers
+  - Parallelizing Claude Code
+  - Automated debugging
+  - Computer use
+- 尝试让 Claude 处理一个真实项目的多文件修改任务
+
+## 🏆 小里程碑
+- 🖥️ 成功跑通 Claude Code 本地 demo
+- 💰 首次真实测算 Token 消耗成本，为后续实际使用做了预算参考
+
 # 2025-08-08
 
 # 📘 Anthropic Courses Day 13 学习笔记
