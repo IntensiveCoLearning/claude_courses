@@ -15,6 +15,67 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-11
+
+MCP的高级概念，第一个：Sampling。
+
+这个以前其实学到过，就是当MCP Server在执行任务的时候，如果需要调用AI，可以申请调用MCP Client端的AI。这个设定猛一看有点奇怪，感觉很混乱，但仔细想想却很有道理。比如，我提供一个MCP Server，我本身已经提供服务了，如果我还要负担这个过程中的AI调用的话，我的成本就太高了。我可以把这个成本转移到用户上，他们本来就在用AI，所以他们并不在意多用一次AI。所以，我只要定义清楚我会在某些功能中反向调用AI，用户确认了就好。
+
+这个功能的实现需要在MCP Server和MCP Client各自实现一部分代码。在Server端，我们直接调用context的create_message方法发送请求。
+
+```jsx
+@mcp.tool()
+async def summarize(text_to_summarize: str, ctx: Context):
+    prompt = f"""
+    Please summarize the following text:
+    {text_to_summarize}
+    """
+    
+    result = await ctx.session.create_message(
+        messages=[
+            SamplingMessage(
+                role="user",
+                content=TextContent(
+                    type="text",
+                    text=prompt
+                )
+            )
+        ],
+        max_tokens=4000,
+        system_prompt="You are a helpful research assistant",
+    )
+    
+    if result.content.type == "text":
+        return result.content.text
+    else:
+        raise ValueError("Sampling failed")
+```
+
+在Client端，我们需要实现一个回调函数，当收到来自Server端的请求时，该回调函数被调用，我们在该函数中发起真正的AI调用。在创建ClientSession的时候，把回调函数作为参数传进去。
+
+```jsx
+async def sampling_callback(
+    context: RequestContext, params: CreateMessageRequestParams
+):
+    # Call Claude using the Anthropic SDK
+    text = await chat(params.messages)
+    
+    return CreateMessageResult(
+        role="assistant",
+        model=model,
+        content=TextContent(type="text", text=text),
+    )
+
+async with ClientSession(
+    read,
+    write,
+    sampling_callback=sampling_callback
+) as session:
+    await session.initialize()
+```
+
+整个流程长这样
+
 # 2025-08-09
 
 Deep dive into MCP's advanced features including sampling, notifications, and transport implementations
