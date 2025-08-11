@@ -25,6 +25,10 @@ Why？
 2. 分成小块后，AI只看相关部分
 3. 提高准确性，降低成本
 
+好的分块 = AI能找到正确信息 = 更准确的回答
+
+Text Embeddings：把文字转换成数字，帮助AI理解更准确。
+
 # 2025-08-10
 
 Retrieval Augmented Generation (RAG)
