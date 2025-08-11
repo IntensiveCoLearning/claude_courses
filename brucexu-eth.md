@@ -15,6 +15,110 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-11
+
+# RAG
+
+## Step 1: Chunking the Text
+
+```
+with open("./report.md", "r") as f:
+    text = f.read()
+
+chunks = chunk_by_section(text)
+chunks[2]  # Test to see the table of contents
+```
+
+## Step 2: Generate Embeddings
+
+```
+embeddings = generate_embedding(chunks)
+```
+
+## Step 3: Store in Vector Database
+
+```
+store = VectorIndex()
+
+for embedding, chunk in zip(embeddings, chunks):
+    store.add_vector(embedding, {"content": chunk})
+```
+
+Notice that we store both the embedding and the original text content. This is crucial because when we search later, we need to return the actual text, not just the numerical embedding values.
+
+The embedding numbers are just indexes for the chunk.
+
+## Step 4: Process User Queries
+
+```
+user_embedding = generate_embedding("What did the software engineering dept do last year?")
+```
+
+## Step 5: Find Relevant Content
+
+```
+results = store.search(user_embedding, 2)
+
+for doc, distance in results:
+    print(distance, "\n", doc["content"][0:200], "\n")
+```
+
+## bm25
+
+When building RAG pipelines, you'll quickly discover that semantic search alone doesn't always return the best results. Sometimes you need exact term matches that semantic search might miss. The solution is to combine semantic search with lexical search using a technique called BM25.
+
+While semantic search excels at understanding context and meaning, it might return sections that are semantically related but don't actually contain the exact term you're looking for.
+
+The solution is to run both semantic and lexical searches in parallel, then merge the results.
+
+- Semantic search finds conceptually related content using embeddings
+- Lexical search finds exact term matches using classic text search
+- Merged results combine both approaches for better accuracy
+
+BM25 (Best Match 25) is a popular algorithm for lexical search in RAG systems. Here's how it processes a search query:
+
+Step 1: Tokenize the query
+Break the user's question into individual terms. For example, "a INC-2023-Q4-011" becomes ["a", "INC-2023-Q4-011"].
+
+Step 2: Count term frequency
+See how often each term appears across all your documents. Common words like "a" might appear 5 times, while specific terms like "INC-2023-Q4-011" might appear only once.
+
+Step 3: Weight terms by importance
+Terms that appear less frequently get higher importance scores. The word "a" gets low importance because it's common, while "INC-2023-Q4-011" gets high importance because it's rare.
+
+Step 4: Find best matches
+Return documents that contain more instances of the higher-weighted terms.
+
+The BM25 algorithm prioritizes sections that actually contain your specific search terms, especially rare terms like incident IDs.
+
+BM25 excels at finding exact matches because it:
+
+- Gives higher weight to rare, specific terms
+- Ignores common words that don't add search value
+- Focuses on term frequency rather than semantic meaning
+- Works especially well for technical terms, IDs, and specific phrases
+
+## Retriever
+
+Merging results from different search methods isn't as simple as just concatenating lists. Each method uses different scoring systems, so we need a way to normalize and combine their rankings fairly.
+
+Let's say we search for information about "INC-2023-Q4-011" and get these results:
+
+- VectorIndex returns: Section 2 (rank 1), Section 7 (rank 2), Section 6 (rank 3)
+- BM25Index returns: Section 6 (rank 1), Section 2 (rank 2), Section 7 (rank 3)
+
+We combine these into a single table showing each text chunk's rank from both indexes, then apply the RRF formula:
+
+```
+RRF_score(d) = Σ(1 / (k + rank_i(d)))
+```
+
+For our example:
+
+- Section 2: 1.0/(1+1) + 1.0/(1+2) = 0.833 Final rank: 1
+- Section 7: 1.0/(1+2) + 1.0/(1+3) = 0.583 2
+- Section 6: 1.0/(1+3) + 1.0/(1+1) = 0.75 3
+
 # 2025-08-09
 
 # RAG
