@@ -15,6 +15,31 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-11
+
+Text Editor Tool capabilities: 
+
+- View file or directory contents
+- View specific ranges of lines in a file
+- Replace text in a file
+- Create new files
+- Insert text at specific lines in a file
+- Undo recent edits to files
+
+### Web search tool
+
+Setting Up the Web Search Tool:
+```python
+web_search_schema = {
+    "type": "web_search_20250305",
+    "name": "web_search", 
+    # max_uses limits how many searches Claude can perform
+    "max_uses": 5,
+    # limit searches to specific domains
+    "allowed_domains": ["nih.gov"]
+}
+```
+
 # 2025-08-09
 
 ### Tools for Structured Data
