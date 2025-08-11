@@ -15,6 +15,12 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-11
+
+在 Claude 里用 batch_tool 并行调用工具的核心好处是更低延迟、更高吞吐、更省 token/费用、以及一次性拿到一致性的结果。官方文档把它称为把多次工具调用“打包并行”的做法（亦可直接用 Claude 的“并行工具调用/Token-efficient tool use”特性）。        
+1. 提供一个 batch_tool 元工具：输入为 invocations[]（每项含工具名和参数），鼓励模型一次提出所有并行调用；后端把这些子调用真正并发执行并汇总结果。    
+2. 启用官方并行工具调用：直接让 Claude 在单条 assistant 消息里并列多个 tool_use，你在下一条 user 消息里逐个回填 tool_result。
+
 # 2025-08-09
 
 今天学的可太难了，辅助函数还有多工具调用，但是我对assitent_message里面多内容还是有点陌生，不知道他这一步是用来做什么，为什么user_message里面就没有那么多block。通过检查remainder以及辅助函数就可以实现多工具调用，还是挺有意思的。  
