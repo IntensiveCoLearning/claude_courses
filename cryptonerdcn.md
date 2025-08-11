@@ -15,6 +15,15 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-11
+
+同步发布于推特： https://x.com/cryptonerdcn/status/1954904956156436908
+第十六天打卡：
+log和通知。
+用于提升UI/UX和调试。
+Server中可用 info(), warning(), debug(), error() methods ，可用 report_progress() 来报告进度。
+在Client里可用 logging_callback 和 print_progress_callback ，当Server emit上面的内容时，这两个对应的函数会被自动触发。
+
 # 2025-08-10
 
 同步发布于推特：https://x.com/cryptonerdcn/status/1954529177060696358
