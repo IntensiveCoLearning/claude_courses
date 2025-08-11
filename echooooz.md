@@ -15,6 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-11
+
+- Caching
+    - save an initial request and reuse the content when you are repeatedly sending the same content. Cheaper & faster to execute
+    - rules: initial request will write to the cache, follow up requests can read from the cache, cache lives for 1h
+    - have to manually add a 'cache breakpoint' to a block. The content needs to be identical
+    - can add cache breakpoints to system prompt & tool definitions other than text blocks, useful when you have a long system prompt or a long list of tools
+
 # 2025-08-10
 
 - combine semantic search &lexical search(bm 25 algo) to improve retrieval accuracy
