@@ -15,6 +15,16 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-11
+
+Text Chunking Strategies
+把大文档切成小块，让AI更好理解和处理。
+
+Why？
+1. 大文档太长，AI处理不了
+2. 分成小块后，AI只看相关部分
+3. 提高准确性，降低成本
+
 # 2025-08-10
 
 Retrieval Augmented Generation (RAG)
