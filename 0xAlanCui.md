@@ -15,6 +15,45 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-11
+
+# 📘 Anthropic Courses Day 15 学习笔记
+
+## ✅ 今日进度
+- 完成「Anthropic apps - Claude Code and computer use」模块剩余内容 ✅
+- 今日学习了：
+  - Enhancements with MCP servers  
+  - Parallelizing Claude Code  
+  - Automated debugging  
+  - Computer use  
+  - How Computer use works  
+- 完成 **Quiz on Anthropic apps**（7/7，100%）
+
+## 💡 今日收获
+- **Enhancements with MCP servers**：  
+  - 通过 MCP 服务器扩展 Claude Code 功能，可调用更多外部工具与数据源  
+  - 提高了任务执行的灵活性与可扩展性  
+- **Parallelizing Claude Code**：  
+  - 支持多任务并行执行，适合批量处理和长流程优化  
+  - 并行化可显著减少整体任务耗时  
+- **Automated debugging**：  
+  - 提供自动化调试与错误修复建议，减少人工干预  
+  - 对大型代码库调试特别有帮助  
+- **Computer use**：  
+  - Claude 可在授权范围内执行本地文件和应用操作  
+  - 结合 IDE，可实现从生成到执行的一体化闭环  
+- **How Computer use works**：  
+  - 采用安全沙盒与权限控制机制  
+  - 保障执行过程的安全与稳定
+
+## 🧠 理解要点
+- MCP 与 Claude Code 的结合，让 AI 不仅能写代码，还能调用外部工具和资源  
+- 并行化、自动调试与电脑操作能力，使 Claude 从“代码助手”升级为“自动化开发执行引擎”  
+- 安全设计是关键，保证了在强大功能下的可控性和可信度
+
+## 🎯 明日目标
+- 进入「Agents and workflows」模块
+
 # 2025-08-10
 
 # 📘 Anthropic Courses Day 14 学习笔记
