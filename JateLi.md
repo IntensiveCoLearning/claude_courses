@@ -25,6 +25,9 @@ BM25 Lexical Search
 Reranking Results
 让AI当"终极裁判"，重新整理搜索结果的顺序，确保最相关的内容排在最前面。
 
+Contextual Retrieval
+添加上下文，告诉它们来自哪里、讲什么内容，让搜索更准确。
+
 # 2025-08-11
 
 Text Chunking Strategies
