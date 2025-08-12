@@ -15,6 +15,12 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-12
+
+- MCP
+    - MCP, similar to tool use, different in who is authoring it
+    - MCP clients - access point to all the tools implemented by the server. Transport agnostic = can communicate over a variety of protocols including. Standard IO/HTTP/Websockets
+
 # 2025-08-11
 
 - Caching
