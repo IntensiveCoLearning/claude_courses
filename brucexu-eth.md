@@ -15,6 +15,76 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-12
+
+# RAG
+
+How Re-ranking Works
+
+Re-ranking is conceptually simple. After running your vector index and BM25 index and merging the results, you add one more step: a re-ranker that uses Claude to intelligently reorder your search results.
+
+The Re-ranking Prompt
+
+```
+You are tasked with finding the documents most relevant to a user's question.
+
+<user_question>
+What happened with INC-2023-Q4-011?
+</user_question>
+
+Here are documents that may be relevant:
+<documents>
+<document>Section 10...</document>
+<document>Section 2...</document>
+<document>Section 7...</document>
+<document>Section 6...</document>
+</documents>
+
+Return the 3 most relevant docs, in order of decreasing relevance.
+```
+
+Efficiency Considerations
+
+A better approach is to assign each text chunk a unique ID ahead of time, then ask Claude to return just those IDs in the correct order:
+
+```
+<documents>
+<document>
+<id>ab84</id>
+<content>Section 10...</content>
+</document>
+<document>
+<id>51n3</id>
+<content>Section 8...</content>
+</document>
+</documents>
+```
+Claude can then return a simple list like ["1p5g", "51n3", "ab83"] instead of copying entire text chunks.
+
+Werid, my output order is incorrect.
+
+## Contextual retrieval
+
+Contextual retrieval is a technique that improves RAG pipeline accuracy by solving a fundamental problem: when you split a document into chunks, each chunk loses its connection to the broader document context.
+
+Contextual retrieval adds a preprocessing step before inserting chunks into your retriever database. Here's the process:
+
+- Take each individual chunk and the original source document
+- Send both to Claude with a specific prompt
+- Ask Claude to write a short snippet that situates the chunk within the overall document
+- Combine this context with the original chunk to create a "contextualized chunk"
+- Use the contextualized chunk in your vector and BM25 indexes
+
+Handling Large Documents
+
+you can provide a reduced set of context instead of the entire document. The strategy is to include:
+
+- A few chunks from the start of the document (often containing summaries or abstracts)
+- Chunks immediately before the chunk you're contextualizing
+- Skip chunks in the middle that are less relevant to the current chunk
+
+This approach gives Claude enough context to understand what the document is about and how the current chunk fits in, without overwhelming the prompt with unnecessary text.
+
 # 2025-08-11
 
 # RAG
