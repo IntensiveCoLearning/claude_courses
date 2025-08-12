@@ -15,6 +15,16 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-12
+
+BM25 Lexical Search
+经典的文本搜索算法
+专注于精确词汇匹配
+在RAG管道中与语义搜索配合使用
+
+Reranking Results
+让AI当"终极裁判"，重新整理搜索结果的顺序，确保最相关的内容排在最前面。
+
 # 2025-08-11
 
 Text Chunking Strategies
