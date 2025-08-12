@@ -15,6 +15,26 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-12
+
+MCP提供了log和progress功能。
+
+MCP Server可以直接调用context.info和context.report_progress方法向Client发送log和progress。
+
+![image.png](attachment:15f90d06-34f6-4643-a8f8-9ff9f223f300:image.png)
+
+MCP Client则预先创建log callback和progress callback以接收这些信息。至于如何显示，这里没实现，取决于你的应用怎么设计。
+
+![image.png](attachment:3d5f3106-8dce-4fff-879b-041e4ac6995c:image.png)
+
+Roots是Anthropic建议的一个功能。在任何访问用户本地文件系统的工具中，都建议先检查目标文件是否在Root list规定的目录中。不在的话就拒绝访问文件，这样比较安全。不过，这只是一个best practice，不是MCP内置的规定。如果实现的话，可以添加list_roots工具和read_dir工具来从roots目录下查找用户请求的文件。不过，Root这个类型是mcp.types里面内置的。只是这个协议没内置而已。
+
+![image.png](attachment:cf7dc0ad-0a65-4ea3-a075-d210bdbc3315:image.png)
+
+MCP Client端需要实现一个list_roots callback，然后传递给mcp.ClientSession的list_roots_callback参数。这样，在MCP Server里面可以直接通过调用context.session.list_roots方法拿到这个callback的返回值。一般情况下，我们在MCP Server里面创建一个同名的list_roots tool，在内部拿到roots。
+
+但需要注意，这个demo是一个简化的例子，MCP Server和MCP Client运行在同一个机器上，使用stdio通信，所以MCP Server可以直接访问用户授权的本地文件。实际场景下，如果server和client不在一起，就得通过其它方式访问用户的文件，比如MCP Resource。但这感觉还是很乱，可能需要接触到更复杂的项目才能搞清楚。
+
 # 2025-08-11
 
 MCP的高级概念，第一个：Sampling。
