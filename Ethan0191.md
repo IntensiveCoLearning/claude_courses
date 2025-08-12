@@ -15,6 +15,10 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-12
+
+工具的调用太实用了，但记得在chat函数里面调用tool_choice。
+
 # 2025-08-11
 
 在 Claude 里用 batch_tool 并行调用工具的核心好处是更低延迟、更高吞吐、更省 token/费用、以及一次性拿到一致性的结果。官方文档把它称为把多次工具调用“打包并行”的做法（亦可直接用 Claude 的“并行工具调用/Token-efficient tool use”特性）。        
