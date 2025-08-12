@@ -15,6 +15,14 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-12
+
+今天学习了 prompt caching 和 code execution。
+- 当 multi-turn conversation 的时候，会把之前的 user message 和 assistant message 再发给 Claude，因为之前已经处理过了，可以使用 prompt caching 来进行缓存，如果要开启 caching，需要添加 cache_control:{"type": "ephemeral"} parameter，并且 caching 还可以用在 system prompt 和 tools，但是 caching 有个最小内容长度的限制：1024 tokens。
+- 之前学过 image 和 PDF 的 support，其实还可以先将文件上传到 Claude，Claude 会返回一个 file id，之后发送消息带上 file_id 就可以了。Code execution 不需要自己实现 code，只需要提供一个 code execution tool schema，Claude 会选择的在一个隔离的 Docker 容器中执行 Python 代码，no network access, can execute code multiple times during a single conversation。
+
+今天状态不太好，先这样吧。。。
+
 # 2025-08-10
 
 今天学习了 Extended thinking, Image support 和 PDF support。
