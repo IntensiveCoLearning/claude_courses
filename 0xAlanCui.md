@@ -15,6 +15,45 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-12
+
+# 📘 Anthropic Courses Day 16 学习笔记
+
+## ✅ 今日进度
+- 进入「Agents and workflows」模块 ✅
+- 今日学习了：
+  - Agents and workflows  
+  - Parallelization workflows  
+  - Chaining workflows  
+  - Routing workflows  
+
+## 💡 今日收获
+- **Agents and workflows**：  
+  - Agent 是可独立执行任务的智能单元  
+  - Workflow 是由多个步骤组成的执行流程，可包含一个或多个 Agent  
+  - Workflow 更适合结构化、多阶段任务  
+- **Parallelization workflows**：  
+  - 将多个任务同时执行，提高整体处理效率  
+  - 适合批量数据处理、并发调用外部 API 等场景  
+- **Chaining workflows**：  
+  - 将多个任务按顺序串联，后一个任务依赖前一个任务的结果  
+  - 常用于数据预处理 → 分析 → 输出的流程  
+- **Routing workflows**：  
+  - 根据输入内容动态选择执行路径  
+  - 适合多类型任务分流，例如根据问题类型调用不同 Agent 或工具
+
+## 🧠 理解要点
+- Agent 偏向“单点智能”，Workflow 偏向“任务编排”  
+- 并行化提升效率，链式保证依赖顺序，路由实现动态分流  
+- 三种 Workflow 设计方式可组合使用，构建复杂的多任务处理系统  
+
+## 🎯 明日目标
+- 学习：
+  - Agents and tools  
+  - Environment inspection  
+  - Workflows vs agents  
+- 完成「Quiz on Agents and Workflows」测验
+
 # 2025-08-11
 
 # 📘 Anthropic Courses Day 15 学习笔记
