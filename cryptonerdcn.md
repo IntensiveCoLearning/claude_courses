@@ -15,6 +15,13 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-12
+
+同步发布于推特：https://x.com/cryptonerdcn/status/1955281786432266251
+第十七天打卡：
+root属于你不实现则默认给出FS权限。当你需要限制访问时则应该实现该feature（官方教程里说这个更像是个pattern，因为你可以通过prompt来简单实现，不知道claude以外会怎么样？）
+对于remote mcp server则尤为重要，肯定也是一个重要的安全爆破点。
+
 # 2025-08-11
 
 同步发布于推特： https://x.com/cryptonerdcn/status/1954904956156436908
