@@ -15,6 +15,24 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+MCP内部使用JSON格式的字符串作为传输协议，规定了两种类型的消息。一种是Request-Result消息，由Client发出request，由Server返回Result。另一种是Notification消息，双方都可以发出，不需要接收。上节介绍的progress和logging就属于这类，它们由server发出client接收。Initialized和Canceled notification则由client发出server接收。这个消息分类与后面介绍的传输协议有关。
+
+![image.png](attachment:c236099d-80d3-4da9-b69d-3cd146166109:image.png)
+
+MCP建立连接需要经过三次握手，分别是Client发出初始化请求，Server返回初始化结果，Client再发出初始化提醒。接下来才可以正常运行。
+
+![image.png](attachment:87e3c6b9-d25d-45d6-9eb8-240faa73aad6:image.png)
+
+第一个传输机制是stdio，当client和server位于同一台机器上时，让server作为client的子进程启动，client就可以通过调用server的stdin输入消息，然后server的stdout输出消息，完成通信。
+
+![image.png](attachment:599ed8d1-d863-4e83-9abc-556e8d04070a:image.png)
+
+stdio通信的好处是这个通道对双方是对等的，client可以主动发出请求，server也可以。但HTTP通信则不行。所以stdio通信支持了MCP协议的完整功能，但后续介绍的HTTP则不能实现完整的双向通信机制。
+
+![image.png](attachment:37704673-750a-4126-8386-7712f39521c7:image.png)
+
 # 2025-08-12
 
 MCP提供了log和progress功能。
