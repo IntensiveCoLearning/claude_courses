@@ -15,6 +15,24 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+# Features of Claude
+
+## Extended Thinking
+
+When extended thinking is enabled, Claude's response changes from a simple text block to a structured response containing two parts:
+
+- Thinking Block
+- Text Block
+
+With thinking enabled, you get both the reasoning process and the final answer:
+
+- Signature: A cryptographic token that ensures you haven't modified the thinking text.
+
+When to Use Extended Thinking
+The decision is straightforward: use your prompt evaluations. Run your prompts without thinking first, and if the accuracy isn't meeting your requirements after you've already optimized your prompt, then consider enabling extended thinking.
+
 # 2025-08-12
 
 # RAG
