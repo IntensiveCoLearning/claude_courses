@@ -44,46 +44,42 @@ web3 从业者，AI 爱好者
 本笔记整合了课程页面与视频文字稿的要点，帮助你快速回顾实现第一个工具函数（get_current_datetime）的全过程。
 
 1. 工具函数（Tool Functions）的概念
-
-在构建 AI 应用时，Claude 需要查询实时信息或执行动作，可通过工具函数完成。它们是普通的 Python 函数，当 Claude 判断需要额外数据时会被自动调用。示例场景：用户问 “现在几点？”，Claude 会调用获取时间的工具函数。 
+   在构建 AI 应用时，Claude 需要查询实时信息或执行动作，可通过工具函数完成。它们是普通的 Python 函数，当 Claude 判断需要额外数据时会被自动调用。  
+   示例场景：用户问 “现在几点？”，Claude 会调用获取时间的工具函数。 
 
 2. 编写工具函数的最佳实践
- • 命名清晰：函数名与参数名应清楚表意，例如 ‎⁠get_current_datetime(date_format)⁠。
- • 校验输入：检查必要参数是否为空或无效，及时抛出异常。
- • 错误信息友好：抛出明确的 ‎⁠ValueError⁠，便于 Claude 读取并尝试纠正调用。
+     • 命名清晰：函数名与参数名应清楚表意，例如 ‎⁠get_current_datetime(date_format)⁠。
+     • 校验输入：检查必要参数是否为空或无效，及时抛出异常。
+     • 错误信息友好：抛出明确的 ‎⁠ValueError⁠，便于 Claude 读取并尝试纠正调用。
 这些做法让函数更健壮，也利于 Claude 在首次调用失败后自动重试。 
 
 3. 步骤拆解：实现 get_current_datetime
  1. 创建新 Notebook：课程附带 ‎⁠001Tools⁠，包含大量样板代码与未来用到的 ‎⁠add_duration_to_datetime⁠ 函数。
  2. 手动编写函数：暂不依赖现有辅助方法，专注工具函数本身。
  3. 代码示例：from datetime import datetime
-```python
-def get_current_datetime(date_format="%Y-%m-%d %H:%M:%S"):
-    if not date_format:
-        raise ValueError("date_format cannot be empty")
-    return datetime.now().strftime(date_format)
-```
- • 默认返回形如 ‎⁠2025-08-11 23:42:35⁠ 的完整时间。
- • 调用示例：‎⁠get_current_datetime("%H:%M")  # 仅返回小时:分钟⁠。 
+    ```python
+    def get_current_datetime(date_format="%Y-%m-%d %H:%M:%S"):
+        if not date_format:
+            raise ValueError("date_format cannot be empty")
+        return datetime.now().strftime(date_format)
+    ```
+     • 默认返回形如 ‎⁠2025-08-11 23:42:35⁠ 的完整时间。  
+     • 调用示例：‎⁠get_current_datetime("%H:%M")  # 仅返回小时:分钟⁠。 
 
 4. 下一步：与 Claude 集成
-
-编写函数只是第一步。接下来需要：
- • 为函数撰写 JSON Schema，描述参数与返回值，让 Claude 理解如何调用。
- • 在聊天系统中注册工具：将函数与 Schema 一并传入，Claude 方可在对话中调用。
- • 后续重构：等熟悉工具流程后，再把现有的 ‎⁠addUserMessage⁠、‎⁠addAssistantMessage⁠ 等辅助方法改造，以便简化调用逻辑。 
+    编写函数只是第一步。接下来需要：
+     • 为函数撰写 JSON Schema，描述参数与返回值，让 Claude 理解如何调用。
+     • 在聊天系统中注册工具：将函数与 Schema 一并传入，Claude 方可在对话中调用。
+     • 后续重构：等熟悉工具流程后，再把现有的 ‎⁠addUserMessage⁠、‎⁠addAssistantMessage⁠ 等辅助方法改造，以便简化调用逻辑。 
 
 5. 小结
-
-通过本节，你应掌握：
- • 工具函数的定位与作用
- • 编写、校验、抛错的最佳实践
- • 完整实现 ‎⁠get_current_datetime⁠ 的代码与测试方法
- • 将来如何把函数对接到 Claude 的工具体系
+    通过本节，你应掌握：
+     • 工具函数的定位与作用
+     • 编写、校验、抛错的最佳实践
+     • 完整实现 ‎⁠get_current_datetime⁠ 的代码与测试方法
+     • 将来如何把函数对接到 Claude 的工具体系
 
 完成上述步骤后，Claude 就能随时为用户提供格式化的当前时间，为后续扩展（如“日期加减”、“提醒”）奠定模板。 
-
-将以上内容保存为 ‎⁠get_current_datetime_notes.md⁠ 即可。
 
 # 2025-08-10
 
