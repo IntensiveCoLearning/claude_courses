@@ -15,6 +15,13 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+- mcp server primitives
+        - Tools are model-controlled. Claude decides when to call these.
+	- Resources are app-controlled. 
+	- Prompts are user-controlled.
+
 # 2025-08-12
 
 - MCP
