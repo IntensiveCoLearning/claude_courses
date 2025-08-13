@@ -15,6 +15,14 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+今天家里网络不是很好，所以就看了两个 MCP 的视频，简单记录一下：
+- 模型上下文协议 (MCP) 是一个通信层，它为 Claude 提供上下文和工具，而无需您编写一堆繁琐的集成代码。
+- 一个 MCP server 包含了 Tools，Prompts，Resources. 有了 MCP，我们的 server 就不用 implement 那些 Tool 了。
+- MCP Client 和 MCP Server 之间是 transport agnostic，支持不同的协议。
+- 我比较好奇的是有了 MCP 后的 flow，还是挺复杂的，简单来说就是当用户发起请求时，我们的 server 发送 tools list 请求给到 MCP Client 以及 MCP Server，得到 tool list 后，server 又发送用户请求 + tools list 到 Claude，我们的 server 得到 Claude 的 ToolUse 的回复后，然后再经过 MCP Client -> MCP Server 到外部的服务来得到 tools 的执行结果，我们 server 再把 tool result 发给 Claude，然后 Claude 组织好后最后返回到我们的 server，然后到用户。好繁琐。。。
+
 # 2025-08-12
 
 今天学习了 prompt caching 和 code execution。
