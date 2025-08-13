@@ -15,6 +15,40 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+# 📘 Anthropic Courses Day 17 学习笔记
+
+## ✅ 今日进度
+- 进入并完成「Agents and workflows」模块剩余部分 ✅
+- 今日学习了：
+  - Agents and tools
+  - Environment inspection
+  - Workflows vs agents
+  - Quiz on Agents and Workflows（7/7，100%）
+- 完成 **Final Assessment**（23/23，100%）
+- 完成 **Course Wrap Up**，获得课程证书 🎓
+
+## 💡 今日收获
+- **Agents and tools**：
+  - Agents 可以调用多种工具（Tools）完成复杂任务
+  - 工具调用可在工作流中自动化执行
+- **Environment inspection**：
+  - Agents 需先识别并评估运行环境（API、文件系统、权限等）
+  - 保障任务可行性和安全性
+- **Workflows vs Agents**：
+  - **Agents**：自主决策、动态任务规划
+  - **Workflows**：固定流程、可复用的自动化管道
+  - 在实际应用中常组合使用，发挥灵活性与稳定性
+- **测验结果**：
+  - Agents & Workflows 测验满分
+  - 总测验满分，通过率 100%
+
+## 🧠 理解要点
+- Agents 是“智能执行者”，Workflows 是“任务脚本”，两者结合可实现高效、可控且可扩展的 AI 系统
+- 环境感知（Environment inspection）是提升鲁棒性的重要前置步骤
+- 在实际部署中，需根据任务性质选择“Agent 主导”或“Workflow 主导”的策略
+
 # 2025-08-12
 
 # 📘 Anthropic Courses Day 16 学习笔记
