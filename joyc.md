@@ -15,6 +15,49 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+# 第29课：Tool Schemas
+
+## 1. JSON Schema 基本概念
+- **定义**：JSON Schema 是一种通用的数据验证规范，广泛应用于验证 JSON 数据结构。它本身与语言模型或工具调用无直接绑定，但在工具调用中非常实用。
+- **用途**：在工具调用场景下，JSON Schema 用于详细描述工具可用的参数、参数类型及其含义，帮助 Claude 等模型正确理解并调用工具。
+- **优势**：标准化、成熟且被广泛支持，易于与各类模型和系统集成。
+
+## 2. Tool Schema 结构
+- 一个完整的工具规范包含三个主要部分：
+  1. **工具名称 (name)**  
+     - 唯一标识工具，如 `get_weather`，便于管理和调用。
+  2. **工具描述 (description)**  
+     - 用 3-4 句清晰描述工具的功能、适用场景和返回内容，便于模型理解用途，并详细说明每个参数的作用。
+     - 最佳实践包括：具体说明工具做什么、何时使用、返回什么数据，以及各参数的详细说明。
+  3. **输入模式 (input_schema)**  
+     - 按照 JSON Schema 规范定义工具参数。
+     - 每个参数需包含：
+       - `type`（数据类型，如 `string`、`number` 等）
+       - `description`（建议 3-4 句，详解参数作用及影响）
+
+## 3. 编写 Tool Schema 的技巧
+- 复制你的工具函数代码（如 `get_current_datetime`）。
+- 在 Claude 窗口中输入函数代码，并请求其依据 Anthropic API 文档和最佳实践生成标准 JSON Schema。
+- Claude 会自动生成规范且易用的 Schema，可直接复制到项目代码中使用。
+
+## 4. 命名规范与类型提示
+- 建议采用工具函数名与 Schema 变量名对应的命名方式，例如：  
+  - 工具函数：`get_current_datetime`  
+  - Schema 变量：`get_current_datetime_schema`
+- 可选地导入并使用 `ToolParam` 包装 Schema，提升类型安全性：  
+  ```python
+  from anthropic.types import ToolParam
+  get_current_datetime_schema = ToolParam({...})
+  ```
+  - 虽非强制，但有助于防止类型错误，提高代码健壮性。
+
+## 5. 最佳实践
+- 工具和参数描述务必具体、详尽，避免过于简略。
+- 参数说明应清晰明了，让模型能够准确理解并调用工具。
+- 使用统一命名风格，方便管理多个工具及其 Schema。
+
 # 2025-08-11
 
 # 第27课：项目概览
