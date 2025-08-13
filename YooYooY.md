@@ -15,6 +15,141 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+## Retrieval Augmented Generation (RAG)
+
+how RAG work:
+
+- break the document into smaller chunks during a preprocessing step. 
+- when a user asks a question, find the chunks most relevant to their question and only include those in your prompt.
+
+### Text chunking strategies
+
+#### Size-Based Chunking
+
+Most reliable fallback that works with any content type, including code
+
+```python
+def chunk_by_char(text, chunk_size=150, chunk_overlap=20):
+    chunks = []
+    start_idx = 0
+    
+    while start_idx < len(text):
+        end_idx = min(start_idx + chunk_size, len(text))
+        chunk_text = text[start_idx:end_idx]
+        chunks.append(chunk_text)
+        
+        start_idx = (
+            end_idx - chunk_overlap if end_idx < len(text) else len(text)
+        )
+    
+    return chunks
+```
+
+#### Structure-Based Chunking
+
+For a Markdown document, you can split on header markers:
+```python
+def chunk_by_section(document_text):
+    pattern = r"\n## "
+    return re.split(pattern, document_text)
+```
+
+#### Semantic-Based Chunking
+
+You divide text into sentences, then use natural language processing to determine how related consecutive sentences are. You build chunks from groups of related sentences.
+
+#### Sentence-Based Chunking
+
+> Good middle ground for most text documents
+
+A practical middle ground is chunking by sentences. You split the text into individual sentences using regular expressions, then group them into chunks with optional overlap:
+
+```python
+def chunk_by_sentence(text, max_sentences_per_chunk=5, overlap_sentences=1):
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    
+    chunks = []
+    start_idx = 0
+    
+    while start_idx < len(sentences):
+        end_idx = min(start_idx + max_sentences_per_chunk, len(sentences))
+        current_chunk = sentences[start_idx:end_idx]
+        chunks.append(" ".join(current_chunk))
+        
+        start_idx += max_sentences_per_chunk - overlap_sentences
+        
+        if start_idx < 0:
+            start_idx = 0
+    
+    return chunks
+```
+
+### Text embeddings
+
+use VoyageAI library:
+```python
+from dotenv import load_dotenv
+import voyageai
+
+load_dotenv()
+client = voyageai.Client()
+
+def generate_embedding(text, model="voyage-3-large", input_type="query"):
+    result = client.embed([text], model=model, input_type=input_type)
+    return result.embeddings[0]
+```
+
+### The full RAG flow
+
+Key points about cosine similarity:
+
+- Results range from -1 to 1
+- Values close to 1 mean high similarity
+- Values close to -1 mean very different
+- 0 means perpendicular (no relationship)
+
+### Implementing the RAG flow
+
+1. Chunking the Text:
+```python
+with open("./report.md", "r") as f:
+    text = f.read()
+
+chunks = chunk_by_section(text)
+chunks[2]  # Test to see the table of contents
+```
+
+2. Generate Embeddings:
+```python
+embeddings = generate_embedding(chunks)
+```
+
+3. Store in Vector Database:
+```python
+store = VectorIndex()
+
+for embedding, chunk in zip(embeddings, chunks):
+    store.add_vector(embedding, {"content": chunk})
+```
+Why Store the Original Text?
+
+When we query our vector database, getting back just the embedding numbers isn't useful. We need the actual text that was used to generate those embeddings. That's why we include the original chunk text (or at least a reference to it) alongside each embedding in our database.
+
+4.Process User Queries:
+
+```python
+user_embedding = generate_embedding("What did the software engineering dept do last year?")
+```
+5.Find Relevant Content:
+```python
+results = store.search(user_embedding, 2)
+
+for doc, distance in results:
+    print(distance, "\n", doc["content"][0:200], "\n")
+```
+
 # 2025-08-11
 
 Text Editor Tool capabilities: 
