@@ -15,6 +15,53 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+* 将工具调用与流式输出结合，可在模型生成工具参数的同时向用户实时更新，显著提升交互响应性。
+* 事件类型：
+
+  * 文本流：`ContentBlockDelta`（常规文本增量）。
+  * 工具参数流：`InputJsonEvent`，含
+
+    * `partial_json`：最新到达的一段 JSON 片段；
+    * `snapshot`：到目前为止累计起来的整段 JSON 文本（所见即所得快照）。
+* 默认模式（带 JSON 校验）：API 会先缓冲，等**完整的顶层 key–value** 生成并通过 schema 校验，再一次性发送该字段对应的增量；因此体验上常见“**先等一会→再突发一段**”。此模式下 `snapshot` 始终是**合法 JSON**，前后端处理更稳。优化思路：把超大内容拆成多个顶层键或数组元素，让更多“小块”更快通过校验并流出。
+* 细粒度工具调用（`fine_grained=True`）：关闭 API 端 JSON 校验，Claude 一生成就下发，**无顶层键间的缓冲**，更接近“真正实时”的流式行为；但你必须在客户端处理**可能不合法的 JSON**（如 `undefined`、未闭合对象等），对解析/合并/回退做健壮性设计。
+* 适用场景取舍：
+
+  * 需要**实时进度**可视化、**尽早处理**部分结果、默认缓冲显著影响体验，且你能做好容错 → 选细粒度。
+  * 绝大多数应用默认模式已足够稳定省心 → 保持验证开启。
+* 处理不合法 JSON 的基本做法：
+
+  * 增量拼接并宽松解析，待形成可解析的 JSON 再下游处理；必要时加超时与回退。
+
+```python
+# 监听流
+for chunk in stream:
+    if chunk.type == "input_json":
+        # 实时观测片段
+        print(chunk.partial_json)
+        # 使用当前累计快照
+        current_args = chunk.snapshot
+```
+
+```python
+# 细粒度模式下的健壮解析
+import json
+try:
+    args = json.loads(current_args)  # snapshot 可能暂时不合法
+except json.JSONDecodeError:
+    # 记录并等待更多片段或走回退逻辑
+    log_warning("Invalid JSON snapshot; will retry on next chunk.")
+```
+
+* 工程实践要点：
+
+  * **Schema 即性能**：避免把巨量文本塞进同一顶层字段；改用多个键/数组项以缩短“等待完整键”的时间。
+  * 在工具参数里加入 `step_id`/`field` 等标识，便于把增量与 UI 匹配。
+  * 保留事件流做回放与对账；对下游工具/第三方 API 做限流、超时与重试策略，避免单点拖慢整体体验。
+* 一句话：\*\*默认（有校验）\*\*更稳更省心但粒度偏粗；\*\*细粒度（无校验）\*\*更快更实时但要自己兜底 JSON 与错误处理。根据实时性诉求与工程容错能力选择其一或组合使用。
+
 # 2025-08-12
 
 工具的调用太实用了，但记得在chat函数里面调用tool_choice。
