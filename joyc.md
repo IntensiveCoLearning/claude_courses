@@ -15,6 +15,76 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-14
+
+# 第31课：Sending Tool Results
+
+## 核心目标
+- 理解如何在 Claude 工具调用流程中，正确执行工具函数并将结果返回给 Claude。
+- 掌握 Tool Result Block 的结构和作用。
+- 学会处理多工具调用场景，并维护完整会话历史。
+
+## 主要流程
+
+### 1. 执行工具函数
+- Claude 返回带有 ToolUse Block 的 assistant 消息。
+- 提取 ToolUse Block 的输入参数（如 `response.content[1].input`），并用 Python 的解包语法调用工具函数：
+  ```python
+  result = get_current_datetime(**response.content[1].input)
+  ```
+
+### 2. 构建 Tool Result Block
+- 工具函数执行后，需要将结果通过 Tool Result Block 返回给 Claude。
+- Tool Result Block 放在 user 消息的 content 列表中。
+- 结构如下：
+  ```python
+  {
+      "type": "tool_result",
+      "tool_use_id": response.content[1].id,  # 必须与 ToolUse Block 的 ID 对应
+      "content": str(result),                 # 工具函数输出，序列化为字符串
+      "is_error": False                       # 如有错误则为 True
+  }
+  ```
+
+### 3. 处理多工具调用
+- Claude 可能一次请求多个工具调用（如同时计算多个表达式）。
+- 每个 ToolUse Block 都有唯一的 ID，返回结果时要用对应的 tool_use_id 匹配。
+- 可在一个 user 消息中包含多个 Tool Result Block，实现多结果对应。
+
+### 4. 发送完整会话历史
+- 跟进请求时，必须包含完整的消息历史，包括：
+  - 原始用户消息
+  - assistant 消息（含 ToolUse Block）
+  - user 消息（含 ToolResult Block）
+- 示例代码：
+  ```python
+  messages.append({
+      "role": "user",
+      "content": [{
+          "type": "tool_result",
+          "tool_use_id": response.content[1].id,
+          "content": str(result),
+          "is_error": False
+      }]
+  })
+  ```
+
+### 5. 保持工具 Schema
+- 在发送最终请求时，仍需包含工具 schema（如 `tools=[get_current_datetime_schema]`），即使不再期待工具调用。
+- Claude 需要 schema 来理解消息历史中的工具引用。
+
+### 6. 完整流程回顾
+1. 用户发送请求，包含工具 schema。
+2. Claude 返回带 ToolUse Block 的 assistant 消息。
+3. 提取参数并执行工具函数，生成结果。
+4. 构建 Tool Result Block，追加到 user 消息。
+5. 发送完整会话历史和工具 schema，获取 Claude 的最终回复。
+
+## 关键要点
+- Tool Result Block 用于反馈工具执行结果，需与 ToolUse Block 的 ID 精确对应。
+- 支持多工具调用时，需匹配每个 ToolUse Block 与 Tool Result Block 的 ID。
+- 保持完整会话历史和工具 schema，是 Claude 正确理解上下文的基础。
+
 # 2025-08-13
 
 # 第29课：Tool Schemas
