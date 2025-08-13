@@ -15,6 +15,23 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-13
+
+同步发布于推特： https://x.com/cryptonerdcn/status/1955642402515112295
+第十八天打卡：
+简单root实现：
+1.在client里create root object, 并实现call back来接受server的访问要求（给出可访问root的list）
+2. 在Server中如下使用
+```python
+roots_result = await ctx.session.list_roots()
+client_roots = roots_result.roots
+
+return [file_url_to_path(root.uri) for root in client_roots]
+```
+3. 自行实现权限相关代码。
+
+root应该用file://作为URI标识符
+
 # 2025-08-12
 
 同步发布于推特：https://x.com/cryptonerdcn/status/1955281786432266251
