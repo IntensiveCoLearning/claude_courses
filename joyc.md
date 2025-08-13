@@ -58,6 +58,75 @@ web3 从业者，AI 爱好者
 - 参数说明应清晰明了，让模型能够准确理解并调用工具。
 - 使用统一命名风格，方便管理多个工具及其 Schema。
 
+---
+
+# 第30课：Handling Message Blocks
+
+## 核心目标
+- 学习如何在调用 Claude 工具时，处理返回的多块（multi-block）消息内容。
+- 了解 `tool use block` 和 `text block` 的区别及其结构。
+- 修改消息记录逻辑以支持多块消息，保证会话上下文完整。
+
+## 主要步骤
+
+### 1. 发送请求并包含工具 Schema
+- 向 Claude 发送请求时，需在 API 调用中加入 `tools` 参数。
+- `tools` 参数是一个包含工具 JSON Schema 的列表（如 `get_current_datetime_schema`）。
+- 示例调用：
+```python
+messages = []
+messages.append({
+    "role": "user",
+    "content": "What is the exact time, formatted as HH:MM:SS?"
+})
+
+response = client.messages.create(
+    model="claude-3-opus",
+    max_tokens=1024,
+    messages=messages,
+    tools=[get_current_datetime_schema]
+)
+```
+
+### 2. 理解多块消息结构
+- 传统响应只有一个 `text block`，即模型返回的文字内容。
+- 工具调用时，Claude 会返回一个由多个 block 组成的消息内容：
+  - **Text Block**：给用户的人类可读文本，说明 Claude 的操作或进度（如“我正在为你获取当前时间”）。
+  - **ToolUse Block**：给开发者的指令，包含：
+    - 工具调用的唯一 ID
+    - 工具名称（如 `get_current_datetime`）
+    - 输入参数（以字典形式呈现）
+    - 类型标识（`tool_use`）
+
+### 3. 保持会话历史（管理多块消息）
+- Claude 不会自动保存会话历史，开发者需手动维护所有消息内容。
+- 在保存 `assistant` 消息时，必须保留完整的 `content` 列表（包含所有 block），确保上下文连续。
+- 示例代码：
+```python
+messages.append({
+    "role": "assistant",
+    "content": response.content  # 保留 text block 和 tool use block
+})
+```
+- 这样做能保证后续 API 调用时，Claude 能正确理解并延续对话上下文。
+
+### 4. 更新历史管理函数
+- 如使用 `add_user_message()` 和 `add_assistant_message()` 等辅助函数，需升级以支持多块消息内容。
+- 现有函数可能只处理单一文本块，需改为能处理包含 tool use block 的复杂结构。
+
+## 完整工具调用流程
+1. 发送用户消息和工具 schema 给 Claude。
+2. 接收包含 text block 和 tool use block 的 assistant 消息。
+3. 提取工具调用信息，执行实际函数。
+4. 将工具结果和完整会话历史一起发送回 Claude。
+5. 获取 Claude 的最终响应。
+
+## 关键要点
+- 多块消息结构是工具调用的常态，需适配消息处理逻辑。
+- ToolUse Block 是执行工具调用的关键信息，不能遗漏。
+- 必须完整保存每次会话的所有 block，才能保证 Claude 的上下文理解和连续性。
+- 更新消息管理逻辑，支持多块内容，是构建健壮应用的基础。
+
 # 2025-08-11
 
 # 第27课：项目概览
