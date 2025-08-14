@@ -15,6 +15,63 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-14
+
+BM25 (Best Match 25) is a popular algorithm for lexical search in RAG systems
+
+- Step 1: Tokenize the query
+- Step 2: Count term frequency
+- Step 3: Weight terms by importance
+- Step 4: Find best matches
+
+
+RRF formula：`RRF_score(d) = Σ(1 / (k + rank_i(d)))`
+
+
+### How Re-ranking Works
+
+- Take the merged results from your hybrid search
+- Send them to Claude with the user's original question
+- Ask Claude to return the most relevant documents in order of decreasing relevance
+- Use Claude's reordered list as your final results
+
+
+reranker function:
+
+```python
+def reranker_fn(docs, query_text, k):
+    # Format documents with IDs
+    joined_docs = "\n".join([
+        f"""
+        <document>
+        <document_id>{doc["id"]}</document_id>
+        <document_content>{doc["content"]}</document_content>
+        </document>
+        """
+        for doc in docs
+    ])
+    
+    # Create prompt and get Claude's response
+    prompt = f"""..."""
+    messages = []
+    add_user_message(messages, prompt)
+    add_assistant_message(messages, """```json""")
+    
+    result = chat(messages, stop_sequences=["""```"""])
+    
+    return json.loads(result["text"])["document_ids"]
+```
+
+### How Contextual Retrieval Works
+
+Contextual retrieval adds a preprocessing step before inserting chunks into your retriever database. Here's the process:
+
+- Take each individual chunk and the original source document
+- Send both to Claude with a specific prompt
+- Ask Claude to write a short snippet that situates the chunk within the overall document
+- Combine this context with the original chunk to create a "contextualized chunk"
+- Use the contextualized chunk in your vector and BM25 indexes
+
 # 2025-08-13
 
 ## Retrieval Augmented Generation (RAG)
