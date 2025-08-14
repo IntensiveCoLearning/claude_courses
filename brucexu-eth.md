@@ -15,6 +15,23 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-14
+
+# Features of Claude
+
+## Image
+
+Claude's vision capabilities let you include images in your messages and ask Claude to analyze them in countless ways. You can ask Claude to describe what's in an image, compare multiple images, count objects, or perform complex visual analysis tasks.
+
+There are several important limitations to keep in mind when working with images:
+
+- Up to 100 images across all messages in a single request
+- Max size of 5MB per image
+- When sending one image: max height/width of 8000px
+- When sending multiple images: max height/width of 2000px
+- Images can be included as base64 encoding or a URL to the image
+- Each image counts as tokens based on its dimensions: tokens = (width px × height px) / 750
+
 # 2025-08-13
 
 # Features of Claude
