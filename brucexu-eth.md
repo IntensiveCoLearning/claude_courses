@@ -32,6 +32,8 @@ There are several important limitations to keep in mind when working with images
 - Images can be included as base64 encoding or a URL to the image
 - Each image counts as tokens based on its dimensions: tokens = (width px × height px) / 750
 
+The key to getting good results with images is applying the same prompting engineering techniques you'd use with text. Simple prompts often lead to poor results. For example, asking "How many marbles are in this image?" might return an incorrect count.
+
 # 2025-08-13
 
 # Features of Claude
