@@ -15,6 +15,40 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-14
+
+# 📘 AI Fluency: Framework & Foundations Day 1 学习笔记（第 18 天）
+
+## ✅ 今日进度
+- 开始全新课程 **AI Fluency: Framework & Foundations** ✅
+- 今日学习了：
+  - Introduction to AI Fluency
+  - Why do we need AI Fluency?
+  - The 4D Framework
+  - Generative AI fundamentals
+  - Capabilities & limitations
+
+## 💡 今日收获
+- **AI Fluency**：
+  - 指的是理解并有效使用 AI 的综合能力，包括概念、技术、应用和伦理
+  - 不同于技术专精，AI Fluency 更强调跨领域协作与决策
+- **为什么需要 AI Fluency**：
+  - AI 正深度融入各行各业
+  - 拥有 AI Fluency 能帮助个人和组织更好地识别机会、规避风险
+- **4D Framework**：
+- **生成式 AI 基础（Generative AI fundamentals）**：
+  - 基于大量数据训练，生成新的文本、图像、音频等内容
+- **能力与局限（Capabilities & limitations）**：
+  - 能力：内容生成、模式识别、数据分析、多轮交互
+  - 局限：事实错误（hallucination）、偏见、缺乏常识推理、数据依赖
+
+## 🧠 理解要点
+- AI Fluency 是 AI 时代的“数字素养升级版”，不仅是会用工具，还包括判断何时、如何、为什么用
+- 对生成式 AI 的能力与局限有清晰认知，有助于在项目设计中做出平衡
+
+## 🎯 明日目标
+- 学习 Delegation 模块
+
 # 2025-08-13
 
 # 📘 Anthropic Courses Day 17 学习笔记
