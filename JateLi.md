@@ -15,6 +15,17 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-14
+
+Features of Claude
+
+Extended thinking
+"先思考再回答"，特别适用于需要复杂推理、多步骤分析或需要权衡多个因素的任务，从而显著提高回答的准确性和质量。
+
+Prompt Caching 适用于有重复内容的应用场景，能显著提高响应速度并降低成本。
+初始请求 → Claude 处理 + 保存工作到缓存 
+→ 后续请求（相同内容）→ Claude 检索缓存工作而不是重新处理
+
 # 2025-08-12
 
 BM25 Lexical Search
