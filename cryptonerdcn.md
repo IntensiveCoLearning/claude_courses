@@ -15,6 +15,22 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-15
+
+同步发布于推特：https://x.com/cryptonerdcn/status/1956355149288653071
+第十九天打卡：
+MCP在Client和Server间通过Json格式的message传输。
+Message大致分为两类：
+1.xx request - xx result 信息（比如call tool）
+2.通知信息（比如log，进度）
+要记住，server也是可以向client发送信息的（比如之前的CreateMessage和ListTools）
+为何要区分这个？因为在Steam传输里双向传输很重要，有些时候不像stdio传输，server不可以发送Initialize Request给Client。
+
+MCP的连接必须经历三条信息握手后才能传输其他信息：
+1. Initialize Request - Client sends this first
+2. Initialize Result - Server responds with capabilities
+3. Initialized Notification - Client confirms (no response expected)
+
 # 2025-08-13
 
 同步发布于推特： https://x.com/cryptonerdcn/status/1955642402515112295
