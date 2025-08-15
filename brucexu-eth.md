@@ -15,6 +15,85 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-15
+
+# Features of Claude
+
+## PDF 
+
+Claude can read and analyze PDF files directly, making it a powerful tool for document processing. This capability works similarly to image processing, but with a few key differences in how you structure your code.
+
+### Key Changes from Image Processing
+
+When adapting your image processing code for PDFs, you need to update several elements:
+
+- Change the file extension from .png to .pdf
+- Update the variable name from image_bytes to file_bytes for clarity
+- Set the type to "document" instead of "image"
+- Change the media type to "application/pdf" instead of "image/png"
+
+This makes Claude essentially a one-stop solution for extracting any type of information from PDF documents, whether you need summaries, data analysis, or specific content extraction.
+
+## Citations
+
+Imagine asking Claude about how Earth's atmosphere formed and getting a detailed answer. Without citations, users have no way to verify the information or understand that Claude is actually referencing a specific document you provided. Citations solve this transparency problem by creating a clear trail from Claude's response back to your source material.
+
+### Enabling Citations
+
+To enable citations, you need to modify your document message structure. Add two new fields to your document block:
+
+```
+{
+    "type": "document",
+    "source": {
+        "type": "base64",
+        "media_type": "application/pdf",
+        "data": file_bytes,
+    },
+    "title": "earth.pdf",
+    "citations": { "enabled": True }
+}
+```
+
+The title field gives your document a readable name, while citations: {"enabled": True} tells Claude to track where it finds information.
+
+## Prompt caching
+
+Prompt caching is a feature that speeds up Claude's responses and reduces the cost of text generation by reusing computational work from previous requests. Instead of throwing away all the processing work after each request, Claude can save and reuse it when you send similar content again.
+
+After sending you the response, Claude throws away all this computational work - the tokenization, embeddings, and context analysis all get discarded.
+
+This becomes inefficient when you make follow-up requests that include the same content.
+
+However, there are important limitations to keep in mind:
+
+- Cache duration: Cached content only lives for one hour
+- Limited use cases: Only beneficial when you're repeatedly sending the same content
+- High frequency requirement: Most effective when the same content appears extremely frequently in your requests
+
+The process is straightforward: your initial request writes processing work to the cache, and follow-up requests can read from that cache instead of reprocessing the same content. The cache lives for one hour, so this feature is only useful if you're repeatedly sending the same content within that timeframe.
+
+Caching isn't enabled automatically - you need to manually add cache breakpoints to specific blocks in your messages. When you place a cache breakpoint in a message, Claude caches all the processing work up to and including that breakpoint. Content after the breakpoint is processed normally without caching.
+
+so you must use the expanded format with the cache_control field set to {"type": "ephemeral"}. For the cache to be useful in follow-up requests, the content must be identical up to the breakpoint.
+
+You're not limited to text blocks - cache breakpoints can be added to:
+
+- System prompts
+- Tool definitions
+- Image blocks
+- Tool use and tool result blocks
+
+Seems very useful for multi-conversion usage, used for providing context.
+
+Behind the scenes, Claude processes your request components in a specific order: tools first, then system prompt, then messages. Understanding this order helps you place breakpoints effectively.
+
+You can add up to four cache breakpoints total.
+
+There's a minimum threshold for caching: content must be at least 1024 tokens long to be cached. This is the sum of all messages and blocks you're trying to cache, not individual blocks.
+
+The key to effective prompt caching is identifying which parts of your requests stay consistent across multiple calls and placing breakpoints strategically to maximize reuse while minimizing cache invalidation.
+
 # 2025-08-14
 
 # Features of Claude
