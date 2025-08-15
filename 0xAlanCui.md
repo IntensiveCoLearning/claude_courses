@@ -15,6 +15,45 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-15
+
+# 📘 AI Fluency: Framework & Foundations Day 2 学习笔记（第 19 天）
+
+## ✅ 今日进度
+- 继续学习 **AI Fluency: Framework & Foundations** ✅
+- 今日学习了：
+  - A closer look at Delegation
+  - Project planning and Delegation
+  - A closer look at Description
+  - Effective prompting techniques
+
+## 💡 今日收获
+- **Delegation（任务委派）**：
+  - 在 AI 项目中，委派的核心是识别哪些任务适合交由 AI 处理
+  - 需明确任务目标、边界条件、成功标准，才能有效利用 AI
+- **Project planning and Delegation（项目规划与委派）**：
+  - 项目规划中应提前确定 AI 在流程中的角色
+  - 结合任务优先级与复杂度，将可自动化和可增强的部分交由 AI
+- **Description（描述）**：
+  - 高质量的任务描述能显著提升 AI 输出质量
+  - 描述应包含背景信息、目标、限制条件和输出格式
+- **Effective prompting techniques（高效提示技巧）**：
+  - 使用清晰、结构化的指令
+  - 分步骤引导（step-by-step prompting）
+  - 利用示例（few-shot prompting）提升模型表现
+  - 明确预期输出的风格、格式与长度
+
+## 🧠 理解要点
+- 委派（Delegation）与描述（Description）是一体两面：委派决定“让 AI 做什么”，描述确保“AI 知道怎么做”
+- 有效的 Prompt 是 AI 工作质量的倍增器
+- 在 AI 协作中，项目规划阶段就应考虑任务分配与信息输入的设计
+
+## 🎯 明日目标
+- 学习 **Discernment** 模块：
+  - A closer look at Discernment
+  - The Description-Discernment loop
+- 探索如何判断 AI 输出的质量并进行优化迭代
+
 # 2025-08-14
 
 # 📘 AI Fluency: Framework & Foundations Day 1 学习笔记（第 18 天）
