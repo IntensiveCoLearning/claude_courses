@@ -15,6 +15,115 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-16
+
+# 第32课：Multi-turn conversations with tools
+
+## 课程目标
+
+本节课程的核心目标是学习如何为 Claude 接入多个工具，并实现 Claude 能够在一次对话中连续调用多个工具，以自动化处理复杂用户请求。
+
+---
+
+## 多工具调用场景举例
+
+- 用户提出问题：“103天后是星期几？”
+- Claude 首先调用 `get_current_datetime` 工具获取当前日期。
+- Claude 再调用 `add_duration_to_datetime` 工具，将当前日期加上103天。
+- Claude 最后返回最终答案。
+
+这一流程展示了 Claude 需要多次工具调用才能完成一个复杂问题的自动推理与回答。
+
+---
+
+## 对话循环实现思路
+
+1. **用户提出问题**  
+   用户输入问题，可能需要多个工具协作才能得到答案。
+
+2. **Claude 工具调用流程**  
+   Claude 通过 tool use block 请求调用相关工具，开发者需接收请求并执行工具函数，将结果返回给 Claude。
+
+3. **循环判断**  
+   每当 Claude 返回响应时，检查其是否还需要继续调用工具。如果不再请求工具调用，则说明已经得出最终答案；否则继续执行工具，直到结束。
+
+4. **伪代码示例**  
+   ```python
+   def run_conversation(messages):
+       while True:
+           response = chat(messages)
+           add_user_message(messages, response)
+           if response 不是工具调用请求:
+               break
+           tool_result_blocks = run_tools(response)
+           add_user_message(tool_result_blocks)
+       return messages
+   ```
+
+---
+
+## 代码重构要点
+
+### 1. 优化消息处理函数
+
+- `add_user_message` 和 `add_assistant_message` 需支持多种消息格式（纯文本、消息对象、消息块列表）。
+- 通过判断参数类型，灵活处理不同内容，方便后续工具调用场景。
+
+```python
+from anthropic.types import Message
+
+def add_user_message(messages, message):
+    user_message = {
+        "role": "user",
+        "content": message.content if isinstance(message, Message) else message
+    }
+    messages.append(user_message)
+```
+
+### 2. 更新 chat 函数
+
+- 支持工具 schemas 作为参数传入，并传递给 Claude。
+- 返回完整的消息对象，而不仅仅是文本，保证所有消息块都被保留。
+
+```python
+def chat(messages, system=None, temperature=1.0, stop_sequences=[], tools=None):
+    params = {
+        "model": model,
+        "max_tokens": 1000,
+        "messages": messages,
+        "temperature": temperature,
+        "stop_sequences": stop_sequences,
+    }
+    if tools:
+        params["tools"] = tools
+    if system:
+        params["system"] = system
+    message = client.messages.create(**params)
+    return message
+```
+
+### 3. 提取文本的辅助函数
+
+- 当需要展示最终结果时，可以通过辅助函数从消息对象中提取所有文本块。
+
+```python
+def text_from_message(message):
+    return "\n".join(
+        [block.text for block in message.content if block.type == "text"]
+    )
+```
+
+---
+
+## 关键收获
+
+- **灵活消息处理**：helper 函数支持多种消息格式，适应复杂工具调用场景。
+- **工具链支持**：chat 函数可接收并传递工具 schemas，实现多工具自动调用。
+- **完整消息返回**：返回完整消息对象，便于后续处理和展示。
+- **文本提取工具**：辅助函数便捷获取消息中的所有文本内容。
+
+通过以上重构和设计，Claude 可以在一次对话中自动完成多次工具调用，实现复杂问题的自动化处理和高效响应。
+
 # 2025-08-14
 
 # 第31课：Sending Tool Results
