@@ -15,6 +15,11 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-15
+
+- Claude apps
+    - /init to create a claude.md. Type "# xxxx" to add to the file
+
 # 2025-08-13
 
 - mcp server primitives
