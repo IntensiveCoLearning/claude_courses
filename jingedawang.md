@@ -15,6 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-15
+
+由于HTTP server没法主动向HTTP client发请求，所以MCP中的4种通信方式受限于传统的HTTP协议。包括Create message request, list roots request, progress notification和logging notification。
+
+![image.png](attachment:5a052842-d4e2-40fe-9e98-07b1f727959d:image.png)
+
+不过，MCP提供了streamablehttp来解决这个问题。
+
 # 2025-08-13
 
 MCP内部使用JSON格式的字符串作为传输协议，规定了两种类型的消息。一种是Request-Result消息，由Client发出request，由Server返回Result。另一种是Notification消息，双方都可以发出，不需要接收。上节介绍的progress和logging就属于这类，它们由server发出client接收。Initialized和Canceled notification则由client发出server接收。这个消息分类与后面介绍的传输协议有关。
