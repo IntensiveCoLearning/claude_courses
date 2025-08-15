@@ -15,6 +15,102 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-15
+
+### Extended thinking
+
+enable extended thinking:
+
+```python
+def chat(
+    messages,
+    system=None,
+    temperature=1.0,
+    stop_sequences=[],
+    tools=None,
+    thinking=True,
+    # sets the maximum tokens Claude can use for reasoning
+    thinking_budget=1024
+):
+```
+
+add two parameters to enable extended thinking:
+```python
+if thinking:
+    params["thinking"] = {
+        "type": "enabled",
+        "budget": thinking_budget
+    }
+```
+
+### Image and PDF support
+
+```python
+# image
+with open("image.png", "rb") as f:
+    image_bytes = base64.standard_b64encode(f.read()).decode("utf-8")
+
+# PDF
+with open("earth.pdf", "rb") as f:
+    file_bytes = base64.standard_b64encode(f.read()).decode("utf-8")
+
+image_question = [
+		# Image Block
+		{
+			"type": "image",
+			"source": {
+				"type": "base64",
+				"media_type": "image/png",
+				"data": image_bytes,
+			}
+		},
+		# Text Block
+		{
+			"type": "text",
+			"text": "What do you see in this image?"
+		}
+]
+
+pdf_question = [
+		# PDF Block
+ 		{
+            "type": "document",
+            "source": {
+                "type": "base64",
+                "media_type": "application/pdf",
+                "data": file_bytes,
+            },
+        },
+        {"type": "text", "text": "Summarize the document in one sentence"},
+]
+
+#add_user_message(messages, image_question)
+#add_user_message(messages, pdf_question)
+```
+
+Prompting Techniques(improve Claudes's accuracy):
+
+- Providing detailed guidelines and analysis steps
+- Using one-shot or multi-shot examples
+- Breaking down complex tasks into smaller steps
+
+### Citations
+
+```python
+{
+    "type": "document",
+    "source": {
+        "type": "base64",
+        "media_type": "application/pdf",
+        "data": file_bytes,
+    },
+    # The title field gives your document a readable name
+    "title": "earth.pdf",
+    #  Tells Claude to track where it finds information
+    "citations": { "enabled": True }
+}
+```
+
 # 2025-08-14
 
 BM25 (Best Match 25) is a popular algorithm for lexical search in RAG systems
