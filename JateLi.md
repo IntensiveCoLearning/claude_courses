@@ -15,6 +15,20 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-15
+
+Model Context Protocol
+
+MCP 是一个通信层，为 Claude 提供上下文和工具，无需开发者编写繁琐的代码。
+
+传统方式：应用开发者 → 编写所有工具集成
+
+MCP方式：MCP服务器维护者 → 处理工具集成
+
+Request →你的服务器 ←→ MCP 客户端 ←→ MCP 服务器 →(GitHub API)
+
+MCP 客户端本质上是一个通信代理，让你的应用能够轻松利用各种 MCP 服务器提供的功能，而无需直接处理复杂的服务集成逻辑。
+
 # 2025-08-14
 
 Features of Claude
