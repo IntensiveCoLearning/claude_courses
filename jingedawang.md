@@ -15,6 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-16
+
+StreamableHTTP其实是用了SSE（Server-Sent  Events）技术。当Client向Server建立SSE连接时，这个连接的有效时间无限长，Server可以在任意时刻向Client发送消息。
+
+所以整个流程会变成这样。仍然是先三次握手，但Server的第一次返回会带上一个mcp-session-id，后面的request必须带同一个id，才会被当作同一个session。三次握手后，客户端必须主动发出一个GET请求，然后Server端返回SSE response作为长连接。该连接保证了server端可以随时向客户端发起请求。如果client打算调用tool，仍然是发出call tool request，server的response仍然是SSE形式的，但这个tool result response在返回完会自动关闭。从server端返回的progress notification会走前面的长连接。而从server端返回的information notification则会走后面的短连接。至于为何如此，下节应该会讲。此外，这个Get请求是MCP Client实现的时候手动发还是自动包含在MCP框架里面呢？不太清楚。
+
+根据Kimi的解释，这个GET请求是MCP SDK自动发的，调用client.connect()的时候会自动完成三次握手和GET请求。progress走长连接的SSE通道是因为progress一般是跨tool call的进度，所以没法放在短连接的SSE里面，而info则是属于一次tool call的信息。
+
 # 2025-08-15
 
 由于HTTP server没法主动向HTTP client发请求，所以MCP中的4种通信方式受限于传统的HTTP协议。包括Create message request, list roots request, progress notification和logging notification。
