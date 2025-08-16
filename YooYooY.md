@@ -15,6 +15,29 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-16
+
+System Prompt Caching:
+
+```python
+if system:
+    params["system"] = [
+        {
+            "type": "text",
+            "text": system,
+            "cache_control": {"type": "ephemeral"}
+        }
+    ]
+```
+
+multiple cache breakpoints order: 
+
+- Tools (if provided)
+- System prompt (if provided)
+- Messages
+
+**⚠️ Cache only lasts for one hour, so it's designed for applications with relatively frequent API usage rather than long-term storage**
+
 # 2025-08-15
 
 ### Extended thinking
