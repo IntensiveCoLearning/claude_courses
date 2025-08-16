@@ -140,6 +140,90 @@ def run_tool(tool_name, tool_input):
 
 > 通过上述循环设计，Claude 能在多轮对话中自动完成多工具调用，处理复杂问题，给出全面答复。
 
+---
+# 第34课：Using multiple tools
+
+## 课程主题
+
+本课讲解了如何为 Claude 实现多工具接入，扩展其自动化处理能力。重点在于工具的集成流程、代码结构优化，以及多工具协同的实际应用。
+
+---
+
+## 1. 需要集成的工具
+
+- **获取当前日期时间（get_current_datetime）**  
+  让 Claude 能够获取当前时间。
+- **日期加减（add_duration_to_datetime）**  
+  让 Claude 能够进行日期的加减运算。
+- **设置提醒（set_reminder）**  
+  让 Claude 能够设置提醒事项。
+
+---
+
+## 2. 工具集成流程
+
+- 在 `run_conversation` 函数中，将所有工具的 schema 加入 tools 列表：
+
+```python
+response = chat(messages, tools=[
+    get_current_datetime_schema,
+    add_duration_to_datetime_schema,
+    set_reminder_schema
+])
+```
+
+- 这样 Claude 就能在对话中自动调用这三种工具。
+
+---
+
+## 3. 工具路由函数优化
+
+- 在 `run_tool` 函数中，根据工具名称调用对应的工具函数：
+
+```python
+def run_tool(tool_name, tool_input):
+    if tool_name == "get_current_datetime":
+        return get_current_datetime(**tool_input)
+    elif tool_name == "add_duration_to_datetime":
+        return add_duration_to_datetime(**tool_input)
+    elif tool_name == "set_reminder":
+        return set_reminder(**tool_input)
+```
+
+- 只需添加新的 elif 分支即可扩展更多工具，结构清晰，易于维护。
+
+---
+
+## 4. 多工具协同应用示例
+
+- 测试用例：“请帮我设置一个医生预约提醒，时间是2050年1月1日后177天。”
+- Claude 首先调用 `add_duration_to_datetime` 计算目标日期（2050年6月27日），再调用 `set_reminder` 设置提醒。
+- 对话历史中会看到：
+  - 用户请求
+  - Claude 的解释和工具调用
+  - 工具结果返回
+  - Claude 最终答复
+
+---
+
+## 5. 扩展工具的简单模式
+
+- 新增工具只需四步：
+  1. 实现工具函数
+  2. 定义工具 schema
+  3. 在 `run_conversation` 的 tools 列表中添加 schema
+  4. 在 `run_tool` 中添加分支
+
+- 这种模块化设计让 Claude 的能力可以持续扩展，且不会影响现有代码结构。
+
+---
+
+## 6. 课堂总结
+
+- 多工具集成后，Claude 能自动完成复杂任务，支持多轮工具调用。
+- 代码结构清晰，易于扩展和维护。
+- 实际应用中，Claude 能根据用户需求灵活调用多种工具，提升智能助手的实用性和自动化水平。
+
 # 2025-08-15
 
 # 第32课：Multi-turn conversations with tools
