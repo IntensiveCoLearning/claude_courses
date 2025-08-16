@@ -15,6 +15,131 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-16
+
+# 第33课：Implementing multiple turns
+
+## 课程核心
+
+本节讲解了如何实现 Claude 在多轮对话中自动调用多个工具，直到获取最终答案。重点在于对话循环的设计、工具请求的检测、工具结果的返回，以及多工具扩展与错误处理。
+
+---
+
+## 1. 工具调用的终止信号
+
+- Claude 是否还需要调用工具，可以通过响应消息的 `stop_reason` 字段判断。
+- 当 `stop_reason` 不为 `"tool_use"` 时，说明 Claude 已经完成工具调用，可以给用户最终答复。
+
+```python
+if response.stop_reason != "tool_use":
+    break  # Claude 已完成工具调用
+```
+
+---
+
+## 2. 对话循环实现
+
+- 主体逻辑是不断与 Claude 交互，检测是否需要工具调用，执行工具并返回结果，直到 Claude 不再请求工具。
+
+```python
+def run_conversation(messages):
+    while True:
+        response = chat(messages, tools=[get_current_datetime_schema])
+        add_assistant_message(messages, response)
+        print(text_from_message(response))
+
+        if response.stop_reason != "tool_use":
+            break
+
+        tool_results = run_tools(response)
+        add_user_message(messages, tool_results)
+
+    return messages
+```
+
+---
+
+## 3. 多工具请求处理
+
+- Claude 可能在一次响应中请求多个工具。需遍历消息内容中的所有 `tool_use` 块，分别处理每个工具请求。
+
+```python
+def run_tools(message):
+    tool_requests = [
+        block for block in message.content if block.type == "tool_use"
+    ]
+    tool_result_blocks = []
+
+    for tool_request in tool_requests:
+        # 依次处理每个工具请求
+```
+
+---
+
+## 4. 工具结果块格式
+
+- 每个工具请求都要返回一个对应的工具结果块，需保持 ID 一致。
+
+```python
+tool_result_block = {
+    "type": "tool_result",
+    "tool_use_id": tool_request.id,
+    "content": json.dumps(tool_output),
+    "is_error": False
+}
+```
+
+---
+
+## 5. 错误处理机制
+
+- 工具执行失败时，需返回包含错误信息的结果块，并设置 `is_error` 为 True。
+
+```python
+try:
+    tool_output = run_tool(tool_request.name, tool_request.input)
+    tool_result_block = {
+        "type": "tool_result",
+        "tool_use_id": tool_request.id,
+        "content": json.dumps(tool_output),
+        "is_error": False
+    }
+except Exception as e:
+    tool_result_block = {
+        "type": "tool_result",
+        "tool_use_id": tool_request.id,
+        "content": f"Error: {e}",
+        "is_error": True
+    }
+```
+
+---
+
+## 6. 多工具扩展与路由
+
+- 通过工具路由函数支持多种工具扩展，便于后续添加新工具。
+
+```python
+def run_tool(tool_name, tool_input):
+    if tool_name == "get_current_datetime":
+        return get_current_datetime(**tool_input)
+    elif tool_name == "another_tool":
+        return another_tool(**tool_input)
+    # 可继续扩展更多工具
+```
+
+---
+
+## 7. 完整工作流总结
+
+1. 用户发起请求，系统传递可用工具列表。
+2. Claude 返回文本和/或工具请求。
+3. 系统执行所有工具请求，生成工具结果块。
+4. 将工具结果作为用户消息返回给 Claude。
+5. 重复以上流程，直到 Claude 返回最终答案。
+
+> 通过上述循环设计，Claude 能在多轮对话中自动完成多工具调用，处理复杂问题，给出全面答复。
+
 # 2025-08-15
 
 # 第32课：Multi-turn conversations with tools
