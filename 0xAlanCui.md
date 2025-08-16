@@ -15,6 +15,43 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-16
+
+# 📘 AI Fluency: Framework & Foundations Day 3 学习笔记（第 20 天）
+
+## ✅ 今日进度
+- 完成 **AI Fluency: Framework & Foundations** 课程剩余全部内容 ✅
+- 今日学习了：
+  - A closer look at Discernment
+  - The Description-Discernment loop
+  - A closer look at Diligence
+  - Conclusion
+  - Certificate of completion
+  - Additional activities
+
+## 💡 今日收获
+- **Discernment（识别力）**：
+  - 关键在于判断 AI 输出的正确性、可信度和实用性
+  - 不仅依赖直觉，还要结合领域知识与逻辑推理进行判断
+- **The Description-Discernment loop（描述-识别循环）**：
+  - 高质量的描述能提高输出质量，而识别则帮助发现不足并改进描述
+  - 两者构成一个持续迭代优化的闭环
+- **Diligence（责任）**：
+  - 在 AI 协作中，持续监督与验证是必要的
+  - 不能盲目信任 AI，需要保持批判性思维和责任心
+- **结论（Conclusion）**：
+  - AI Fluency 的核心是 **Delegation（委派）-Description（描述）-Discernment（识别）-Diligence（责任）** 的完整框架
+  - 掌握该框架，能在不同场景下更高效地与 AI 协作
+
+## 🧠 理解要点
+- AI 不是替代人，而是“增强人类”的工具
+- 四个核心能力（4D Framework）：
+  - **Delegation**：决定让 AI 做什么
+  - **Description**：告诉 AI 怎么做
+  - **Discernment**：评估 AI 做得是否正确
+  - **Diligence**：持续监督与优化
+- 这是一个“人机协作闭环”，也是成为 AI Fluent 的必修技能
+
 # 2025-08-15
 
 # 📘 AI Fluency: Framework & Foundations Day 2 学习笔记（第 19 天）
