@@ -15,6 +15,17 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-16
+
+- Claude apps
+    - /init to create a claude.md. Type "# xxxx" to add to the file
+    - common workflow: find relevant files. Ask Claude to plan, ask Claude to implement the plan
+    - test driven development workflow. ***effort multiplier***
+	- feed context
+	- ask AI to think of some test cases of the new feature. Don't write any code yet.
+	- ask AI to implement the tests
+	- *ask AI to write code that passes the tests. AI will iterate on a solution until the tests pass
+
 # 2025-08-15
 
 - Claude apps
