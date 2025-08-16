@@ -15,6 +15,14 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-16
+
+竟然两天没打卡了！今天跟着视频学习了一下如何 set up 一个 MCP，包括 Client 和 Server。
+- 在 MCP Server 中定义所需的 tools，并且 mcp 还提供了一些 official 的 function 可以使用。
+- 当把 server 起来后，可以使用 MCP Inspector tool 来 debug，还挺好用的。
+- 在 MCP Client 中就是可以获取 tool list 以及调用 tool。
+明天继续把剩下的学完。
+
 # 2025-08-13
 
 今天家里网络不是很好，所以就看了两个 MCP 的视频，简单记录一下：
