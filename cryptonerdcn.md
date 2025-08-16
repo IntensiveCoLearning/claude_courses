@@ -15,6 +15,15 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-16
+
+同步发布于推特： https://x.com/cryptonerdcn/status/1956721510963720577
+第二十天打卡：
+HTTP下的MCP客户端与服务器最大问题就是：和客户端向服务器发起request不同，服务器并不能很容易的访问客户端，客户端也不能容易的返回一个response。
+SSE的简单实现：
+握手（三个初始化）后client获取session_id，并通过发起一个带有此ID的get，与服务器建立SSE连接，之后服务器便可向客户端发起request。
+如果之后客户端发起tool call的request，其实会产生两个SSE，第一个是上面的，会一直保持连接。第二个则会在tool call的结果完成后立即关闭。
+
 # 2025-08-15
 
 同步发布于推特：https://x.com/cryptonerdcn/status/1956355149288653071
