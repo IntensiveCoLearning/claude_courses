@@ -15,6 +15,103 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-17
+
+# Features of Claude
+
+## Prompt Chaching
+
+Prompt Chaching is particularly valuable when you're sending:
+
+- Large system prompts (like a 6K token coding assistant prompt)
+- Complex tool schemas (around 1.7K tokens for multiple tools)
+- Repeated message content
+
+The key insight is that caching only helps if you're repeatedly sending identical content - but in many applications, this happens extremely frequently.
+
+```
+last_tool["cache_control"] = {"type": "ephemeral"}
+```
+
+Add Schema Caching to the tool.
+
+```
+if system:
+    params["system"] = [
+        {
+            "type": "text",
+            "text": system,
+            "cache_control": {"type": "ephemeral"}
+        }
+    ]
+```
+
+Prompt caching is most effective when you have:
+
+- Consistent tool schemas across requests
+- Stable system prompts
+- Applications that make multiple requests with similar context
+
+Remember that the cache only lasts for one hour, so it's designed for applications with relatively frequent API usage rather than long-term storage.
+
+## Files API
+
+The Files API provides an alternative way to handle file uploads. Instead of encoding images or PDFs directly in your messages as base64 data, you can upload files ahead of time and reference them later.
+
+Here's how it works:
+
+- Upload your file (image, PDF, text, etc.) to Claude using a separate API call
+- Receive a file metadata object containing a unique file ID
+- Reference that file ID in future messages instead of including raw file data
+
+## Code Execution Tool
+
+Code execution is a server-based tool that doesn't require you to provide an implementation. You simply include a predefined tool schema in your request, and Claude can optionally execute Python code in an isolated Docker container.
+
+Key characteristics of the code execution environment:
+
+- Runs in an isolated Docker container
+- No network access (can't make external API calls)
+- Claude can execute code multiple times during a single conversation
+- Results are captured and interpreted by Claude for the final response
+
+## Combining Files API and Code Execution
+
+Here's a typical workflow:
+
+- Upload your data file (like a CSV) using the Files API
+- Include a container upload block in your message with the file ID
+- Ask Claude to analyze the data
+- Claude writes and executes code to process your file
+- Claude can generate outputs (like plots) that you can download
+
+```
+messages = []
+add_user_message(
+    messages,
+    [
+        {
+            "type": "text",
+            "text": """Run a detailed analysis to determine major drivers of churn.
+            Your final output should include at least one detailed plot summarizing your findings."""
+        },
+        {"type": "container_upload", "file_id": file_metadata.id},
+    ],
+)
+
+chat(
+    messages,
+    tools=[{"type": "code_execution_20250522", "name": "code_execution"}]
+)
+```
+
+many possibilities:
+
+- Image processing and manipulation
+- Document parsing and transformation
+- Mathematical computations and modeling
+- Report generation with custom formatting
+
 # 2025-08-15
 
 # Features of Claude
