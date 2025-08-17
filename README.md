@@ -76,9 +76,9 @@ Telegram：https://t.me/LXDAO/26860
 <!-- START_COMMIT_TABLE -->
 | Name | 7.24 | 7.25 | 7.26 | 7.27 | 7.28 | 7.29 | 7.30 | 7.31 | 8.01 | 8.02 | 8.03 | 8.04 | 8.05 | 8.06 | 8.07 | 8.08 | 8.09 | 8.10 | 8.11 | 8.12 | 8.13 | 8.14 | 8.15 | 8.16 | 8.17 | 8.18 | 8.19 | 8.20 | 8.21 | 8.22 |
 | ------------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| [muxin-web3](https://github.com/IntensiveCoLearning/claude_courses/blob/main/muxin-web3.md) | ✅ | ✅ | ⭕️ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ⭕️ | ✅ | ✅ | | | | | |
+| [muxin-web3](https://github.com/IntensiveCoLearning/claude_courses/blob/main/muxin-web3.md) | ✅ | ✅ | ⭕️ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ⭕️ | ✅ | ✅ |   | | | | |
 | [lcy101u](https://github.com/IntensiveCoLearning/claude_courses/blob/main/lcy101u.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [brucexu-eth](https://github.com/IntensiveCoLearning/claude_courses/blob/main/brucexu-eth.md) | ✅ | ✅ | ⭕️ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | | | | | |
+| [brucexu-eth](https://github.com/IntensiveCoLearning/claude_courses/blob/main/brucexu-eth.md) | ✅ | ✅ | ⭕️ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ |   | | | | |
 | [justjavac](https://github.com/IntensiveCoLearning/claude_courses/blob/main/justjavac.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [LINYIQ66](https://github.com/IntensiveCoLearning/claude_courses/blob/main/LINYIQ66.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [dev4mobile](https://github.com/IntensiveCoLearning/claude_courses/blob/main/dev4mobile.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -94,7 +94,7 @@ Telegram：https://t.me/LXDAO/26860
 | [hdan321](https://github.com/IntensiveCoLearning/claude_courses/blob/main/hdan321.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Ethan0191](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Ethan0191.md) | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | | | | | |
 | [xuxizhen](https://github.com/IntensiveCoLearning/claude_courses/blob/main/xuxizhen.md) | ✅ | ✅ | ⭕️ | ✅ | ⭕️ | ✅ | ❌ | | | | | | | | | | | | | | | | | | | | | | | |
-| [0xAlanCui](https://github.com/IntensiveCoLearning/claude_courses/blob/main/0xAlanCui.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |   | | | | | |
+| [0xAlanCui](https://github.com/IntensiveCoLearning/claude_courses/blob/main/0xAlanCui.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | | | | | |
 | [lisaxiaoli](https://github.com/IntensiveCoLearning/claude_courses/blob/main/lisaxiaoli.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [wkarry450-max](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wkarry450-max.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [123czy](https://github.com/IntensiveCoLearning/claude_courses/blob/main/123czy.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -104,7 +104,7 @@ Telegram：https://t.me/LXDAO/26860
 | [crazyf131419](https://github.com/IntensiveCoLearning/claude_courses/blob/main/crazyf131419.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [joyc](https://github.com/IntensiveCoLearning/claude_courses/blob/main/joyc.md) | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | | | | | |
 | [erfect2020](https://github.com/IntensiveCoLearning/claude_courses/blob/main/erfect2020.md) | ⭕️ | ✅ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [JateLi](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JateLi.md) | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | | | | | |
+| [JateLi](https://github.com/IntensiveCoLearning/claude_courses/blob/main/JateLi.md) | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ |   | | | | |
 | [wodeche](https://github.com/IntensiveCoLearning/claude_courses/blob/main/wodeche.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Johnnill](https://github.com/IntensiveCoLearning/claude_courses/blob/main/Johnnill.md) | ✅ | ⭕️ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | |
 | [feiyunssr](https://github.com/IntensiveCoLearning/claude_courses/blob/main/feiyunssr.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -133,6 +133,7 @@ Telegram：https://t.me/LXDAO/26860
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [SIGNUP_AUTOMATION](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SIGNUP_AUTOMATION.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
