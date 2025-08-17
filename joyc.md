@@ -15,6 +15,117 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-17
+
+# 第35课：The batch tool
+
+## 课程主题
+
+本课介绍了如何通过“Batch Tool”实现 Claude 并行调用多个工具，提升工具调用效率，减少多轮往返，提高实际应用中的并发处理能力。
+
+---
+
+## 1. 问题背景
+
+Claude 理论上可以在一条 assistant 消息中发起多个工具调用（tool use block），实现并行操作。但在实际场景下，Claude 常常只发出一个工具调用，处理完后再发下一个，导致不必要的多轮往返。
+
+![Claude多轮工具调用流程示意图](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1748623764%2F06_-_010_-_The_Batch_Tool_00.1748623764137.png)
+
+解决方法：实现一个 Batch Tool，鼓励 Claude 一次性并行请求多个工具。
+
+---
+
+## 2. Batch Tool 的原理
+
+Batch Tool 是一个特殊的工具，其输入为一组“待调用工具”的描述列表。每个描述对象包含要调用的工具名（name）和参数（arguments）。
+
+Claude 若需要并行调用多个工具，会调用 Batch Tool 并传入所有待调用工具的信息。
+
+---
+
+## 3. Batch Tool 的 Schema 设计
+
+```python
+batch_tool_schema = {
+    "name": "batch_tool",
+    "description": "Invoke multiple other tool calls simultaneously",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "invocations": {
+                "type": "array",
+                "description": "The tool calls to invoke",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the tool to invoke"
+                        },
+                        "arguments": {
+                            "type": "object",
+                            "description": "The arguments to pass to the tool"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
+## 4. Batch Tool 的实现
+
+在工具路由函数 `run_tool` 中增加对 batch_tool 的处理：
+
+```python
+def run_tool(tool_name, tool_input):
+    if tool_name == "get_current_datetime":
+        return get_current_datetime(**tool_input)
+    elif tool_name == "add_duration_to_datetime":
+        return add_duration_to_datetime(**tool_input)
+    elif tool_name == "set_reminder":
+        return set_reminder(**tool_input)
+    elif tool_name == "batch_tool":
+        return run_batch(**tool_input)
+```
+
+实现 batch_tool 的核心函数 `run_batch`：
+
+```python
+def run_batch(invocations=[]):
+    batch_output = []
+    for invocation in invocations:
+        name = invocation["name"]
+        args = json.loads(invocation["arguments"])
+        tool_output = run_tool(name, args)
+        batch_output.append({
+            "tool_name": name,
+            "output": tool_output
+        })
+    return batch_output
+```
+
+![Batch Tool并行调用结果示意图](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1748623767%2F06_-_010_-_The_Batch_Tool_05.1748623766803.png)
+
+---
+
+## 5. 实际效果与优势
+
+Claude 通过 batch_tool 可以一次性发起多个工具调用，实现并行处理。系统收到 batch_tool 请求后，自动遍历每个子请求并分别执行，最后将所有结果一并返回。
+
+有效减少了 API 交互轮次，提高了效率。这种“批量工具”模式为 Claude 的多工具协同提供了更高层次的抽象与自动化能力。
+
+---
+
+## 6. 课堂总结
+
+Batch Tool 是提升 Claude 多工具并发处理能力的有效技巧。通过定义 batch_tool schema 和实现批量执行逻辑，Claude 可以并行完成多个独立任务，极大提升对复杂场景的适应能力和响应速度。
+
+新增批量处理后，Claude 的工具调用系统更具扩展性和工程实用价值。
+
 # 2025-08-16
 
 # 第33课：Implementing multiple turns
