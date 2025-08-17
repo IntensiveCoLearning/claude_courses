@@ -15,6 +15,17 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-17
+
+今天学习了 MCP 剩下的 resource 和 prompt。
+- Resource 相当于在 MCP Server 中提供 data 给到 MCP Client 来获取，也相当于 HTTP 的 Get request，并且会有 official 的 @mcp.resource()，resource 遵循请求-响应模式，MCP Client 发送一个带有 URI 的 ReadResourceRequest 请求，MCP Server 会返回数据。URI 相当于要访问的 resource 的地址。
+- Resource 有两种：Direct Resource（URI 是固定的），Templated Resource（URI 会带有 parameters）。
+- MCP Server 中的 prompt 允许定义预先构建的高质量指令，供 Client 使用，不需要用户从头开始编写 prompt。相当于可以给到用户几个预定义的指令，但是我们在 Server 中已经写好了对应的高质量的 prompt，这样用户可以直接快速使用指令，不需要每次自定义 prompt。@mcp.prompt()。
+- MCP Server 中包含的 Tools，Resources，Prompts 分别服务不同的对象和场景。
+  - Tools：Claude 来决定什么时候调用 Tool，结果也是被 Claude 使用。额外功能。
+  - Resources：我们的 App 来决定什么时候调用，结果也是被 App 使用。使用数据。
+  - Prompts：用户决定什么时候使用。提供简洁指令，基于用户的 input 进行调用。
+
 # 2025-08-16
 
 竟然两天没打卡了！今天跟着视频学习了一下如何 set up 一个 MCP，包括 Client 和 Server。
