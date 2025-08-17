@@ -15,6 +15,31 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-17
+
+# 第21天学习笔记 - Claude Code in Action
+
+## 🎯 学习主题
+开始新的课程 **Claude Code in Action**，重点理解什么是 Claude Code，以及它在实际编码辅助中的应用。
+
+---
+
+## 📌 学习内容
+### 1. Introduction
+- 课程开篇介绍了 Claude Code 的核心定位。  
+- 它是一款基于 Claude 的智能 **编码助手**，旨在提升开发者的编程效率和准确性。  
+
+### 2. What is a coding assistant?
+- Coding Assistant 的核心作用：  
+  - 辅助开发者 **理解代码** 和 **生成代码**。  
+  - 帮助完成 **调试**、**重构**、**文档生成** 等任务。  
+- 与传统 IDE 插件或工具不同，Claude Code 强调 **自然语言交互**，让开发体验更直观。  
+
+### 3. Claude Code in action
+- 通过实际案例展示了 Claude Code 的工作方式：  
+  - 输入自然语言需求，Claude Code 自动生成对应的代码实现。  
+  - 能够根据上下文优化和修改已有代码。
+
 # 2025-08-16
 
 # 📘 AI Fluency: Framework & Foundations Day 3 学习笔记（第 20 天）
