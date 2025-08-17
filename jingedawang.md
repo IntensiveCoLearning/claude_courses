@@ -15,6 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-17
+
+Server to client request or notification需要SSE，但在多server的load balance的场景下，这种功能不太好搞。因为MCP Client可能和第一个MCP Server建立SSE连接，但它的下一次tool call有可能被分发到另一个MCP Server。而在tool call中调用的progress notification则需要走第一个SSE连接。MCP的协议里面没有实现这么复杂的通信功能，当然，我们开发基础设施的时候可以实现这些功能，但非常麻烦。所以简单起见，可以disable掉SSE的功能，即禁止server to client的消息。
+
+![image.png](attachment:92a27906-27e6-48b2-949d-2e84af9c76c2:image.png)
+
+这可以通过设置下面两个参数实现。stateless_http=True会禁用session id，于是整个过程变成了无状态的，此时client不需要三次握手初始化，也不需要发送GET SSE连接，progress notification被禁用。json_response=True会禁用每次server response的SSE短连接，于是server的每次response都返回完整的JSON，而不是以stream的方式返回。
+
+![image.png](attachment:9c2e6a37-c49d-41be-98f3-c189cd70f785:image.png)
+
+今天看到一篇文章说MCP协议设计的过于简单，缺乏remote call所需的安全机制。从目前学到的这些设计来看确实比较粗糙，不过感觉这些可能都只是临时方案，以后用的人多了自然会不断改进。
+
 # 2025-08-16
 
 StreamableHTTP其实是用了SSE（Server-Sent  Events）技术。当Client向Server建立SSE连接时，这个连接的有效时间无限长，Server可以在任意时刻向Client发送消息。
