@@ -15,6 +15,12 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-17
+
+- MCP client embedded
+    - how to parallelize tasks: prompt to create a corktree, prompt to merge a corktree
+    - custom "/" commands
+
 # 2025-08-16
 
 - Claude apps
