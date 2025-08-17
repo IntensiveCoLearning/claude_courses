@@ -15,6 +15,30 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-17
+
+** MCP Inspector** 是一个浏览器内的调试工具，专门用于测试 MCP 服务器，无需连接到完整的应用程序。
+
+---
+
+## MCP 核心组件
+
+### Tools
+- 使用装饰器自动生成工具模式
+
+### Resources
+- **直接资源**：静态 URI  
+  示例：`docs://documents`
+- **模板资源**：参数化 URI  
+  示例：`docs://documents/{doc_id}`
+
+### Prompts
+- 服务器提供的优化提示模板
+
+## Quiz
+**Model Context Protocol** 小测验：  
+✅ 6 / 6
+
 # 2025-08-15
 
 Model Context Protocol
