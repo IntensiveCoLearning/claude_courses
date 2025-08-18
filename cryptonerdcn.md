@@ -15,6 +15,32 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-18
+
+同步发布于推特: https://x.com/cryptonerdcn/status/1957449673066881334
+第二十一天打卡：
+Remote MCP Server的scaling和通常服务器没什么太大区别，用load balacner和多个实例即可。
+但这会造成之前提到的sse连接丢失，因为每次client连接的并不一定是同一个mcp server实例。
+官方给出的解决方法是：stateless_http=True
+这个不会存在session-id，因此需要mcp server发送request的sampling和通知一类的feature全都不能用。好处是再也不用之前的三轮初始化的握手。
+而且由于不适用SSE，你也应该同时打开 json_response=True
+下面试官方的指导，说明什么时候该使用这种方式：
+
+Use stateless HTTP when:
+
+You need horizontal scaling with load balancers
+You don't need server-to-client communication
+Your tools don't require AI model sampling
+You want to minimize connection overhead
+
+Use JSON response when:
+
+You don't need streaming responses
+You prefer simpler, non-streaming HTTP responses
+You're integrating with systems that expect plain JSON
+
+该课程也结束了，我的证书：https://verify.skilljar.com/c/dfgduoeen7a3
+
 # 2025-08-16
 
 同步发布于推特： https://x.com/cryptonerdcn/status/1956721510963720577
