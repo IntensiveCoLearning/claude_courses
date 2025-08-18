@@ -15,6 +15,26 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-18
+
+今天学习了 Claude Code，因为已经用了一段时间了，所以比较熟悉，但目前还没添加过 MCP，之后试一下。
+- Claude Code 有哪些 tool 可以帮助到你的 development workflow：
+  - File operations - Search, read, and edit files in your project
+  - Terminal access - Run commands directly from the conversation
+  - Web access - Search documentation, fetch code examples, and more
+  - MCP Server support - Add additional tools by connecting MCP servers
+- Claude Code 可以贯穿整个 project 的生命周期：
+  - Discover
+  - Design
+  - Build
+  - Deploy
+  - Support & Scale
+- /init 命令会让 Claude Code 了解你整个项目的内容并生成一个 CLAUDE.md 的文件来 summarize 整个项目的情况，也相当于一个 project context。
+- Common workflow：
+  - Step 1: Feed Context into Claude
+  - Step 2: Tell Claude to Plan a Solution
+  - Step 3: Ask Claude to Implement the Solution
+
 # 2025-08-17
 
 今天学习了 MCP 剩下的 resource 和 prompt。
