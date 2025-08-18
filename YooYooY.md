@@ -15,6 +15,25 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-18
+
+### Model Context Protocol (MCP)
+
+The key insight is that MCP servers provide tool schemas and functions already defined for you, eliminating the need to build and maintain complex integrations yourself.
+
+
+MCP typical flow:
+1. User queries server
+2. Server requests tool list from MCP client
+3. MCP client sends list tools request to MCP server
+4. MCP server responds with list tools result
+5. Server sends query + tools to Claude
+6. Claude requests tool execution
+7. Server asks MCP client to run tool
+8. MCP client sends call tool request to MCP server
+9. MCP server executes tool (e.g. GitHub API call)
+10. Results flow back through chain: MCP server → MCP client → server → Claude → user
+
 # 2025-08-16
 
 System Prompt Caching:
