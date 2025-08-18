@@ -15,6 +15,64 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-18
+
+# MCP
+
+Model Context Protocol (MCP) is a communication layer that provides Claude with context and tools without requiring you to write a bunch of tedious integration code.
+
+an MCP Client (your server) connecting to MCP Servers that contain tools, prompts, and resources. Each MCP server acts as an interface to some outside service.
+
+MCP Client -> MCP Servers (tools, prompts, and resources) -> Outside Service
+
+Old tool functions way for "What open pull requests are there across all my repositories?":
+
+- create incredible number of tool schemas and functions and put them in the prompt
+
+MCP way:
+
+- shifts the tool definitions and execution to MCP servers
+- MCP server encapsulates GitHub's functionality, you can use it directly without having to implement them
+- MCP servers provide access to data or functionality implemented by outside services. They package up complex integrations into reusable components that any application can connect to.
+
+service providers themselves will make their own official MCP implementations.
+
+MSO = MCP Search Optimization will be emerged soon
+
+MCP servers and tool use are complementary but different concepts.
+
+The MCP client serves as the communication bridge between your server and MCP servers. Think of it as your access point to all the tools that an MCP server provides. When you need to use external tools or services, the client handles all the message passing and protocol details for you.
+
+One of MCP's key strengths is being transport agnostic - a fancy way of saying the client and server can talk to each other using different communication methods.
+
+MCP clients and servers can connect over:
+
+- Standard IO
+- HTTP
+- WebSockets
+- Various other network protocols
+
+Once connected, the client and server exchange specific message types defined in the MCP specification. The main message types you'll work with are:
+
+- ListToolsRequest/ListToolsResult: The client asks the server "what tools do you provide?" and gets back a list of available tools.
+- CallToolRequest/CallToolResult: The client asks the server to run a specific tool with certain arguments, then receives the results.
+
+Workflow:
+
+![](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1748542651%2F09_-_002_-_MCP_Clients_18.1748542650970.jpg)
+
+Roles:
+
+- Our Server: your server backend or interface
+
+Processes:
+
+1. User sends query
+2. Our Server get tools from MCP Server by MCP Client
+3. Send all to Claude -> ToolUse
+4. Our Server invokes functions on MCP Server by MCP Client and get responses
+5. send all to Claude -> final response to User
+
 # 2025-08-17
 
 # Features of Claude
