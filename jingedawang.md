@@ -15,6 +15,10 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-18
+
+Model Context Protocol: Advanced Topics这门课也学完了。关于Sampling、Roots、StreamableHTTP的内容还是比较有用的。
+
 # 2025-08-17
 
 Server to client request or notification需要SSE，但在多server的load balance的场景下，这种功能不太好搞。因为MCP Client可能和第一个MCP Server建立SSE连接，但它的下一次tool call有可能被分发到另一个MCP Server。而在tool call中调用的progress notification则需要走第一个SSE连接。MCP的协议里面没有实现这么复杂的通信功能，当然，我们开发基础设施的时候可以实现这些功能，但非常麻烦。所以简单起见，可以disable掉SSE的功能，即禁止server to client的消息。
