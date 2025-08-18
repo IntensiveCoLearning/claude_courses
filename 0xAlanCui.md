@@ -15,6 +15,42 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-18
+
+# 第22天学习笔记 - Claude Code in Action
+
+## 🎯 学习主题
+继续学习 **Claude Code in Action**，进入实践环节 **Getting hands on**，完成了从环境搭建到上下文添加与代码修改的学习。
+
+---
+
+## 📌 学习内容
+### 1. Claude Code setup
+- 学习如何在本地开发环境中正确安装与配置 Claude Code。  
+- 配置步骤包括：  
+  - 下载扩展/插件  
+  - API Key 绑定  
+  - VS Code 环境调试  
+- 确保 Claude 能够在 IDE 中被调用并运行。
+
+### 2. Project setup
+- 演示了如何在现有或新建项目中启用 Claude Code。  
+- 可以一次性读取多文件上下文，适合管理中大型代码库。  
+- 强调了初始项目配置的重要性，保证 Claude 能理解项目整体结构。
+
+### 3. Adding context
+- 学习如何向 Claude Code 提供更多项目背景信息。  
+- Claude 可结合 **文件内容 + 开发者补充说明**，更准确地完成任务。  
+- 添加上下文的方式包括：选定代码片段、引入整个文件、或通过自然语言描述。
+
+### 4. Making changes
+- 实际演示 Claude Code 如何直接在 IDE 中对代码进行修改。  
+- 修改流程：  
+  1. 给出自然语言指令
+  2. Claude 生成修改建议  
+  3. 用户确认后，Claude 自动写入并更新代码文件  
+- Claude 的修改不仅限于语法，还能涵盖结构优化与风格改进。
+
 # 2025-08-17
 
 # 第21天学习笔记 - Claude Code in Action
