@@ -73,6 +73,8 @@ Processes:
 4. Our Server invokes functions on MCP Server by MCP Client and get responses
 5. send all to Claude -> final response to User
 
+TODO how does MCP registration work? how MCP client determine which MCP server should the Server use?
+
 # 2025-08-17
 
 # Features of Claude
