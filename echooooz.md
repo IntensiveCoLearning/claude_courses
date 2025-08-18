@@ -15,6 +15,11 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-18
+
+- automatic monitoring & debugging: create a GitHub action inside the repo
+    - computer use is implemented using the tool system
+
 # 2025-08-17
 
 - MCP client embedded
