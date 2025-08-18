@@ -34,6 +34,12 @@ MCP typical flow:
 9. MCP server executes tool (e.g. GitHub API call)
 10. Results flow back through chain: MCP server → MCP client → server → Claude → user
 
+
+### MCP Server
+Two tools implemented:
+1. read_doc_contents = Takes doc_id string, returns document content from in-memory docs dictionary
+2. edit_document = Takes doc_id, old_string, new_string parameters, performs find/replace on document content
+
 # 2025-08-16
 
 System Prompt Caching:
