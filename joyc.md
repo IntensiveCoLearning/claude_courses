@@ -15,6 +15,93 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-19
+
+# 第37课 Fine grained tool calling
+
+## 1. 流式响应基础
+
+Claude API 支持流式响应（streaming），可以让用户实时看到模型生成内容的过程。启用 `"stream": true` 后，Claude 会通过 Server-Sent Events (SSE) 按块发送数据，提升用户体验和交互性。
+
+### 事件类型
+- `message_start`：响应开始
+- `content_block_start`：内容块开始
+- `content_block_delta`：内容块增量（文本/工具参数/思考）
+- `content_block_stop`：内容块结束
+- `message_delta`：消息对象顶层变更
+- `message_stop`：响应结束
+- 还有 `ping`（心跳）和 `error`（错误）事件
+
+### 内容块增量类型
+- `text_delta`：文本内容块增量
+- `input_json_delta`：工具调用参数的 JSON 增量
+- `thinking_delta`：思考内容块增量
+
+## 2. 工具使用与流式参数
+
+Claude 支持调用外部工具（如天气查询、文件写入等），并能将工具参数以流式方式逐步发送。
+
+### 工具参数流式传递
+- 工具调用块通过 `input_json_delta` 事件发送参数 JSON 的局部片段（`partial_json`）。
+- 每次事件还会包含 `snapshot`，即当前已累计的 JSON 参数快照。
+- 只有当一个顶层 key-value 对生成完毕并通过 JSON Schema 验证后，API 才会发送这一组块。
+- 这导致参数生成时会有“短暂延迟+批量发送”现象。
+
+#### 代码示例
+```python
+for chunk in stream:
+    if chunk.type == "input_json":
+        print(chunk.partial_json)
+        current_args = chunk.snapshot
+```
+
+## 3. JSON 验证机制
+
+默认情况下，Claude API 会缓冲参数块，直到生成完整顶层 key-value 对并通过 Schema 验证，才发送到客户端。这保证了参数的合法性，但会造成响应延迟。
+
+- 例如，工具参数结构为：
+```json
+{
+  "abstract": "...",
+  "meta": {
+    "word_count": 847,
+    "review": "..."
+  }
+}
+```
+- API 会分别等待 `abstract` 和 `meta` 块生成完毕后验证，再发送。
+
+## 4. 细粒度工具流式（Fine-Grained Tool Streaming）
+
+如果需要更快、更细粒度的参数流式（如实时展示进度或提前处理部分参数），可以启用 Fine-Grained Tool Streaming：
+
+- 禁用 API 端 JSON 验证，参数片段一生成就立即发送，无需等待顶层块完整。
+- 这样可提前获得如 `word_count` 等重要参数。
+- 但客户端必须自行处理潜在的非法或不完整 JSON（如 `"word_count": undefined`）。
+
+#### 启用方式
+```python
+run_conversation(
+    messages, 
+    tools=[save_article_schema], 
+    fine_grained=True
+)
+```
+
+#### 错误处理示例
+```python
+try:
+    parsed_args = json.loads(chunk.snapshot)
+except json.JSONDecodeError:
+    print("Received invalid JSON, continuing...")
+```
+
+## 5. 使用建议
+
+- 默认流式+验证适合大多数场景，确保参数合法性。
+- 细粒度流式适合需要极致响应速度、实时进度展示或提前处理参数的应用，但需做好错误处理。
+- 了解事件流结构和工具参数流式机制，有助于开发更高效、用户体验更佳的 AI 应用。
+
 # 2025-08-17
 
 # 第35课：The batch tool
