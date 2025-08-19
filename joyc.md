@@ -102,6 +102,67 @@ except json.JSONDecodeError:
 - 细粒度流式适合需要极致响应速度、实时进度展示或提前处理参数的应用，但需做好错误处理。
 - 了解事件流结构和工具参数流式机制，有助于开发更高效、用户体验更佳的 AI 应用。
 
+---
+# 第 38 课 The text edit tool
+
+## 1. 概述
+
+Claude 内置了一个强大的文本编辑器工具（Text Editor Tool），无需自定义 schema，即可让 Claude 具备类似标准文本编辑器的文件操作能力。该工具极大扩展了 Claude 作为“AI 软件工程师”的实用性。
+
+## 2. 文本编辑器工具的功能
+
+- 查看文件或目录内容
+- 查看文件的指定行区间
+- 替换文件中的文本
+- 创建新文件
+- 在文件指定行插入文本
+- 撤销最近的编辑操作
+
+这些功能基本覆盖了开发者日常在代码编辑器中的主要操作。
+
+## 3. 工具实现与集成要点
+
+### 3.1 JSON Schema 已内置，需自定义实现
+
+- 只需在 API 请求中提供极小的 schema stub（类型和名称），Claude 自动识别并扩展为完整 schema。
+- 但**实际的文件操作函数（如读取、写入、替换等）必须由开发者在本地代码中实现**。
+- Claude 只会发出请求（如“创建文件”、“替换内容”），具体执行必须由你写代码完成。
+
+### 3.2 Schema 版本与模型关联
+
+- 不同 Claude 模型需指定不同的 schema type（如 `text_editor_20250124`、`text_editor_20241022`），否则无法正确调用。
+- 示例代码：
+  ```python
+  def get_text_edit_schema(model):
+      if model.startswith("claude-3-7-sonnet"):
+          return {"type": "text_editor_20250124", "name": "str_replace_editor"}
+      elif model.startswith("claude-3-5-sonnet"):
+          return {"type": "text_editor_20241022", "name": "str_replace_editor"}
+  ```
+
+### 3.3 实现流程
+
+1. 用户请求如“打开 main.py 并总结内容”
+2. Claude 生成 tool_use 请求（如读取文件内容）
+3. 本地实现接收请求，实际读取文件并返回内容
+4. Claude 继续处理，如生成摘要
+5. 也可进一步请求如“写入新函数”、“创建 test.py 并写测试代码”等
+6. 本地实现依次处理所有文件写入、替换等请求
+
+## 4. 应用场景与价值
+
+- 可在没有完整 IDE 的环境下，赋予 AI 文件编辑能力
+- 适用于需要自动化、批量或远程编辑文件的应用
+- 便于将 AI 助手无缝集成到自定义开发或运维流程中
+- 让 Claude 能够像高级 AI 代码编辑器一样协助开发
+
+## 5. 课堂小结
+
+- Claude 的文本编辑器工具极大扩展了 AI 文件操作能力，但本地实现是必需的
+- 只需提供极简 schema stub，Claude 自动识别并扩展为完整工具
+- 适当实现本地函数后，可实现与现代 AI 代码编辑器媲美的功能
+- 适合自动化开发、远程运维、教育等多种场景
+
 # 2025-08-17
 
 # 第35课：The batch tool
