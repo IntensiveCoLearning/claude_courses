@@ -15,6 +15,11 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-19
+
+Agents & workflows
+    - parallelization: split a single complex task into multiple sub-tasks, run them in parallel, aggregate the results together
+
 # 2025-08-18
 
 - automatic monitoring & debugging: create a GitHub action inside the repo
