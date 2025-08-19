@@ -15,6 +15,12 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-19
+
+# MCP
+
+Building an MCP server becomes much simpler when you use the official Python SDK. Instead of manually writing complex JSON schemas for tools, the SDK handles all that complexity for you with decorators and type hints.
+
 # 2025-08-18
 
 # MCP
