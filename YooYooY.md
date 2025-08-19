@@ -15,6 +15,65 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-19
+
+# MCP
+
+### Implementing a client
+
+Core Methods: `list_tools()` and `call_tool()`.
+
+#### List Tools Method
+
+This method gets all available tools from the server:
+```python
+async def list_tools(self) -> list[types.Tool]:
+    result = await self.session().list_tools()
+    return result.tools
+```
+
+#### Call Tool Method
+
+This method executes a specific tool on the server:
+```python
+async def call_tool(
+    self, tool_name: str, tool_input: dict
+) -> types.CallToolResult | None:
+    return await self.session().call_tool(tool_name, tool_input)
+```
+
+### Defining resources
+
+Resources Types:
+
+- Direct Resources(List Documents): Static URIs that don't change
+```python
+@mcp.resource(
+    "docs://documents",
+    mime_type="application/json"
+)
+def list_docs() -> list[str]:
+    return list(docs.keys())
+```
+
+- Templated Resources(Fetch Document): URIs with parameters
+```python
+@mcp.resource(
+    "docs://documents/{doc_id}",
+    mime_type="text/plain"
+)
+def fetch_doc(doc_id: str) -> str:
+    if doc_id not in docs:
+        raise ValueError(f"Doc with id {doc_id} not found")
+    return docs[doc_id]
+```
+
+MIME Types:
+
+- `application/json`: Structured JSON data
+- `text/plain`: Plain text content
+- Any other valid MIME type for different data formats
+
 # 2025-08-18
 
 ### Model Context Protocol (MCP)
