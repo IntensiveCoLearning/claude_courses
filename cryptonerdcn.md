@@ -15,6 +15,14 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-19
+
+同步发布于推特：https://x.com/cryptonerdcn/status/1957750776392216890
+第二十二天打卡：
+Claude课程里学到的小tips，但已经可能没用了：
+使用给LLM的回答固定起始信息+尾部截断可以让LLM强行输出规整的数据结构（但7月之后Gemini和GPT等主流LLM都不需要这么做也可以规整输出了。）
+查询API时需要MAX Token（但这将普遍不再是必须选项，反而是role的重要性越来越不可或缺）
+
 # 2025-08-18
 
 同步发布于推特: https://x.com/cryptonerdcn/status/1957449673066881334
