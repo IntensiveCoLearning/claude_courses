@@ -15,6 +15,22 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-20
+
+第二十三天打卡：
+
+prompt评价机构，和我之前说到的ai接口有类似感觉，都可以用活人😂
+
+Code graders - Programmatically evaluate outputs using custom logic
+Model graders - Use another AI model to assess the quality
+Human graders - Have people manually review and score outputs
+
+如果不是plan，那么prompt应该清晰而直接。不要用疑问句，尽可能的提供所需信息。
+Guideline能明显提高生成质量。
+然后claude推荐使用xml的tag，但我一般使用的是markdown。
+
+如果要做产品，设置一个prompt的测试流水线感觉很有必要了。
+
 # 2025-08-19
 
 同步发布于推特：https://x.com/cryptonerdcn/status/1957750776392216890
