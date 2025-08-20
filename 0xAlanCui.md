@@ -15,6 +15,41 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-20
+
+# 第23天学习笔记  
+**课程：Claude Code in Action**
+
+## 今日学习内容
+今天继续学习了 **Claude Code in Action** 课程，主要完成了以下模块：  
+- ✅ Course satisfaction survey  
+- ✅ Controlling context  
+- ✅ Custom commands  
+- ✅ MCP servers with Claude Code  
+- ✅ Github integration  
+
+## 学习要点总结
+  ### 1. Controlling context  
+- 学会如何精细化控制 Claude Code 的上下文输入，避免无关信息干扰。  
+- 通过限制上下文范围，可以提升代码辅助的准确性和执行效率。  
+
+### 2. Custom commands  
+- 学习了自定义命令的功能，可以扩展 Claude Code 的能力。  
+- 用户可以针对项目需求，添加特定的快捷命令，提高开发效率。  
+
+### 3. MCP servers with Claude Code  
+- 了解 MCP 服务器在 Claude Code 中的作用：为 AI 提供额外的工具和外部数据支持。  
+- 通过 MCP，可让 Claude 更灵活地执行复杂任务，如跨服务调用和多数据源接入。  
+
+### 4. Github integration  
+- 掌握了如何将 Claude Code 与 GitHub 集成，实现智能代码审查和版本管理。  
+- Claude Code 可以直接参与 PR 审查、代码修改建议，提升协作效率。  
+
+## 我的思考与收获
+- Claude Code 的应用场景正在从「代码助手」逐步走向「开发协作伙伴」。  
+- 控制上下文和自定义命令，让开发体验更贴合实际项目需求。  
+- 与 GitHub 集成意味着 Claude Code 具备了进入真实开发流程的能力，不再只是实验性工具。
+
 # 2025-08-18
 
 # 第22天学习笔记 - Claude Code in Action
