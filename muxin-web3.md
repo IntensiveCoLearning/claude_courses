@@ -15,6 +15,17 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-20
+
+今天学习了Agents and workflows，主要学习了几种不同的 workflow。
+- Agent 和 workflow 的区别简单来说就是，如果你明确知道要解决的问题以及解决这个问题的步骤，选择 workflow，如果你不确定如何给 Claude 下达具体的任务，但你只知道一个 goal，使用 Agent。
+- Evaluator-Optimizer 是一种 workflow pattern，Input -> Producer <-> Grader -> Output，在 Producer 和 Grader 之间是一个 submission 和 feedback 循环的过程，知道结果满意，才会输出给用户。
+- Parallelization workflow，将单一的 task 拆分成多个 sub-tasks，然后并行运行 sub-tasks，最终把结果合并输出。
+- Chaining workflow，把一个大的 task 拆分成几个小的非并行的 subtask，然后顺序执行，这样 Claude 每次只 focus 在一个任务上。
+- Routing workflow，先将用户的 query/task 进行分类，然后根据分类将 task 路由到专门的处理 pipeline，而不需要使用通用的 prompt。
+
+时间过得好快啊，只剩三天了！
+
 # 2025-08-19
 
 今天学了一下 Computer Use, 它是 Claude 的一个强大功能，让 AI 能够像人类一样直接与桌面环境交互和控制计算机。
