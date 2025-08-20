@@ -15,6 +15,15 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-20
+
+4D框架如下：
+
+- Delegation: Thoughtfully deciding what work to do with AI vs. doing yourself
+- Description: Communicating clearly with AI systems
+- Discernment: Evaluating AI outputs and behavior with a critical eye
+- Diligence: Ensuring you interact with AI responsibly
+
 # 2025-08-19
 
 这个课程向人们介绍一个使用AI的框架，4个D，分别是Delegation, Description, Discernment and Diligence。这不是AI的技术手册，而是思想上的转变，教我们如何以更好的方式与AI交互，以取得更快、更好、更有效的能力。
