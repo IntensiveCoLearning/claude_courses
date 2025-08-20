@@ -15,6 +15,67 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-20
+
+# 第38课 The web search tool
+
+## 工具简介
+Claude 的 Web Search Tool 是内置于 Claude 的一项功能，允许 Claude 自动检索互联网最新或专业信息来回答用户问题。无需自行实现搜索功能，Claude 会自动完成整个搜索流程。
+
+## 使用方法
+
+### 1. 定义 Web Search Schema
+在 API 请求中添加如下 schema，即可启用 Web 搜索工具：
+
+```python
+web_search_schema = {
+    "type": "web_search_20250305",
+    "name": "web_search",
+    "max_uses": 5
+}
+```
+- `max_uses`：限制 Claude 最多可搜索的次数（如 5 次），防止过多 API 调用。
+
+### 2. 限定搜索域名（可选）
+可通过 `allowed_domains` 字段限制搜索范围，仅检索权威网站（如 PubMed）：
+
+```python
+web_search_schema = {
+    "type": "web_search_20250305",
+    "name": "web_search",
+    "max_uses": 5,
+    "allowed_domains": ["nih.gov"]
+}
+```
+这样 Claude 只会返回指定域名下的结果，提升答案权威性。
+
+## 响应结构解析
+
+Claude 的搜索响应包含多个 block 类型：
+
+- **Text Block**：Claude 的解释和回答
+- **ServerToolUseBlock**：显示 Claude 实际使用的搜索查询
+- **WebSearchToolResultBlock**：搜索结果列表
+- **WebSearchResultBlock**：具体的搜索结果（含标题和 URL）
+- **Citation Block**：支持 Claude 观点的引用内容（包括来源和引用文本）
+
+## UI 渲染建议
+
+- 普通文本块作为内容展示
+- 搜索结果块可作为来源列表展示于页面顶部
+- 引用块应显示域名、页面标题、URL 及具体引用内容，增强透明度和可信度
+
+## 实用场景
+
+- 获取最新资讯或专业领域信息
+- 查找训练数据之外的事实
+- 权威信息检索与事实核查
+- 需要最新研究或新闻的场合
+
+## 小结
+
+只需在 API 请求工具数组中添加 schema，Claude 会自动判断是否需要使用 Web Search Tool，智能获取和引用互联网上的最新权威信息，极大提升回答的实用性和可靠性。
+
 # 2025-08-19
 
 # 第37课 Fine grained tool calling
