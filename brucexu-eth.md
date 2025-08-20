@@ -15,6 +15,49 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-21
+
+# MCP
+
+## Python Syntax
+
+Think of AsyncExitStack as a flexible “context-manager router”: you dynamically plug in any number of async context managers, and when the stack ends they are all awaited in clean, predictable order—no matter how complex the surrounding control flow became.
+
+```
+async with AsyncExitStack() as stack:
+    # 1) Open an async context manager and register it
+    conn = await stack.enter_async_context(get_connection())
+
+    # 2) Maybe decide to open another later
+    if need_temp_dir:
+        tmpdir = await stack.enter_async_context(aiotemp.TemporaryDirectory())
+
+    # ...do work...
+# <-- all acquired resources are released here automatically
+```
+
+enter_async_context(cm) — add one async context manager to the stack
+
+result = await stack.enter_async_context(cm)
+
+Validate protocol
+Internally it checks that cm implements both __aenter__ and __aexit__; otherwise it raises TypeError.
+
+Run __aenter__
+
+result = await cm.__aenter__()
+
+
+Whatever that coroutine returns is forwarded back to you (often the resource handle).
+
+Register cleanup
+It binds cm.__aexit__ to cm and pushes the resulting coroutine-function onto the stack.
+Later, when the AsyncExitStack itself leaves its async with block, it will await that stored __aexit__, handing it any exception details just like the interpreter does for a regular async with.
+
+```
+super().__init__()
+```
+
 # 2025-08-20
 
 # MCP
