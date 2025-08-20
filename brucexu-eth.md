@@ -15,6 +15,295 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-20
+
+# MCP
+
+The MCP client provides these capabilities through simple method calls that our application code can use.
+
+To test our implementation, we can run the client directly. The file includes a testing harness that connects to our MCP server and calls our methods:
+
+```
+async with MCPClient(
+    command="uv", args=["run", "mcp_server.py"]
+) as client:
+    result = await client.list_tools()
+    print(result)
+```
+
+When we run our main application and ask Claude about a document:
+
+- Our code uses the client to get available tools
+- These tools are sent to Claude along with the user's question
+- Claude decides to use the read_doc_contents tool
+- Our code uses the client to execute that tool
+- The result is sent back to Claude, who then responds to the user
+
+For example, asking "What is the contents of the report.pdf document?" will trigger Claude to use our document reading tool, and we'll get back information about the 20m condenser tower document we set up in our server.
+
+## Some Python syntax notes
+
+Started reading and learning Python through actual code, some notes here:
+
+```
+@mcp.tool(
+    name="read_doc_contents",
+    description="Read the contents of a document and return it as a string.",
+)
+def read_document(
+    doc_id: str = Field(description="Id of the document to read"),
+):
+    ...
+```
+
+What the decorator does
+
+- @mcp.tool(...) is a decorator.
+- When the interpreter executes this file, it calls mcp.tool(…), which returns another function (the wrapper).
+- That wrapper immediately receives read_document and registers it inside the mcp instance with the supplied name and description.
+- The result is that the raw Python function becomes discoverable and callable by the MCP runtime.
+
+Inside of mcp package, the implementation is:
+
+```
+def tool(
+        self,
+        name_or_fn: str | AnyFunction | None = None,
+        *,
+        name: str | None = None,
+        title: str | None = None,
+        description: str | None = None,
+        tags: set[str] | None = None,
+        output_schema: dict[str, Any] | None | NotSetT = NotSet,
+        annotations: ToolAnnotations | dict[str, Any] | None = None,
+        exclude_args: list[str] | None = None,
+        meta: dict[str, Any] | None = None,
+        enabled: bool | None = None,
+    ) -> Callable[[AnyFunction], FunctionTool] | FunctionTool:
+        """Decorator to register a tool.
+
+        Tools can optionally request a Context object by adding a parameter with the
+        Context type annotation. The context provides access to MCP capabilities like
+        logging, progress reporting, and resource access.
+
+        This decorator supports multiple calling patterns:
+        - @server.tool (without parentheses)
+        - @server.tool (with empty parentheses)
+        - @server.tool("custom_name") (with name as first argument)
+        - @server.tool(name="custom_name") (with name as keyword argument)
+        - server.tool(function, name="custom_name") (direct function call)
+
+        Args:
+            name_or_fn: Either a function (when used as @tool), a string name, or None
+            name: Optional name for the tool (keyword-only, alternative to name_or_fn)
+            description: Optional description of what the tool does
+            tags: Optional set of tags for categorizing the tool
+            output_schema: Optional JSON schema for the tool's output
+            annotations: Optional annotations about the tool's behavior
+            exclude_args: Optional list of argument names to exclude from the tool schema
+            meta: Optional meta information about the tool
+            enabled: Optional boolean to enable or disable the tool
+
+        Examples:
+            Register a tool with a custom name:
+            ```python
+            @server.tool
+            def my_tool(x: int) -> str:
+                return str(x)
+
+            # Register a tool with a custom name
+            @server.tool
+            def my_tool(x: int) -> str:
+                return str(x)
+
+            @server.tool("custom_name")
+            def my_tool(x: int) -> str:
+                return str(x)
+
+            @server.tool(name="custom_name")
+            def my_tool(x: int) -> str:
+                return str(x)
+
+            # Direct function call
+            server.tool(my_function, name="custom_name")
+            ```
+        """
+        if isinstance(annotations, dict):
+            annotations = ToolAnnotations(**annotations)
+
+        if isinstance(name_or_fn, classmethod):
+            raise ValueError(
+                inspect.cleandoc(
+                    """
+                    To decorate a classmethod, first define the method and then call
+                    tool() directly on the method instead of using it as a
+                    decorator. See https://gofastmcp.com/patterns/decorating-methods
+                    for examples and more information.
+                    """
+                )
+            )
+
+        # Determine the actual name and function based on the calling pattern
+        if inspect.isroutine(name_or_fn):
+            # Case 1: @tool (without parens) - function passed directly
+            # Case 2: direct call like tool(fn, name="something")
+            fn = name_or_fn
+            tool_name = name  # Use keyword name if provided, otherwise None
+
+            # Register the tool immediately and return the tool object
+            tool = Tool.from_function(
+                fn,
+                name=tool_name,
+                title=title,
+                description=description,
+                tags=tags,
+                output_schema=output_schema,
+                annotations=annotations,
+                exclude_args=exclude_args,
+                meta=meta,
+                serializer=self._tool_serializer,
+                enabled=enabled,
+            )
+            self.add_tool(tool)
+            return tool
+
+        elif isinstance(name_or_fn, str):
+            # Case 3: @tool("custom_name") - name passed as first argument
+            if name is not None:
+                raise TypeError(
+                    "Cannot specify both a name as first argument and as keyword argument. "
+                    f"Use either @tool('{name_or_fn}') or @tool(name='{name}'), not both."
+                )
+            tool_name = name_or_fn
+        elif name_or_fn is None:
+            # Case 4: @tool or @tool(name="something") - use keyword name
+            tool_name = name
+        else:
+            raise TypeError(
+                f"First argument to @tool must be a function, string, or None, got {type(name_or_fn)}"
+            )
+
+        # Return partial for cases where we need to wait for the function
+        return partial(
+            self.tool,
+            name=tool_name,
+            title=title,
+            description=description,
+            tags=tags,
+            output_schema=output_schema,
+            annotations=annotations,
+            exclude_args=exclude_args,
+            meta=meta,
+            enabled=enabled,
+        )
+
+```
+The important line of code is `self.add_tool(tool)` and the source code is:
+```
+    def add_tool(self, tool: Tool) -> Tool:
+        """Add a tool to the server.
+
+        The tool function can optionally request a Context object by adding a parameter
+        with the Context type annotation. See the @tool decorator for examples.
+
+        Args:
+            tool: The Tool instance to register
+
+        Returns:
+            The tool instance that was added to the server.
+        """
+        self._tool_manager.add_tool(tool)
+
+        # Send notification if we're in a request context
+        try:
+            from fastmcp.server.dependencies import get_context
+
+            context = get_context()
+            context._queue_tool_list_changed()  # type: ignore[private-use]
+        except RuntimeError:
+            pass  # No context available
+
+        return tool
+```
+
+So `@mcp.tool` decorator is used for register the function to the MCP instance so that it can be found later.
+
+```
+class AsyncExitStack(_BaseExitStack, AbstractAsyncContextManager):
+  """Async context manager for dynamic management of a stack of exit callbacks."""
+```
+
+Multiple inheritance. AsyncExitStack gains methods & attributes from both parents. Triple-quoted string placed first in the class body ⇒ becomes AsyncExitStack.__doc__.
+
+```
+@staticmethod
+def _create_async_exit_wrapper(cm, cm_exit):
+    return MethodType(cm_exit, cm)
+```
+
+@staticmethod tells Python not to pass self or cls; the function is stored on the class unmodified.
+
+Double-underscore names (__aenter__, __aexit__) are magic / dunder methods defined by language specs.
+
+Single-leading-underscore (_push_async_cm_exit) is simply “internal use” per PEP 8.
+
+self: Pure convention. Python injects the first positional argument; the community settled on self so you always know what it is. Instance methods (defined with def method(self, …)). The instance on which the method was called.
+
+cls: Same convention; lets the body call cls() to construct objects or look up class attributes. The class object itself ( - not an instance) Class methods (decorated with @classmethod, i.e. def make(cls, …))
+
+```
+cls = type(cm)
+try:
+    _enter = cls.__aenter__
+    _exit  = cls.__aexit__
+except AttributeError:
+    raise TypeError(
+        f"'{cls.__module__}.{cls.__qualname__}' object does "
+        f"not support the asynchronous context manager protocol"
+    ) from None
+```
+
+Try catch.
+
+Awaiting and pushing the exit handler
+
+```
+result = await _enter(cm)        # Calls cm.__aenter__()
+self._push_async_cm_exit(cm, _exit)
+return result
+```
+
+- await suspends until cm.__aenter__ resolves.
+- The helper _push_async_cm_exit (inherited) records the bound __aexit__ so that the stack can later await it in reverse order.
+- The value produced by __aenter__ is bubbled back to the caller.
+
+TODO figure out the workflow of async await and __aenter__.
+
+__aenter__ & __aexit__ (async context manager protocol)
+
+Python has two context-manager protocols:
+
+| Purpose              | Sync                                    | Async                                          |
+| -------------------- | --------------------------------------- | ---------------------------------------------- |
+| Enter resource scope | `obj.__enter__(self)`                   | `await obj.__aenter__(self)`                   |
+| Exit / cleanup       | `obj.__exit__(self, exc_type, exc, tb)` | `await obj.__aexit__(self, exc_type, exc, tb)` |
+
+The “script guard”
+
+```
+if __name__ == "__main__":
+```
+
+Runs the enclosed code only when the file is executed directly (python myfile.py), not when it is imported as a module.
+
+asyncio.run(main())
+
+High-level helper (Python 3.7+) that:
+
+- Creates a fresh event loop.
+- Runs main() until its coroutine completes.
+- Shuts the loop down cleanly and propagates any uncaught exceptions.
+
 # 2025-08-19
 
 # MCP
