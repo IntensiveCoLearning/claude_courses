@@ -15,6 +15,15 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-20
+
+Citations in Claude serve to provide transparency and accountability by:
+
+Showing exactly which parts of source documents support specific claims in my responses
+Allowing users to verify the information by tracing it back to the original source
+Enabling users to find and reference the specific sections that informed my answer
+Building trust by demonstrating that responses are grounded in actual source material rather than being generated without basis
+
 # 2025-08-19
 
 缓存的机制在于可以降低询问节约资源，需要大于一定的token量，有三种情况比较适合：跨请求的工具架构一致，稳定的系统提示以及具有相似上下文的多个请求的应用程序，且只会保存一小时。
