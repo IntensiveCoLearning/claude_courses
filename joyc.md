@@ -19,7 +19,7 @@ web3 从业者，AI 爱好者
 
 # 第39课 Introducing Retrieval Augmented Generation
 
-## 第40课 Text chunking strategies
+## 技术简介
 RAG（Retrieval Augmented Generation，检索增强生成）是一种处理超大文档的技术。它通过把文档分块，只在回答问题时包含最相关的内容，解决了单次 prompt 无法容纳全部内容的难题。
 
 ## 传统方法 VS RAG
@@ -58,10 +58,86 @@ RAG（Retrieval Augmented Generation，检索增强生成）是一种处理超�
 - 需提升 Claude 回答相关性和准确性
 
 ## 总结
-
 RAG 技术通过“检索+分块”实现高效问答，适用于大规模文档处理，但实现时需权衡技术复杂度与实际需求。
 
 ---
+# 第40课 Text chunking strategies
+
+## 1. 为什么文本分块很重要？
+- 文本分块是构建 RAG（检索增强生成）管道的关键步骤。
+- 合理的分块能提升检索的相关性与生成质量，避免将不相关内容混入上下文，减少 AI 生成错误答案的风险。
+- 不恰当的分块会导致上下文丢失、检索不准确、甚至答非所问。
+
+## 2. 常见的分块策略
+
+### （1）基于长度的分块（Size-Based Chunking）
+- **方法**：将文本按固定长度（如字符数或 token 数）切分。
+- **优点**：实现简单，适用所有文档类型。
+- **缺点**：容易截断句子或段落，导致上下文断裂；标题与内容可能被分开。
+- **改进**：可设置重叠区（overlap）来缓解上下文丢失问题。
+
+### （2）基于结构的分块（Structure-Based Chunking）
+- **方法**：按文档的自然结构（如标题、段落、章节）切分，适用于格式良好的文档（如 Markdown）。
+- **优点**：每个分块语义完整，上下文连贯。
+- **缺点**：不适用于无明确结构的纯文本或 PDF。
+
+### （3）基于语义的分块（Semantic-Based Chunking）
+- **方法**：先按句子分割，再通过自然语言处理判断句子间的语义关系，将相关句子聚合为分块。
+- **优点**：上下文相关性强，分块内容更精准。
+- **缺点**：实现复杂，计算成本高。
+
+### （4）基于句子的分块（Sentence-Based Chunking）
+- **方法**：用正则表达式等工具将文本按句子分割，再按一定数量的句子合并为一个分块，可设置句子重叠。
+- **优点**：适用于大多数文本，语义较完整，易于实现。
+- **缺点**：句子长度不一，分块大小不均。
+
+## 3. 策略选择建议
+- **结构化文档**：优先选择结构化分块。
+- **普通文本**：句子分块是实用的折中方案。
+- **任意类型文档**：长度分块最通用，配合重叠可提升效果。
+
+## 4. 实现代码示例（以 Python 为例）
+
+**基于长度的分块：**
+```python
+def chunk_by_char(text, chunk_size=150, chunk_overlap=20):
+    chunks = []
+    start_idx = 0
+    while start_idx < len(text):
+        end_idx = min(start_idx + chunk_size, len(text))
+        chunk_text = text[start_idx:end_idx]
+        chunks.append(chunk_text)
+        start_idx = end_idx - chunk_overlap if end_idx < len(text) else len(text)
+    return chunks
+```
+
+**基于结构的分块：**
+```python
+def chunk_by_section(document_text):
+    pattern = r"\n## "
+    return re.split(pattern, document_text)
+```
+
+**基于句子的分块：**
+```python
+def chunk_by_sentence(text, max_sentences_per_chunk=5, overlap_sentences=1):
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    chunks = []
+    start_idx = 0
+    while start_idx < len(sentences):
+        end_idx = min(start_idx + max_sentences_per_chunk, len(sentences))
+        current_chunk = sentences[start_idx:end_idx]
+        chunks.append(" ".join(current_chunk))
+        start_idx += max_sentences_per_chunk - overlap_sentences
+        if start_idx < 0:
+            start_idx = 0
+    return chunks
+```
+
+## 5. 总结
+- 没有绝对最优的分块策略，需结合具体文档类型和应用场景权衡实现复杂度与分块质量。
+- 实践中，长度分块配合重叠是最常用且稳妥的选择。
+
 # 课堂笔记：RAG 管道中的文本分块（Chunking）策略
 
 ## 1. 为什么文本分块很重要？
