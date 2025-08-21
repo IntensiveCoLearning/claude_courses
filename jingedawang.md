@@ -15,6 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-21
+
+Delegation的三个重要方面：
+
+- Problem Awareness: Understanding your goals and the work involved to achieve it
+- Platform Awareness: Knowing what different AI systems can do
+- Task Delegation: Strategically dividing work between you and AI
+
+先弄清楚要解决的问题，然后确定要用什么样的AI系统，最后合理地分配任务给AI。
+
 # 2025-08-20
 
 4D框架如下：
