@@ -138,6 +138,58 @@ def chunk_by_sentence(text, max_sentences_per_chunk=5, overlap_sentences=1):
 - 没有绝对最优的分块策略，需结合具体文档类型和应用场景权衡实现复杂度与分块质量。
 - 实践中，长度分块配合重叠是最常用且稳妥的选择。
 
+---
+# 第40课 Text embeddings 
+
+## 1. 文本分块后的下一步：相关内容检索
+
+- 在 RAG（检索增强生成）管道中，将文档分块后，下一步就是根据用户的问题，从所有分块中找到最相关的内容，作为上下文加入到提示词中。
+- 本质上，这是一个“搜索”问题：需要在所有分块中检索与用户问题相关的内容。
+
+## 2. 语义搜索（Semantic Search）
+
+- 语义搜索是目前最常用的相关分块检索方法。
+- 与传统的关键词匹配不同，语义搜索利用“文本嵌入”（text embedding）来理解用户问题和分块的语义与上下文。
+
+### 语义搜索流程
+1. 将文本输入嵌入模型（embedding model）。
+2. 模型输出一串数字（embedding），每个数字范围通常在 -1 到 +1 之间。
+3. 这些数字代表输入文本的不同“特征”或“维度”，但具体每个数字代表什么并不可知。
+4. 用户问题和所有分块都被转化为嵌入向量，通过比较这些向量的相似度，找到最相关的分块。
+
+## 3. 理解嵌入向量
+
+- 每个嵌入向量的数字可以理解为某种“特质”的分数，但实际含义无法直接解释。
+- 可以类比为：某个数字可能代表“文本的快乐程度”，另一个代表“是否谈论水果”，但这些只是便于理解的假设，实际模型训练时并不会明确标注。
+
+## 4. 嵌入生成工具：VoyageAI
+
+- Anthropic 官方目前不提供嵌入生成服务，推荐使用 VoyageAI。
+- 使用流程：
+  1. 注册 VoyageAI 账号，获取 API Key（免费）。
+  2. 在 `.env` 文件中添加 `VOYAGE_API_KEY="your_key_here"`。
+  3. 安装 VoyageAI 库：`%pip install voyageai`
+  4. 使用如下代码生成嵌入：
+
+```python
+from dotenv import load_dotenv
+import voyageai
+
+load_dotenv()
+client = voyageai.Client()
+
+def generate_embedding(text, model="voyage-3-large", input_type="query"):
+    result = client.embed([text], model=model, input_type=input_type)
+    return result.embeddings[0]
+```
+
+- 运行后会得到一组浮点数，表示文本的嵌入向量。
+
+## 5. 实践要点
+
+- 生成嵌入的过程非常快捷，难点在于如何利用这些嵌入向量进行有效的语义检索。
+- 下一步是学习如何比较嵌入向量，判断哪些分块与用户问题最相似，这也是语义搜索的核心。
+
 # 2025-08-20
 
 # 第38课 The web search tool
