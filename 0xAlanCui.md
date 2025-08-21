@@ -15,6 +15,40 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-21
+
+# 第24天学习笔记  
+**课程：Claude Code in Action**
+
+## 今日学习内容
+今天继续学习了 **Claude Code in Action** 课程，主要完成了以下模块：  
+- ✅ Introducing hooks  
+- ✅ Defining hooks  
+- ✅ Implementing a hook  
+
+## 学习要点总结
+### 1. Introducing hooks  
+- Hooks 是 Claude Code 中的一种扩展机制，允许在特定事件或流程中插入自定义逻辑。  
+- 它类似于「钩子函数」，能在不修改核心代码的情况下拓展功能。  
+
+### 2. Defining hooks  
+- 学会了如何定义一个 Hook，包括：  
+  - 钩子的触发时机（如编译、执行或上下文处理）。  
+  - 钩子的输入与输出结构。  
+- 定义 Hook 时需要遵循 Claude Code 提供的接口规范，以保证兼容性。  
+
+### 3. Implementing a hook  
+- 学习了如何实现一个 Hook：  
+  - 编写具体的逻辑函数。  
+  - 注册到 Claude Code 的运行环境中。  
+- 实现后可用于任务自动化、流程定制或增强开发体验。  
+
+## 我的思考与收获
+- Hooks 提供了一种灵活的「插件化」能力，让 Claude Code 不仅仅是一个代码助手，而是可以根据需求演变成专属开发平台。  
+- 通过 Hooks，可以打造属于自己的「开发工作流增强工具」，例如：  
+  - 自动检测提交前的代码规范。  
+  - 在项目运行前自动添加上下文信息。
+
 # 2025-08-20
 
 # 第23天学习笔记  
