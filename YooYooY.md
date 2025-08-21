@@ -15,6 +15,60 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-21
+
+今天学的`Defining prompts`非常实用，先定义好prompts:
+```python
+from mcp.server.fastmcp import base
+
+@mcp.prompt(
+    name="format",
+    description="Rewrites the contents of the document in Markdown format."
+)
+def format_document(
+    doc_id: str = Field(description="Id of the document to format")
+) -> list[base.Message]:
+    prompt = f"""
+Your goal is to reformat a document to be written with markdown syntax.
+
+The id of the document you need to reformat is:
+
+{doc_id}
+
+
+Add in headers, bullet points, tables, etc as necessary. Feel free to add in extra formatting.
+Use the 'edit_document' tool to edit the document. After the document has been reformatted...
+"""
+    
+    return [
+        base.UserMessage(prompt)
+    ]
+```
+
+
+### Prompts in the client
+
+Implementing List Prompts:
+```python
+async def list_prompts(self) -> list[types.Prompt]:
+    result = await self.session().list_prompts()
+    return result.prompts
+```
+
+Getting Individual Prompts:
+```python
+async def get_prompt(self, prompt_name, args: dict[str, str]):
+    result = await self.session().get_prompt(prompt_name, args)
+    return result.messages
+```
+
+How Prompt Arguments Work:
+
+```python
+def format_document(doc_id: str):
+    # The doc_id gets interpolated into the prompt
+```
+
 # 2025-08-19
 
 # MCP
