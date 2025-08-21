@@ -139,7 +139,7 @@ def chunk_by_sentence(text, max_sentences_per_chunk=5, overlap_sentences=1):
 - 实践中，长度分块配合重叠是最常用且稳妥的选择。
 
 ---
-# 第40课 Text embeddings 
+# 第41课 Text embeddings 
 
 ## 1. 文本分块后的下一步：相关内容检索
 
