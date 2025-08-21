@@ -189,6 +189,72 @@ def generate_embedding(text, model="voyage-3-large", input_type="query"):
 
 - 生成嵌入的过程非常快捷，难点在于如何利用这些嵌入向量进行有效的语义检索。
 - 下一步是学习如何比较嵌入向量，判断哪些分块与用户问题最相似，这也是语义搜索的核心。
+---
+# 第42课：The full RAG flow
+
+## 1. RAG管道高层流程回顾
+
+- RAG（Retrieval Augmented Generation）管道核心环节包括：文本分块、生成嵌入、存储到向量数据库、用户查询处理、相似度检索、生成最终回答。
+
+## 2. 步骤详解
+
+### Step 1: 文本分块（Chunking）
+
+- 将源文档切分为多个易于处理的文本块（chunk）。
+- 示例：
+  - Section 1: Medical Research
+  - Section 2: Software Engineering
+
+### Step 2: 生成嵌入（Embeddings）
+
+- 使用嵌入模型将每个文本块转化为一组数字（向量），每个数字代表文本某种“特质”。
+- 实际嵌入维度较高，理论上每个维度代表某种语义特征，但不可直接解释。
+- 嵌入向量通常会自动归一化，长度为1，方便后续计算。
+
+### Step 3: 存储到向量数据库
+
+- 将所有文本块的嵌入向量存入专门的向量数据库，支持高效的向量检索与比较。
+
+### Step 4: 用户查询处理
+
+- 用户提交问题后，将问题文本通过同样的嵌入模型转化为向量，并归一化。
+
+### Step 5: 相似度检索（Cosine Similarity）
+
+- 使用向量数据库，以用户查询的嵌入为基准，检索最相似的文本块嵌入。
+- 相似度计算采用“余弦相似度”（cosine similarity）：
+  - 取两个向量夹角的余弦值，结果范围[-1, 1]。
+  - 越接近1，说明语义越接近；越接近-1，说明完全不同。
+- 也常见“余弦距离”（cosine distance）= 1 - 余弦相似度，值越小表示越接近。
+
+### Step 6: 生成最终提示词（Prompt）
+
+- 将用户问题和检索到的最相关文本块组合成提示词，一起发送给Claude等大模型进行生成。
+
+## 3. 示例流程
+
+- 用户问题：“今年软件工程部做了什么？”
+- 系统将问题嵌入，与文本块嵌入比较，发现“Section 2: Software Engineering”最为相关（余弦相似度高达0.983）。
+- 最终提示词示例：
+  ```
+  Answer the user's question about the financial document.
+
+  <user_question>
+  How many bugs did engineers fix this year?
+  </user_question>
+
+  <report>
+  ## Section 2: Software Engineering
+  This division dedicated significant effort to studying various infection vectors in our distributed systems
+  </report>
+  ```
+
+## 4. 关键知识点总结
+
+- 向量数据库通过嵌入和相似度检索，实现语义级的内容匹配。
+- 余弦相似度/距离是衡量语义接近度的核心指标。
+- RAG管道的预处理（分块、嵌入、存储）为后续高效检索和生成打下基础。
+- 只有检索到最相关的内容，才能提升生成回答的准确性和上下文相关性。
 
 # 2025-08-20
 
