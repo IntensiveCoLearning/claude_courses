@@ -15,6 +15,23 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-21
+
+今天学习了最后一点内容，Agents
+- Agents 代表了从结构化 Workflows 向灵活问题解决的转变, Workflows 适用于明确步骤的任务，Agents 适用于不确定解决路径的任务, 给 Agents 一个目标和工具集，让它自己找出实现目标的方法。对于 Agents，设计 Tools 的原则是抽象化成通用的 Tool，而不是高度专业化的 Tool，比如 bash, read, write, edit, glob, grep 都是比较好的 Claude Code Tool 设计的例子。
+- Environment inspection，Claude 是"盲目"操作的，需要观察和理解行为结果才能有效工作，就像 Computer Use 功能中，每次操作后都要截图查看结果。核心原则是先读后写，修改文件前必须先理解当前内容，这样才能安全地进行修改而不破坏现有功能。
+  - 好处：更好的进度跟踪，错误处理能力，质量保证，自适应行为调整。
+- Agents vs Workflows
+  - 特点：
+    - Agents：Claude 获得基础工具集，自主制定计划；适用于未知任务类型；能创造性地组合工具解决各种挑战
+    - Workflows：预定义的 Claude 调用序列；适用于已知问题和步骤；将大任务分解为小的、具体的子任务
+  - 优势：
+    - Agents：用户体验更灵活；任务完成灵活性强；能处理开发时未预料的新情况；需要时可向用户询问额外输入
+    - Workflows：Claude 可专注单一子任务，准确性更高；更容易评估和测试；执行更可预测和可靠；更适合解决特定的明确定义问题
+  - 缺点：
+    - Agents：任务完成成功率较低；更难进行监测、测试和评估；行为可预测性较差
+    - Workflows：灵活性差，只能解决特定类型任务；用户体验受限；需要更多前期规划设计
+
 # 2025-08-20
 
 今天学习了Agents and workflows，主要学习了几种不同的 workflow。
