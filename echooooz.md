@@ -15,6 +15,10 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-21
+
+- chaining workflows: break a task into a series of distinct steps. Eg: give a follow up task to rewrite an article with specific constraints, rather than ask Claude to complete an article with all the constraints in one prompt.
+
 # 2025-08-19
 
 Agents & workflows
