@@ -15,6 +15,28 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-21
+
+主要学习了MCP，MCP (Model Context Protocol) 是一个开放标准协议，用于在AI应用和外部数据源及工具之间建立安全、标准化的连接。   
+工作流程：   
+Client向Server发送连接请求
+Server响应并建立连接
+Client通过标准化协议请求特定功能
+Server执行相应操作并返回结果
+Client将结果整合到AI的响应 
+  
+MCP Client（客户端）：   
+通常是AI应用或AI模型宿主环境
+发起连接请求和数据查询
+处理从服务器返回的数据和工具调用结果
+管理与多个MCP服务器的连接
+
+MCP Server（服务器）：   
+提供特定的工具、数据源或服务
+响应客户端的请求
+执行具体的操作（如文件读取、数据库查询、API调用等）
+可以是文件系统、数据库、web服务、或其他外部工具
+
 # 2025-08-20
 
 Citations in Claude serve to provide transparency and accountability by:
