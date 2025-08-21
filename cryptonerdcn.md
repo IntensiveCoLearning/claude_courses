@@ -15,6 +15,22 @@ cryptonerdcn
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-21
+
+同步发布于推特: https://x.com/cryptonerdcn/status/1958542794441842952
+第二十四天打卡：
+
+如何在你的套皮工具里实现tool call？
+1.Send user message with tool schema to Claude
+2.Receive assistant message with text block and tool use block
+3.Extract tool information and execute the actual function
+4.Send tool result back to Claude along with complete conversation history
+5.Receive final response from Claude
+
+当涉及到多个tool使用时，需要维持一个会话loop，直到Claude不再要求使用tool。
+
+想使用batch tool，在tool的schema里送出多个tool的定义。
+
 # 2025-08-20
 
 第二十三天打卡：
