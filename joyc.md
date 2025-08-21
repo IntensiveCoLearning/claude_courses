@@ -15,6 +15,80 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
+# 2025-08-22
+
+# 第 43 课 Implementing the RAG flow
+
+## 1. 实现流程概述
+
+RAG（检索增强生成）管道的核心实现步骤分为五步：
+
+1. 按章节分块文本
+2. 为每个分块生成嵌入向量
+3. 创建向量数据库并存储每个嵌入及其原始文本内容
+4. 为用户问题生成嵌入向量
+5. 检索向量数据库，找到最相关的文本分块
+
+## 2. 各步骤详细说明
+
+### Step 1：文本分块
+
+- 读取文档内容并按章节分割成多个 chunk。
+- 示例代码：
+  ```python
+  with open("./report.md", "r") as f:
+      text = f.read()
+  chunks = chunk_by_section(text)
+  ```
+
+### Step 2：生成嵌入
+
+- 使用嵌入模型为所有分块批量生成嵌入向量。
+- 支持单条或批量处理，提高效率。
+  ```python
+  embeddings = generate_embedding(chunks)
+  ```
+
+### Step 3：存储至向量数据库
+
+- 创建向量数据库对象，将每个分块的嵌入和原始文本一起存储。
+- 存储原始文本内容是为了后续检索能返回对应内容而不仅仅是向量。
+  ```python
+  store = VectorIndex()
+  for embedding, chunk in zip(embeddings, chunks):
+      store.add_vector(embedding, {"content": chunk})
+  ```
+
+### Step 4：处理用户查询
+
+- 用户提问时，将问题文本转为嵌入向量。
+  ```python
+  user_embedding = generate_embedding("What did the software engineering dept do last year?")
+  ```
+
+### Step 5：检索最相关内容
+
+- 在向量数据库中查找与用户问题最相似的分块，返回内容和相似度分数（余弦距离）。
+  ```python
+  results = store.search(user_embedding, 2)
+  for doc, distance in results:
+      print(distance, "\n", doc["content"][0:200], "\n")
+  ```
+- 距离越低，表示内容与用户问题越相关。
+
+## 3. 检索结果解读
+
+- 示例查询返回：
+  - Section 2: Software Engineering（距离0.71，最相关）
+  - Methodology section（距离0.72，次相关）
+
+## 4. 关键点总结
+
+- RAG管道本质是将文本转为嵌入向量，通过数学方法实现高效语义检索。
+- 向量数据库不仅存储嵌入，还需关联原始文本，便于后续内容生成。
+- 余弦距离用于量化语义相似度，距离越小表示越相关。
+- 实现流程可扩展，后续可针对特殊场景进一步优化检索效果和准确性。
+
 # 2025-08-21
 
 # 第39课 Introducing Retrieval Augmented Generation
