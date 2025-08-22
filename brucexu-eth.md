@@ -17,31 +17,75 @@ timezone: UTC+12
 <!-- Content_START -->
 # 2025-08-22
 
-test note
+# Anthropic apps
 
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/claude_courses/main/assets/brucexu-eth/images/2025-08-22-1755826540119-image.png)
+Computer Use - Explore this set of tools that lets Claude interact with desktop applications
 
--   测试一下
-    
+Agents - Understand what makes these applications successful as agents
 
-sdfadsjkl
+Computer Use takes Claude's capabilities much further. It's a collection of tools that allow Claude to interact with a full desktop computer environment. 
 
-## **Why System Prompts Matter**
+You can also quickly add notes to your CLAUDE.md file using the # command. For example, typing # Always use descriptive variable names will prompt you to add this guideline to your project, local, or user memory.
 
-Consider building a math tutor chatbot. When a student asks “How do I solve 5x + 2 = 3 for x?”, you want Claude to act like a real tutor, not just spit out the answer. A good math tutor should:
+# - Adds notes to your CLAUDE.md file
 
--   Initially give hints rather than complete solutions
-    
--   Patiently walk students through problems step by step
-    
--   Show solutions for similar problems as examples
-    
+Step 1: Feed Context into Claude
 
-You definitely don’t want Claude to:
+Step 2: Tell Claude to Plan a Solution
+Instead of jumping straight to implementation, ask Claude to think through the problem and create a plan. Tell Claude specifically not to write any code yet - just focus on the approach and steps needed.
 
--   Immediately give direct answers
-    
--   Tell students to just use a calculator
+Step 3: Ask Claude to Implement the Solution
+
+### Test-Driven Development Workflow
+
+- Feed context into Claude - Same as before, show Claude relevant files
+- Ask Claude to think of test cases - Have Claude brainstorm what tests would validate your new feature
+- Ask Claude to implement those tests - Select the most relevant tests and have Claude write them
+- Ask Claude to write code that passes the tests - Claude will iterate on the implementation until all tests pass
+
+### Setting Up an MCP Server
+
+```
+claude mcp add [server-name] [command-to-start-server]
+claude mcp add documents uv run main.py
+```
+
+### Popular MCP Integrations
+
+- sentry-mcp - Automatically discover and fix bugs logged in Sentry
+- playwright-mcp - Gives Claude browser automation capabilities for testing and troubleshooting
+- figma-context-mcp - Exposes Figma designs to Claude
+- mcp-atlassian - Allows Claude to access Confluence and Jira
+- firecrawl-mcp-server - Adds web scraping capabilities to Claude
+- slack-mcp - Allows Claude to post messages or reply to specific threads
+
+Git worktrees are the perfect tool for this workflow. If your project uses Git (which it should), you can use worktrees immediately. They're like an extension of Git's branching system that creates complete copies of your project in separate directories.
+
+.trees 目录，然后需要 symlink .env 文件
+
+### Computer use
+
+Computer Use is a powerful feature that lets Claude interact directly with desktop environments, essentially giving the AI the ability to control a computer like a human would. This capability opens up entirely new possibilities for automation, testing, and workflow assistance.
+
+This makes it incredibly useful for tasks like:
+
+- Automated QA testing of web applications
+- Data entry and form filling
+- Website navigation and information gathering
+- UI testing and validation
+- Repetitive desktop tasks
+
+  Computer Use 功能说明
+
+  Computer Use 让我能够：
+  1. 浏览器自动化: 导航网页、点击、输入、截图
+  2. 桌面交互: 控制应用程序、文件操作
+  3. 实时测试: 执行真实的用户交互场景
+  4. 视觉验证: 捕获页面状态和元素位置
+
+  这对 QA 测试、UI 验证和自动化工作流程非常有用。
+
+TODO computer use https://github.com/anthropics/anthropic-quickstarts/tree/main/computer-use-demo
 
 # 2025-08-21
 
