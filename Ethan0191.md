@@ -15,6 +15,141 @@ beginner
 ## Notes
 
 <!-- Content_START -->
+
+# 2025-08-22
+<!-- DAILY_CHECKIN_2025-08-22_START -->
+# Model Context Protocol (MCP) 核心概念总结
+
+## 概述
+
+Model Context Protocol (MCP) 是由 Anthropic 开发的开放标准协议，用于在 AI 应用和外部数据源及工具之间建立安全、标准化的连接。可以将 MCP 比作 AI 应用的 USB-C 端口，为 AI 模型连接外部资源提供标准化方式。
+
+## 核心架构
+
+- **MCP Client（客户端）**: 通常是 AI 应用或 AI 模型宿主环境
+- **MCP Server（服务器）**: 提供特定的工具、数据源或服务
+- **三个核心原语**: 工具(Tools)、资源(Resources)、提示(Prompts)
+
+## 1. 定义资源 (Defining Resources)
+
+### 资源概念
+- 代表可以被 AI 模型读取的数据源
+- 可以是文件、数据库记录、API 端点返回的数据等
+- 通过 URI（统一资源标识符）进行标识
+
+### 资源定义结构
+```python
+async def list_resources():
+    return [
+        {
+            "uri": "file:///path/to/document.txt",
+            "name": "Document",
+            "description": "A text document",
+            "mimeType": "text/plain"
+        }
+    ]
+```
+
+### 资源特性
+- **可标识性**: 每个资源都有唯一的 URI
+- **可描述性**: 包含名称、描述和类型信息
+- **可访问性**: 支持不同格式的数据传输
+
+## 2. 访问资源 (Accessing Resources)
+
+### 访问机制
+- 客户端通过 URI 请求特定资源
+- 服务器返回资源的实际内容
+- 支持文本、二进制等多种数据格式
+
+### 访问流程
+1. **列出资源**: 客户端获取可用资源列表
+2. **选择资源**: 根据 URI 选择需要的资源
+3. **请求内容**: 向服务器请求资源数据
+4. **接收数据**: 服务器返回资源内容
+
+### 安全控制
+- 访问权限控制
+- 数据传输加密
+- 资源范围限制
+
+## 3. 定义提示 (Defining Prompts)
+
+### 提示模板概念
+- 预定义的可复用模板
+- 包含参数化的指令和上下文
+- 标准化常见的 AI 交互模式
+
+### 提示定义结构
+```python
+{
+    "name": "analyze_data",
+    "description": "分析数据并生成报告",
+    "arguments": [
+        {
+            "name": "data_type",
+            "description": "数据类型",
+            "required": true
+        }
+    ]
+}
+```
+
+### 提示优势
+- **可重用性**: 一次定义，多次使用
+- **参数化**: 支持动态参数传入
+- **标准化**: 统一交互模式
+
+## 4. MCP 评论 (MCP Comments/Feedback)
+
+### 评论系统作用
+- 提供对 MCP 实现的反馈机制
+- 帮助改进协议标准
+- 收集开发者使用经验
+
+### 反馈内容
+- **易用性反馈**: 协议使用的便利性评估
+- **性能评估**: 运行效率和响应速度
+- **功能需求**: 新功能建议和改进意见
+- **应用案例**: 实际使用场景分享
+
+### 反馈渠道
+- GitHub 讨论区
+- 官方文档反馈系统
+- 开发者社区交流平台
+- Anthropic 官方支持渠道
+
+## Anthropic 课程体系
+
+### 基础课程
+**Introduction to Model Context Protocol**
+- 学习三个核心原语的使用
+- 使用 Python 构建 MCP 服务器和客户端
+- 连接 Claude 与外部服务
+
+### 进阶课程
+**Model Context Protocol: Advanced Topics**
+- 高级 MCP 实现模式
+- 采样、通知、文件系统访问
+- 生产环境 MCP 服务器开发
+
+### 合作课程
+- **DeepLearning.AI**: "MCP: Build Rich-Context AI Apps"
+- **Hugging Face**: 免费 MCP 课程
+
+## 核心价值
+
+MCP 解决了 AI 应用连接外部系统时需要为每个用例编写自定义集成的问题，通过统一标准简化了开发流程，提高了 AI 应用的可扩展性和互操作性。
+
+## 使用循环
+
+```
+定义资源和提示 → 客户端访问 → 实际应用 → 收集反馈改进 → 迭代优化
+```
+
+这种设计让 AI 应用能够标准化地连接外部数据源和服务，形成了一个完整的生态系统。
+<!-- DAILY_CHECKIN_2025-08-22_END -->
+
 # 2025-08-21
 
 主要学习了MCP，MCP (Model Context Protocol) 是一个开放标准协议，用于在AI应用和外部数据源及工具之间建立安全、标准化的连接。   
