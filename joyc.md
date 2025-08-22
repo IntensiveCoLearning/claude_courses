@@ -146,6 +146,57 @@ for doc, distance in results:
 - 语义检索与词汇检索各有优势，混合使用能显著提升RAG管道的检索效果。
 - BM25是经典的词汇检索算法，适合补充语义检索的不足。
 - 混合检索能同时满足用户语义性和精确性需求，是RAG系统中推荐的检索策略。
+---
+# 第 45 课 A Multi-Index RAG pipeline
+## 1. 混合检索管道的动机
+
+- 语义检索（向量数据库）和词汇检索（BM25）各有优劣，单独使用有时无法获得最佳结果。
+- 目标：将两者结合，充分发挥语义理解与精确匹配的优势，提升RAG检索准确性。
+
+## 2. 多索引架构设计
+
+- VectorIndex和BM25Index均实现了统一API（`add_document()`和`search()`），便于组合。
+- 新增Retriever类，作为协调者，将用户查询分别发送到各索引，收集结果并融合。
+
+## 3. Reciprocal Rank Fusion（RRF）融合算法
+
+- 不同检索方法的分数体系不同，不能简单拼接结果，需要公平的归一化融合。
+- RRF算法原理：
+  - 对每个检索结果，记录其在各索引中的排名（rank）。
+  - 计算融合分数：`RRF_score(d) = Σ(1 / (k + rank_i(d)))`，其中k为常数（如1），rank_i(d)为第i个索引中的排名。
+  - 分数越高，代表在多个索引中排名越靠前，综合相关性强。
+- 示例：
+  - VectorIndex返回：Section 2（1）、7（2）、6（3）
+  - BM25Index返回：6（1）、2（2）、7（3）
+  - 融合后：Section 2（0.833）、Section 6（0.75）、Section 7（0.583）
+
+## 4. Retriever类实现思路
+
+```python
+class Retriever:
+    def __init__(self, *indexes):
+        self._indexes = list(indexes)
+    def add_document(self, document):
+        for index in self._indexes:
+            index.add_document(document)
+    def search(self, query_text, k=1, k_rrf=60):
+        # 分别在所有索引中检索
+        # 收集结果并归一化排名
+        # 应用RRF融合得出最终排序
+```
+
+- 统一接口便于扩展，后续可轻松加入更多检索方式（如关键词、图谱、领域专用索引等）。
+
+## 5. 效果验证与优势
+
+- 通过混合检索与RRF融合，解决了单一检索方法导致的相关性偏差。
+- 例如：检索“incident 2023 Q4011”时，混合管道优先返回Cybersecurity和Software Engineering等真正相关章节，提升准确性。
+- 各索引可独立开发与测试，模块化易于维护和扩展。
+
+## 6. 总结与扩展性
+
+- 混合检索+RRF融合是RAG管道中提升检索效果的关键技术。
+- 只要实现统一接口，任何新检索方法都可无缝集成到Retriever中，保持体系灵活和可扩展。
 <!-- DAILY_CHECKIN_2025-08-22_END -->
 # 2025-08-21
 
