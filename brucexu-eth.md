@@ -19,6 +19,30 @@ timezone: UTC+12
 
 test note
 
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/claude_courses/main/assets/brucexu-eth/images/2025-08-22-1755826540119-image.png)
+
+-   测试一下
+    
+
+sdfadsjkl
+
+## **Why System Prompts Matter**
+
+Consider building a math tutor chatbot. When a student asks “How do I solve 5x + 2 = 3 for x?”, you want Claude to act like a real tutor, not just spit out the answer. A good math tutor should:
+
+-   Initially give hints rather than complete solutions
+    
+-   Patiently walk students through problems step by step
+    
+-   Show solutions for similar problems as examples
+    
+
+You definitely don’t want Claude to:
+
+-   Immediately give direct answers
+    
+-   Tell students to just use a calculator
+
 # 2025-08-21
 
 test一下 API
