@@ -15,6 +15,42 @@ Experimenting on something new in AI Agent.
 ## Notes
 
 <!-- Content_START -->
+
+# 2025-08-22
+<!-- DAILY_CHECKIN_2025-08-22_START -->
+# 第25天学习笔记  
+**课程：Claude Code in Action**
+
+## 今日学习内容
+今天完成了 **Claude Code in Action** 课程的最后部分，并顺利获得了课程证书 🎉。完成的模块包括：  
+- ✅ Gotchas around hooks  
+- ✅ Useful hooks!  
+- ✅ Another useful hook  
+- ✅ The Claude Code SDK  
+- ✅ Quiz on Claude Code  
+- ✅ Summary and next steps  
+
+## 学习要点总结
+### 1. Gotchas around hooks  
+- 学习了在使用 Hooks 时可能遇到的陷阱与注意事项，例如：  
+  - 钩子执行顺序可能影响结果。  
+  - Hook 的输入输出需要严格符合规范。  
+  - 不当的 Hook 实现可能导致性能问题。  
+
+### 2. Useful hooks! & Another useful hook  
+- 通过案例学习了多个实用的 Hook：  
+  - **自动化上下文注入**，提升 Claude Code 对项目环境的理解。  
+  - **代码风格检查 Hook**，在保存或提交前执行规则校验。  
+  - **调试信息 Hook**，帮助追踪 AI 的推理与执行过程。  
+
+### 3. The Claude Code SDK  
+- 学习了 Claude Code SDK 的结构与功能，能够帮助开发者快速扩展和定制自己的工具集。  
+- SDK 提供了更底层的接口，可以与外部系统或插件结合。  
+
+### 4. Quiz on Claude Code  
+- 通过小测验复习了课程重点，加深了对 Claude Code 工作机制和应用场景的理解。
+<!-- DAILY_CHECKIN_2025-08-22_END -->
+
 # 2025-08-21
 
 # 第24天学习笔记  
