@@ -15,6 +15,8 @@ timezone: UTC+12
 ## Notes
 
 <!-- Content_START -->
+
+# 2025-08-22
 <!-- DAILY_CHECKIN_2025-08-22_START -->
 # Anthropic apps
 
@@ -85,6 +87,9 @@ This makes it incredibly useful for tasks like:
   这对 QA 测试、UI 验证和自动化工作流程非常有用。
 
 TODO computer use https://github.com/anthropics/anthropic-quickstarts/tree/main/computer-use-demo
+
+
+test
 <!-- DAILY_CHECKIN_2025-08-22_END -->
 
 # 2025-08-21
