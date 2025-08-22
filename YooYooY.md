@@ -15,6 +15,25 @@ code lover
 ## Notes
 
 <!-- Content_START -->
+
+# 2025-08-22
+<!-- DAILY_CHECKIN_2025-08-22_START -->
+Claude Code helpful commands:
+
+- `/clear`:Clears conversation history and resets context
+- `/init`:Scans codebase and creates CLAUDE.md documentation
+- `#`:Adds notes to your CLAUDE.md file
+
+Popular MCP Integrations:
+
+- `sentry-mcp`: Automatically discover and fix bugs logged in Sentry
+- `playwright-mcp`: Gives Claude browser automation capabilities for testing and troubleshooting
+- `figma-context-mcp`: Exposes Figma designs to Claude
+- `mcp-atlassian`: Allows Claude to access Confluence and Jira
+- `firecrawl-mcp-server`: Adds web scraping capabilities to Claude
+- `slack-mcp`: Allows Claude to post messages or reply to specific threads
+<!-- DAILY_CHECKIN_2025-08-22_END -->
+
 # 2025-08-21
 
 今天学的`Defining prompts`非常实用，先定义好prompts:
