@@ -15,6 +15,13 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+
+# 2025-08-22
+<!-- DAILY_CHECKIN_2025-08-22_START -->
+- routing workflows: ask Claude to categorize a task
+    - agents: rely on AI to decided on the steps
+<!-- DAILY_CHECKIN_2025-08-22_END -->
+
 # 2025-08-21
 
 - chaining workflows: break a task into a series of distinct steps. Eg: give a follow up task to rewrite an article with specific constraints, rather than ask Claude to complete an article with all the constraints in one prompt.
