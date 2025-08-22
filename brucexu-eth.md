@@ -45,7 +45,260 @@ You definitely don’t want Claude to:
 
 # 2025-08-21
 
-test一下 API
+# MCP
+
+## Python Syntax
+
+Think of AsyncExitStack as a flexible “context-manager router”: you dynamically plug in any number of async context managers, and when the stack ends they are all awaited in clean, predictable order—no matter how complex the surrounding control flow became.
+
+```
+async with AsyncExitStack() as stack:
+    # 1) Open an async context manager and register it
+    conn = await stack.enter_async_context(get_connection())
+
+    # 2) Maybe decide to open another later
+    if need_temp_dir:
+        tmpdir = await stack.enter_async_context(aiotemp.TemporaryDirectory())
+
+    # ...do work...
+
+special variables: __name__, __file__, __spec__, __builtins__, _. 解释器或调试器的内部状态；99 % 的业务调试场景用不到，所以被单独归为一组
+
+function variables: 当前模块/函数里定义的 函数、lambda、类 对象，如 def helper(): ..., class MyDTO:
+
+```
+async with AsyncExitStack() as stack:
+        doc_client = await stack.enter_async_context(
+            MCPClient(command=command, args=args)
+        )
+        clients["doc_client"] = doc_client
+
+        for i, server_script in enumerate(server_scripts):
+            client_id = f"client_{i}_{server_script}"
+            client = await stack.enter_async_context(
+                MCPClient(command="uv", args=["run", server_script])
+            )
+            clients[client_id] = client
+
+        chat = CliChat(
+            doc_client=doc_client,
+            clients=clients,
+            claude_service=claude_service,
+        )
+
+        cli = CliApp(chat)
+        await cli.initialize()
+        await cli.run()
+```
+
+| 术语                                  | 作用                                                                                      | 关键点                                                                          |
+| ----------------------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **`AsyncExitStack`**                | 统一管理 *多个* **异步上下文管理器**                                                                  | 进入时逐个调用 `__aenter__` 并把返回值压栈；退出时按**后进先出**调用对应的 `__aexit__`，即使中途抛异常也能保证全部清理   |
+| **`stack.enter_async_context(cm)`** | 把 `cm`（任意实现 `__aenter__/__aexit__` 的对象）注册进 `AsyncExitStack` 并立即 `await cm.__aenter__()` | 返回 `__aenter__` 的结果，供后续使用                                                    |
+| **`MCPClient(...)`**                | 你项目里的异步客户端，用来启动子进程（`uv run ...`）并建立 IPC/WebSocket 之类的连接                                 | 本身是异步上下文管理器：<br> • `__aenter__` → 启动子进程 / 建链<br> • `__aexit__` → 关闭链路 / 终止进程 |
+| **`CliChat / CliApp`**              | 命令行聊天 UI 的业务封装                                                                          | 初始化里接收各类 client，`run()` 开始事件循环                                               |
+
+```
+doc_client = await stack.enter_async_context(
+    MCPClient(command=command, args=args)
+)
+clients["doc_client"] = doc_client
+```
+
+| 步骤                                   | 发生了什么？                                                                                                                         |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `MCPClient(...)`                     | **实例化** 一个异步上下文管理器，准备去连「文档服务器」。这里还没真正连，只是造了对象。                                                                                 |
+| `stack.enter_async_context(...)`     | ① 把这个对象注册到 `AsyncExitStack` —— **以后自动帮你释放资源**。<br>② 立即 `await obj.__aenter__()` → 真正**建立连接**。<br>③ 返回连接实例（比如一个 WebSocket 客户端）。 |
+| `doc_client = ...`                   | 接收上一步返回的实例，变量名叫 `doc_client`。                                                                                                  |
+| `clients["doc_client"] = doc_client` | 存进字典，方便后面统一访问：`clients["doc_client"]`。                                                                                         |
+
+为什么要用 AsyncExitStack 而不是好多 async with？
+
+```
+async with MCPClient(...) as doc_client:
+    async with MCPClient(...) as c0:
+        async with MCPClient(...) as c1:
+            ...
+
+```
+
+AsyncExitStack 让你：
+
+平铺代码 —— 不论多少个 client 都一层缩进；
+
+异常安全 —— 任意一步出错，栈会逆序调用所有 __aexit__ 关连接/杀进程；
+
+可编程 —— 可以在循环里动态加上下文管理器。
+
+```
+    # 1）描述如何启动子进程的参数
+    server_params = StdioServerParameters(
+        command=self._command,        # "uv"
+        args=self._args,              # ["run", "api.py"]
+        env=self._env,                # 继承或自定义
+    )
+
+ # 2）启动子进程并拿到它的 stdin/stdout 管道
+    stdio_transport = await self._exit_stack.enter_async_context(
+        stdio_client(server_params)   # → (stdio_reader, stdio_writer)
+    )
+    _stdio, _write = stdio_transport
+
+    # 3）基于管道创建「高级协议」的 ClientSession
+    self._session = await self._exit_stack.enter_async_context(
+        ClientSession(_stdio, _write) # LSP / JSON-RPC / 自定义协议
+    )
+
+    # 4）与服务器握手（如 LSP initialize）
+    await self._session.initialize()
+```
+
+```
+main.py
+└── AsyncExitStack (主)
+    ├─ MCPClient(doc_client)
+    │   └── AsyncExitStack (子)
+    │       ├─ stdio_client  → 文档服务器子进程
+    │       └─ ClientSession → JSON-RPC/LSP 会话
+    ├─ MCPClient(client_0_api.py)
+    │   └── AsyncExitStack (子)
+    │       ├─ stdio_client  → `uv run api.py`
+    │       └── ClientSession
+    └─ MCPClient(client_1_worker.py)
+        └── AsyncExitStack (子)
+            ├─ stdio_client  → `uv run worker.py`
+            └── ClientSession
+```
+
+
+
+## workflow with mcp cli demo
+
+1. Parse command-line input
+2. Send to Claude and get response
+3. If there are "tool_use" then `await ToolManager.execute_tool_requests()` get result
+4. Send to Claude again until break
+
+In `main.py` use the following code to init a MCP Client:
+
+```
+        doc_client = await stack.enter_async_context(
+            MCPClient(command=command, args=args)
+        )
+        clients["doc_client"] = doc_client
+```
+
+MCPClient 将会 create Client session, ClientSession 是 mcp package 的，封装了一些 request function 用于跟 MCP Server 沟通和交流。
+
+```
+server_params = StdioServerParameters(
+            command=self._command,
+            args=self._args,
+            env=self._env,
+        )
+        stdio_transport = await self._exit_stack.enter_async_context(
+            stdio_client(server_params)
+        )
+        _stdio, _write = stdio_transport
+        self._session = await self._exit_stack.enter_async_context(
+            ClientSession(_stdio, _write)
+        )
+```
+
+实际的通信使用 process 的 stdin/stdout 的 进程间通信 (IPC)。在本机 fork/exec 出服务器脚本，并通过标准输入输出做 IPC。
+
+MCP Server 必须本地吗？如果是 Stdio transport 是需要本地的，还有 HTTP-SSE, WebSocket, gRPC 等方式，可以远程链接。在 mcp-server.py 文件里面有 `mcp.run(transport="stdio")` 这样的描述。
+
+TODO 如何实现 MCP 的自主发现？目前是需要手动静态调用的，能不能动态调用？或者是动态的注册服务，需要传递某些参数进去，API 会返回不同的 MCP 和 Tools 等，然后再进行后续的流程。
+
+MCP Server 在 `mcp_server.py` 文件里面，通过 @mcp.tool @mcp.resource 等 decorators 来注册相关方法到 mcp instance 上面，最后通过 mcp.run 启动 server，然后由 MCPClient 调用。
+
+MCPClient 通过 session function 发送请求获取相关信息：
+
+```
+async def list_tools(self) -> list[types.Tool]:
+        result = await self.session().list_tools()
+        return result.tools
+
+    async def call_tool(
+        self, tool_name: str, tool_input
+    ) -> types.CallToolResult | None:
+        return await self.session().call_tool(tool_name, tool_input)
+```
+
+说实话，这个流程是真的绕，没有什么更好的办法了吗？
+
+## MCP Resource
+
+Resources in MCP servers allow you to expose data to clients, similar to GET request handlers in a typical HTTP server. They're perfect for scenarios where you need to fetch information rather than perform actions.
+
+Resources follow a request-response pattern. Your client sends a ReadResourceRequest with a URI, and the MCP server responds with the data. The URI acts like an address for the resource you want to access.
+
+```
+@mcp.resource("docs://documents/{doc_id}", mime_type="text/plain")
+def fetch_doc(doc_id: str) -> str:
+    if doc_id not in docs:
+        raise ValueError(f"Doc with id {doc_id} not found")
+    return docs[doc_id]
+```
+
+Support template resources.
+
+When you've defined resources on your MCP server, your client needs a way to request and use them. The client acts as a bridge between your application and the MCP server, handling the communication and data parsing automatically.
+
+The flow is straightforward: when a user wants to reference a document (like typing "@report.pdf"), your application uses the MCP client to fetch that resource from the server and include its contents directly in the prompt sent to Claude.
+
+## Prompts
+
+Prompts in MCP servers let you define pre-built, high-quality instructions that clients can use instead of writing their own prompts from scratch. Think of them as carefully crafted templates that give better results than what users might come up with on their own.
+
+The basic structure looks like this:
+
+- Define prompts using the @mcp.prompt() decorator
+- Add a name and description for each prompt
+- Return a list of messages that form the complete prompt
+- These prompts should be high quality, well-tested, and relevant to your MCP server's purpose
+
+```
+from mcp.server.fastmcp import base
+
+@mcp.prompt(
+    name="format",
+    description="Rewrites the contents of the document in Markdown format."
+)
+def format_document(
+    doc_id: str = Field(description="Id of the document to format")
+) -> list[base.Message]:
+    prompt = f"""
+Your goal is to reformat a document to be written with markdown syntax.
+
+The id of the document you need to reformat is:
+
+{doc_id}
+
+
+Add in headers, bullet points, tables, etc as necessary. Feel free to add in extra formatting.
+Use the 'edit_document' tool to edit the document. After the document has been reformatted...
+"""
+    
+    return [
+        base.UserMessage(prompt)
+    ]
+```
+
+Remember that prompts are meant to provide value that users couldn't easily get on their own - they should represent your expertise in the domain your MCP server covers.
+
+The first step is implementing the list_prompts method in your MCP client. This method retrieves all available prompts from the server:
+
+```
+async def list_prompts(self) -> list[types.Prompt]:
+    result = await self.session().list_prompts()
+    return result.prompts
+
+async def get_prompt(self, prompt_name, args: dict[str, str]):
+    result = await self.session().get_prompt(prompt_name, args)
+    return result.messages
+```
 
 # <-- all acquired resources are released here automatically
 ```
