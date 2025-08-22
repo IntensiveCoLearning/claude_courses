@@ -15,8 +15,9 @@ web3 从业者，AI 爱好者
 ## Notes
 
 <!-- Content_START -->
-# 2025-08-22
 
+# 2025-08-22
+<!-- DAILY_CHECKIN_2025-08-22_START -->
 # 第 43 课 Implementing the RAG flow
 
 ## 1. 实现流程概述
@@ -89,6 +90,63 @@ RAG（检索增强生成）管道的核心实现步骤分为五步：
 - 余弦距离用于量化语义相似度，距离越小表示越相关。
 - 实现流程可扩展，后续可针对特殊场景进一步优化检索效果和准确性。
 
+# 第 44 课 BM25 lexical search
+
+## 1. 语义检索的局限性
+
+- RAG管道中，单独依靠语义检索（embedding + 向量数据库）有时无法获得最优结果。
+- 语义检索擅长理解上下文和语义，但可能遗漏用户查询中的精确关键词或短语（如事件编号、ID等）。
+
+## 2. 混合检索策略（Hybrid Search）
+
+- 解决方案：并行运行语义检索和词汇检索（lexical search），再合并结果。
+- 优势：
+  - 语义检索：发现语义相关的内容
+  - 词汇检索：确保精确词条匹配（如专有名词、编号等）
+  - 合并结果：兼顾语义相关性与精确匹配，提升检索准确性
+
+## 3. BM25算法简介
+
+- BM25（Best Match 25）是RAG系统中常用的词汇检索算法。
+- 处理流程：
+  1. **分词（Tokenize）**：将用户查询拆分为单独的词条。
+  2. **统计词频（Term Frequency）**：统计每个词条在所有文档中的出现次数。
+  3. **词条加权（Weight Terms）**：高频词（如"a"）权重低，稀有词（如事件编号）权重高。
+  4. **返回最佳匹配**：优先返回包含高权重词条最多的文档。
+
+## 4. BM25检索实现流程
+
+```python
+# 1. 按章节分块文本
+chunks = chunk_by_section(text)
+
+# 2. 创建BM25索引并添加文档
+store = BM25Index()
+for chunk in chunks:
+    store.add_document({"content": chunk})
+
+# 3. 检索相关内容
+results = store.search("What happened with INC-2023-Q4-011?", 3)
+
+# 4. 打印结果
+for doc, distance in results:
+    print(distance, "\n", doc["content"][:200], "\n----\n")
+```
+
+- BM25优先返回真正包含稀有关键词的章节（如Software Engineering和Cybersecurity），而不是仅靠语义相关的内容。
+
+## 5. BM25的优势与适用场景
+
+- 稀有、具体词条权重高，能精确定位技术术语、编号、专有名词等。
+- 忽略高频词，提升检索质量。
+- 适合技术文档、事件检索、专有名词查询等场景。
+
+## 6. 关键知识点总结
+
+- 语义检索与词汇检索各有优势，混合使用能显著提升RAG管道的检索效果。
+- BM25是经典的词汇检索算法，适合补充语义检索的不足。
+- 混合检索能同时满足用户语义性和精确性需求，是RAG系统中推荐的检索策略。
+<!-- DAILY_CHECKIN_2025-08-22_END -->
 # 2025-08-21
 
 # 第39课 Introducing Retrieval Augmented Generation
