@@ -17,6 +17,8 @@ timezone: UTC+12
 <!-- Content_START -->
 
 # 2025-08-22
+
+# 2025-08-22
 <!-- DAILY_CHECKIN_2025-08-22_START -->
 # Anthropic apps
 
@@ -88,8 +90,126 @@ This makes it incredibly useful for tasks like:
 
 TODO computer use https://github.com/anthropics/anthropic-quickstarts/tree/main/computer-use-demo
 
+看起来需要自己本地跑一个 docker 镜像，然后配置上相关 API，之后可以让 cc 用 tool 来调用。
 
-test
+## The Computer Tool Schema
+
+```
+{
+  "type": "computer_20250124",
+  "name": "computer",
+  "display_width_px": 1024,
+  "display_height_px": 768,
+  "display_number": 1
+}
+```
+
+The Computing Environment
+
+To make computer use work, you need an actual computing environment that can execute these actions programmatically. The most common approach is using a Docker container with a desktop environment like Firefox.
+
+```
+export ANTHROPIC_API_KEY="your_api_key"
+docker run \
+  -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
+  -v $HOME/.anthropic:/home/computeruse/.anthropic \
+  -p 5900:5900 \
+  -p 8501:8501 \
+  -p 6080:6080 \
+  -p 8080:8080 \
+  -it ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest
+```
+
+# Agents and workflows
+
+When to Use Workflows vs Agents
+
+The decision comes down to how well you understand the task:
+
+- Use workflows when you can picture the exact flow or steps that Claude should go through to solve a problem, or when your app's UX constrains users to a set of tasks
+- Use agents when you're not sure exactly what task or task parameters you'll give to Claude
+
+## Common workflows Patterns:
+
+### The Evaluator-Optimizer Pattern
+
+- Producer: Takes input and creates output (Claude using CadQuery to model the part and create a rendering)
+- Grader: Evaluates the output against some criteria
+- Feedback loop: If the grader doesn't accept the output, feedback goes back to the producer for improvement
+- Iteration: The cycle repeats until the grader accepts the output
+
+### Parallelization workflows
+
+Imagine you're building a material designer application where users upload images of parts and receive recommendations for the best material to use. Your first instinct might be to send the image to Claude with a simple prompt asking it to choose between metal, polymer, ceramic, composite, elastomer, or wood.
+
+A Better Approach: Parallelization. Instead of cramming everything into one request, you can split the task into multiple parallel requests. Each request focuses on evaluating the part for a single material type with specialized criteria. Claude evaluates the part's suitability for each material independently. Collect all the analysis results and feed them into a final aggregation step.
+
+### Chaining workflows
+
+A chaining workflow breaks down a large, complex task into smaller, sequential subtasks. Instead of asking Claude to do everything at once, you split the work into focused steps that build on each other.
+
+Here's a practical example: imagine you're building a social media marketing tool that creates and posts videos automatically. Rather than asking Claude to handle everything in one massive prompt, you could break it down like this:
+
+- Find related trending topics on Twitter
+- Select the most interesting topic (using Claude)
+- Research the topic (using Claude)
+- Write a script for a short format video (using Claude)
+- Use an AI avatar and text-to-speech to create a video
+- Post the video to social media
+
+The chaining approach offers several advantages:
+
+- Split large tasks into smaller, non-parallelizable subtasks
+- Optionally do non-LLM processing between each task
+- Keep Claude focused on one aspect of the overall task
+
+长的 prompt 有时候不容易做的准确，可能会有问题。
+
+### Routing workflows
+
+The routing process happens in two steps:
+
+- Categorization - Send the user's topic to Claude with a request to categorize it into one of your predefined genres
+- Specialized Processing - Use the category result to select the appropriate prompt template and generate content
+
+```
+Categorize the topic of a video into one of the listed categories:
+<topic>Python functions</topic>
+
+<categories>
+- Educational
+- Entertainment  
+- Comedy
+- Personal vlog
+- Reviews
+- Storytelling
+</categories>
+```
+
+先分类，然后再调用其他的 workflow。
+
+## Agents
+
+Agents represent a shift from the structured workflows we've been working with. While workflows are perfect when you know the exact steps needed to complete a task, agents shine when you're not sure what those steps should be. Instead of defining a rigid sequence, you give Claude a goal and a set of tools, then let it figure out how to combine those tools to achieve the objective.
+
+The key insight for building effective agents is providing reasonably abstract tools rather than hyper-specialized ones. Claude Code demonstrates this principle perfectly.
+
+### Environment inspection
+
+When designing your own agents, always ask: "How will Claude know if this action worked?" Whether you're working with files, APIs, or user interfaces, provide tools and instructions that let Claude observe the results of its actions.
+
+This might mean:
+
+- Reading file contents before modifications
+- Taking screenshots after UI interactions
+- Checking API responses for expected data
+- Validating generated content against requirements
+
+Environment inspection transforms Claude from a blind executor of commands into an agent that can truly understand and adapt to its working environment.
+
+The general recommendation is to always focus on implementing workflows where possible, and only resort to agents when they are truly required. Workflows provide the reliability and predictability that most production applications need, while agents offer flexibility for scenarios where the exact requirements can't be predetermined.
+
+Consider workflows when you have well-defined processes and agents when you need to handle unpredictable, varied user requests that require creative problem-solving.
 <!-- DAILY_CHECKIN_2025-08-22_END -->
 
 # 2025-08-21
