@@ -17,10 +17,9 @@ timezone: UTC+12
 <!-- Content_START -->
 # 2025-08-22
 
-最后一天啦！恭喜坚持到最后的自己，今天主要是完成了最后的 final assessment，获得了证书，开心！虽然这一期残酷共学结束了，但是对我来说，只是一个开始，接下来就要开始运用起来并学习其他还没接触到的知识。test
+最后一天啦！恭喜坚持到最后的自己，今天主要是完成了最后的 final assessment，获得了证书，开心！虽然这一期残酷共学结束了，但是对我来说，只是一个开始，接下来就要开始运用起来并学习其他还没接触到的知识。
 
-![WechatIMG1038.png](https://raw.githubusercontent.com/IntensiveCoLearning/claude_courses/main/assets/muxin-web3/images/2025-08-22-1755862409581-WechatIMG1038.png)
-
+![WechatIMG1038.png](https://raw.githubusercontent.com/IntensiveCoLearning/claude_courses/main/assets/muxin-web3/images/2025-08-22-1755862457157-WechatIMG1038.png)
 
 # 2025-08-22
 <!-- DAILY_CHECKIN_2025-08-22_START -->
