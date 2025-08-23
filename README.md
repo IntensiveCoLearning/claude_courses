@@ -128,7 +128,7 @@ Telegram：https://t.me/LXDAO/26860
 | [hudong1997](https://github.com/IntensiveCoLearning/claude_courses/blob/main/hudong1997.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [godrong](https://github.com/IntensiveCoLearning/claude_courses/blob/main/godrong.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [akuma0607](https://github.com/IntensiveCoLearning/claude_courses/blob/main/akuma0607.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [jingedawang](https://github.com/IntensiveCoLearning/claude_courses/blob/main/jingedawang.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |   |
+| [jingedawang](https://github.com/IntensiveCoLearning/claude_courses/blob/main/jingedawang.md) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ⭕️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⭕️ |
 | [paoqi1](https://github.com/IntensiveCoLearning/claude_courses/blob/main/paoqi1.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [rectinajh](https://github.com/IntensiveCoLearning/claude_courses/blob/main/rectinajh.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [SIGNUP_AUTOMATION](https://github.com/IntensiveCoLearning/claude_courses/blob/main/SIGNUP_AUTOMATION.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -599,14 +599,15 @@ Telegram：https://t.me/LXDAO/26860
 
 
 
+
 <!-- STATISTICALDATA_START -->
 ## 统计数据
 
-- 总参与人数: 0
-- 完成人数: 0
-- 完成用户: 
+- 总参与人数: 56
+- 完成人数: 9
+- 完成用户: muxin-web3, brucexu-eth, Ethan0191, 0xAlanCui, YooYooY, cryptonerdcn, joyc, echooooz, jingedawang
 - 全勤用户: 
-- 淘汰人数: 0
-- 淘汰率: 0.00%
-- Fork人数: 0
+- 淘汰人数: 47
+- 淘汰率: 83.93%
+- Fork人数: 2
 <!-- STATISTICALDATA_END -->
