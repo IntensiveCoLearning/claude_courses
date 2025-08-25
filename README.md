@@ -139,11 +139,10 @@ Telegram：https://t.me/LXDAO/26860
 <!-- STATISTICALDATA_START -->
 ## 统计数据
 
-- 总参与人数: 56
+- 总参与人数: 55
 - 完成人数: 9
 - 完成用户: muxin-web3, brucexu-eth, Ethan0191, 0xAlanCui, YooYooY, cryptonerdcn, joyc, echooooz, jingedawang
 - 全勤用户: 
-- 淘汰人数: 47
-- 淘汰率: 83.93%
-- Fork人数: 2
+- 淘汰人数: 46
+- 淘汰率: 83.64%
 <!-- STATISTICALDATA_END -->
