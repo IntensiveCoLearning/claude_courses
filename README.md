@@ -359,6 +359,7 @@ Telegram：https://t.me/LXDAO/26860
 
 
 
+
 <!-- STATISTICALDATA_START -->
 ## 统计数据
 
@@ -368,5 +369,5 @@ Telegram：https://t.me/LXDAO/26860
 - 全勤用户: 
 - 淘汰人数: 47
 - 淘汰率: 83.93%
-- Fork人数: 0
+- Fork人数: 2
 <!-- STATISTICALDATA_END -->
